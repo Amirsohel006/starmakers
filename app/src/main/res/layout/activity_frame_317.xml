@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="frame317VM" type="com.starmakers.app.modules.frame317.data.viewmodel.Frame317VM"/>
+    </data>
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearColumndonationsucces"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <TextView android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:id="@+id/txtDonationSucces"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_12pxh"
+            android:layout_marginStart="@dimen/_12pxh"
+            android:layout_marginTop="@dimen/_39pxv"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:text="@{frame317VM.frame317Model.txtDonationSucces}"
+            style="@style/txtPoppinsmedium20_1" tools:text="@string/msg_donation_succes"/>
+        <FrameLayout android:id="@+id/frameStackhttpslottief"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/_200pxv"
+            android:layout_marginBottom="@dimen/_17pxv"
+            android:layout_marginEnd="@dimen/_12pxh"
+            android:layout_marginStart="@dimen/_12pxh"
+            android:layout_marginTop="@dimen/_8pxv" android:layout_width="@dimen/_303pxh">
+            <ImageView android:id="@+id/imageHttpslottief"
+                android:layout_gravity="start"
+                android:layout_height="@dimen/_200pxh"
+                android:layout_width="match_parent"
+                android:scaleType="fitXY"
+                imageRes="@{@drawable/img_httpslottief}"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_httpslottief"/>
+            <ImageView android:id="@+id/imageHttpslottiefOne"
+                android:layout_gravity="top|center"
+                android:layout_height="@dimen/_138pxh"
+                android:layout_marginBottom="@dimen/_22pxv"
+                android:layout_marginEnd="@dimen/_80pxh"
+                android:layout_marginStart="@dimen/_80pxh"
+                android:layout_marginTop="@dimen/_22pxv"
+                android:layout_width="@dimen/_138pxh"
+                android:scaleType="fitXY"
+                imageRes="@{@drawable/img_httpslottief_138x138}"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_httpslottief_138x138"/>
+        </FrameLayout>
+    </LinearLayout>
+</layout>

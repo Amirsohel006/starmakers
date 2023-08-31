@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="imageSliderSliderrectangleelevenModel" type="com.starmakers.app.modules.home.data.model.ImageSliderSliderrectangleelevenModel"/>
+    </data>
+    <ImageView android:id="@+id/imageRectangleEleven"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="@dimen/_12pxh"
+        android:layout_width="match_parent" android:scaleType="fitXY"
+        cornerRadius="@{@dimen/_10pxh}"
+        imageUrl="@{imageSliderSliderrectangleelevenModel.imageRectangleEleven}"
+        placeHolder="@{@drawable/image_not_found}"
+        tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle11"/>
+</layout>

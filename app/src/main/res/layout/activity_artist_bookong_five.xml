@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="artistBookongFiveVM" type="com.starmakers.app.modules.artistbookongfive.data.viewmodel.ArtistBookongFiveVM"/>
+    </data>
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearArtistBookong"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <androidx.appcompat.widget.Toolbar android:gravity="start"
+            android:id="@+id/toolbarToolbar"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" app:contentInsetStart="0dp">
+            <LinearLayout android:gravity="start"
+                android:id="@+id/linearRowarrowleft"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="horizontal" style="@style/groupStylegray_802">
+                <ImageView android:id="@+id/imageArrowleft"
+                    android:layout_height="@dimen/_24pxh"
+                    android:layout_marginBottom="@dimen/_12pxv"
+                    android:layout_marginStart="@dimen/_23pxh"
+                    android:layout_marginTop="@dimen/_52pxv"
+                    android:layout_width="@dimen/_24pxh"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_arrowleft"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_arrowleft"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtLanguage"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_3pxv"
+                    android:layout_marginEnd="@dimen/_124pxh"
+                    android:layout_marginStart="@dimen/_19pxh"
+                    android:layout_marginTop="@dimen/_47pxv"
+                    android:layout_weight="0.88"
+                    android:layout_width="0dp" android:singleLine="true"
+                    android:text="@{artistBookongFiveVM.artistBookongFiveModel.txtLanguage}"
+                    style="@style/txtPoppinssemibold24" tools:text="@string/lbl_artist_booking2"/>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+        <Spinner android:background="@color/gray_100"
+            android:gravity="start" android:id="@+id/spinnerGroup122"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" tools:listitem="@layout/spinner_item"/>
+        <TextView android:ellipsize="end"
+            android:id="@+id/txtArtistBooking"
+            android:layout_gravity="start"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_15pxh"
+            android:layout_marginStart="@dimen/_15pxh"
+            android:layout_marginTop="@dimen/_21pxv"
+            android:layout_width="wrap_content"
+            android:singleLine="true"
+            android:text="@{artistBookongFiveVM.artistBookongFiveModel.txtArtistBooking}"
+            style="@style/txtPoppinssemibold16" tools:text="@string/lbl_artist_booking3"/>
+        <Spinner
+            android:background="@drawable/layer_list_bg_white_a700_border_gray_500_radius_10"
+            android:gravity="center_horizontal"
+            android:id="@+id/spinnerComponentEight"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_15pxh"
+            android:layout_marginStart="@dimen/_15pxh"
+            android:layout_marginTop="@dimen/_41pxv"
+            android:layout_width="match_parent" tools:listitem="@layout/spinner_item"/>
+        <Spinner
+            android:background="@drawable/layer_list_bg_white_a700_border_gray_500_radius_10"
+            android:gravity="center_horizontal"
+            android:id="@+id/spinnerComponentOne"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_15pxh"
+            android:layout_marginStart="@dimen/_15pxh"
+            android:layout_marginTop="@dimen/_28pxv"
+            android:layout_width="match_parent" tools:listitem="@layout/spinner_item"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:ellipsize="end" android:gravity="center"
+            android:id="@+id/btnSearch"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_20pxv"
+            android:layout_marginEnd="@dimen/_15pxh"
+            android:layout_marginStart="@dimen/_15pxh"
+            android:layout_marginTop="@dimen/_59pxv"
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/_12pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_12pxv" android:singleLine="true"
+            android:text="@string/lbl_search"
+            android:textAllCaps="false" style="@style/btnSolidRounded_5" tools:text="@string/lbl_search"/>
+    </LinearLayout>
+</layout>

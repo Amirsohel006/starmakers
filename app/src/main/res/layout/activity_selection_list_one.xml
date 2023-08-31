@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="selectionListOneVM" type="com.starmakers.app.modules.selectionlistone.data.viewmodel.SelectionListOneVM"/>
+    </data>
+    <LinearLayout android:gravity="start"
+        android:id="@+id/linearSELECTIONlIST"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarToolbar"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" app:contentInsetStart="0dp">
+            <LinearLayout android:gravity="start"
+                android:id="@+id/linearRowarrowleft"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="horizontal" style="@style/groupStylegray_802">
+                <ImageView android:id="@+id/imageArrowleft"
+                    android:layout_height="@dimen/_24pxh"
+                    android:layout_marginBottom="@dimen/_12pxv"
+                    android:layout_marginStart="@dimen/_23pxh"
+                    android:layout_marginTop="@dimen/_52pxv"
+                    android:layout_width="@dimen/_24pxh"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_arrowleft"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_arrowleft"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtAuditions"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_4pxv"
+                    android:layout_marginEnd="@dimen/_167pxh"
+                    android:layout_marginStart="@dimen/_29pxh"
+                    android:layout_marginTop="@dimen/_46pxv"
+                    android:layout_weight="0.83"
+                    android:layout_width="0dp" android:singleLine="true"
+                    android:text="@{selectionListOneVM.selectionListOneModel.txtAuditions}"
+                    style="@style/txtPoppinssemibold24" tools:text="@string/lbl_auditions"/>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+        <LinearLayout android:gravity="center_horizontal"
+            android:id="@+id/linearColumnselectionList"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical" style="@style/groupStylewhite_A700">
+            <LinearLayout android:gravity="end"
+                android:id="@+id/linearRowauditionsOne"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_2pxv"
+                android:layout_marginEnd="@dimen/_14pxh"
+                android:layout_marginStart="@dimen/_14pxh"
+                android:layout_marginTop="@dimen/_8pxv"
+                android:layout_width="match_parent"
+                android:orientation="horizontal" style="@style/groupStylegray_101cornerRadius">
+                <LinearLayout android:gravity="center_horizontal"
+                    android:id="@+id/linearColumnauditionsOne"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_13pxv"
+                    android:layout_marginStart="@dimen/_51pxh"
+                    android:layout_marginTop="@dimen/_11pxv"
+                    android:layout_weight="0.29"
+                    android:layout_width="0dp"
+                    android:orientation="vertical" style="@style/groupStylecornerRadius">
+                    <TextView android:ellipsize="end"
+                        android:gravity="start"
+                        android:id="@+id/txtAuditionsOne"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:singleLine="true"
+                        android:text="@{selectionListOneVM.selectionListOneModel.txtAuditionsOne}"
+                        style="@style/txtPoppinsregular14_1" tools:text="@string/lbl_auditions"/>
+                </LinearLayout>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:ellipsize="end" android:gravity="center"
+                    android:id="@+id/btnSelectionList"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_3pxv"
+                    android:layout_marginEnd="@dimen/_4pxh"
+                    android:layout_marginStart="@dimen/_51pxh"
+                    android:layout_marginTop="@dimen/_2pxv"
+                    android:layout_weight="0.71"
+                    android:layout_width="0dp"
+                    android:paddingBottom="@dimen/_10pxv"
+                    android:paddingEnd="@dimen/_30pxh"
+                    android:paddingStart="@dimen/_30pxh"
+                    android:paddingTop="@dimen/_10pxv"
+                    android:singleLine="true"
+                    android:text="@string/lbl_selection_list"
+                    android:textAllCaps="false"
+                    style="@style/btnSolidRounded_9" tools:text="@string/lbl_selection_list"/>
+            </LinearLayout>
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:gravity="center_horizontal"
+            android:id="@+id/recyclerListrectangle106"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_225pxv"
+            android:layout_marginEnd="@dimen/_16pxh"
+            android:layout_marginStart="@dimen/_16pxh"
+            android:layout_marginTop="@dimen/_16pxv"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            itemSpace="@{@dimen/_10pxh}" tools:itemCount="2" tools:listitem="@layout/row_listrectangle107"/>
+    </LinearLayout>
+</layout>

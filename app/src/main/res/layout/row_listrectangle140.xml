@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="listrectangle140RowModel" type="com.starmakers.app.modules.selectionlistfour.data.model.Listrectangle140RowModel"/>
+    </data>
+    <LinearLayout android:id="@+id/linearRowrectangle140"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal" style="@style/groupStylegray_51cornerRadius">
+        <ImageView android:id="@+id/imageRectangle140"
+            android:layout_height="@dimen/_83pxh"
+            android:layout_marginBottom="@dimen/_11pxv"
+            android:layout_marginStart="@dimen/_8pxh"
+            android:layout_marginTop="@dimen/_9pxv"
+            android:layout_width="@dimen/_81pxh"
+            android:scaleType="fitXY" cornerRadius="@{@dimen/_5pxh}"
+            imageRes="@{@drawable/img_rectangle140}"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle140"/>
+        <LinearLayout android:id="@+id/linearRowchandru"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_14pxv"
+            android:layout_marginEnd="@dimen/_17pxh"
+            android:layout_marginStart="@dimen/_30pxh"
+            android:layout_marginTop="@dimen/_10pxv"
+            android:layout_weight="0.7" android:layout_width="0dp" android:orientation="horizontal">
+            <LinearLayout android:gravity="start"
+                android:id="@+id/linearColumnchandru"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.83" android:layout_width="0dp" android:orientation="vertical">
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtChandru"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@{listrectangle140RowModel.txtChandru}"
+                    style="@style/txtPoppinsmedium16_4" tools:text="@string/lbl_chandru"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtYrsCounter"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_marginTop="@dimen/_2pxv"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@{listrectangle140RowModel.txtYrsCounter}"
+                    style="@style/txtPoppinsregular16_3" tools:text="@string/lbl_23_yrs"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtBangalore"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_marginTop="@dimen/_4pxv"
+                    android:layout_width="match_parent"
+                    android:singleLine="true"
+                    android:text="@{listrectangle140RowModel.txtBangalore}"
+                    style="@style/txtPoppinsregular16_3" tools:text="@string/lbl_bangalore"/>
+            </LinearLayout>
+            <ImageButton
+                android:background="@drawable/rectangle_bg_white_a700_radius_16_5"
+                android:id="@+id/btnArrowright"
+                android:layout_height="@dimen/_33pxh"
+                android:layout_marginBottom="@dimen/_18pxv"
+                android:layout_marginTop="@dimen/_26pxv"
+                android:layout_width="@dimen/_33pxh"
+                android:paddingHorizontal="@dimen/_7pxh"
+                android:paddingVertical="@dimen/_7pxv"
+                android:scaleType="fitCenter"
+                android:src="@drawable/img_arrowright" tools:ignore="ContentDescription"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

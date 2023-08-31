@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest package="com.starmakers.app" xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <application android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name" android:largeHeap="true"
+        android:name="com.starmakers.app.appcomponents.di.MyApp"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true" android:theme="@style/Theme.MyApp" android:usesCleartextTraffic="true">
+        <activity
+            android:name="com.starmakers.app.modules.frametwentyfour.ui.FrameTwentyfourActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.auditionsthree.ui.AuditionsThreeActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.requestone.ui.RequestOneActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.artistbookongthree.ui.ArtistBookongThreeActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.auditions.ui.AuditionsActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.signuoone.ui.SignUoOneActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.signuotwo.ui.SignUoTwoActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.selectionlist.ui.SelectionListActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.auditionstwo.ui.AuditionsTwoActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.request.ui.RequestActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.selectionlistfour.ui.SelectionListFourActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.studiobookong1.ui.StudioBookong1Activity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.artistmembershipone.ui.ArtistMembershipOneActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.screenseven.ui.ScreenSevenActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.helpone.ui.HelpOneActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.screenten.ui.ScreenTenActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.auditionsone.ui.AuditionsOneActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.frame313.ui.Frame313Activity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.frame316.ui.Frame316Activity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.artistbookong.ui.ArtistBookongActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.campaignone.ui.CampaignOneActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.artistmembershiptwo.ui.ArtistMembershipTwoActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.screenfive.ui.ScreenFiveActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.campaign.ui.CampaignActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.artistbookongfive.ui.ArtistBookongFiveActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.selectionlisttwo.ui.SelectionListTwoActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.help.ui.HelpActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.screennine.ui.ScreenNineActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.frame315.ui.Frame315Activity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.frame311.ui.Frame311Activity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.selectionlistthree.ui.SelectionListThreeActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.artistbookongone.ui.ArtistBookongOneActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.selectionlistone.ui.SelectionListOneActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.signuothree.ui.SignUoThreeActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.homecontainer.ui.HomeContainerActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.regstrationdetails.ui.RegstrationDetailsActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.frame317.ui.Frame317Activity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.artistbookongtwo.ui.ArtistBookongTwoActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.artistmembership.ui.ArtistMembershipActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true"
+            android:name="com.starmakers.app.modules.signuofour.ui.SignUoFourActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.starmakers.app.modules.artistbookongfour.ui.ArtistBookongFourActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.frametwentythree.ui.FrameTwentythreeActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.frame312.ui.Frame312Activity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.auditionsfour.ui.AuditionsFourActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.signuo.ui.SignUoActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.paymentpage.ui.PaymentPageActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.screeneleven.ui.ScreenElevenActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.helptwo.ui.HelpTwoActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.screeneight.ui.ScreenEightActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.starmakers.app.modules.frame314.ui.Frame314Activity" android:screenOrientation="portrait"/>
+    </application>
+</manifest>

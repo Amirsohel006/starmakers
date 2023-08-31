@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="frame316VM" type="com.starmakers.app.modules.frame316.data.viewmodel.Frame316VM"/>
+    </data>
+    <FrameLayout android:id="@+id/frameStackbookingdates"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" style="@style/groupStylewhite_A700">
+        <LinearLayout android:id="@+id/linearColumnbookingdates"
+            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_20pxv"
+            android:layout_marginEnd="@dimen/_29pxh"
+            android:layout_marginStart="@dimen/_17pxh"
+            android:layout_marginTop="@dimen/_27pxv"
+            android:layout_width="match_parent" android:orientation="vertical">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarToolbar"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_width="match_parent" app:contentInsetStart="0dp">
+                <LinearLayout android:id="@+id/linearRowbookingdates"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" android:orientation="horizontal">
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtBookingDates"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.88"
+                        android:layout_width="0dp"
+                        android:singleLine="true"
+                        android:text="@{frame316VM.frame316Model.txtBookingDates}"
+                        style="@style/txtPoppinssemibold20_1" tools:text="@string/lbl_booking_dates"/>
+                    <ImageView android:id="@+id/imageClose"
+                        android:layout_height="@dimen/_20pxh"
+                        android:layout_marginBottom="@dimen/_6pxv"
+                        android:layout_marginStart="@dimen/_39pxh"
+                        android:layout_marginTop="@dimen/_3pxv"
+                        android:layout_width="@dimen/_20pxh"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/img_close"
+                        tools:ignore="ContentDescription" tools:src="@drawable/img_close"/>
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+            <LinearLayout android:gravity="start"
+                android:id="@+id/linearColumnselectfromdat"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20pxv"
+                android:layout_width="match_parent"
+                android:orientation="vertical" style="@style/groupStylecornerRadius">
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtSelectFromDat"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@{frame316VM.frame316Model.txtSelectFromDat}"
+                    style="@style/txtPoppinsregular16_1" tools:text="@string/msg_select_from_dat"/>
+                <EditText
+                    android:background="@drawable/rectangle_border_gray_500_radius_11"
+                    android:ellipsize="end"
+                    android:hint="@string/lbl_dd_mm_yy"
+                    android:id="@+id/etGroup150"
+                    android:inputType="text"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_7pxv"
+                    android:layout_width="match_parent"
+                    android:paddingBottom="@dimen/_10pxv"
+                    android:paddingEnd="@dimen/_30pxh"
+                    android:paddingStart="@dimen/_14pxh"
+                    android:paddingTop="@dimen/_11pxv"
+                    android:singleLine="true"
+                    android:text="@={frame316VM.frame316Model.etGroup150Value}"
+                    android:textColorHint="@color/gray_802"
+                    style="@style/etRoundedOutline_1" tools:ignore="Autofill"/>
+            </LinearLayout>
+            <LinearLayout android:gravity="start"
+                android:id="@+id/linearColumnselecttodate"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_27pxv"
+                android:layout_width="match_parent"
+                android:orientation="vertical" style="@style/groupStylecornerRadius">
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtSelectToDate"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@{frame316VM.frame316Model.txtSelectToDate}"
+                    style="@style/txtPoppinsregular16_1" tools:text="@string/lbl_select_to_date"/>
+                <EditText
+                    android:background="@drawable/rectangle_border_gray_500_radius_11"
+                    android:ellipsize="end"
+                    android:hint="@string/lbl_dd_mm_yy"
+                    android:id="@+id/etGroup151"
+                    android:inputType="text"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_7pxv"
+                    android:layout_width="match_parent"
+                    android:paddingBottom="@dimen/_10pxv"
+                    android:paddingEnd="@dimen/_30pxh"
+                    android:paddingStart="@dimen/_14pxh"
+                    android:paddingTop="@dimen/_11pxv"
+                    android:singleLine="true"
+                    android:text="@={frame316VM.frame316Model.etGroup151Value}"
+                    android:textColorHint="@color/gray_802"
+                    style="@style/etRoundedOutline_1" tools:ignore="Autofill"/>
+            </LinearLayout>
+            <EditText
+                android:background="@drawable/rectangle_border_gray_500_radius_11"
+                android:ellipsize="end"
+                android:hint="@string/msg_enter_total_num"
+                android:id="@+id/etGroup151One"
+                android:inputType="number"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_27pxv"
+                android:layout_width="match_parent"
+                android:paddingBottom="@dimen/_9pxv"
+                android:paddingEnd="@dimen/_30pxh"
+                android:paddingStart="@dimen/_14pxh"
+                android:paddingTop="@dimen/_12pxv"
+                android:singleLine="true"
+                android:text="@={frame316VM.frame316Model.etGroup151OneValue}"
+                android:textColorHint="@color/gray_802"
+                style="@style/etRoundedOutline_1" tools:ignore="Autofill"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:ellipsize="end" android:gravity="center"
+                android:id="@+id/btnRequestStudio"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_32pxv"
+                android:layout_width="match_parent"
+                android:paddingBottom="@dimen/_14pxv"
+                android:paddingEnd="@dimen/_30pxh"
+                android:paddingStart="@dimen/_30pxh"
+                android:paddingTop="@dimen/_14pxv"
+                android:singleLine="true"
+                android:text="@string/lbl_request_studio"
+                android:textAllCaps="false"
+                style="@style/btnSolidRounded" tools:text="@string/lbl_request_studio"/>
+        </LinearLayout>
+    </FrameLayout>
+</layout>

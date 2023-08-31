@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="frame314VM" type="com.starmakers.app.modules.frame314.data.viewmodel.Frame314VM"/>
+    </data>
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearColumnonlymembership"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <TextView android:gravity="center_horizontal"
+            android:id="@+id/txtOnlyMembership"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_27pxh"
+            android:layout_marginStart="@dimen/_27pxh"
+            android:layout_marginTop="@dimen/_26pxv"
+            android:layout_width="match_parent"
+            android:text="@{frame314VM.frame314Model.txtOnlyMembership}"
+            style="@style/txtPoppinsmedium16_4" tools:text="@string/msg_only_membership"/>
+        <ImageView android:id="@+id/imageHttpslottief"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/_99pxh"
+            android:layout_marginEnd="@dimen/_27pxh"
+            android:layout_marginStart="@dimen/_27pxh"
+            android:layout_marginTop="@dimen/_8pxv"
+            android:layout_width="@dimen/_99pxh"
+            android:scaleType="fitXY"
+            imageRes="@{@drawable/img_httpslottief_99x99}"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_httpslottief_99x99"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:ellipsize="end" android:gravity="center"
+            android:id="@+id/btnTakeMembershipOne"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_26pxh"
+            android:layout_marginStart="@dimen/_27pxh"
+            android:layout_marginTop="@dimen/_29pxv"
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/_9pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_9pxv" android:singleLine="true"
+            android:text="@string/lbl_take_membership"
+            android:textAllCaps="false"
+            style="@style/btnGradientRounded" tools:text="@string/lbl_take_membership"/>
+        <TextView android:ellipsize="end" android:id="@+id/txtGohome"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_20pxv"
+            android:layout_marginEnd="@dimen/_27pxh"
+            android:layout_marginStart="@dimen/_27pxh"
+            android:layout_marginTop="@dimen/_22pxv"
+            android:layout_width="wrap_content"
+            android:singleLine="true"
+            android:text="@{frame314VM.frame314Model.txtGohome}"
+            style="@style/txtPoppinsregular16_1" tools:text="@string/lbl_go_home"/>
+    </LinearLayout>
+</layout>

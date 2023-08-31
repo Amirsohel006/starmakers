@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="selectionListRowModel" type="com.starmakers.app.modules.selectionlist.data.model.SelectionListRowModel"/>
+    </data>
+    <FrameLayout android:id="@+id/frameStackellipsethirtyfive"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" style="@style/groupStylegray_100cornerRadius">
+        <LinearLayout android:id="@+id/linearRowellipsethirtyfive"
+            android:layout_gravity="start"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_14pxv"
+            android:layout_marginEnd="@dimen/_23pxh"
+            android:layout_marginStart="@dimen/_23pxh"
+            android:layout_marginTop="@dimen/_14pxv"
+            android:layout_width="match_parent" android:orientation="horizontal">
+            <View
+                android:background="@drawable/rectangle_bg_indigo_800_radius_5_5"
+                android:id="@+id/viewEllipseThirtyFive"
+                android:layout_height="@dimen/_11pxh"
+                android:layout_marginBottom="@dimen/_6pxv"
+                android:layout_marginTop="@dimen/_6pxv" android:layout_width="@dimen/_11pxh"/>
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtChecktheselec"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_weight="0.95" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{selectionListRowModel.txtChecktheselec}"
+                style="@style/txtPoppinsregular16_2" tools:text="@string/msg_check_the_selec"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/linearRowellipsethirtyfiveOne"
+            android:layout_gravity="start"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal" style="@style/groupStylegray_100cornerRadius">
+            <View
+                android:background="@drawable/rectangle_bg_indigo_800_radius_5_5"
+                android:id="@+id/viewEllipseThirtyFiveOne"
+                android:layout_height="@dimen/_11pxh"
+                android:layout_marginBottom="@dimen/_23pxv"
+                android:layout_marginStart="@dimen/_23pxh"
+                android:layout_marginTop="@dimen/_21pxv" android:layout_width="@dimen/_11pxh"/>
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtChecktheselecOne"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_16pxv"
+                android:layout_marginEnd="@dimen/_111pxh"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_14pxv"
+                android:layout_weight="0.95" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{selectionListRowModel.txtChecktheselecOne}"
+                style="@style/txtPoppinsregular16_2" tools:text="@string/msg_check_the_selec"/>
+        </LinearLayout>
+    </FrameLayout>
+</layout>

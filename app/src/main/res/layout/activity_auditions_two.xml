@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="auditionsTwoVM" type="com.starmakers.app.modules.auditionstwo.data.viewmodel.AuditionsTwoVM"/>
+    </data>
+    <LinearLayout android:gravity="start"
+        android:id="@+id/linearColumnarrowleft"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarToolbar"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" app:contentInsetStart="0dp">
+            <LinearLayout android:gravity="start"
+                android:id="@+id/linearRowarrowleft"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="horizontal" style="@style/groupStylegray_802">
+                <ImageView android:id="@+id/imageArrowleft"
+                    android:layout_height="@dimen/_24pxh"
+                    android:layout_marginBottom="@dimen/_10pxv"
+                    android:layout_marginStart="@dimen/_23pxh"
+                    android:layout_marginTop="@dimen/_54pxv"
+                    android:layout_width="@dimen/_24pxh"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_arrowleft"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_arrowleft"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtRamamandStudio"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_4pxv"
+                    android:layout_marginEnd="@dimen/_58pxh"
+                    android:layout_marginStart="@dimen/_24pxh"
+                    android:layout_marginTop="@dimen/_46pxv"
+                    android:layout_weight="0.91"
+                    android:layout_width="0dp" android:singleLine="true"
+                    android:text="@{auditionsTwoVM.auditionsTwoModel.txtRamamandStudio}"
+                    style="@style/txtPoppinssemibold24" tools:text="@string/lbl_ramamand_studio"/>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+        <FrameLayout android:id="@+id/frameStackrectanglenineteen"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/_757pxv"
+            android:layout_marginEnd="@dimen/_1pxh"
+            android:layout_marginTop="@dimen/_24pxv"
+            android:layout_width="@dimen/_359pxh" style="@style/groupStylewhite_A700">
+            <LinearLayout
+                android:id="@+id/linearColumnrectanglenineteen"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_16pxh"
+                android:layout_marginStart="@dimen/_15pxh"
+                android:layout_width="match_parent" android:orientation="vertical">
+                <ImageView android:id="@+id/imageRectangleNineteen"
+                    android:layout_height="@dimen/_183pxh"
+                    android:layout_width="match_parent"
+                    android:scaleType="fitXY"
+                    cornerRadius="@{@dimen/_10pxh}"
+                    imageRes="@{@drawable/img_rectangle19}"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle19"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtName"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_marginTop="@dimen/_37pxv"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@{auditionsTwoVM.auditionsTwoModel.txtName}"
+                    style="@style/txtPoppinsmedium16" tools:text="@string/lbl_name"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtYear"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_marginTop="@dimen/_11pxv"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@{auditionsTwoVM.auditionsTwoModel.txtYear}"
+                    style="@style/txtPoppinsmedium16" tools:text="@string/lbl_year"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtAbout"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@{auditionsTwoVM.auditionsTwoModel.txtAbout}"
+                    style="@style/txtPoppinsmedium16" tools:text="@string/lbl_about"/>
+                <TextView android:gravity="center_horizontal"
+                    android:id="@+id/txtDescription"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_7pxh"
+                    android:layout_marginTop="@dimen/_11pxv"
+                    android:layout_width="match_parent"
+                    android:text="@{auditionsTwoVM.auditionsTwoModel.txtDescription}"
+                    style="@style/txtPoppinsregular14_5" tools:text="@string/msg_lorem_ipsum_dol2"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtMovies"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_marginTop="@dimen/_13pxv"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@{auditionsTwoVM.auditionsTwoModel.txtMovies}"
+                    style="@style/txtPoppinsmedium16" tools:text="@string/lbl_movies2"/>
+                <LinearLayout android:id="@+id/linearRowrectangle125"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20pxv"
+                    android:layout_width="match_parent" android:orientation="horizontal">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerAuditionsTwo"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.57"
+                        android:layout_width="0dp"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        itemSpace="@{@dimen/_17pxh}" tools:itemCount="2" tools:listitem="@layout/row_auditions_two"/>
+                    <ImageView android:id="@+id/imageRectangle125"
+                        android:layout_height="@dimen/_115pxh"
+                        android:layout_marginBottom="@dimen/_132pxv"
+                        android:layout_marginStart="@dimen/_194pxh"
+                        android:layout_width="@dimen/_97pxh"
+                        android:scaleType="fitXY"
+                        cornerRadius="@{@dimen/_5pxh}"
+                        imageRes="@{@drawable/img_rectangle125_1}"
+                        tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle125_1"/>
+                </LinearLayout>
+            </LinearLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:ellipsize="end" android:gravity="center"
+                android:id="@+id/btnRequestStudio"
+                android:layout_gravity="bottom|start"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_69pxv"
+                android:layout_marginTop="@dimen/_69pxv"
+                android:layout_width="match_parent"
+                android:paddingBottom="@dimen/_18pxv"
+                android:paddingEnd="@dimen/_30pxh"
+                android:paddingStart="@dimen/_30pxh"
+                android:paddingTop="@dimen/_18pxv"
+                android:singleLine="true"
+                android:text="@string/lbl_request_studio"
+                android:textAllCaps="false" style="@style/btnSolid_1" tools:text="@string/lbl_request_studio"/>
+        </FrameLayout>
+    </LinearLayout>
+</layout>

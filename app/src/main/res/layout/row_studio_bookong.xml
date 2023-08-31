@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="studioBookongRowModel" type="com.starmakers.app.modules.studiobookong.data.model.StudioBookongRowModel"/>
+    </data>
+    <LinearLayout android:id="@+id/linearRowrectanglenineteen"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal" style="@style/groupStylewhite_8">
+        <ImageView android:id="@+id/imageRectangleNineteen"
+            android:layout_height="@dimen/_133pxh"
+            android:layout_marginBottom="@dimen/_14pxv"
+            android:layout_marginStart="@dimen/_10pxh"
+            android:layout_marginTop="@dimen/_14pxv"
+            android:layout_width="@dimen/_102pxh"
+            android:scaleType="fitXY" cornerRadius="@{@dimen/_10pxh}"
+            imageRes="@{@drawable/img_rectangle19}"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle19"/>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearColumnramanandstudio"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_11pxv"
+            android:layout_marginEnd="@dimen/_19pxh"
+            android:layout_marginStart="@dimen/_12pxh"
+            android:layout_marginTop="@dimen/_12pxv"
+            android:layout_weight="0.64" android:layout_width="0dp" android:orientation="vertical">
+            <LinearLayout android:id="@+id/linearRowramanandstudio"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_2pxh"
+                android:layout_marginStart="@dimen/_2pxh"
+                android:layout_width="match_parent" android:orientation="horizontal">
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtRamanandStudio"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.88"
+                    android:layout_width="0dp" android:singleLine="true"
+                    android:text="@{studioBookongRowModel.txtRamanandStudio}"
+                    style="@style/txtPoppinsmedium16" tools:text="@string/lbl_ramanand_studio"/>
+                <ImageView android:id="@+id/imageInfo"
+                    android:layout_height="@dimen/_20pxh"
+                    android:layout_marginBottom="@dimen/_2pxv"
+                    android:layout_marginStart="@dimen/_14pxh"
+                    android:layout_marginTop="@dimen/_1pxv"
+                    android:layout_width="@dimen/_20pxh"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_info"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_info"/>
+            </LinearLayout>
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtLocationJPN"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_marginStart="@dimen/_2pxh"
+                android:layout_marginTop="@dimen/_10pxv"
+                android:layout_width="match_parent"
+                android:singleLine="true"
+                android:text="@{studioBookongRowModel.txtLocationJPN}"
+                style="@style/txtPoppinsmedium16_1" tools:text="@string/msg_location_jp_n"/>
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtMeasurement"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_6pxv"
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:text="@{studioBookongRowModel.txtMeasurement}"
+                style="@style/txtPoppinsmedium16_1" tools:text="@string/lbl_cost_24l"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:ellipsize="end" android:gravity="center"
+                android:id="@+id/btnRequest"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_2pxh"
+                android:layout_marginTop="@dimen/_11pxv"
+                android:layout_width="match_parent"
+                android:paddingBottom="@dimen/_6pxv"
+                android:paddingEnd="@dimen/_30pxh"
+                android:paddingStart="@dimen/_30pxh"
+                android:paddingTop="@dimen/_6pxv"
+                android:singleLine="true"
+                android:text="@string/lbl_request"
+                android:textAllCaps="false"
+                style="@style/btnSolidRounded" tools:text="@string/lbl_request"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

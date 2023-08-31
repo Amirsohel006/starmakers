@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="signUoFourVM" type="com.starmakers.app.modules.signuofour.data.viewmodel.SignUoFourVM"/>
+    </data>
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearSignUoFour"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <ImageView android:id="@+id/imageSTARMAKERZ3d"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/_197pxh"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_54pxv"
+            android:layout_width="@dimen/_224pxh"
+            android:scaleType="fitXY"
+            imageRes="@{@drawable/img_starmakerz3d}"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_starmakerz3d"/>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearRowmobile"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_19pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_58pxv"
+            android:layout_width="match_parent"
+            android:orientation="horizontal" style="@style/groupStylecornerRadius_2">
+            <ImageView android:id="@+id/imageMobile"
+                android:layout_height="@dimen/_31pxh"
+                android:layout_marginBottom="@dimen/_20pxv"
+                android:layout_marginStart="@dimen/_17pxh"
+                android:layout_marginTop="@dimen/_8pxv"
+                android:layout_width="@dimen/_19pxh"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_mobile"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_mobile"/>
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtEnterMobilenu"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_16pxv"
+                android:layout_marginEnd="@dimen/_73pxh"
+                android:layout_marginStart="@dimen/_20pxh"
+                android:layout_marginTop="@dimen/_15pxv"
+                android:layout_weight="0.9" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{signUoFourVM.signUoFourModel.txtEnterMobilenu}"
+                style="@style/txtNunitoregular20" tools:text="@string/msg_enter_mobile_nu"/>
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:ellipsize="end" android:gravity="center"
+            android:id="@+id/btnSignup"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_19pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_30pxv"
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/_16pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_16pxv" android:singleLine="true"
+            android:text="@string/lbl_signup"
+            android:textAllCaps="false" style="@style/btnSolidRounded_1" tools:text="@string/lbl_signup"/>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearRowlineone"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_56pxv"
+            android:layout_width="match_parent" android:orientation="horizontal">
+            <View android:background="@color/indigo_800"
+                android:id="@+id/lineLineOne"
+                android:layout_height="@dimen/_1pxv"
+                android:layout_marginBottom="@dimen/_11pxv"
+                android:layout_marginTop="@dimen/_15pxv"
+                android:layout_weight="0.45" android:layout_width="0dp"/>
+            <TextView android:ellipsize="end" android:id="@+id/txtOR"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_9pxh"
+                android:layout_weight="0.1" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{signUoFourVM.signUoFourModel.txtOR}"
+                style="@style/txtNunitobold20" tools:text="@string/lbl_or"/>
+            <View android:background="@color/indigo_800"
+                android:id="@+id/lineLineTwo"
+                android:layout_height="@dimen/_1pxv"
+                android:layout_marginBottom="@dimen/_11pxv"
+                android:layout_marginStart="@dimen/_8pxh"
+                android:layout_marginTop="@dimen/_15pxv"
+                android:layout_weight="0.45" android:layout_width="0dp"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical"
+            android:id="@+id/linearRowellipsetwo"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_43pxv"
+            android:layout_width="wrap_content" android:orientation="horizontal">
+            <ImageView android:id="@+id/imageEllipseTwo"
+                android:layout_height="@dimen/_40pxh"
+                android:layout_width="@dimen/_40pxh"
+                android:scaleType="centerCrop" circular="@{true}"
+                imageRes="@{@drawable/img_ellipse2}"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse2"/>
+            <ImageView android:id="@+id/imageEllipseThree"
+                android:layout_height="@dimen/_40pxh"
+                android:layout_marginStart="@dimen/_27pxh"
+                android:layout_width="@dimen/_40pxh"
+                android:scaleType="centerCrop" circular="@{true}"
+                imageRes="@{@drawable/img_ellipse3}"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse3"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical"
+            android:id="@+id/linearRowconfirmation"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_74pxv"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_61pxv"
+            android:layout_width="match_parent" android:orientation="horizontal">
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtConfirmation"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_1pxv"
+                android:layout_weight="0.82" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{signUoFourVM.signUoFourModel.txtConfirmation}"
+                style="@style/txtNunitomedium16" tools:text="@string/msg_already_have_an"/>
+            <TextView android:ellipsize="end" android:id="@+id/txtLogin"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_1pxv"
+                android:layout_marginStart="@dimen/_11pxh"
+                android:layout_weight="0.18" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{signUoFourVM.signUoFourModel.txtLogin}"
+                style="@style/txtNunitobold16" tools:text="@string/lbl_login"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="activitiesRowModel" type="com.starmakers.app.modules.activities.data.model.ActivitiesRowModel"/>
+    </data>
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearColumnuntitleddesign"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylegray_50cornerRadius">
+        <ImageView android:id="@+id/imageUntitleddesign"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/_66pxh"
+            android:layout_marginEnd="@dimen/_32pxh"
+            android:layout_marginStart="@dimen/_32pxh"
+            android:layout_marginTop="@dimen/_7pxv"
+            android:layout_width="@dimen/_62pxh"
+            android:scaleType="fitXY"
+            imageRes="@{@drawable/img_untitleddesign}"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_untitleddesign"/>
+        <TextView android:gravity="center_horizontal"
+            android:id="@+id/txtArtistMembersh"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_5pxv"
+            android:layout_marginEnd="@dimen/_32pxh"
+            android:layout_marginStart="@dimen/_32pxh"
+            android:layout_marginTop="@dimen/_7pxv"
+            android:layout_width="match_parent"
+            android:text="@{activitiesRowModel.txtArtistMembersh}"
+            style="@style/txtPoppinsmedium14" tools:text="@string/msg_artist_members"/>
+    </LinearLayout>
+</layout>

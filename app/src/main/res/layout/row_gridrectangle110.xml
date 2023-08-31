@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="gridrectangle110RowModel" type="com.starmakers.app.modules.artistbookongtwo.data.model.Gridrectangle110RowModel"/>
+    </data>
+    <FrameLayout android:id="@+id/frameStackrectangle110"
+        android:layout_height="wrap_content" android:layout_width="match_parent">
+        <ImageView android:id="@+id/imageRectangle110"
+            android:layout_gravity="start"
+            android:layout_height="@dimen/_127pxh"
+            android:layout_width="@dimen/_101pxh"
+            android:scaleType="fitXY" cornerRadius="@{@dimen/_10pxh}"
+            imageRes="@{@drawable/img_rectangle110_127x101}"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle110_127x101"/>
+        <TextView android:ellipsize="end" android:gravity="center"
+            android:id="@+id/txtGroupTwenty"
+            android:layout_gravity="bottom|start"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10pxv"
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/_6pxv"
+            android:paddingEnd="@dimen/_19pxh"
+            android:paddingStart="@dimen/_18pxh"
+            android:paddingTop="@dimen/_6pxv" android:singleLine="true"
+            android:text="@{gridrectangle110RowModel.txtGroupTwenty}"
+            style="@style/txtSolidRoundedBottomCorner" tools:text="@string/lbl_chikkanna"/>
+    </FrameLayout>
+</layout>

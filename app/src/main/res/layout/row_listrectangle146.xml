@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="listrectangle146RowModel" type="com.starmakers.app.modules.auditionsthree.data.model.Listrectangle146RowModel"/>
+    </data>
+    <LinearLayout android:id="@+id/linearRowrectangle146"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal" style="@style/groupStylewhite_5">
+        <ImageView android:id="@+id/imageRectangle146"
+            android:layout_height="@dimen/_126pxh"
+            android:layout_marginBottom="@dimen/_9pxv"
+            android:layout_marginStart="@dimen/_16pxh"
+            android:layout_marginTop="@dimen/_10pxv"
+            android:layout_width="@dimen/_114pxh"
+            android:scaleType="fitXY" cornerRadius="@{@dimen/_5pxh}"
+            imageRes="@{@drawable/img_rectangle106}"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle106"/>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearColumnmoviekantara"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_11pxv"
+            android:layout_marginEnd="@dimen/_42pxh"
+            android:layout_marginStart="@dimen/_15pxh"
+            android:layout_marginTop="@dimen/_6pxv"
+            android:layout_weight="0.55" android:layout_width="0dp" android:orientation="vertical">
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtMovieKantara"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_width="match_parent"
+                android:singleLine="true"
+                android:text="@{listrectangle146RowModel.txtMovieKantara}"
+                style="@style/txtPoppinsmedium16_2" tools:text="@string/lbl_movie_kantara"/>
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtGenreMystery"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_12pxv"
+                android:layout_width="match_parent"
+                android:singleLine="true"
+                android:text="@{listrectangle146RowModel.txtGenreMystery}"
+                style="@style/txtPoppinsmedium16_2" tools:text="@string/lbl_genre_mystery"/>
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtAppxBudget"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_9pxv"
+                android:layout_width="match_parent"
+                android:singleLine="true"
+                android:text="@{listrectangle146RowModel.txtAppxBudget}"
+                style="@style/txtPoppinsmedium16_2" tools:text="@string/lbl_appx_budget"/>
+            <LinearLayout android:id="@+id/linearRowlanguage"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7pxv"
+                android:layout_width="match_parent" android:orientation="horizontal">
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtLanguage"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_1pxv"
+                    android:layout_weight="0.59"
+                    android:layout_width="0dp" android:singleLine="true"
+                    android:text="@{listrectangle146RowModel.txtLanguage}"
+                    style="@style/txtPoppinsmedium16_5" tools:text="@string/lbl_donated"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtPrice"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_1pxv"
+                    android:layout_marginStart="@dimen/_8pxh"
+                    android:layout_weight="0.41"
+                    android:layout_width="0dp" android:singleLine="true"
+                    android:text="@{listrectangle146RowModel.txtPrice}"
+                    style="@style/txtPoppinsmedium16_5" tools:text="@string/lbl_2000"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

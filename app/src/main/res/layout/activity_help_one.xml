@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="helpOneVM" type="com.starmakers.app.modules.helpone.data.viewmodel.HelpOneVM"/>
+    </data>
+    <LinearLayout android:id="@+id/linearHelpOne"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <androidx.appcompat.widget.Toolbar android:gravity="start"
+            android:id="@+id/toolbarToolbar"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" app:contentInsetStart="0dp">
+            <LinearLayout android:gravity="start"
+                android:id="@+id/linearRowarrowleft"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="horizontal" style="@style/groupStylegray_802">
+                <ImageView android:id="@+id/imageArrowleft"
+                    android:layout_height="@dimen/_24pxh"
+                    android:layout_marginBottom="@dimen/_10pxv"
+                    android:layout_marginStart="@dimen/_23pxh"
+                    android:layout_marginTop="@dimen/_54pxv"
+                    android:layout_width="@dimen/_24pxh"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_arrowleft"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_arrowleft"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtPrivacyPolicy"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_1pxv"
+                    android:layout_marginEnd="@dimen/_120pxh"
+                    android:layout_marginStart="@dimen/_24pxh"
+                    android:layout_marginTop="@dimen/_49pxv"
+                    android:layout_weight="0.88"
+                    android:layout_width="0dp" android:singleLine="true"
+                    android:text="@{helpOneVM.helpOneModel.txtPrivacyPolicy}"
+                    style="@style/txtPoppinssemibold24" tools:text="@string/lbl_privacy_policy2"/>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+        <TextView android:ellipsize="end" android:id="@+id/txtLanguage"
+            android:layout_gravity="start"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_36pxv"
+            android:layout_width="wrap_content"
+            android:singleLine="true"
+            android:text="@{helpOneVM.helpOneModel.txtLanguage}"
+            style="@style/txtPoppinssemibold20" tools:text="@string/msg_privacy_polici"/>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearRowone"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_17pxv"
+            android:layout_width="match_parent" android:orientation="horizontal">
+            <TextView android:ellipsize="end" android:id="@+id/txtOne"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_42pxv"
+                android:layout_marginTop="@dimen/_1pxv"
+                android:layout_weight="0.03" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{helpOneVM.helpOneModel.txtOne}"
+                style="@style/txtPoppinsregular14_4" tools:text="@string/lbl_1"/>
+            <TextView android:id="@+id/txtDescription"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8pxh"
+                android:layout_weight="0.97" android:layout_width="0dp"
+                android:letterSpacing="0.0"
+                android:text="@{helpOneVM.helpOneModel.txtDescription}"
+                style="@style/txtPoppinsregular14_6" tools:text="@string/msg_norem_ipsum_dol"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearRowtwo"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_21pxh"
+            android:layout_marginStart="@dimen/_21pxh"
+            android:layout_marginTop="@dimen/_17pxv"
+            android:layout_width="match_parent" android:orientation="horizontal">
+            <TextView android:ellipsize="end" android:id="@+id/txtTwo"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_21pxv"
+                android:layout_marginTop="@dimen/_1pxv"
+                android:layout_weight="0.04" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{helpOneVM.helpOneModel.txtTwo}"
+                style="@style/txtPoppinsregular14_4" tools:text="@string/lbl_2"/>
+            <TextView android:id="@+id/txtLanguageOne"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5pxh"
+                android:layout_weight="0.96" android:layout_width="0dp"
+                android:text="@{helpOneVM.helpOneModel.txtLanguageOne}"
+                style="@style/txtPoppinsregular14_4" tools:text="@string/msg_lorem_ipsum_dol3"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearRowthree"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_21pxh"
+            android:layout_marginStart="@dimen/_21pxh"
+            android:layout_marginTop="@dimen/_17pxv"
+            android:layout_width="match_parent" android:orientation="horizontal">
+            <TextView android:ellipsize="end" android:id="@+id/txtThree"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_21pxv"
+                android:layout_marginTop="@dimen/_1pxv"
+                android:layout_weight="0.04" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{helpOneVM.helpOneModel.txtThree}"
+                style="@style/txtPoppinsregular14_4" tools:text="@string/lbl_3"/>
+            <TextView android:id="@+id/txtLanguageTwo"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5pxh"
+                android:layout_weight="0.96" android:layout_width="0dp"
+                android:text="@{helpOneVM.helpOneModel.txtLanguageTwo}"
+                style="@style/txtPoppinsregular14_4" tools:text="@string/msg_lorem_ipsum_dol3"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearRowfour"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_21pxh"
+            android:layout_marginStart="@dimen/_21pxh"
+            android:layout_marginTop="@dimen/_17pxv"
+            android:layout_width="match_parent" android:orientation="horizontal">
+            <TextView android:ellipsize="end" android:id="@+id/txtFour"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_21pxv"
+                android:layout_marginTop="@dimen/_1pxv"
+                android:layout_weight="0.05" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{helpOneVM.helpOneModel.txtFour}"
+                style="@style/txtPoppinsregular14_4" tools:text="@string/lbl_4"/>
+            <TextView android:id="@+id/txtLanguageThree"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4pxh"
+                android:layout_weight="0.95" android:layout_width="0dp"
+                android:text="@{helpOneVM.helpOneModel.txtLanguageThree}"
+                style="@style/txtPoppinsregular14_4" tools:text="@string/msg_lorem_ipsum_dol3"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearRowoneOne"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_21pxh"
+            android:layout_marginStart="@dimen/_21pxh"
+            android:layout_marginTop="@dimen/_17pxv"
+            android:layout_width="match_parent" android:orientation="horizontal">
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtOneOne"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_21pxv"
+                android:layout_marginTop="@dimen/_1pxv"
+                android:layout_weight="0.03" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{helpOneVM.helpOneModel.txtOneOne}"
+                style="@style/txtPoppinsregular14_4" tools:text="@string/lbl_1"/>
+            <TextView android:id="@+id/txtLanguageFour"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8pxh"
+                android:layout_weight="0.97" android:layout_width="0dp"
+                android:text="@{helpOneVM.helpOneModel.txtLanguageFour}"
+                style="@style/txtPoppinsregular14_4" tools:text="@string/msg_lorem_ipsum_dol3"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearRowoneTwo"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_258pxv"
+            android:layout_marginEnd="@dimen/_21pxh"
+            android:layout_marginStart="@dimen/_21pxh"
+            android:layout_marginTop="@dimen/_17pxv"
+            android:layout_width="match_parent" android:orientation="horizontal">
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtOneTwo"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_21pxv"
+                android:layout_marginTop="@dimen/_1pxv"
+                android:layout_weight="0.03" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{helpOneVM.helpOneModel.txtOneTwo}"
+                style="@style/txtPoppinsregular14_4" tools:text="@string/lbl_1"/>
+            <TextView android:id="@+id/txtLanguageFive"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8pxh"
+                android:layout_weight="0.97" android:layout_width="0dp"
+                android:text="@{helpOneVM.helpOneModel.txtLanguageFive}"
+                style="@style/txtPoppinsregular14_4" tools:text="@string/msg_lorem_ipsum_dol3"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>
