@@ -3,32 +3,48 @@
     <data>
         <variable name="auditionsRowModel" type="com.starmakers.app.modules.auditions.data.model.AuditionsRowModel"/>
     </data>
-    <LinearLayout android:id="@+id/linearRowrectangle106"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:background="@drawable/rectangleforaudition"
+        android:id="@+id/linearRowrectangle106"
+        android:layout_height="@dimen/_220pxh"
         android:layout_width="match_parent"
-        android:orientation="horizontal" style="@style/groupStylewhite_9">
-        <ImageView android:id="@+id/imageRectangle106"
-            android:layout_height="@dimen/_178pxh"
+        android:orientation="horizontal"
+        style="@style/groupStylewhite_9">
+
+
+        <ImageView
+            android:id="@+id/imageRectangle106"
+            android:layout_height="@dimen/_189pxh"
             android:layout_marginBottom="@dimen/_10pxv"
             android:layout_marginStart="@dimen/_13pxh"
             android:layout_marginTop="@dimen/_15pxv"
             android:layout_width="@dimen/_117pxh"
-            android:scaleType="fitXY" cornerRadius="@{@dimen/_5pxh}"
+            android:scaleType="fitXY"
+            cornerRadius="@{@dimen/_5pxh}"
             imageRes="@{@drawable/img_rectangle106}"
-            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle106"/>
-        <LinearLayout android:gravity="start"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/img_rectangle106"/>
+
+
+        <LinearLayout
+            android:gravity="start"
             android:id="@+id/linearColumndate"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_10pxv"
             android:layout_marginEnd="@dimen/_9pxh"
             android:layout_marginStart="@dimen/_9pxh"
             android:layout_marginTop="@dimen/_15pxv"
-            android:layout_weight="0.61" android:layout_width="0dp" android:orientation="vertical">
-            <LinearLayout android:gravity="start"
+            android:layout_weight="0.61"
+            android:layout_width="0dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:gravity="start"
                 android:id="@+id/linearRowdate"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_10pxh"
-                android:layout_width="match_parent" android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtDate"
                     android:layout_height="wrap_content"
@@ -114,7 +130,7 @@
                 android:ellipsize="end" android:gravity="center"
                 android:id="@+id/btnParticipate"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10pxv"
+                android:layout_marginTop="@dimen/_7pxv"
                 android:layout_width="match_parent"
                 android:paddingBottom="@dimen/_6pxv"
                 android:paddingEnd="@dimen/_30pxh"

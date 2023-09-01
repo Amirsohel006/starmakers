@@ -1,5 +1,6 @@
 package com.starmakers.app.modules.activities.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -14,6 +15,7 @@ import com.starmakers.app.modules.auditions.ui.AuditionsActivity
 import com.starmakers.app.modules.auditionstwo.ui.AuditionsTwoActivity
 import com.starmakers.app.modules.campaignone.ui.CampaignOneActivity
 import com.starmakers.app.modules.requestone.ui.RequestOneActivity
+import com.starmakers.app.modules.studiobookong1.ui.StudioBookong1Activity
 import kotlin.Int
 import kotlin.String
 import kotlin.Unit
@@ -23,18 +25,6 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
 
   override fun onInitialized(): Unit {
     viewModel.navArguments = arguments
-    val activitiesAdapter = ActivitiesAdapter(viewModel.activitiesList.value?:mutableListOf())
-    binding.recyclerActivities.adapter = activitiesAdapter
-    activitiesAdapter.setOnItemClickListener(
-    object : ActivitiesAdapter.OnItemClickListener {
-      override fun onItemClick(view:View, position:Int, item : ActivitiesRowModel) {
-        onClickRecyclerActivities(view, position, item)
-      }
-    }
-    )
-    viewModel.activitiesList.observe(requireActivity()) {
-      activitiesAdapter.updateData(it)
-    }
     binding.activitiesVM = viewModel
   }
 
@@ -68,6 +58,30 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
       val destIntent = AuditionsTwoActivity.getIntent(requireActivity(), null)
       startActivity(destIntent)
       requireActivity().onBackPressed()
+    }
+
+
+    binding.linearColumnuntitleddesign5.setOnClickListener{
+      val i=Intent(requireActivity(),StudioBookong1Activity::class.java)
+      startActivity(i)
+    }
+
+
+    binding.linearColumnuntitleddesign.setOnClickListener {
+      val i=Intent(requireActivity(),ArtistMembershipActivity::class.java)
+      startActivity(i)
+    }
+
+
+    binding.linearColumnuntitleddesign4.setOnClickListener {
+      val i=Intent(requireActivity(),AuditionsActivity::class.java)
+      startActivity(i)
+    }
+
+
+    binding.linearColumnuntitleddesign1.setOnClickListener {
+      val i =Intent(requireActivity(),ArtistBookongFiveActivity::class.java)
+      startActivity(i)
     }
   }
 

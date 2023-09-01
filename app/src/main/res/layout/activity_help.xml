@@ -22,7 +22,7 @@
                     android:layout_height="@dimen/_24pxh"
                     android:layout_marginBottom="@dimen/_10pxv"
                     android:layout_marginStart="@dimen/_23pxh"
-                    android:layout_marginTop="@dimen/_54pxv"
+                    android:layout_marginTop="@dimen/_23pxv"
                     android:layout_width="@dimen/_24pxh"
                     android:scaleType="fitXY"
                     android:src="@drawable/img_arrowleft"
@@ -31,13 +31,15 @@
                     android:id="@+id/txtHelpFAQs"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_1pxv"
-                    android:layout_marginEnd="@dimen/_142pxh"
+                    android:layout_marginEnd="@dimen/_12pxh"
                     android:layout_marginStart="@dimen/_24pxh"
-                    android:layout_marginTop="@dimen/_49pxv"
+                    android:layout_marginTop="@dimen/_23pxv"
                     android:layout_weight="0.86"
-                    android:layout_width="0dp" android:singleLine="true"
+                    android:layout_width="0dp"
+                    android:singleLine="true"
                     android:text="@{helpVM.helpModel.txtHelpFAQs}"
-                    style="@style/txtPoppinssemibold24" tools:text="@string/lbl_help_faqs"/>
+                    style="@style/txtPoppinssemibold24"
+                    tools:text="@string/lbl_help_faqs"/>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
         <TextView android:ellipsize="end" android:gravity="start"

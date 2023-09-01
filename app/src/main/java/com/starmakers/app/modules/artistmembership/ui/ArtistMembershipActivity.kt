@@ -4,9 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
-import com.starmakers.app.databinding.ActivityArtistMembershipBinding
 import com.starmakers.app.modules.artistbookongfour.ui.ArtistBookongFourActivity
 import com.starmakers.app.modules.artistmembership.`data`.model.SpinnerComponentOneModel
 import com.starmakers.app.modules.artistmembership.`data`.model.SpinnerComponentSevenModel
@@ -16,34 +16,55 @@ import kotlin.String
 import kotlin.Unit
 
 class ArtistMembershipActivity :
-    BaseActivity<ActivityArtistMembershipBinding>(R.layout.activity_artist_membership) {
+    BaseActivity<com.starmakers.app.databinding.ActivityArtistMembershipBinding>(R.layout.activity_artist_membership) {
   private val viewModel: ArtistMembershipVM by viewModels<ArtistMembershipVM>()
 
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     viewModel.spinnerComponentSevenList.value = mutableListOf(
-    SpinnerComponentSevenModel("Item1"),
-    SpinnerComponentSevenModel("Item2"),
-    SpinnerComponentSevenModel("Item3"),
-    SpinnerComponentSevenModel("Item4"),
-    SpinnerComponentSevenModel("Item5")
+    SpinnerComponentSevenModel("Choose Acting Field"),
+    SpinnerComponentSevenModel("Movies"),
+    SpinnerComponentSevenModel("Serials")
     )
     val spinnerComponentSevenAdapter =
     SpinnerComponentSevenAdapter(this,R.layout.spinner_item,viewModel.spinnerComponentSevenList.value?:
     mutableListOf())
     binding.spinnerComponentSeven.adapter = spinnerComponentSevenAdapter
     viewModel.spinnerComponentOneList.value = mutableListOf(
-    SpinnerComponentOneModel("Item1"),
-    SpinnerComponentOneModel("Item2"),
-    SpinnerComponentOneModel("Item3"),
-    SpinnerComponentOneModel("Item4"),
-    SpinnerComponentOneModel("Item5")
+      SpinnerComponentOneModel("Select Category"),
+    SpinnerComponentOneModel("Actor"),
+    SpinnerComponentOneModel("Actress"),
+    SpinnerComponentOneModel("Director"),
+    SpinnerComponentOneModel("Assistant Director"),
+    SpinnerComponentOneModel("Associate Director"),
+      SpinnerComponentOneModel("Cameraman"),
+      SpinnerComponentOneModel("Story Writer"),
+      SpinnerComponentOneModel("Dialogue Writer"),
+      SpinnerComponentOneModel("Singer"),
+      SpinnerComponentOneModel("Supporting Singer"),
+      SpinnerComponentOneModel("Fight Master"),
+      SpinnerComponentOneModel("Dance Master"),
+      SpinnerComponentOneModel("Dancer"),
+      SpinnerComponentOneModel("Fighter"),
+      SpinnerComponentOneModel("Still Photographer"),
+      SpinnerComponentOneModel("Makeup Man"),
+      SpinnerComponentOneModel("Hair Stylist"),
+      SpinnerComponentOneModel("Costume Designer"),
+      SpinnerComponentOneModel("Dubbing Artist"),
+      SpinnerComponentOneModel("Artist Personal Assistant"),
+      SpinnerComponentOneModel("Artist Personal Body Guard"),
+      SpinnerComponentOneModel("Artist Personal Manager"),
+      SpinnerComponentOneModel("Production Manager"),
+      SpinnerComponentOneModel("Spot Boy"),
+      SpinnerComponentOneModel("Set Artist/Worker")
     )
     val spinnerComponentOneAdapter =
     SpinnerComponentOneAdapter(this,R.layout.spinner_item,viewModel.spinnerComponentOneList.value?:
     mutableListOf())
     binding.spinnerComponentOne.adapter = spinnerComponentOneAdapter
     binding.artistMembershipVM = viewModel
+
+    window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
   }
 
   override fun setUpClicks(): Unit {

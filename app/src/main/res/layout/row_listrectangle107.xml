@@ -3,19 +3,25 @@
     <data>
         <variable name="listrectangle107RowModel" type="com.starmakers.app.modules.selectionlistone.data.model.Listrectangle107RowModel"/>
     </data>
-    <LinearLayout android:id="@+id/linearRowrectangle106"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:background="@drawable/rectangleforaudition"
+        android:id="@+id/linearRowrectangle106"
+        android:layout_height="@dimen/_225pxh"
         android:layout_width="match_parent"
-        android:orientation="horizontal" style="@style/groupStylewhite_9">
-        <ImageView android:id="@+id/imageRectangle106"
-            android:layout_height="@dimen/_178pxh"
+        android:orientation="horizontal"
+        style="@style/groupStylewhite_9">
+        <ImageView
+            android:id="@+id/imageRectangle106"
+            android:layout_height="@dimen/_188pxh"
             android:layout_marginBottom="@dimen/_10pxv"
             android:layout_marginStart="@dimen/_13pxh"
             android:layout_marginTop="@dimen/_15pxv"
             android:layout_width="@dimen/_117pxh"
-            android:scaleType="fitXY" cornerRadius="@{@dimen/_5pxh}"
+            android:scaleType="fitXY"
+            cornerRadius="@{@dimen/_5pxh}"
             imageRes="@{@drawable/img_rectangle106_178x117}"
-            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle106_178x117"/>
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/img_rectangle106_178x117"/>
         <LinearLayout android:gravity="start"
             android:id="@+id/linearColumndate"
             android:layout_height="wrap_content"

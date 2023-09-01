@@ -18,11 +18,12 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:orientation="horizontal" style="@style/groupStylegray_802">
-                <ImageView android:id="@+id/imageArrowleft"
+                <ImageView
+                    android:id="@+id/imageArrowleft"
                     android:layout_height="@dimen/_24pxh"
                     android:layout_marginBottom="@dimen/_12pxv"
                     android:layout_marginStart="@dimen/_23pxh"
-                    android:layout_marginTop="@dimen/_52pxv"
+                    android:layout_marginTop="@dimen/_27pxv"
                     android:layout_width="@dimen/_24pxh"
                     android:scaleType="fitXY"
                     android:src="@drawable/img_arrowleft"
@@ -33,25 +34,24 @@
                     android:layout_marginBottom="@dimen/_6pxv"
                     android:layout_marginEnd="@dimen/_180pxh"
                     android:layout_marginStart="@dimen/_19pxh"
-                    android:layout_marginTop="@dimen/_44pxv"
+                    android:layout_marginTop="@dimen/_23pxv"
                     android:layout_weight="0.82"
                     android:layout_width="0dp" android:singleLine="true"
                     android:text="@{campaignOneVM.campaignOneModel.txtKANTARA}"
                     style="@style/txtPoppinssemibold24" tools:text="@string/lbl_kantara3"/>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
-        <ScrollView android:clipToPadding="false"
+        <ScrollView
+            android:clipToPadding="false"
             android:fillViewport="true"
             android:id="@+id/scrollViewScrollview"
-            android:layout_height="0dp" android:layout_weight="1" android:layout_width="match_parent">
-            <FrameLayout android:id="@+id/frameStackrectangleten"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent">
+            <FrameLayout
+                android:id="@+id/frameStackrectangleten"
                 android:layout_height="@dimen/_918pxv" android:layout_width="match_parent">
-                <HorizontalScrollView android:fillViewport="true"
-                    android:id="@+id/horizontalScrollHorizontalscrollrectangleten"
-                    android:layout_gravity="center"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_4pxh"
-                    android:layout_width="match_parent" android:scrollbars="none">
+
                     <LinearLayout
                         android:id="@+id/linearColumnrectangleten"
                         android:layout_height="wrap_content"
@@ -150,7 +150,8 @@
                             android:singleLine="true"
                             android:text="@{campaignOneVM.campaignOneModel.txtReleasingDate}"
                             style="@style/txtPoppinsregular16_4" tools:text="@string/msg_releasing_date"/>
-                        <TextView android:ellipsize="end"
+                        <TextView
+                            android:ellipsize="end"
                             android:id="@+id/txtTimeZone"
                             android:layout_gravity="start"
                             android:layout_height="wrap_content"
@@ -160,7 +161,14 @@
                             android:layout_width="wrap_content"
                             android:singleLine="true"
                             android:text="@{campaignOneVM.campaignOneModel.txtTimeZone}"
-                            style="@style/txtPoppinsregular16_4" tools:text="@string/lbl_cast"/>
+                            style="@style/txtPoppinsregular16_4"
+                            tools:text="@string/lbl_cast"/>
+
+                        <HorizontalScrollView
+                            android:id="@+id/hori1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
                         <LinearLayout android:gravity="end"
                             android:id="@+id/linearRowrectangle147"
                             android:layout_height="wrap_content"
@@ -221,24 +229,27 @@
                                 imageRes="@{@drawable/img_rectangle152}"
                                 tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle152"/>
                         </LinearLayout>
+                        </HorizontalScrollView>
                     </LinearLayout>
-                </HorizontalScrollView>
-                <androidx.appcompat.widget.AppCompatButton
-                    android:ellipsize="end" android:gravity="center"
-                    android:id="@+id/btnParticipate"
-                    android:layout_gravity="bottom|start"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_220pxv"
-                    android:layout_marginTop="@dimen/_220pxv"
-                    android:layout_width="match_parent"
-                    android:paddingBottom="@dimen/_17pxv"
-                    android:paddingEnd="@dimen/_30pxh"
-                    android:paddingStart="@dimen/_30pxh"
-                    android:paddingTop="@dimen/_17pxv"
-                    android:singleLine="true"
-                    android:text="@string/lbl_participate"
-                    android:textAllCaps="false" style="@style/btnSolid" tools:text="@string/lbl_participate"/>
+
+
             </FrameLayout>
         </ScrollView>
+        <androidx.appcompat.widget.AppCompatButton
+            android:ellipsize="end" android:gravity="center"
+            android:id="@+id/btnParticipate"
+            android:layout_gravity="bottom|start"
+            android:layout_height="wrap_content"
+
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/_17pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_17pxv"
+            android:singleLine="true"
+            android:text="@string/lbl_participate"
+            android:textAllCaps="false"
+            style="@style/btnSolid"
+            tools:text="@string/lbl_participate"/>
     </LinearLayout>
 </layout>

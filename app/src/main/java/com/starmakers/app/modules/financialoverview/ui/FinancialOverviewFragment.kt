@@ -20,17 +20,8 @@ class FinancialOverviewFragment :
 
   override fun onInitialized(): Unit {
     viewModel.navArguments = arguments
-    viewModel.spinnerGroup122List.value = mutableListOf(
-    SpinnerGroup122Model("Item1"),
-    SpinnerGroup122Model("Item2"),
-    SpinnerGroup122Model("Item3"),
-    SpinnerGroup122Model("Item4"),
-    SpinnerGroup122Model("Item5")
-    )
-    val spinnerGroup122Adapter =
-    SpinnerGroup122Adapter(requireActivity(),R.layout.spinner_item,viewModel.spinnerGroup122List.value?:
-    mutableListOf())
-    binding.spinnerGroup122.adapter = spinnerGroup122Adapter
+
+
     val gridrectangletenAdapter =
     GridrectangletenAdapter(viewModel.gridrectangletenList.value?:mutableListOf())
     binding.recyclerGridrectangleten.adapter = gridrectangletenAdapter

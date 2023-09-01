@@ -22,7 +22,7 @@
                     android:layout_height="@dimen/_24pxh"
                     android:layout_marginBottom="@dimen/_12pxv"
                     android:layout_marginStart="@dimen/_23pxh"
-                    android:layout_marginTop="@dimen/_52pxv"
+                    android:layout_marginTop="@dimen/_27pxv"
                     android:layout_width="@dimen/_24pxh"
                     android:scaleType="fitXY"
                     android:src="@drawable/img_arrowleft"
@@ -31,19 +31,48 @@
                     android:id="@+id/txtLanguage"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_3pxv"
-                    android:layout_marginEnd="@dimen/_124pxh"
+                    android:layout_marginEnd="@dimen/_14pxh"
                     android:layout_marginStart="@dimen/_19pxh"
-                    android:layout_marginTop="@dimen/_47pxv"
-                    android:layout_weight="0.88"
-                    android:layout_width="0dp" android:singleLine="true"
+                    android:layout_marginTop="@dimen/_23pxv"
+                    android:layout_width="wrap_content" android:singleLine="true"
                     android:text="@{artistBookongFiveVM.artistBookongFiveModel.txtLanguage}"
                     style="@style/txtPoppinssemibold24" tools:text="@string/lbl_artist_booking2"/>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
-        <Spinner android:background="@color/gray_100"
-            android:gravity="start" android:id="@+id/spinnerGroup122"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent" tools:listitem="@layout/spinner_item"/>
+        <LinearLayout
+            android:background="@color/gray_100"
+            android:id="@+id/locationlayout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_marginStart="16dp"
+                android:layout_gravity="center"
+                android:src="@drawable/location"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/location"
+                android:text="Your Location-Bangalore 560068"
+                android:layout_gravity="center"
+                android:id="@+id/spinnerGroup122"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+
+
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/downmark"
+                android:src="@drawable/downmark"
+                android:layout_width="15dp"
+                android:layout_height="15dp"/>
+        </LinearLayout>
         <TextView android:ellipsize="end"
             android:id="@+id/txtArtistBooking"
             android:layout_gravity="start"

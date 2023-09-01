@@ -83,29 +83,66 @@
             android:id="@+id/linearHome"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:orientation="vertical" style="@style/groupStylewhite_A700">
-            <Spinner android:background="@color/gray_100"
+            android:orientation="vertical"
+            style="@style/groupStylewhite_A700">
+
+            <LinearLayout
+                android:background="@color/gray_100"
+                android:id="@+id/locationlayout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_marginStart="16dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/location"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/location"
+                android:text="Your Location-Bangalore 560068"
+                android:layout_gravity="center"
                 android:id="@+id/spinnerGroup122"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" tools:listitem="@layout/spinner_item"/>
+                android:layout_width="wrap_content" />
+
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/downmark"
+                    android:src="@drawable/downmark"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"/>
+            </LinearLayout>
 
                 <LinearLayout android:gravity="start"
                     android:id="@+id/linearColumnrectangle153"
                     android:layout_height="wrap_content"
-                    android:layout_width="wrap_content" android:orientation="vertical">
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical">
                     <LinearLayout
+                        android:layout_marginTop="5dp"
                         android:id="@+id/linearRowuntitleddesign"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_14pxh"
                         android:layout_marginStart="@dimen/_14pxh"
-                        android:layout_width="wrap_content" android:orientation="horizontal">
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal">
                         <LinearLayout
+                            android:background="@drawable/backgroundforhome"
                             android:gravity="center_horizontal"
                             android:id="@+id/linearColumnuntitleddesign"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.25"
+                            android:layout_height="90dp"
+                            android:layout_weight="0.30"
                             android:layout_width="0dp"
-                            android:orientation="vertical" style="@style/groupStylewhite_A700cornerRadius">
+                            android:orientation="vertical"
+                            style="@style/groupStylewhite_A700cornerRadius">
                             <ImageView
                                 android:id="@+id/imageUntitleddesign"
                                 android:layout_gravity="center_horizontal"
@@ -118,31 +155,28 @@
                                 android:src="@drawable/img_untitleddesign"
                                 tools:ignore="ContentDescription" tools:src="@drawable/img_untitleddesign"/>
                             <TextView
-                                android:gravity="center_horizontal"
+                                android:layout_marginStart="5dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
                                 android:id="@+id/txtArtistMembersh"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="@dimen/_6pxv"
-                                android:layout_marginEnd="@dimen/_8pxh"
-                                android:layout_marginStart="@dimen/_7pxh"
+                                android:layout_marginEnd="@dimen/_5pxh"
                                 android:layout_marginTop="@dimen/_4pxv"
                                 android:layout_width="match_parent"
                                 android:text="@{homeVM.homeModel.txtArtistMembersh}"
-                                style="@style/txtPoppinsmedium8" tools:text="@string/msg_artist_members"/>
+                                style="@style/txtPoppinsmedium8"
+                                tools:text="@string/msg_artist_members"/>
                         </LinearLayout>
                         <LinearLayout
+                            android:background="@drawable/backgroundforhome"
                             android:gravity="center_horizontal"
                             android:id="@+id/linearColumn"
-                            android:layout_height="wrap_content"
+                            android:layout_height="90dp"
                             android:layout_marginStart="@dimen/_21pxh"
-                            android:layout_weight="0.25"
+                            android:layout_weight="0.30"
                             android:layout_width="0dp"
                             android:orientation="vertical" style="@style/groupStylecornerRadius">
-                            <LinearLayout
-                                android:gravity="center_horizontal"
-                                android:id="@+id/linearColumnuntitleddesignOne"
-                                android:layout_height="match_parent"
-                                android:layout_width="match_parent"
-                                android:orientation="vertical" style="@style/groupStylewhite_A700cornerRadius">
                                 <ImageView
                                     android:id="@+id/imageUntitleddesignOne"
                                     android:layout_gravity="center_horizontal"
@@ -155,8 +189,9 @@
                                     android:src="@drawable/img_untitleddesign_62x87"
                                     tools:ignore="ContentDescription" tools:src="@drawable/img_untitleddesign_62x87"/>
                                 <TextView
+                                    android:gravity="center"
                                     android:id="@+id/txtArtistBooking"
-                                    android:layout_gravity="center_horizontal"
+                                    android:layout_gravity="center"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/_6pxv"
                                     android:layout_marginEnd="@dimen/_12pxh"
@@ -165,61 +200,52 @@
                                     android:layout_width="wrap_content"
                                     android:text="@{homeVM.homeModel.txtArtistBooking}"
                                     style="@style/txtPoppinsmedium8" tools:text="@string/lbl_artist_booking"/>
-                            </LinearLayout>
                         </LinearLayout>
                         <LinearLayout
+                            android:background="@drawable/backgroundforhome"
                             android:gravity="center_horizontal"
                             android:id="@+id/linearColumnOne"
-                            android:layout_height="wrap_content"
+                            android:layout_height="90dp"
                             android:layout_marginStart="@dimen/_21pxh"
-                            android:layout_weight="0.25"
+                            android:layout_weight="0.30"
                             android:layout_width="0dp"
-                            android:orientation="vertical" style="@style/groupStylecornerRadius">
-                            <LinearLayout
-                                android:gravity="center_horizontal"
-                                android:id="@+id/linearColumnuntitleddesignTwo"
-                                android:layout_height="match_parent"
-                                android:layout_width="match_parent"
-                                android:orientation="vertical" style="@style/groupStylewhite_A700cornerRadius">
+                            android:orientation="vertical"
+                            style="@style/groupStylecornerRadius">
                                 <ImageView
                                     android:id="@+id/imageUntitleddesignTwo"
-                                    android:layout_gravity="center_horizontal"
+                                    android:layout_gravity="center"
                                     android:layout_height="@dimen/_30pxh"
                                     android:layout_marginEnd="@dimen/_14pxh"
                                     android:layout_marginStart="@dimen/_14pxh"
-                                    android:layout_marginTop="@dimen/_8pxv"
+                                    android:layout_marginTop="@dimen/_15pxv"
                                     android:layout_width="@dimen/_30pxh"
                                     android:scaleType="fitXY"
                                     android:src="@drawable/img_untitleddesign_61x61"
-                                    tools:ignore="ContentDescription" tools:src="@drawable/img_untitleddesign_61x61"/>
+                                    tools:ignore="ContentDescription"
+                                    tools:src="@drawable/img_untitleddesign_61x61"/>
                                 <TextView android:ellipsize="end"
                                     android:gravity="center_horizontal"
                                     android:id="@+id/txtAuditions"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/_12pxv"
-                                    android:layout_marginEnd="@dimen/_14pxh"
+                                    android:layout_marginEnd="@dimen/_12pxh"
                                     android:layout_marginStart="@dimen/_14pxh"
-                                    android:layout_marginTop="@dimen/_7pxv"
+                                    android:layout_marginTop="@dimen/_4pxv"
                                     android:layout_width="match_parent"
                                     android:singleLine="true"
                                     android:text="@{homeVM.homeModel.txtAuditions}"
-                                    style="@style/txtPoppinsmedium8" tools:text="@string/lbl_auditions"/>
+                                    style="@style/txtPoppinsmedium8"
+                                    tools:text="@string/lbl_auditions"/>
                             </LinearLayout>
-                        </LinearLayout>
                         <LinearLayout
+                            android:background="@drawable/backgroundforhome"
                             android:gravity="center_horizontal"
                             android:id="@+id/linearColumnTwo"
-                            android:layout_height="wrap_content"
+                            android:layout_height="90dp"
                             android:layout_marginStart="@dimen/_21pxh"
-                            android:layout_weight="0.25"
+                            android:layout_weight="0.30"
                             android:layout_width="0dp"
                             android:orientation="vertical" style="@style/groupStylecornerRadius">
-                            <LinearLayout
-                                android:gravity="center_horizontal"
-                                android:id="@+id/linearColumnuntitleddesignThree"
-                                android:layout_height="match_parent"
-                                android:layout_width="match_parent"
-                                android:orientation="vertical" style="@style/groupStylewhite_A700cornerRadius">
                                 <ImageView
                                     android:id="@+id/imageUntitleddesignThree"
                                     android:layout_gravity="center_horizontal"
@@ -243,7 +269,6 @@
                                     android:text="@{homeVM.homeModel.txtStudioBookings}"
                                     style="@style/txtPoppinsmedium8" tools:text="@string/msg_studio_booking"/>
                             </LinearLayout>
-                        </LinearLayout>
                     </LinearLayout>
                     <ImageView android:id="@+id/imageRectangle153"
                         android:layout_gravity="center_horizontal"
@@ -367,6 +392,7 @@
 
                     <HorizontalScrollView
                         android:id="@+id/hori2"
+                        android:layout_marginBottom="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                     <LinearLayout android:gravity="end"

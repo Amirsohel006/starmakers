@@ -3,12 +3,15 @@
     <data>
         <variable name="listrectangle106RowModel" type="com.starmakers.app.modules.selectionlistthree.data.model.Listrectangle106RowModel"/>
     </data>
-    <LinearLayout android:id="@+id/linearRowrectangle106"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:background="@drawable/rectangleforaudition"
+        android:id="@+id/linearRowrectangle106"
+        android:layout_height="@dimen/_230pxh"
         android:layout_width="match_parent"
-        android:orientation="horizontal" style="@style/groupStylewhite_9">
+        android:orientation="horizontal"
+        style="@style/groupStylewhite_9">
         <ImageView android:id="@+id/imageRectangle106"
-            android:layout_height="@dimen/_178pxh"
+            android:layout_height="@dimen/_188pxh"
             android:layout_marginBottom="@dimen/_10pxv"
             android:layout_marginStart="@dimen/_13pxh"
             android:layout_marginTop="@dimen/_15pxv"

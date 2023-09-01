@@ -19,13 +19,13 @@
                 android:layout_marginBottom="@dimen/_4pxv"
                 android:layout_marginEnd="@dimen/_24pxh"
                 android:layout_marginStart="@dimen/_16pxh"
-                android:layout_marginTop="@dimen/_46pxv"
+                android:layout_marginTop="@dimen/_23pxv"
                 android:layout_width="match_parent" android:orientation="horizontal">
                 <LinearLayout android:id="@+id/linearRowmenu"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_1pxv"
-                    android:layout_weight="0.58"
-                    android:layout_width="0dp" android:orientation="horizontal">
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal">
                     <ImageView android:id="@+id/imageMenu"
                         android:layout_height="@dimen/_24pxh"
                         android:layout_marginBottom="@dimen/_9pxv"
@@ -90,12 +90,40 @@
                     android:singleLine="true"
                     android:text="@{financialOverviewVM.financialOverviewModel.txtGroup203}"
                     style="@style/txtSolid" tools:text="@string/msg_finance_overvie"/>
-                <Spinner android:background="@color/gray_100"
-                    android:id="@+id/spinnerGroup122"
-                    android:layout_gravity="top|start"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_10pxv"
-                    android:layout_width="match_parent" tools:listitem="@layout/spinner_item"/>
+                <LinearLayout
+                    android:background="@color/gray_100"
+                    android:id="@+id/locationlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:layout_marginStart="16dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/location"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"/>
+
+                    <TextView
+                        android:layout_marginStart="6dp"
+                        android:layout_marginEnd="10dp"
+                        android:textSize="15sp"
+                        android:textColor="@color/location"
+                        android:text="Your Location-Bangalore 560068"
+                        android:layout_gravity="center"
+                        android:id="@+id/spinnerGroup122"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content" />
+
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:id="@+id/downmark"
+                        android:src="@drawable/downmark"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"/>
+                </LinearLayout>
             </FrameLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:gravity="center_horizontal"
@@ -106,8 +134,11 @@
                 android:layout_marginTop="@dimen/_13pxv"
                 android:layout_width="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2" itemSpace="@{@dimen/_7pxh}"
-                tools:itemCount="4" tools:listitem="@layout/row_gridrectangleten"/>
+                app:spanCount="2"
+                itemSpace="@{@dimen/_7pxh}"
+                tools:itemCount="4"
+                tools:listitem="@layout/row_gridrectangleten"
+                android:layout_marginBottom="15dp"/>
         </LinearLayout>
     </LinearLayout>
 </layout>

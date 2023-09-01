@@ -10,15 +10,17 @@
         android:orientation="vertical" style="@style/groupStylewhite_A700">
         <FrameLayout android:id="@+id/frameStackellipseone"
             android:layout_gravity="center_horizontal"
-            android:layout_height="@dimen/_127pxv"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_19pxh"
             android:layout_marginStart="@dimen/_19pxh"
-            android:layout_marginTop="@dimen/_76pxv" android:layout_width="@dimen/_131pxh">
+            android:layout_marginTop="@dimen/_76pxv"
+            android:layout_width="wrap_content">
             <View
                 android:background="@drawable/rectangle_border_gray_802_radius_65_535"
                 android:id="@+id/viewEllipseOne"
                 android:layout_gravity="start"
-                android:layout_height="@dimen/_127pxv" android:layout_width="@dimen/_131pxh"/>
+                android:layout_height="@dimen/_127pxv"
+                android:layout_width="@dimen/_131pxh"/>
             <ImageView android:id="@+id/imagePlus"
                 android:layout_gravity="center"
                 android:layout_height="@dimen/_32pxh"

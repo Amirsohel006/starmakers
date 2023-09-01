@@ -11,7 +11,7 @@
         android:orientation="vertical" style="@style/groupStylewhite_A700">
         <FrameLayout android:gravity="start"
             android:id="@+id/frameStackellipsesixtyone"
-            android:layout_height="@dimen/_259pxv" android:layout_width="match_parent">
+            android:layout_height="@dimen/_249pxv" android:layout_width="match_parent">
             <FrameLayout android:id="@+id/frameStackellipsesixty"
                 android:layout_gravity="top|start"
                 android:layout_height="@dimen/_191pxv"
@@ -30,7 +30,7 @@
                     android:layout_marginBottom="@dimen/_33pxv"
                     android:layout_marginEnd="@dimen/_40pxh"
                     android:layout_marginStart="@dimen/_35pxh"
-                    android:layout_marginTop="@dimen/_33pxv"
+                    android:layout_marginTop="@dimen/_10pxv"
                     android:layout_width="match_parent" app:contentInsetStart="0dp">
                     <LinearLayout android:gravity="start"
                         android:id="@+id/linearRowvideocameraOne"
@@ -134,7 +134,6 @@
                 android:layout_height="@dimen/_155pxh"
                 android:layout_marginEnd="@dimen/_92pxh"
                 android:layout_marginStart="@dimen/_92pxh"
-                android:layout_marginTop="@dimen/_10pxv"
                 android:layout_width="@dimen/_155pxh"
                 android:scaleType="centerCrop" circular="@{true}"
                 imageRes="@{@drawable/img_ellipse61}"
@@ -147,7 +146,6 @@
             android:layout_height="@dimen/_42pxv"
             android:layout_marginEnd="@dimen/_16pxh"
             android:layout_marginStart="@dimen/_16pxh"
-            android:layout_marginTop="@dimen/_20pxv"
             android:layout_width="@dimen/_229pxh"
             android:paddingBottom="@dimen/_9pxv"
             android:paddingEnd="@dimen/_30pxh"
@@ -158,20 +156,24 @@
             style="@style/btnGradientRounded_1" tools:text="@string/lbl_member_actor"/>
         <EditText
             android:background="@drawable/rectangle_border_gray_500_radius_10"
-            android:ellipsize="end" android:hint="@string/lbl_full_name"
-            android:id="@+id/etGroup149" android:inputType="text"
+            android:ellipsize="end"
+            android:hint="@string/lbl_full_name"
+            android:id="@+id/etGroup149"
+            android:inputType="text"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="@dimen/_15pxh"
             android:layout_marginStart="@dimen/_16pxh"
-            android:layout_marginTop="@dimen/_28pxv"
             android:layout_width="match_parent"
             android:paddingBottom="@dimen/_10pxv"
             android:paddingEnd="@dimen/_30pxh"
             android:paddingStart="@dimen/_16pxh"
-            android:paddingTop="@dimen/_11pxv" android:singleLine="true"
+            android:paddingTop="@dimen/_11pxv"
+            android:singleLine="true"
             android:text="@={artistBookongVM.artistBookongModel.etGroup149Value}"
             android:textColorHint="@color/gray_802"
-            style="@style/etRoundedOutline_3" tools:ignore="Autofill"/>
+            style="@style/etRoundedOutline_3"
+            tools:ignore="Autofill"/>
         <EditText
             android:background="@drawable/rectangle_border_gray_500_radius_10"
             android:ellipsize="end"

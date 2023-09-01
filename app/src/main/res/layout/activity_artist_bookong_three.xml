@@ -22,7 +22,7 @@
                     android:layout_height="@dimen/_24pxh"
                     android:layout_marginBottom="@dimen/_12pxv"
                     android:layout_marginStart="@dimen/_23pxh"
-                    android:layout_marginTop="@dimen/_52pxv"
+                    android:layout_marginTop="@dimen/_27pxv"
                     android:layout_width="@dimen/_24pxh"
                     android:scaleType="fitXY"
                     android:src="@drawable/img_arrowleft"
@@ -33,14 +33,14 @@
                     android:layout_marginBottom="@dimen/_3pxv"
                     android:layout_marginEnd="@dimen/_200pxh"
                     android:layout_marginStart="@dimen/_19pxh"
-                    android:layout_marginTop="@dimen/_47pxv"
+                    android:layout_marginTop="@dimen/_23pxv"
                     android:layout_weight="0.79"
                     android:layout_width="0dp" android:singleLine="true"
                     android:text="@{artistBookongThreeVM.artistBookongThreeModel.txtSudeep}"
                     style="@style/txtPoppinssemibold24" tools:text="@string/lbl_sudeep"/>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
-        <androidx.core.widget.NestedScrollView
+        <ScrollView
             android:clipToPadding="false" android:fillViewport="true"
             android:id="@+id/scrollViewScrollview"
             android:layout_height="0dp"
@@ -355,7 +355,17 @@
                         android:layout_width="wrap_content"
                         android:singleLine="true"
                         android:text="@{artistBookongThreeVM.artistBookongThreeModel.txtLanguage}"
-                        style="@style/txtPoppinsmedium16" tools:text="@string/lbl_movies"/>
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="@string/lbl_movies"/>
+
+
+
+
+                    <HorizontalScrollView
+                        android:layout_marginBottom="50dp"
+                        android:id="@+id/hori"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
                     <LinearLayout
                         android:id="@+id/linearRowrectangle125"
                         android:layout_height="wrap_content"
@@ -365,8 +375,7 @@
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recyclerListrectangle113"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2.61"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:nestedScrollingEnabled="false"
                             android:orientation="vertical"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -382,24 +391,26 @@
                             imageRes="@{@drawable/img_rectangle125}"
                             tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle125"/>
                     </LinearLayout>
+                    </HorizontalScrollView>
                 </LinearLayout>
-                <androidx.appcompat.widget.AppCompatButton
-                    android:ellipsize="end" android:gravity="center"
-                    android:id="@+id/btnRequestBookingOne"
-                    android:layout_gravity="bottom|start"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_237pxv"
-                    android:layout_marginTop="@dimen/_237pxv"
-                    android:layout_width="match_parent"
-                    android:paddingBottom="@dimen/_18pxv"
-                    android:paddingEnd="@dimen/_30pxh"
-                    android:paddingStart="@dimen/_30pxh"
-                    android:paddingTop="@dimen/_18pxv"
-                    android:singleLine="true"
-                    android:text="@string/lbl_request_booking"
-                    android:textAllCaps="false"
-                    style="@style/btnSolid_1" tools:text="@string/lbl_request_booking"/>
+
             </FrameLayout>
-        </androidx.core.widget.NestedScrollView>
+        </ScrollView>
+        <androidx.appcompat.widget.AppCompatButton
+            android:ellipsize="end" android:gravity="center"
+            android:id="@+id/btnRequestBookingOne"
+            android:layout_gravity="bottom|start"
+            android:layout_height="wrap_content"
+
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/_18pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_18pxv"
+            android:singleLine="true"
+            android:text="@string/lbl_request_booking"
+            android:textAllCaps="false"
+            style="@style/btnSolid_1"
+            tools:text="@string/lbl_request_booking"/>
     </LinearLayout>
 </layout>

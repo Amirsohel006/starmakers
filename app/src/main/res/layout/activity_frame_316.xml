@@ -11,7 +11,7 @@
             android:layout_gravity="center"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/_20pxv"
-            android:layout_marginEnd="@dimen/_29pxh"
+            android:layout_marginEnd="@dimen/_17pxh"
             android:layout_marginStart="@dimen/_17pxh"
             android:layout_marginTop="@dimen/_27pxv"
             android:layout_width="match_parent" android:orientation="vertical">

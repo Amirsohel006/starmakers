@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="homeContainerVM" type="com.starmakers.app.modules.homecontainer.data.viewmodel.HomeContainerVM"/>
     </data>
@@ -18,115 +20,17 @@
             android:layout_weight="1"
             android:layout_width="match_parent"/>
 
-        <FrameLayout
-            android:id="@+id/frameBottombar"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            style="@style/groupStylegray_802cornerRadius">
 
-            <LinearLayout
-                android:id="@+id/linearRowhome"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/_20pxv"
-                android:layout_marginTop="@dimen/_19pxv"
-                android:layout_width="match_parent"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:id="@+id/linearColumnhome"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:orientation="vertical">
-                    <ImageView android:id="@+id/imageHome"
-                        android:layout_gravity="center"
-                        android:layout_height="@dimen/_24pxh"
-                        android:layout_width="@dimen/_21pxh"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/img_home_white_a700"
-                        tools:ignore="ContentDescription" tools:src="@drawable/img_home_white_a700"/>
-                    <TextView android:ellipsize="end"
-                        android:gravity="center_horizontal"
-                        android:id="@+id/txtHomeOne"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/_2pxh"
-                        android:layout_marginStart="@dimen/_2pxh"
-                        android:layout_marginTop="@dimen/_2pxv"
-                        android:layout_width="match_parent"
-                        android:singleLine="true"
-                        android:text="@{homeContainerVM.homeContainerModel.txtHomeOne}"
-                        style="@style/txtPoppinsregular10" tools:text="@string/lbl_home"/>
-                </LinearLayout>
-                <LinearLayout android:id="@+id/linearColumnsearch"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_2pxv"
-                    android:layout_weight="1" android:layout_width="0dp" android:orientation="vertical">
-                    <ImageView android:id="@+id/imageSearch"
-                        android:layout_gravity="center"
-                        android:layout_height="@dimen/_24pxh"
-                        android:layout_width="@dimen/_24pxh"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/img_search"
-                        tools:ignore="ContentDescription" tools:src="@drawable/img_search"/>
-                    <TextView android:ellipsize="end"
-                        android:gravity="center_horizontal"
-                        android:id="@+id/txtSearchOne"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/_2pxh"
-                        android:layout_marginStart="@dimen/_2pxh"
-                        android:layout_marginTop="@dimen/_1pxv"
-                        android:layout_width="match_parent"
-                        android:singleLine="true"
-                        android:text="@{homeContainerVM.homeContainerModel.txtSearchOne}"
-                        style="@style/txtPoppinsregular10_1" tools:text="@string/lbl_search"/>
-                </LinearLayout>
-                <LinearLayout android:id="@+id/linearColumnarrowdown"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4pxv"
-                    android:layout_weight="1" android:layout_width="0dp" android:orientation="vertical">
-                    <ImageView android:id="@+id/imageArrowdown"
-                        android:layout_gravity="center"
-                        android:layout_height="@dimen/_19pxh"
-                        android:layout_width="@dimen/_19pxh"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/img_arrowdown"
-                        tools:ignore="ContentDescription" tools:src="@drawable/img_arrowdown"/>
-                    <TextView android:ellipsize="end"
-                        android:gravity="center_horizontal"
-                        android:id="@+id/txtOverview"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/_2pxh"
-                        android:layout_marginStart="@dimen/_2pxh"
-                        android:layout_marginTop="@dimen/_2pxv"
-                        android:layout_width="match_parent"
-                        android:singleLine="true"
-                        android:text="@{homeContainerVM.homeContainerModel.txtOverview}"
-                        style="@style/txtPoppinsregular10_1" tools:text="@string/lbl_overview"/>
-                </LinearLayout>
-                <LinearLayout android:id="@+id/linearColumnmenuOne"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_1pxv"
-                    android:layout_marginTop="@dimen/_6pxv"
-                    android:layout_weight="1" android:layout_width="0dp" android:orientation="vertical">
-                    <ImageView android:id="@+id/imageMenuOne"
-                        android:layout_gravity="center"
-                        android:layout_height="@dimen/_12pxh"
-                        android:layout_width="@dimen/_18pxh"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/img_menu_gray_507"
-                        tools:ignore="ContentDescription" tools:src="@drawable/img_menu_gray_507"/>
-                    <TextView android:ellipsize="end"
-                        android:gravity="center_horizontal"
-                        android:id="@+id/txtActivity"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/_2pxh"
-                        android:layout_marginStart="@dimen/_2pxh"
-                        android:layout_marginTop="@dimen/_6pxv"
-                        android:layout_width="match_parent"
-                        android:singleLine="true"
-                        android:text="@{homeContainerVM.homeContainerModel.txtActivity}"
-                        style="@style/txtPoppinsregular10_1" tools:text="@string/lbl_activity"/>
-                </LinearLayout>
-            </LinearLayout>
-        </FrameLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/frameBottombar"
+            style="@style/groupStylegray_802cornerRadius"
+            android:background="@color/bottomnavigation"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:itemIconTint="@drawable/icon_tinit_selector"
+            app:itemTextColor="@drawable/icon_tinit_selector"
+            app:menu="@menu/nav_menu"
+            app:labelVisibilityMode="labeled"/>
+
     </LinearLayout>
 </layout>

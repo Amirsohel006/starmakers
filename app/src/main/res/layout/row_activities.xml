@@ -3,11 +3,13 @@
     <data>
         <variable name="activitiesRowModel" type="com.starmakers.app.modules.activities.data.model.ActivitiesRowModel"/>
     </data>
-    <LinearLayout android:gravity="center_horizontal"
+    <LinearLayout
+        android:gravity="center_horizontal"
         android:id="@+id/linearColumnuntitleddesign"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:orientation="vertical" style="@style/groupStylegray_50cornerRadius">
+        android:orientation="vertical"
+        style="@style/groupStylegray_50cornerRadius">
         <ImageView android:id="@+id/imageUntitleddesign"
             android:layout_gravity="center_horizontal"
             android:layout_height="@dimen/_66pxh"

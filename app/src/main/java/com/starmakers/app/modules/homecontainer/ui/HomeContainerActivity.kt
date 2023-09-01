@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivityHomeContainerBinding
@@ -23,72 +26,61 @@ class HomeContainerActivity :
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     binding.homeContainerVM = viewModel
-    val destFragment = HomeFragment.getInstance(null)
-    this.loadFragment(
-    R.id.fragmentContainer,
-    destFragment,
-    bundle = destFragment.arguments,
-    tag = HomeFragment.TAG,
-    addToBackStack = false,
-    add = false,
-    enter = null,
-    exit = null,
-    )
+   replaceFragment(HomeFragment())
+    window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
   }
 
   override fun setUpClicks(): Unit {
-    binding.linearColumnmenuOne.setOnClickListener {
-      val destFragment = ActivitiesFragment.getInstance(null)
-      this.loadFragment(
-      R.id.fragmentContainer,
-      destFragment,
-      bundle = destFragment.arguments,
-      tag = ActivitiesFragment.TAG,
-      addToBackStack = true,
-      add = false,
-      enter = null,
-      exit = null,
-      )
+
+    binding.frameBottombar.setOnItemSelectedListener {
+
+      when(it.itemId ){
+        R.id.linearColumnhome -> {
+          replaceFragment(HomeFragment())
+        }
+
+        R.id.linearColumnWallet -> replaceFragment(SearchFragment())
+
+
+        R.id.linearColumnLive-> replaceFragment(FinancialOverviewFragment())
+
+        R.id.linearColumnProfile -> replaceFragment(ActivitiesFragment())
+
+        else -> {
+        }
+      }
+      true
+
     }
-    binding.linearColumnsearch.setOnClickListener {
-      val destFragment = SearchFragment.getInstance(null)
-      this.loadFragment(
-      R.id.fragmentContainer,
-      destFragment,
-      bundle = destFragment.arguments,
-      tag = SearchFragment.TAG,
-      addToBackStack = true,
-      add = false,
-      enter = null,
-      exit = null,
+  }
+
+
+
+
+  private fun replaceFragment(fragment: Fragment){
+    val fragmentManager=supportFragmentManager
+    val fragmentTransaction=fragmentManager.beginTransaction()
+    fragmentTransaction.replace(R.id.fragmentContainer,fragment)
+    fragmentTransaction.addToBackStack(null)
+    fragmentTransaction.commit()
+  }
+
+
+  @Deprecated("Deprecated in Java")
+  override fun onBackPressed() {
+    val fragmentManager=supportFragmentManager
+
+
+    if(fragmentManager.backStackEntryCount>1){
+      fragmentManager.popBackStackImmediate(
+        fragmentManager.getBackStackEntryAt(1).id,
+        FragmentManager.POP_BACK_STACK_INCLUSIVE
       )
+    }else{
+      super.onBackPressed()
     }
-    binding.linearColumnhome.setOnClickListener {
-      val destFragment = HomeFragment.getInstance(null)
-      this.loadFragment(
-      R.id.fragmentContainer,
-      destFragment,
-      bundle = destFragment.arguments,
-      tag = HomeFragment.TAG,
-      addToBackStack = true,
-      add = false,
-      enter = null,
-      exit = null,
-      )
-    }
-    binding.linearColumnarrowdown.setOnClickListener {
-      val destFragment = FinancialOverviewFragment.getInstance(null)
-      this.loadFragment(
-      R.id.fragmentContainer,
-      destFragment,
-      bundle = destFragment.arguments,
-      tag = FinancialOverviewFragment.TAG,
-      addToBackStack = true,
-      add = false,
-      enter = null,
-      exit = null,
-      )
-    }
+
+
   }
 
   companion object {

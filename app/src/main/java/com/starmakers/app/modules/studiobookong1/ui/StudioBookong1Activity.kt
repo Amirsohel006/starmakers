@@ -1,6 +1,7 @@
 package com.starmakers.app.modules.studiobookong1.ui
 
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivityStudioBookong1Binding
@@ -21,6 +22,9 @@ class StudioBookong1Activity :
     TabLayoutMediator(binding.tabLayoutGroup2,binding.viewPagerViewpager) { tab, position ->
       tab.text = StudioBookong1ActivityPagerAdapter.title[position]
       }.attach()
+
+
+    window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
     }
 
     override fun setUpClicks(): Unit {

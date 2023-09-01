@@ -22,7 +22,7 @@
                     android:layout_height="@dimen/_24pxh"
                     android:layout_marginBottom="@dimen/_11pxv"
                     android:layout_marginStart="@dimen/_23pxh"
-                    android:layout_marginTop="@dimen/_53pxv"
+                    android:layout_marginTop="@dimen/_27pxv"
                     android:layout_width="@dimen/_24pxh"
                     android:scaleType="fitXY"
                     android:src="@drawable/img_arrowleft"
@@ -33,7 +33,7 @@
                     android:layout_marginBottom="@dimen/_2pxv"
                     android:layout_marginEnd="@dimen/_57pxh"
                     android:layout_marginStart="@dimen/_29pxh"
-                    android:layout_marginTop="@dimen/_48pxv"
+                    android:layout_marginTop="@dimen/_23pxv"
                     android:layout_weight="0.9"
                     android:layout_width="0dp" android:singleLine="true"
                     android:text="@{artistMembershipVM.artistMembershipModel.txtArtistMembersh}"
@@ -59,24 +59,29 @@
                     android:singleLine="true"
                     android:text="@{artistMembershipVM.artistMembershipModel.txtGroup160}"
                     style="@style/txtSolid_1" tools:text="@string/msg_artist_membersh2"/>
-                <HorizontalScrollView android:fillViewport="true"
+                <ScrollView
+                    android:fillViewport="true"
                     android:id="@+id/horizontalScrollHorizontalscrollcomponentseven"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10pxh"
                     android:layout_marginTop="@dimen/_32pxv"
-                    android:layout_width="match_parent" android:scrollbars="none">
+                    android:layout_width="match_parent"
+                    android:scrollbars="none">
                     <LinearLayout android:gravity="start"
                         android:id="@+id/linearColumncomponentseven"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content" android:orientation="vertical">
                         <Spinner
+                           android:paddingTop="5dp"
                             android:background="@drawable/layer_list_bg_white_a700_border_gray_500_radius_10"
                             android:id="@+id/spinnerComponentSeven"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_10pxh"
                             android:layout_marginStart="@dimen/_1pxh"
-                            android:layout_width="match_parent" tools:listitem="@layout/spinner_item"/>
+                            android:layout_width="match_parent"
+                            tools:listitem="@layout/spinner_item"/>
                         <Spinner
+                            android:paddingTop="5dp"
                             android:background="@drawable/layer_list_bg_white_a700_border_gray_500_radius_10"
                             android:id="@+id/spinnerComponentOne"
                             android:layout_height="wrap_content"
@@ -493,7 +498,16 @@
                             android:layout_width="wrap_content"
                             android:singleLine="true"
                             android:text="@{artistMembershipVM.artistMembershipModel.txtLanguage}"
-                            style="@style/txtPoppinssemibold16" tools:text="@string/msg_membership_arti"/>
+                            style="@style/txtPoppinssemibold16"
+                            tools:text="@string/msg_membership_arti"/>
+
+
+
+                        <HorizontalScrollView
+                            android:layout_marginBottom="30dp"
+                            android:id="@+id/hori"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
                         <LinearLayout android:gravity="end"
                             android:id="@+id/linearRowrectangle110"
                             android:layout_height="wrap_content"
@@ -668,8 +682,9 @@
                                     style="@style/txtSolidRoundedBottomCorner" tools:text="@string/lbl_chikkanna"/>
                             </FrameLayout>
                         </LinearLayout>
+                        </HorizontalScrollView>
                     </LinearLayout>
-                </HorizontalScrollView>
+                </ScrollView>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/linearColumnhome"
+        android:icon="@drawable/img_home"
+        android:title="Home"
+        />
+
+
+    <item
+        android:id="@+id/linearColumnWallet"
+        android:icon="@drawable/img_search"
+        android:title="Search"/>
+
+    <item
+        android:id="@+id/linearColumnLive"
+        android:icon="@drawable/img_arrowdown"
+        android:title="Overview"/>
+    <item
+        android:id="@+id/linearColumnProfile"
+        android:icon="@drawable/img_menu_gray_507"
+        android:title="Activity"/>
+
+
+</menu>

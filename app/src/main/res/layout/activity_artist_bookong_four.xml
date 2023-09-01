@@ -22,7 +22,7 @@
                     android:layout_height="@dimen/_24pxh"
                     android:layout_marginBottom="@dimen/_12pxv"
                     android:layout_marginStart="@dimen/_23pxh"
-                    android:layout_marginTop="@dimen/_52pxv"
+                    android:layout_marginTop="@dimen/_27pxv"
                     android:layout_width="@dimen/_24pxh"
                     android:scaleType="fitXY"
                     android:src="@drawable/img_arrowleft"
@@ -33,7 +33,7 @@
                     android:layout_marginBottom="@dimen/_6pxv"
                     android:layout_marginEnd="@dimen/_159pxh"
                     android:layout_marginStart="@dimen/_19pxh"
-                    android:layout_marginTop="@dimen/_44pxv"
+                    android:layout_marginTop="@dimen/_23pxv"
                     android:layout_weight="0.85"
                     android:layout_width="0dp" android:singleLine="true"
                     android:text="@{artistBookongFourVM.artistBookongFourModel.txtChikkanna}"
@@ -361,17 +361,20 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_2pxh"
                         android:layout_marginTop="@dimen/_16pxv"
-                        android:layout_width="match_parent" android:orientation="horizontal">
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal">
+
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recyclerListrectangle113"
+                            itemSpace="@{@dimen/_17pxh}"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2.61"
-                            android:layout_width="0dp"
                             android:nestedScrollingEnabled="false"
                             android:orientation="vertical"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                            itemSpace="@{@dimen/_17pxh}"
-                            tools:itemCount="2" tools:listitem="@layout/row_listrectangle114"/>
+                            tools:itemCount="2"
+                            tools:listitem="@layout/row_listrectangle114" />
+
                         <ImageView android:id="@+id/imageRectangle125"
                             android:layout_height="@dimen/_115pxh"
                             android:layout_marginBottom="@dimen/_132pxv"
@@ -383,23 +386,23 @@
                             tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle125_115x97"/>
                     </LinearLayout>
                 </LinearLayout>
-                <androidx.appcompat.widget.AppCompatButton
-                    android:ellipsize="end" android:gravity="center"
-                    android:id="@+id/btnBooked"
-                    android:layout_gravity="bottom|start"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_237pxv"
-                    android:layout_marginTop="@dimen/_237pxv"
-                    android:layout_width="match_parent"
-                    android:paddingBottom="@dimen/_18pxv"
-                    android:paddingEnd="@dimen/_30pxh"
-                    android:paddingStart="@dimen/_30pxh"
-                    android:paddingTop="@dimen/_18pxv"
-                    android:singleLine="true"
-                    android:text="@string/lbl_booked"
-                    android:textAllCaps="false"
-                    style="@style/btnSolid_2" tools:text="@string/lbl_booked"/>
+
             </FrameLayout>
         </androidx.core.widget.NestedScrollView>
+        <androidx.appcompat.widget.AppCompatButton
+            android:ellipsize="end" android:gravity="center"
+            android:id="@+id/btnBooked"
+            android:layout_gravity="bottom|start"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/_18pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_18pxv"
+            android:singleLine="true"
+            android:text="@string/lbl_booked"
+            android:textAllCaps="false"
+            style="@style/btnSolid_2"
+            tools:text="@string/lbl_booked"/>
     </LinearLayout>
 </layout>
