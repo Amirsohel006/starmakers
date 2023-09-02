@@ -15,26 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".modules.splashscreen.SplashScreenSix"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="false" />
-        <activity
-            android:name=".modules.splashscreen.SplashScreen5"
-            android:exported="false" />
-        <activity
-            android:name=".modules.splashscreen.SplashScreen4"
-            android:exported="false" />
-        <activity
-            android:name=".modules.splashscreen.SplashScreen3"
-            android:exported="false" />
-        <activity
-            android:name=".modules.splashscreen.SplashScreen2"
-            android:exported="false" />
+
+
+
         <activity
             android:name=".modules.splashscreen.SplashScreen1"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="true" >
+            android:exported="true">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,6 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".modules.frametwentyfour.ui.FrameTwentyfourActivity"
             android:screenOrientation="portrait" />
