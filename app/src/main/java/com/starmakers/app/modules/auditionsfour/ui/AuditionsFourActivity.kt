@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivityAuditionsFourBinding
@@ -53,6 +54,9 @@ class AuditionsFourActivity :
     mutableListOf())
     binding.spinnerComponentNine.adapter = spinnerComponentNineAdapter
     binding.auditionsFourVM = viewModel
+
+    window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
+
   }
 
   override fun setUpClicks(): Unit {

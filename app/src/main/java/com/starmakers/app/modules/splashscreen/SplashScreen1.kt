@@ -1,14 +1,24 @@
 package com.starmakers.app.modules.splashscreen
 
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.starmakers.app.R
+import com.starmakers.app.modules.homecontainer.ui.HomeContainerActivity
 import com.starmakers.app.modules.signuofour.ui.SignUoFourActivity
+import com.starmakers.app.modules.signuotwo.ui.LoginActivity
 
 class SplashScreen1 : AppCompatActivity() {
+
+    private lateinit var sharedPreferences: SharedPreferences
 
     private lateinit var imageView: ImageView
     private lateinit var indicator1: ImageView
@@ -16,6 +26,7 @@ class SplashScreen1 : AppCompatActivity() {
     private lateinit var indicator3: ImageView
     private lateinit var indicator4: ImageView
     private lateinit var indicator5: ImageView
+    private lateinit var skipbutton:ImageView
     // Add more indicator ImageViews as needed
 
     private val imageArray = arrayOf(
@@ -59,18 +70,59 @@ class SplashScreen1 : AppCompatActivity() {
         indicator5=findViewById(R.id.indicator5)
         // Initialize more indicator ImageViews as needed
 
-        // Start the image change process
+
+        // Define a handler outside of onCreate
+        val handler = Handler()
+
+// Start the image change process
         handler.post(imageChangeRunnable)
 
-        // After a certain duration (e.g., 10 seconds), navigate to the next activity
+// After a certain duration (e.g., 10 seconds), navigate to the next activity
         val delayToNextActivity = 10000 // 10 seconds
+        val delayedIntent = Intent(this, LoginActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(
+            this,
+            0,
+            delayedIntent,
+            PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
         Handler().postDelayed({
-            val intent = Intent(this, SignUoFourActivity::class.java)
-            startActivity(intent)
-            finish() // Finish this activity to prevent going back to it
+            startActivity(delayedIntent)
+            finishAffinity() // Finish this activity to prevent going back to it
         }, delayToNextActivity.toLong())
+
+        skipbutton = findViewById(R.id.skipbutton)
+        skipbutton.setOnClickListener {
+            // Cancel the delayed intent if the skip button is clicked
+            handler.removeCallbacksAndMessages(null)
+
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
+
+        sharedPreferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
+
+        val accessToken = sharedPreferences.getString("access_token", null)
+        if (accessToken != null) {
+            // User is already logged in, navigate to the home container activity
+            navigatetonextpage()
+        }
+
+// Change the status bar color to transparent
+        window.statusBarColor = Color.TRANSPARENT
+
     }
 
+
+    private fun navigatetonextpage(){
+        val i=HomeContainerActivity.getIntent(this,null)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(i)
+    }
     private fun updateIndicator(currentIndex: Int) {
         // Reset all indicators to unselected state
         indicator1.setImageResource(R.drawable.indicator_unselected)

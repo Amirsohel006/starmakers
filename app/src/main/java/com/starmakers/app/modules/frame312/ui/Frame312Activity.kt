@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivityFrame312Binding
@@ -18,6 +19,7 @@ class Frame312Activity : BaseActivity<ActivityFrame312Binding>(R.layout.activity
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     binding.frame312VM = viewModel
+    window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
   }
 
   override fun setUpClicks(): Unit {

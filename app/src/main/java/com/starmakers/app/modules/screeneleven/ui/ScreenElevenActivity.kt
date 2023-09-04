@@ -1,6 +1,7 @@
 package com.starmakers.app.modules.screeneleven.ui
 
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivityScreenElevenBinding
@@ -15,6 +16,8 @@ class ScreenElevenActivity :
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     binding.screenElevenVM = viewModel
+
+    window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
   }
 
   override fun setUpClicks(): Unit {

@@ -3,17 +3,29 @@ package com.starmakers.app.modules.signuo.ui
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivitySignUoBinding
 import com.starmakers.app.modules.signuo.`data`.viewmodel.SignUoVM
 import com.starmakers.app.modules.signuoone.ui.SignUoOneActivity
 import com.google.android.gms.auth.api.phone.SmsRetriever
+import com.starmakers.app.modules.homecontainer.ui.HomeContainerActivity
+import com.starmakers.app.responses.LoginResponse
+import com.starmakers.app.service.ApiInterface
+import com.starmakers.app.service.ApiManager
+import com.starmakers.app.service.SessionManager
+import com.starmakers.app.service.TokenManager
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 import kotlin.String
@@ -22,6 +34,9 @@ import kotlin.Unit
 class SignUoActivity : BaseActivity<ActivitySignUoBinding>(R.layout.activity_sign_uo) {
   private var otpViewOtpviewBroadcastReceiver: OtpViewOtpviewBroadcastReceiver? = null
 
+  private lateinit var apiService: ApiInterface
+  private lateinit var sessionManager: SessionManager
+  private lateinit var sharedPreferences: SharedPreferences
 
   val getActivityResult: ActivityResultLauncher<Intent> =
       registerForActivityResult(ActivityResultContracts.StartActivityForResult(),
@@ -34,11 +49,50 @@ class SignUoActivity : BaseActivity<ActivitySignUoBinding>(R.layout.activity_sig
     private val viewModel: SignUoVM by viewModels<SignUoVM>()
 
     override fun onInitialized(): Unit {
+
+      TokenManager.initialize(this)
+      sessionManager= SessionManager(this)
       viewModel.navArguments = intent.extras?.getBundle("bundle")
       startSmartUserConsent()
+
+      sharedPreferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
+
+
+      val isFirstTime = sharedPreferences.getBoolean("is_first_time", true)
+      if (isFirstTime) {
+        sharedPreferences.edit().clear().apply()
+        sharedPreferences.edit().putBoolean("is_first_time", false).apply()
+      } else {
+        val accessToken = sharedPreferences.getString("access_token", null)
+        if (accessToken != null) {
+          navigateToNextPage()
+        }
+      }
+
+      apiService= ApiManager.apiInterface
+
+      binding.btnVerify.setOnClickListener {
+        val enteredOtp = binding.otpViewOtpview.text.toString()
+        if (enteredOtp.length == 6) {
+          // OTP is valid, so post it to the API
+          login(enteredOtp)
+        } else {
+          // Handle invalid OTP length
+        }
+      }
+
+
+
       binding.signUoVM = viewModel
+      window.statusBarColor= ContextCompat.getColor(this,R.color.white)
     }
 
+
+  private fun navigateToNextPage() {
+    val i= SignUoOneActivity.getIntent(this,null)
+    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+    startActivity(i)
+  }
     override fun onStop(): Unit {
       super.onStop()
       unregisterReceiver(otpViewOtpviewBroadcastReceiver)
@@ -49,11 +103,37 @@ class SignUoActivity : BaseActivity<ActivitySignUoBinding>(R.layout.activity_sig
       registerBroadcastReceiver()
     }
 
-    override fun setUpClicks(): Unit {
-      binding.btnVerify.setOnClickListener {
-        val destIntent = SignUoOneActivity.getIntent(this, null)
-        startActivity(destIntent)
+
+  private  fun login(otp: String) {
+    val call = apiService.verifySignUpOtp(otp)
+    call.enqueue(object : Callback<LoginResponse> {
+      override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+        if (response.isSuccessful) {
+
+          val loginResponse = response.body()
+          if (loginResponse != null) {
+//            val accessToken = loginResponse.access_token
+//            TokenManager.setTokens(accessToken)
+//            sessionManager.saveAuthToken(accessToken)
+            Toast.makeText(this@SignUoActivity, "OTP Verified Successfully", Toast.LENGTH_SHORT).show()
+            navigateToNextPage()
+          } else {
+            Toast.makeText(this@SignUoActivity, "Login failed", Toast.LENGTH_SHORT).show()
+          }
+        } else {
+          Toast.makeText(this@SignUoActivity, "Login failed", Toast.LENGTH_SHORT).show()
+        }
       }
+      override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+        Toast.makeText(this@SignUoActivity, "Login failed: ${t.message}", Toast.LENGTH_SHORT).show()
+      }
+    })
+  }
+    override fun setUpClicks(): Unit {
+//      binding.btnVerify.setOnClickListener {
+//        val destIntent = SignUoOneActivity.getIntent(this, null)
+//        startActivity(destIntent)
+//      }
     }
 
     private fun startSmartUserConsent(): Unit {

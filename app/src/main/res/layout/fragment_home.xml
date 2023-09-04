@@ -315,7 +315,8 @@
                             android:layout_width="wrap_content"
                             app:drawable_normal="@drawable/indicator_unselected_bg_gray_500_70_radius_8"
                             app:drawable_selected="@drawable/indicator_selected_bg_bluegray_100_radius_8"
-                            app:indicator_size="@dimen/_8pxh" app:indicator_spacing="@dimen/_9pxh"/>
+                            app:indicator_size="@dimen/_8pxh"
+                            app:indicator_spacing="@dimen/_9pxh"/>
                     </FrameLayout>
                     <TextView android:ellipsize="end"
                         android:id="@+id/txtFundingDemoVi"

@@ -8,6 +8,7 @@ import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseFragment
 import com.starmakers.app.databinding.FragmentHomeBinding
 import com.starmakers.app.modules.artistbookongfive.ui.ArtistBookongFiveActivity
+import com.starmakers.app.modules.artistbookongone.ui.ArtistBookongOneActivity
 import com.starmakers.app.modules.artistmembership.ui.ArtistMembershipActivity
 import com.starmakers.app.modules.auditions.ui.AuditionsActivity
 import com.starmakers.app.modules.frame311.ui.Frame311Activity
@@ -73,6 +74,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     }
 
 
+    binding.imageEllipseOne.setOnClickListener {
+      val i = Intent(requireActivity(),ArtistBookongOneActivity::class.java)
+      startActivity(i)
+    }
     binding.linearColumnuntitleddesign.setOnClickListener {
       val i=Intent(requireActivity(), ArtistMembershipActivity::class.java)
       startActivity(i)

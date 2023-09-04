@@ -8,15 +8,19 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical" style="@style/groupStylewhite_A700">
-        <View
-            android:background="@drawable/rectangle_bg_bluegray_100_radius_101"
-            android:id="@+id/viewEllipseOne"
+        <ImageView android:id="@+id/imageSTARMAKERZ3d"
             android:layout_gravity="center_horizontal"
-            android:layout_height="@dimen/_202pxh"
+            android:layout_height="@dimen/_197pxh"
             android:layout_marginEnd="@dimen/_20pxh"
             android:layout_marginStart="@dimen/_20pxh"
-            android:layout_marginTop="@dimen/_50pxv" android:layout_width="@dimen/_202pxh"/>
-        <LinearLayout android:gravity="start"
+            android:layout_marginTop="@dimen/_54pxv"
+            android:layout_width="@dimen/_224pxh"
+            android:scaleType="fitXY"
+            imageRes="@{@drawable/img_starmakerz3d}"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/img_starmakerz3d"/>
+        <LinearLayout
+            android:gravity="start"
             android:id="@+id/linearRowmobile"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_19pxh"
@@ -24,26 +28,33 @@
             android:layout_marginTop="@dimen/_58pxv"
             android:layout_width="match_parent"
             android:orientation="horizontal" style="@style/groupStylecornerRadius_2">
-            <ImageView android:id="@+id/imageMobile"
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/imageMobile"
                 android:layout_height="@dimen/_31pxh"
                 android:layout_marginBottom="@dimen/_20pxv"
                 android:layout_marginStart="@dimen/_17pxh"
-                android:layout_marginTop="@dimen/_8pxv"
+                android:layout_marginTop="@dimen/_15pxv"
                 android:layout_width="@dimen/_19pxh"
                 android:scaleType="fitXY"
                 android:src="@drawable/img_mobile"
                 tools:ignore="ContentDescription" tools:src="@drawable/img_mobile"/>
-            <TextView android:ellipsize="end"
-                android:id="@+id/txtEnterMobilenu"
+            <EditText
+                android:hint="@string/msg_enter_mobile_nu"
+                android:ellipsize="end"
+                android:inputType="number"
+                android:textColorHint="@color/indigo_800"
+                android:id="@+id/editTextMobileNumber"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_16pxv"
-                android:layout_marginEnd="@dimen/_73pxh"
+                android:layout_marginEnd="@dimen/_20pxh"
                 android:layout_marginStart="@dimen/_20pxh"
                 android:layout_marginTop="@dimen/_15pxv"
-                android:layout_weight="0.9" android:layout_width="0dp"
+                android:layout_weight="0.9"
+                android:layout_width="0dp"
                 android:singleLine="true"
-                android:text="@{signUoTwoVM.signUoTwoModel.txtEnterMobilenu}"
-                style="@style/txtNunitoregular20" tools:text="@string/msg_enter_mobile_nu"/>
+                style="@style/txtNunitoregular20"
+                />
         </LinearLayout>
         <androidx.appcompat.widget.AppCompatButton
             android:ellipsize="end" android:gravity="center"

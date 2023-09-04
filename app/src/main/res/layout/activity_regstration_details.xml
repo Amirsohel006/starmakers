@@ -22,7 +22,7 @@
                     android:layout_height="@dimen/_24pxh"
                     android:layout_marginBottom="@dimen/_11pxv"
                     android:layout_marginStart="@dimen/_23pxh"
-                    android:layout_marginTop="@dimen/_53pxv"
+                    android:layout_marginTop="@dimen/_27pxv"
                     android:layout_width="@dimen/_24pxh"
                     android:scaleType="fitXY"
                     android:src="@drawable/img_arrowleft"
@@ -33,11 +33,13 @@
                     android:layout_marginBottom="@dimen/_2pxv"
                     android:layout_marginEnd="@dimen/_49pxh"
                     android:layout_marginStart="@dimen/_24pxh"
-                    android:layout_marginTop="@dimen/_48pxv"
+                    android:layout_marginTop="@dimen/_23pxv"
                     android:layout_weight="0.91"
-                    android:layout_width="0dp" android:singleLine="true"
+                    android:layout_width="0dp"
+                    android:singleLine="true"
                     android:text="@{regstrationDetailsVM.regstrationDetailsModel.txtRegistrationDe}"
-                    style="@style/txtPoppinssemibold24" tools:text="@string/msg_registration_de"/>
+                    style="@style/txtPoppinssemibold24"
+                    tools:text="@string/msg_registration_de"/>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
         <TextView android:ellipsize="end"
@@ -80,7 +82,8 @@
                 android:text="@{regstrationDetailsVM.regstrationDetailsModel.txtRsCounter}"
                 style="@style/txtPoppinsmedium16_4" tools:text="@string/lbl_rs_500"/>
         </LinearLayout>
-        <TextView android:ellipsize="end" android:gravity="start"
+        <TextView
+            android:ellipsize="end" android:gravity="start"
             android:id="@+id/txtChoosePayment"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_16pxh"
@@ -89,7 +92,9 @@
             android:layout_width="match_parent"
             android:singleLine="true"
             android:text="@{regstrationDetailsVM.regstrationDetailsModel.txtChoosePayment}"
-            style="@style/txtPoppinssemibold16" tools:text="@string/msg_choose_payment"/>
+            style="@style/txtPoppinssemibold16"
+            tools:text="@string/msg_choose_payment"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:gravity="center_horizontal"
             android:id="@+id/recyclerListpaypalone"
@@ -100,7 +105,10 @@
             android:layout_width="match_parent"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            itemSpace="@{@dimen/_16pxh}" tools:itemCount="2" tools:listitem="@layout/row_listpaypalone2"/>
+            itemSpace="@{@dimen/_16pxh}"
+            tools:itemCount="2"
+            tools:listitem="@layout/row_listpaypalone2"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:gravity="center_horizontal"
             android:id="@+id/recyclerListellipsetwentysix"
@@ -111,18 +119,23 @@
             android:layout_width="match_parent"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            itemSpace="@{@dimen/_16pxh}" tools:itemCount="2" tools:listitem="@layout/row_listellipsetwentysix2"/>
+            itemSpace="@{@dimen/_16pxh}"
+            tools:itemCount="2"
+            tools:listitem="@layout/row_listellipsetwentysix2"/>
         <androidx.appcompat.widget.AppCompatButton
-            android:ellipsize="end" android:gravity="center"
+            android:ellipsize="end"
+            android:gravity="center"
             android:id="@+id/btnPayAndRegisterOne"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_195pxv"
+            android:layout_marginTop="150dp"
             android:layout_width="match_parent"
             android:paddingBottom="@dimen/_18pxv"
             android:paddingEnd="@dimen/_30pxh"
             android:paddingStart="@dimen/_30pxh"
-            android:paddingTop="@dimen/_18pxv" android:singleLine="true"
+            android:paddingTop="@dimen/_18pxv"
+            android:singleLine="true"
             android:text="@string/msg_pay_and_registe"
-            android:textAllCaps="false" style="@style/btnSolid_1" tools:text="@string/msg_pay_and_registe"/>
+            android:textAllCaps="false"
+            style="@style/btnSolid_1" tools:text="@string/msg_pay_and_registe"/>
     </LinearLayout>
 </layout>

@@ -12,7 +12,7 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:orientation="horizontal" style="@style/groupStyle">
-            <ImageView android:id="@+id/imageEllipseThirtyTwo"
+            <ImageView android:id="@+id/profilePicture"
                 android:layout_height="@dimen/_114pxh"
                 android:layout_marginBottom="@dimen/_12pxv"
                 android:layout_marginStart="@dimen/_8pxh"

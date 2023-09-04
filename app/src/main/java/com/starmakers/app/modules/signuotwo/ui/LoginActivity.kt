@@ -1,4 +1,4 @@
-package com.starmakers.app.modules.signuofour.ui
+package com.starmakers.app.modules.signuotwo.ui
 
 import android.content.Context
 import android.content.Intent
@@ -9,10 +9,10 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
-import com.starmakers.app.databinding.ActivitySignUoFourBinding
-import com.starmakers.app.modules.signuo.ui.SignUoActivity
-import com.starmakers.app.modules.signuofour.`data`.viewmodel.SignUoFourVM
-import com.starmakers.app.modules.signuotwo.ui.LoginActivity
+import com.starmakers.app.databinding.ActivitySignUoTwoBinding
+import com.starmakers.app.modules.signuofour.ui.SignUoFourActivity
+import com.starmakers.app.modules.signuothree.ui.LoginOTPActivity
+import com.starmakers.app.modules.signuotwo.`data`.viewmodel.SignUoTwoVM
 import com.starmakers.app.responses.LoginResponse
 import com.starmakers.app.service.ApiInterface
 import com.starmakers.app.service.ApiManager
@@ -23,8 +23,9 @@ import retrofit2.Response
 import kotlin.String
 import kotlin.Unit
 
-class SignUoFourActivity : BaseActivity<ActivitySignUoFourBinding>(R.layout.activity_sign_uo_four) {
-  private val viewModel: SignUoFourVM by viewModels<SignUoFourVM>()
+class LoginActivity : BaseActivity<ActivitySignUoTwoBinding>(R.layout.activity_sign_uo_two) {
+  private val viewModel: SignUoTwoVM by viewModels<SignUoTwoVM>()
+
 
   private lateinit var sharedPreferences: SharedPreferences
   private lateinit var apiService: ApiInterface
@@ -32,12 +33,12 @@ class SignUoFourActivity : BaseActivity<ActivitySignUoFourBinding>(R.layout.acti
 
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
-    binding.signUoFourVM = viewModel
-
     apiService= ApiManager.apiInterface
     sessionManager= SessionManager(this)
-    binding.btnSignup.setOnClickListener{
-      val  mobile=binding.txtEnterMobilenu.text.toString()
+
+
+    binding.btnLogin.setOnClickListener{
+     val  mobile=binding.editTextMobileNumber.text.toString()
 
       if (mobile.isNotEmpty()) {
         getOtp(mobile)
@@ -45,59 +46,57 @@ class SignUoFourActivity : BaseActivity<ActivitySignUoFourBinding>(R.layout.acti
         Toast.makeText(this, "Please enter a mobile number", Toast.LENGTH_SHORT).show()
       }
     }
+
+
+    binding.signUoTwoVM = viewModel
     window.statusBarColor= ContextCompat.getColor(this,R.color.white)
   }
 
   override fun setUpClicks(): Unit {
-//    binding.btnSignup.setOnClickListener {
-//      val destIntent = SignUoActivity.getIntent(this, null)
-//      startActivity(destIntent)
-//    }
-    binding.txtLogin.setOnClickListener {
-      val destIntent = LoginActivity.getIntent(this, null)
+    binding.txtSignup.setOnClickListener {
+      val destIntent = SignUoFourActivity.getIntent(this, null)
       startActivity(destIntent)
     }
   }
 
 
-
   private fun getOtp(mobile: String){
-    val call=apiService.getSignUpOTP(mobile)
+    val call=apiService.getOtp(mobile)
     call.enqueue(object : Callback<LoginResponse> {
       override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
         if (response.isSuccessful) {
 
           val loginResponse = response.body()
           if (loginResponse != null) {
-            Toast.makeText(this@SignUoFourActivity, "Otp Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@LoginActivity, "Otp Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
             navigateToNextPage()
-            finish()
+            finishAffinity()
           } else {
-            Toast.makeText(this@SignUoFourActivity, "Login failed", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@LoginActivity, "Login failed", Toast.LENGTH_SHORT).show()
           }
         } else {
-          Toast.makeText(this@SignUoFourActivity, "Login failed", Toast.LENGTH_SHORT).show()
+          Toast.makeText(this@LoginActivity, "Login failed", Toast.LENGTH_SHORT).show()
         }
       }
       override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-        Toast.makeText(this@SignUoFourActivity, "Login failed: ${t.message}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@LoginActivity, "Login failed: ${t.message}", Toast.LENGTH_SHORT).show()
       }
     })
   }
 
-
   private fun navigateToNextPage() {
-    val i=Intent(this, SignUoActivity::class.java)
+    val i=Intent(this,LoginOTPActivity::class.java)
     startActivity(i)
   }
 
 
+
   companion object {
-    const val TAG: String = "SIGN_UO_FOUR_ACTIVITY"
+    const val TAG: String = "SIGN_UO_TWO_ACTIVITY"
 
 
     fun getIntent(context: Context, bundle: Bundle?): Intent {
-      val destIntent = Intent(context, SignUoFourActivity::class.java)
+      val destIntent = Intent(context, LoginActivity::class.java)
       destIntent.putExtra("bundle", bundle)
       return destIntent
     }
