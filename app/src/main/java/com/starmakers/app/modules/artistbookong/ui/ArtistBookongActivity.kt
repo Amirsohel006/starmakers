@@ -9,7 +9,7 @@ import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivityArtistBookongBinding
 import com.starmakers.app.modules.artistbookong.`data`.viewmodel.ArtistBookongVM
-import com.starmakers.app.modules.signuotwo.ui.SignUoTwoActivity
+import com.starmakers.app.modules.signuotwo.ui.LoginActivity
 import kotlin.String
 import kotlin.Unit
 
@@ -26,7 +26,7 @@ class ArtistBookongActivity :
 
   override fun setUpClicks(): Unit {
     binding.btnLogout.setOnClickListener {
-      val destIntent = SignUoTwoActivity.getIntent(this, null)
+      val destIntent = LoginActivity.getIntent(this, null)
       startActivity(destIntent)
     }
     binding.imageArrowleft.setOnClickListener {

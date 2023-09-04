@@ -8,15 +8,20 @@
         android:id="@+id/linearArtistBookong"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:orientation="vertical" style="@style/groupStylewhite_A700">
-        <FrameLayout android:gravity="start"
+        android:orientation="vertical"
+        style="@style/groupStylewhite_A700">
+
+
+        <FrameLayout
+            android:gravity="start"
             android:id="@+id/frameStackarrowdown"
-            android:layout_height="@dimen/_259pxv" android:layout_width="match_parent">
+            android:layout_height="@dimen/_229pxv"
+            android:layout_width="match_parent">
             <FrameLayout android:id="@+id/frameStackellipsesixty"
                 android:layout_gravity="top|start"
                 android:layout_height="@dimen/_191pxv"
                 android:layout_marginBottom="@dimen/_10pxv" android:layout_width="match_parent">
-                <ImageView android:id="@+id/imageEllipseSixty"
+                <ImageView android:id="@+id/profilePicture"
                     android:layout_gravity="start"
                     android:layout_height="@dimen/_191pxh"
                     android:layout_width="match_parent"
@@ -30,7 +35,7 @@
                     android:layout_marginBottom="@dimen/_33pxv"
                     android:layout_marginEnd="@dimen/_40pxh"
                     android:layout_marginStart="@dimen/_35pxh"
-                    android:layout_marginTop="@dimen/_33pxv"
+                    android:layout_marginTop="@dimen/_20pxv"
                     android:layout_width="match_parent" app:contentInsetStart="0dp">
                     <LinearLayout
                         android:id="@+id/linearRowvideocameraOne"
@@ -120,37 +125,39 @@
                     </LinearLayout>
                 </androidx.appcompat.widget.Toolbar>
             </FrameLayout>
-            <LinearLayout android:id="@+id/linearColumnarrowdown"
+            <ImageView
+                android:id="@+id/linearColumnarrowdown"
                 android:layout_gravity="bottom|start"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_92pxh"
-                android:layout_marginStart="@dimen/_92pxh"
-                android:layout_marginTop="@dimen/_10pxv"
+                android:layout_height="150dp"
+                android:layout_marginEnd="@dimen/_102pxh"
+                android:layout_marginStart="@dimen/_102pxh"
                 android:layout_width="match_parent"
+                android:src="@drawable/img_arrowdown_gray_802"
                 android:orientation="vertical" style="@style/groupStylewhite_2">
-                <ImageView android:id="@+id/imageArrowdown"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_height="@dimen/_48pxh"
-                    android:layout_marginEnd="@dimen/_35pxh"
-                    android:layout_marginStart="@dimen/_35pxh"
-                    android:layout_marginTop="@dimen/_44pxv"
-                    android:layout_width="@dimen/_50pxh"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/img_arrowdown_gray_802"
-                    tools:ignore="ContentDescription" tools:src="@drawable/img_arrowdown_gray_802"/>
-                <TextView android:ellipsize="end"
-                    android:gravity="center_horizontal"
-                    android:id="@+id/txtAddProfile"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_31pxv"
-                    android:layout_marginEnd="@dimen/_34pxh"
-                    android:layout_marginStart="@dimen/_35pxh"
-                    android:layout_marginTop="@dimen/_7pxv"
-                    android:layout_width="match_parent"
-                    android:singleLine="true"
-                    android:text="@{artistBookongOneVM.artistBookongOneModel.txtAddProfile}"
-                    style="@style/txtPoppinsregular16_1" tools:text="@string/lbl_add_profile"/>
-            </LinearLayout>
+<!--                <ImageView android:id="@+id/imageArrowdown"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    android:layout_height="@dimen/_48pxh"-->
+<!--                    android:layout_marginEnd="@dimen/_35pxh"-->
+<!--                    android:layout_marginStart="@dimen/_35pxh"-->
+<!--                    android:layout_marginTop="@dimen/_44pxv"-->
+<!--                    android:layout_width="@dimen/_50pxh"-->
+<!--                    android:scaleType="fitXY"-->
+<!--                    android:src="@drawable/img_arrowdown_gray_802"-->
+<!--                    tools:ignore="ContentDescription" tools:src="@drawable/img_arrowdown_gray_802"/>-->
+<!--                <TextView android:ellipsize="end"-->
+<!--                    android:gravity="center_horizontal"-->
+<!--                    android:id="@+id/txtAddProfile"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="@dimen/_31pxv"-->
+<!--                    android:layout_marginEnd="@dimen/_34pxh"-->
+<!--                    android:layout_marginStart="@dimen/_35pxh"-->
+<!--                    android:layout_marginTop="@dimen/_7pxv"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:singleLine="true"-->
+<!--                    android:text="@{artistBookongOneVM.artistBookongOneModel.txtAddProfile}"-->
+<!--                    style="@style/txtPoppinsregular16_1"-->
+<!--                    tools:text="@string/lbl_add_profile"/>-->
+            </ImageView>
             <ImageView android:id="@+id/imageCar"
                 android:layout_gravity="top|end"
                 android:layout_height="@dimen/_16pxh"
@@ -163,6 +170,8 @@
                 android:src="@drawable/img_car"
                 tools:ignore="ContentDescription" tools:src="@drawable/img_car"/>
         </FrameLayout>
+
+
         <androidx.appcompat.widget.AppCompatButton
             android:ellipsize="end" android:gravity="center"
             android:id="@+id/btnTakeMembershipOne"
@@ -170,7 +179,6 @@
             android:layout_height="@dimen/_42pxv"
             android:layout_marginEnd="@dimen/_16pxh"
             android:layout_marginStart="@dimen/_16pxh"
-            android:layout_marginTop="@dimen/_25pxv"
             android:layout_width="@dimen/_229pxh"
             android:paddingBottom="@dimen/_9pxv"
             android:paddingEnd="@dimen/_30pxh"
@@ -179,10 +187,12 @@
             android:text="@string/lbl_take_membership"
             android:textAllCaps="false"
             style="@style/btnGradientRounded" tools:text="@string/lbl_take_membership"/>
-        <EditText
+
+
+        <TextView
             android:background="@drawable/rectangle_border_gray_500_radius_10"
             android:ellipsize="end" android:hint="@string/lbl_full_name"
-            android:id="@+id/etGroup149" android:inputType="text"
+            android:id="@+id/etName" android:inputType="text"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_15pxh"
             android:layout_marginStart="@dimen/_16pxh"
@@ -195,11 +205,11 @@
             android:text="@={artistBookongOneVM.artistBookongOneModel.etGroup149Value}"
             android:textColorHint="@color/gray_802"
             style="@style/etRoundedOutline_3" tools:ignore="Autofill"/>
-        <EditText
+        <TextView
             android:background="@drawable/rectangle_border_gray_500_radius_10"
             android:ellipsize="end"
             android:hint="@string/lbl_mobile_number"
-            android:id="@+id/etGroup153" android:inputType="phone"
+            android:id="@+id/etMobileNumber" android:inputType="phone"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_15pxh"
             android:layout_marginStart="@dimen/_16pxh"
@@ -212,10 +222,10 @@
             android:text="@={artistBookongOneVM.artistBookongOneModel.etGroup153Value}"
             android:textColorHint="@color/gray_802"
             style="@style/etRoundedOutline_3" tools:ignore="Autofill"/>
-        <EditText
+        <TextView
             android:background="@drawable/rectangle_border_gray_500_radius_10"
             android:ellipsize="end" android:hint="@string/lbl_email_id"
-            android:id="@+id/etGroup150"
+            android:id="@+id/etEmail"
             android:inputType="textEmailAddress"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_15pxh"
@@ -233,7 +243,7 @@
             android:background="@drawable/rectangle_border_gray_500_radius_10"
             android:ellipsize="end"
             android:hint="@string/lbl_height_in_cm"
-            android:id="@+id/etGroup151" android:inputType="text"
+            android:id="@+id/etHeight" android:inputType="text"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_15pxh"
             android:layout_marginStart="@dimen/_16pxh"
@@ -250,7 +260,7 @@
             android:background="@drawable/rectangle_border_gray_500_radius_10"
             android:ellipsize="end"
             android:hint="@string/lbl_weight_in_kg"
-            android:id="@+id/etGroup152" android:inputType="text"
+            android:id="@+id/etWeight" android:inputType="text"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_15pxh"
             android:layout_marginStart="@dimen/_16pxh"
@@ -263,10 +273,10 @@
             android:text="@={artistBookongOneVM.artistBookongOneModel.etGroup152Value}"
             android:textColorHint="@color/gray_802"
             style="@style/etRoundedOutline_3" tools:ignore="Autofill"/>
-        <EditText
+        <TextView
             android:background="@drawable/rectangle_border_gray_500_radius_10"
             android:ellipsize="end" android:hint="@string/lbl_location"
-            android:id="@+id/etGroup487" android:inputType="text"
+            android:id="@+id/etLocation" android:inputType="text"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_15pxh"
             android:layout_marginStart="@dimen/_16pxh"
@@ -278,7 +288,8 @@
             android:paddingTop="@dimen/_10pxv" android:singleLine="true"
             android:text="@={artistBookongOneVM.artistBookongOneModel.etGroup487Value}"
             android:textColorHint="@color/gray_802"
-            style="@style/etRoundedOutline_3" tools:ignore="Autofill"/>
+            style="@style/etRoundedOutline_3"
+            tools:ignore="Autofill"/>
         <androidx.appcompat.widget.AppCompatButton
             android:ellipsize="end" android:gravity="center"
             android:id="@+id/btnLogout"
@@ -293,6 +304,10 @@
             android:paddingStart="@dimen/_30pxh"
             android:paddingTop="@dimen/_16pxv" android:singleLine="true"
             android:text="@string/lbl_logout"
-            android:textAllCaps="false" style="@style/btnSolidRounded_4" tools:text="@string/lbl_logout"/>
+            android:textAllCaps="false"
+            style="@style/btnSolidRounded_4"
+            tools:text="@string/lbl_logout"/>
+
+
     </LinearLayout>
 </layout>

@@ -2,6 +2,7 @@ package com.starmakers.app.modules.screennine.ui
 
 import android.net.Uri
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivityScreenNineBinding
@@ -30,6 +31,8 @@ class ScreenNineActivity : BaseActivity<ActivityScreenNineBinding>(R.layout.acti
     SliderintrestonloanAdapter(imageSliderSliderintrestonloanItems,true)
     binding.imageSliderSliderintrestonloan.adapter = sliderintrestonloanAdapter
     binding.screenNineVM = viewModel
+
+    window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
   }
 
   override fun onPause(): Unit {

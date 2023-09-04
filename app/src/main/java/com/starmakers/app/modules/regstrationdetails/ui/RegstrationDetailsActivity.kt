@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivityRegstrationDetailsBinding
@@ -49,7 +50,11 @@ class RegstrationDetailsActivity :
     viewModel.listellipsetwentysixList.observe(this) {
       listellipsetwentysixAdapter.updateData(it)
     }
+
+    window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
     binding.regstrationDetailsVM = viewModel
+
+    window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
   }
 
   override fun setUpClicks(): Unit {
