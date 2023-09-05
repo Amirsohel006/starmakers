@@ -63,7 +63,14 @@
                         android:scaleType="fitXY"
                         cornerRadius="@{@dimen/_10pxh}"
                         imageRes="@{@drawable/img_rectangle110_127x101}"
-                        tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle110_127x101"/>
+                        tools:ignore="ContentDescription"
+                        tools:src="@drawable/img_rectangle110_127x101"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
                     <TextView android:ellipsize="end"
                         android:id="@+id/txtName"
                         android:layout_height="wrap_content"
@@ -72,7 +79,29 @@
                         android:layout_width="wrap_content"
                         android:singleLine="true"
                         android:text="@{artistBookongFourVM.artistBookongFourModel.txtName}"
-                        style="@style/txtPoppinsmedium16" tools:text="@string/lbl_name"/>
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="@string/lbl_name"/>
+
+                        <TextView
+                            android:ellipsize="end"
+                            android:id="@+id/txtName1"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10pxh"
+                            android:layout_marginTop="@dimen/_26pxv"
+                            android:layout_width="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/lbl_name"
+                            style="@style/txtPoppinsmedium16"
+                            tools:text="@string/lbl_name"/>
+
+                    </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
                     <TextView android:ellipsize="end"
                         android:id="@+id/txtAge"
                         android:layout_height="wrap_content"
@@ -81,7 +110,30 @@
                         android:layout_width="wrap_content"
                         android:singleLine="true"
                         android:text="@{artistBookongFourVM.artistBookongFourModel.txtAge}"
-                        style="@style/txtPoppinsmedium16" tools:text="@string/lbl_age2"/>
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="@string/lbl_age2"/>
+
+
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtAge1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_8pxv"
+                        android:layout_width="wrap_content"
+                        android:singleLine="true"
+                        android:text="@string/lbl_age2"
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="@string/lbl_age2"/>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
                     <TextView android:ellipsize="end"
                         android:id="@+id/txtHeight"
                         android:layout_height="wrap_content"
@@ -90,7 +142,25 @@
                         android:layout_width="wrap_content"
                         android:singleLine="true"
                         android:text="@{artistBookongFourVM.artistBookongFourModel.txtHeight}"
-                        style="@style/txtPoppinsmedium16" tools:text="@string/lbl_height2"/>
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="@string/lbl_height2"/>
+
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtHeight1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_5pxv"
+                        android:layout_width="wrap_content"
+                        android:singleLine="true"
+                        android:text="@string/lbl_height2"
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="@string/lbl_height2"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                     <TextView android:ellipsize="end"
                         android:id="@+id/txtWeight"
                         android:layout_height="wrap_content"
@@ -99,7 +169,27 @@
                         android:layout_width="wrap_content"
                         android:singleLine="true"
                         android:text="@{artistBookongFourVM.artistBookongFourModel.txtWeight}"
-                        style="@style/txtPoppinsmedium16" tools:text="@string/lbl_weight2"/>
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="@string/lbl_weight2"/>
+
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtWeight1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_6pxv"
+                        android:layout_width="wrap_content"
+                        android:singleLine="true"
+                        android:text="@string/lbl_weight2"
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="@string/lbl_weight2"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                     <TextView android:ellipsize="end"
                         android:id="@+id/txtNatureofArtis"
                         android:layout_height="wrap_content"
@@ -108,7 +198,26 @@
                         android:layout_width="wrap_content"
                         android:singleLine="true"
                         android:text="@{artistBookongFourVM.artistBookongFourModel.txtNatureofArtis}"
-                        style="@style/txtPoppinsmedium16" tools:text="@string/msg_nature_of_artis"/>
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="@string/msg_nature_of_artis"/>
+
+
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtNatureofArtis1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_3pxv"
+                        android:layout_width="wrap_content"
+                        android:singleLine="true"
+                        android:text="@string/msg_nature_of_artis"
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="@string/msg_nature_of_artis"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                     <TextView android:ellipsize="end"
                         android:id="@+id/txtExperience"
                         android:layout_height="wrap_content"
@@ -117,7 +226,28 @@
                         android:layout_width="wrap_content"
                         android:singleLine="true"
                         android:text="@{artistBookongFourVM.artistBookongFourModel.txtExperience}"
-                        style="@style/txtPoppinsmedium16" tools:text="@string/lbl_experience"/>
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="@string/lbl_experience"/>
+
+
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtExperience1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_8pxv"
+                        android:layout_width="wrap_content"
+                        android:singleLine="true"
+                        android:text="@string/lbl_experience"
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="@string/lbl_experience"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                     <TextView android:ellipsize="end"
                         android:id="@+id/txtTotalnumberof"
                         android:layout_height="wrap_content"
@@ -126,7 +256,30 @@
                         android:layout_width="match_parent"
                         android:singleLine="true"
                         android:text="@{artistBookongFourVM.artistBookongFourModel.txtTotalnumberof}"
-                        style="@style/txtPoppinsmedium16" tools:text="@string/msg_total_number_of"/>
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="@string/msg_total_number_of"/>
+
+
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtTotalnumberof1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_3pxv"
+                        android:layout_width="match_parent"
+                        android:singleLine="true"
+                        android:text="@string/_1"
+                        android:layout_gravity="start"
+                        android:gravity="center"
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="1"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                     <TextView android:ellipsize="end"
                         android:id="@+id/txtContactNumber"
                         android:layout_height="wrap_content"
@@ -135,7 +288,26 @@
                         android:layout_width="wrap_content"
                         android:singleLine="true"
                         android:text="@{artistBookongFourVM.artistBookongFourModel.txtContactNumber}"
-                        style="@style/txtPoppinsmedium16" tools:text="@string/msg_contact_number"/>
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="@string/msg_contact_number"/>
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtContactNumber1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_6pxv"
+                        android:layout_width="wrap_content"
+                        android:singleLine="true"
+                        android:text="@string/msg_contact_number"
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="@string/msg_contact_number"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                     <TextView android:ellipsize="end"
                         android:id="@+id/txtPics"
                         android:layout_height="wrap_content"
@@ -145,7 +317,9 @@
                         android:layout_width="wrap_content"
                         android:singleLine="true"
                         android:text="@{artistBookongFourVM.artistBookongFourModel.txtPics}"
-                        style="@style/txtPoppinsmedium16_2" tools:text="@string/lbl_pics"/>
+                        style="@style/txtPoppinsmedium16_2"
+                        tools:text="@string/lbl_pics"/>
+                </LinearLayout>
                     <HorizontalScrollView android:fillViewport="true"
                         android:gravity="end"
                         android:id="@+id/horizontalScrollHorizontalscrollplus"

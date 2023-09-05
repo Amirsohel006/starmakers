@@ -8,7 +8,7 @@ import com.starmakers.app.modules.artistbookongfour.`data`.model.Listrectangle11
 import kotlin.collections.MutableList
 import org.koin.core.KoinComponent
 
-class ArtistBookongFourVM : ViewModel(), KoinComponent {
+class   ArtistBookongFourVM : ViewModel(), KoinComponent {
   val artistBookongFourModel: MutableLiveData<ArtistBookongFourModel> =
       MutableLiveData(ArtistBookongFourModel())
 

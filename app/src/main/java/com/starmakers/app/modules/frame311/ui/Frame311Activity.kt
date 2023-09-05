@@ -90,11 +90,7 @@ class Frame311Activity : BaseActivity<ActivityFrame311Binding>(R.layout.activity
         val customerResponse=response.body()
 
         if(customerResponse!=null){
-
-
-
-
-          binding.txtRahul.text=customerResponse.artist_name
+          binding.txtRahul.text=customerResponse.name
           binding.txtMobileNo.text=customerResponse.mobile_number
           binding.txtEmail.text=customerResponse.email
 

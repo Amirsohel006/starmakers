@@ -96,7 +96,6 @@ class SplashScreen1 : AppCompatActivity() {
         skipbutton.setOnClickListener {
             // Cancel the delayed intent if the skip button is clicked
             handler.removeCallbacksAndMessages(null)
-
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
