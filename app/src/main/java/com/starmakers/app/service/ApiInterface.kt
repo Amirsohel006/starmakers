@@ -1,7 +1,10 @@
 package com.starmakers.app.service
 
+import com.starmakers.app.responses.BookingResponse
 import com.starmakers.app.responses.LoginResponse
+import com.starmakers.app.responses.ProfileData
 import com.starmakers.app.responses.ProfileResponse
+import com.starmakers.app.responses.ProfileResponseList
 import com.starmakers.app.responses.SignUpResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -14,6 +17,8 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.PartMap
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiInterface {
     @FormUrlEncoded
@@ -54,4 +59,19 @@ interface ApiInterface {
     fun getProfile(
       @Header("Authorization") fetchAuthToken: String?
     ):Call<ProfileResponse>
+
+
+    @GET("api/artistlist-create/")
+    fun getArtistlist(
+        @Header("Authorization") fetchAuthToken: String?,
+        @Query("acting_field") actingField: String,
+        @Query("category") category: String
+    ):Call<ProfileResponseList>
+
+
+    @GET("api/artistlist-update/{id}/")
+    fun getArtistlistItem(
+        @Header("Authorization") fetchAuthToken: String?,
+        @Path("id") id: Int
+    ):Call<ProfileData>
 }

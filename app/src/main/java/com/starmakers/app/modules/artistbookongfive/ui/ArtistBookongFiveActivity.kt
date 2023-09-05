@@ -3,8 +3,13 @@ package com.starmakers.app.modules.artistbookongfive.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import com.google.gson.Gson
+import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivityArtistBookongFiveBinding
@@ -13,6 +18,15 @@ import com.starmakers.app.modules.artistbookongfive.`data`.model.SpinnerComponen
 import com.starmakers.app.modules.artistbookongfive.`data`.model.SpinnerGroup122Model
 import com.starmakers.app.modules.artistbookongfive.`data`.viewmodel.ArtistBookongFiveVM
 import com.starmakers.app.modules.artistbookongtwo.ui.ArtistBookongTwoActivity
+import com.starmakers.app.responses.Artist
+import com.starmakers.app.responses.ArtistListRequest
+import com.starmakers.app.responses.ProfileResponse
+import com.starmakers.app.responses.ProfileResponseList
+import com.starmakers.app.service.ApiManager
+import com.starmakers.app.service.CircleTransformation
+import com.starmakers.app.service.SessionManager
+import retrofit2.Call
+import retrofit2.Response
 import kotlin.String
 import kotlin.Unit
 
@@ -20,13 +34,17 @@ class ArtistBookongFiveActivity :
     BaseActivity<ActivityArtistBookongFiveBinding>(R.layout.activity_artist_bookong_five) {
   private val viewModel: ArtistBookongFiveVM by viewModels<ArtistBookongFiveVM>()
 
+
+  private lateinit var sessionManager: SessionManager
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
+    sessionManager=SessionManager(this)
+
+
     viewModel.spinnerComponentEightList.value = mutableListOf(
     SpinnerComponentEightModel("Choose Acting Field"),
-    SpinnerComponentEightModel("Movies"),
+    SpinnerComponentEightModel("movies"),
     SpinnerComponentEightModel("Serials"),
-
     )
     val spinnerComponentEightAdapter =
     SpinnerComponentEightAdapter(this,R.layout.spinner_item,viewModel.spinnerComponentEightList.value?:
@@ -67,14 +85,78 @@ class ArtistBookongFiveActivity :
     binding.artistBookongFiveVM = viewModel
 
 
+
+    binding.btnSearch.setOnClickListener {
+      val actingField = binding.spinnerComponentEight.selectedItem as SpinnerComponentEightModel
+      val category = binding.spinnerComponentOne.selectedItem as SpinnerComponentOneModel
+
+
+      if (actingField.itemName != "Choose Acting Field" && category.itemName != "Select Category"){
+
+        val serviceGenerator= ApiManager.apiInterface
+        val accessToken=sessionManager.fetchAuthToken()
+        val authorization="Token $accessToken"
+        val call=serviceGenerator.getArtistlist(authorization,actingField.itemName,category.itemName)
+
+        call.enqueue(object : retrofit2.Callback<ProfileResponseList>{
+          override fun onResponse(
+            call: Call<ProfileResponseList>,
+            response: Response<ProfileResponseList>
+          ) {
+
+            // Make the API request with the selected acting field and category
+
+            if (response.isSuccessful) {
+              val profileResponse = response.body()
+              if ((profileResponse != null) && (profileResponse.status == "success")) {
+
+                val artists = profileResponse.data
+                val gson = Gson()
+                val profileDataJson = gson.toJson(artists)
+
+                val intent = Intent(this@ArtistBookongFiveActivity, ArtistBookongTwoActivity::class.java)
+                intent.putExtra("artists",profileDataJson)
+                startActivity(intent)
+              } else {
+                // Handle API response error here
+                Toast.makeText(
+                  this@ArtistBookongFiveActivity,
+                  "API response error",
+                  Toast.LENGTH_SHORT
+                ).show()
+              }
+            } else {
+              // Handle API error here
+              Toast.makeText(
+                this@ArtistBookongFiveActivity,
+                "API error: ${response.code()}",
+                Toast.LENGTH_SHORT
+              ).show()
+            }
+          }
+
+
+          override fun onFailure(call: Call<ProfileResponseList>, t: Throwable) {
+            t.printStackTrace()
+            Log.e("error", t.message.toString())
+          }
+        })
+      } else {
+        // Show an error message to the user indicating invalid selections
+        Toast.makeText(this, "Please select both Acting Field and Category", Toast.LENGTH_SHORT).show()
+      }
+
+
+    }
+
     window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
   }
 
   override fun setUpClicks(): Unit {
-    binding.btnSearch.setOnClickListener {
-      val destIntent = ArtistBookongTwoActivity.getIntent(this, null)
-      startActivity(destIntent)
-    }
+//    binding.btnSearch.setOnClickListener {
+//      val destIntent = ArtistBookongTwoActivity.getIntent(this, null)
+//      startActivity(destIntent)
+//    }
     binding.imageArrowleft.setOnClickListener {
       finish()
     }

@@ -261,4 +261,5 @@ Booking</string>
     <string name="msg_please_enter_valid_email">Please enter valid email</string>
     <string name="msg_please_enter_valid_phone_nu">Please enter valid phone number</string>
     <string name="msg_please_enter_valid_nu">Please enter valid number</string>
+    <string name="_1">1</string>
 </resources>

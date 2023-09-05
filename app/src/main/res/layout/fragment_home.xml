@@ -19,7 +19,7 @@
                 android:id="@+id/linearRow"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_4pxv"
-                android:layout_marginEnd="@dimen/_24pxh"
+                android:layout_marginEnd="@dimen/_16pxh"
                 android:layout_marginStart="@dimen/_16pxh"
                 android:layout_marginTop="@dimen/_23pxv"
                 android:layout_width="match_parent"
@@ -40,8 +40,7 @@
                         android:id="@+id/txtRahul"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_28pxh"
-                        android:layout_weight="0.69"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:singleLine="true"
                         android:text="@{homeVM.homeModel.txtRahul}"
                         style="@style/txtPoppinssemibold24" tools:text="@string/lbl_rahul"/>
@@ -60,14 +59,17 @@
                         android:scaleType="fitXY"
                         android:src="@drawable/img_question"
                         tools:ignore="ContentDescription" tools:src="@drawable/img_question"/>
-                    <ImageView android:id="@+id/imageEllipseOne"
-                        android:layout_height="@dimen/_32pxh"
-                        android:layout_marginStart="@dimen/_40pxh"
-                        android:layout_width="@dimen/_32pxh"
-                        android:scaleType="centerCrop"
+
+                    <ImageView
+                        android:id="@+id/profilePicture"
                         circular="@{true}"
                         imageRes="@{@drawable/img_ellipse1}"
-                        tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse1"/>
+                        android:layout_width="@dimen/_32pxh"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_20pxh"
+                        android:scaleType="centerCrop"
+                        tools:ignore="ContentDescription"
+                        tools:src="@drawable/img_ellipse1" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>

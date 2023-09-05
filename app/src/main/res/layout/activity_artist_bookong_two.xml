@@ -89,7 +89,8 @@
                     android:nestedScrollingEnabled="false"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:spanCount="3" itemSpace="@{@dimen/_13pxh}"
-                    tools:itemCount="18" tools:listitem="@layout/row_gridrectangle110"/>
+                    tools:itemCount="18"
+                    tools:listitem="@layout/row_gridrectangle110"/>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

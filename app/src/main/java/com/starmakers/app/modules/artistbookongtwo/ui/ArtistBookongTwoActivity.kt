@@ -3,10 +3,14 @@ package com.starmakers.app.modules.artistbookongtwo.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivityArtistBookongTwoBinding
@@ -14,6 +18,7 @@ import com.starmakers.app.modules.artistbookongfour.ui.ArtistBookongFourActivity
 import com.starmakers.app.modules.artistbookongthree.ui.ArtistBookongThreeActivity
 import com.starmakers.app.modules.artistbookongtwo.`data`.model.Gridrectangle110RowModel
 import com.starmakers.app.modules.artistbookongtwo.`data`.viewmodel.ArtistBookongTwoVM
+import com.starmakers.app.responses.ProfileData
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
@@ -25,22 +30,40 @@ class ArtistBookongTwoActivity :
 
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
-    val gridrectangle110Adapter =
-    Gridrectangle110Adapter(viewModel.gridrectangle110List.value?:mutableListOf())
-    binding.recyclerGridrectangle110.adapter = gridrectangle110Adapter
-    gridrectangle110Adapter.setOnItemClickListener(
-    object : Gridrectangle110Adapter.OnItemClickListener {
-      override fun onItemClick(view:View, position:Int, item : Gridrectangle110RowModel) {
-        onClickRecyclerGridrectangle110(view, position, item)
-      }
-    }
-    )
-    viewModel.gridrectangle110List.observe(this) {
-      gridrectangle110Adapter.updateData(it)
-    }
+
     binding.artistBookongTwoVM = viewModel
     setUpSearchViewGroupThirtyEightListener()
 
+    val profileDataJson = intent.getStringExtra("artists")
+    val gson = Gson()
+    val profileDataListType = object : TypeToken<List<ProfileData>>() {}.type
+
+    val profileDataList = gson.fromJson<List<ProfileData>>(profileDataJson, profileDataListType)
+
+    if (profileDataList != null && profileDataList.isNotEmpty()) {
+      // Handle the list of ProfileData objects here
+      for (profileData in profileDataList) {
+        Log.d("ReceiverActivity", "Received ProfileData: ${profileData.artistName}")
+        Toast.makeText(this,"Profile Received Successfully",Toast.LENGTH_SHORT).show()
+      }
+    } else {
+      Toast.makeText(this, "Failed to receive ProfileData", Toast.LENGTH_SHORT).show()
+      Log.e("ReceiverActivity", "Failed to receive ProfileData")
+    }
+
+    val gridrectangle110Adapter = Gridrectangle110Adapter(profileDataList)
+    binding.recyclerGridrectangle110.adapter = gridrectangle110Adapter
+
+    gridrectangle110Adapter.setOnItemClickListener(object : Gridrectangle110Adapter.OnItemClickListener {
+      override fun onItemClick(view: View, position: Int, item: ProfileData) {
+        // Handle item click here
+        // You can start a new activity or perform any other action you need
+        // For example, start a new activity and pass the clicked item's ID
+        val intent = Intent(this@ArtistBookongTwoActivity, ArtistBookongFourActivity::class.java)
+        intent.putExtra("profileDataId", item.id)
+        startActivity(intent)
+      }
+    })
 
     window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
   }
