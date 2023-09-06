@@ -29,6 +29,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".modules.help.ui.HelpDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".modules.frametwentyfour.ui.FrameTwentyfourActivity"
             android:screenOrientation="portrait" />

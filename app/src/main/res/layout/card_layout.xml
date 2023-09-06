@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
+    <TextView android:ellipsize="end"
+        android:id="@+id/txtIntruductionTitlle"
+        android:layout_gravity="start"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_20pxh"
+        android:layout_marginStart="@dimen/_20pxh"
+        android:layout_marginTop="@dimen/_16pxv"
+        android:layout_width="wrap_content"
+        android:singleLine="true"
+        style="@style/txtPoppinsmedium16_111"
+        android:text="@string/lbl_introduction"
+        tools:text="@string/lbl_introduction"/>
+
+    <TextView android:gravity="start"
+        android:id="@+id/txtDescriptionofIntruduction"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_20pxh"
+        android:layout_marginStart="@dimen/_20pxh"
+        android:layout_marginTop="@dimen/_3pxv"
+        android:layout_width="match_parent"
+        style="@style/txtPoppinsregular14_5"
+        tools:text="@string/msg_lorem_ipsum_dol3"/>
+
+<!--    <TextView android:ellipsize="end"-->
+<!--        android:id="@+id/txtHistory"-->
+<!--        android:layout_gravity="start"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginEnd="@dimen/_20pxh"-->
+<!--        android:layout_marginStart="@dimen/_20pxh"-->
+<!--        android:layout_marginTop="@dimen/_6pxv"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:singleLine="true"-->
+<!--        android:text="@string/lbl_history"-->
+<!--        style="@style/txtPoppinsmedium16_111"-->
+<!--        tools:text="@string/lbl_history"/>-->
+
+<!--    <TextView android:gravity="start"-->
+<!--        android:id="@+id/txthistoryDescription"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginEnd="@dimen/_20pxh"-->
+<!--        android:layout_marginStart="@dimen/_20pxh"-->
+<!--        android:layout_marginTop="@dimen/_1pxv"-->
+<!--        android:layout_width="match_parent"-->
+<!--        style="@style/txtPoppinsregular14_5"-->
+<!--        tools:text="@string/msg_lorem_ipsum_dol3"/>-->
+
+</LinearLayout>

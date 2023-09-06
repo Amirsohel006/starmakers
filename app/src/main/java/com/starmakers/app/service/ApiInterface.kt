@@ -1,7 +1,13 @@
 package com.starmakers.app.service
 
+import android.provider.ContactsContract.Contacts
+import com.starmakers.app.responses.AboutUsModel
 import com.starmakers.app.responses.BookingResponse
+import com.starmakers.app.responses.BookingResponseList
+import com.starmakers.app.responses.ContactUs
+import com.starmakers.app.responses.FAQItem
 import com.starmakers.app.responses.LoginResponse
+import com.starmakers.app.responses.PrivacyPolicyModel
 import com.starmakers.app.responses.ProfileData
 import com.starmakers.app.responses.ProfileResponse
 import com.starmakers.app.responses.ProfileResponseList
@@ -73,5 +79,34 @@ interface ApiInterface {
     fun getArtistlistItem(
         @Header("Authorization") fetchAuthToken: String?,
         @Path("id") id: Int
-    ):Call<ProfileData>
+    ):Call<BookingResponseList>
+
+
+   @GET("api/faq/")
+   fun getFAQList( @Header("Authorization") fetchAuthToken: String?): Call<MutableList<FAQItem>>
+
+
+    @GET("api/faq-answer/{id}/")
+    fun getFAQItem(
+        @Header("Authorization") fetchAuthToken: String?,
+        @Path("id") id: Int): Call<FAQItem>
+
+
+
+    @GET("api/contact-help/")
+    fun getContact(
+        @Header("Authorization") fetchAuthToken: String?
+    ):Call<MutableList<ContactUs>>
+
+
+    @GET("api/privacy-policy/")
+    fun getPrivacyPolicy(
+        @Header("Authorization") fetchAuthToken: String?
+    ):Call<ArrayList<PrivacyPolicyModel>>
+
+
+    @GET("api/aboutus/")
+    fun getAbout(
+        @Header("Authorization") fetchAuthToken: String?
+    ):Call<MutableList<AboutUsModel>>
 }
