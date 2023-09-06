@@ -253,7 +253,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_10pxh"
                         android:layout_marginTop="@dimen/_3pxv"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:singleLine="true"
                         android:text="@{artistBookongFourVM.artistBookongFourModel.txtTotalnumberof}"
                         style="@style/txtPoppinsmedium16"
@@ -268,8 +268,6 @@
                         android:layout_width="match_parent"
                         android:singleLine="true"
                         android:text="@string/_1"
-                        android:layout_gravity="start"
-                        android:gravity="center"
                         style="@style/txtPoppinsmedium16"
                         tools:text="1"/>
 
@@ -529,7 +527,13 @@
                         android:layout_width="wrap_content"
                         android:singleLine="true"
                         android:text="@{artistBookongFourVM.artistBookongFourModel.txtLanguage}"
-                        style="@style/txtPoppinsmedium16" tools:text="@string/lbl_movies"/>
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="@string/lbl_movies"/>
+
+                    <HorizontalScrollView
+                        android:id="@+id/movieshori"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
                     <LinearLayout
                         android:id="@+id/linearRowrectangle125"
                         android:layout_height="wrap_content"
@@ -544,21 +548,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:nestedScrollingEnabled="false"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             tools:itemCount="2"
                             tools:listitem="@layout/row_listrectangle114" />
 
-                        <ImageView android:id="@+id/imageRectangle125"
-                            android:layout_height="@dimen/_115pxh"
-                            android:layout_marginBottom="@dimen/_132pxv"
-                            android:layout_marginStart="@dimen/_197pxh"
-                            android:layout_width="@dimen/_97pxh"
-                            android:scaleType="fitXY"
-                            cornerRadius="@{@dimen/_5pxh}"
-                            imageRes="@{@drawable/img_rectangle125_115x97}"
-                            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle125_115x97"/>
                     </LinearLayout>
+                    </HorizontalScrollView>
                 </LinearLayout>
 
             </FrameLayout>

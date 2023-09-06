@@ -22,7 +22,7 @@
                     android:layout_height="@dimen/_24pxh"
                     android:layout_marginBottom="@dimen/_10pxv"
                     android:layout_marginStart="@dimen/_23pxh"
-                    android:layout_marginTop="@dimen/_54pxv"
+                    android:layout_marginTop="@dimen/_27pxv"
                     android:layout_width="@dimen/_24pxh"
                     android:scaleType="fitXY"
                     android:src="@drawable/img_arrowleft"
@@ -33,52 +33,23 @@
                     android:layout_marginBottom="@dimen/_4pxv"
                     android:layout_marginEnd="@dimen/_179pxh"
                     android:layout_marginStart="@dimen/_24pxh"
-                    android:layout_marginTop="@dimen/_46pxv"
+                    android:layout_marginTop="@dimen/_23pxv"
                     android:layout_weight="0.82"
                     android:layout_width="0dp" android:singleLine="true"
                     android:text="@{helpTwoVM.helpTwoModel.txtAboutUs}"
                     style="@style/txtPoppinssemibold24" tools:text="@string/lbl_about_us"/>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
-        <TextView android:ellipsize="end"
-            android:id="@+id/txtIntroduction"
-            android:layout_gravity="start"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_20pxh"
-            android:layout_marginStart="@dimen/_20pxh"
-            android:layout_marginTop="@dimen/_36pxv"
-            android:layout_width="wrap_content"
-            android:singleLine="true"
-            android:text="@{helpTwoVM.helpTwoModel.txtIntroduction}"
-            style="@style/txtPoppinssemibold16" tools:text="@string/lbl_introduction"/>
-        <TextView android:gravity="center_horizontal"
-            android:id="@+id/txtDescription"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_20pxh"
-            android:layout_marginStart="@dimen/_20pxh"
-            android:layout_marginTop="@dimen/_3pxv"
+        <ScrollView
             android:layout_width="match_parent"
-            android:text="@{helpTwoVM.helpTwoModel.txtDescription}"
-            style="@style/txtPoppinsregular14_4" tools:text="@string/msg_lorem_ipsum_dol"/>
-        <TextView android:ellipsize="end" android:id="@+id/txtHistory"
-            android:layout_gravity="start"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_20pxh"
-            android:layout_marginStart="@dimen/_20pxh"
-            android:layout_marginTop="@dimen/_7pxv"
-            android:layout_width="wrap_content"
-            android:singleLine="true"
-            android:text="@{helpTwoVM.helpTwoModel.txtHistory}"
-            style="@style/txtPoppinssemibold16" tools:text="@string/lbl_history"/>
-        <TextView android:gravity="center_horizontal"
-            android:id="@+id/txtDescriptionOne"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_20pxv"
-            android:layout_marginEnd="@dimen/_20pxh"
-            android:layout_marginStart="@dimen/_20pxh"
-            android:layout_marginTop="@dimen/_1pxv"
-            android:layout_width="match_parent"
-            android:text="@{helpTwoVM.helpTwoModel.txtDescriptionOne}"
-            style="@style/txtPoppinsregular14_4" tools:text="@string/msg_lorem_ipsum_dol"/>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/myRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </ScrollView>
     </LinearLayout>
 </layout>

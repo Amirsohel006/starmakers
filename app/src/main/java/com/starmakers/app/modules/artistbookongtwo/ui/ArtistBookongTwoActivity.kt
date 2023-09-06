@@ -56,9 +56,6 @@ class ArtistBookongTwoActivity :
 
     gridrectangle110Adapter.setOnItemClickListener(object : Gridrectangle110Adapter.OnItemClickListener {
       override fun onItemClick(view: View, position: Int, item: ProfileData) {
-        // Handle item click here
-        // You can start a new activity or perform any other action you need
-        // For example, start a new activity and pass the clicked item's ID
         val intent = Intent(this@ArtistBookongTwoActivity, ArtistBookongFourActivity::class.java)
         intent.putExtra("profileDataId", item.id)
         startActivity(intent)

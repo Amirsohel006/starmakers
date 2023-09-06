@@ -164,6 +164,21 @@
         <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textFontWeight" tools:targetApi="p">500</item>
     </style>
+
+    <style name="txtPoppinsmedium16_111">
+        <item name="android:textSize">@dimen/_16pxh</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+
+
+    <style name="txtPoppinsmedium16_11">
+        <item name="android:textSize">@dimen/_16pxh</item>
+        <item name="android:textColor">@color/black_900</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
     <style name="txtPoppinsregular14_1">
         <item name="android:textSize">@dimen/_14pxh</item>
         <item name="android:textColor">@color/black_900</item>

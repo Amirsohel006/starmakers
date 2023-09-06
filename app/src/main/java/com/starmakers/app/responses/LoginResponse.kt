@@ -53,10 +53,11 @@ data class Artist(
 data class ProfileResponseList(
     val status: String,
     @SerializedName("data")
-    val data: List<ProfileData>?
+    val data: List<ProfileData>
 )
 
 data class ProfileData(
+    @SerializedName("id")
     val id: Int,
     @SerializedName("movie_pictures") val moviePictures: List<MoviePicture>,
     @SerializedName("artist_pictures") val artistPictures: List<ArtistPicture>,
@@ -80,4 +81,29 @@ data class MoviePicture(val picture: String)
 data class ArtistPicture(@SerializedName("artist_picture") val artistPicture: String)
 
 
+data class FAQItem( val id: Int,
+                    val question: String,
+                    val answer: String)
 
+
+data class ContactUs(
+    @SerializedName("id")
+    val id:Int,
+    @SerializedName("email")
+    val email:String,
+    @SerializedName("helpline_number")
+    val helpline_number:String
+)
+
+
+data class PrivacyPolicyModel(  val content: String,
+                                val created_at: String,
+                                val id: Int)
+
+
+
+data class AboutUsModel( val id:Int? = null,
+                         val aboutus_content:String,
+                         val aboutus_title:String? = null,
+                        // val history:String?=null,
+                         val created_at:String?=null)

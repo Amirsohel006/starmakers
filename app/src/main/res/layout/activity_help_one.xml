@@ -49,141 +49,16 @@
             android:singleLine="true"
             android:text="@{helpOneVM.helpOneModel.txtLanguage}"
             style="@style/txtPoppinssemibold20" tools:text="@string/msg_privacy_polici"/>
-        <LinearLayout android:gravity="start"
-            android:id="@+id/linearRowone"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_20pxh"
-            android:layout_marginStart="@dimen/_20pxh"
-            android:layout_marginTop="@dimen/_17pxv"
-            android:layout_width="match_parent" android:orientation="horizontal">
-            <TextView android:ellipsize="end" android:id="@+id/txtOne"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_42pxv"
-                android:layout_marginTop="@dimen/_1pxv"
-                android:layout_weight="0.03" android:layout_width="0dp"
-                android:singleLine="true"
-                android:text="@{helpOneVM.helpOneModel.txtOne}"
-                style="@style/txtPoppinsregular14_4" tools:text="@string/lbl_1"/>
-            <TextView android:id="@+id/txtDescription"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8pxh"
-                android:layout_weight="0.97" android:layout_width="0dp"
-                android:letterSpacing="0.0"
-                android:text="@{helpOneVM.helpOneModel.txtDescription}"
-                style="@style/txtPoppinsregular14_6" tools:text="@string/msg_norem_ipsum_dol"/>
-        </LinearLayout>
-        <LinearLayout android:gravity="start"
-            android:id="@+id/linearRowtwo"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_21pxh"
-            android:layout_marginStart="@dimen/_21pxh"
-            android:layout_marginTop="@dimen/_17pxv"
-            android:layout_width="match_parent" android:orientation="horizontal">
-            <TextView android:ellipsize="end" android:id="@+id/txtTwo"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_21pxv"
-                android:layout_marginTop="@dimen/_1pxv"
-                android:layout_weight="0.04" android:layout_width="0dp"
-                android:singleLine="true"
-                android:text="@{helpOneVM.helpOneModel.txtTwo}"
-                style="@style/txtPoppinsregular14_4" tools:text="@string/lbl_2"/>
-            <TextView android:id="@+id/txtLanguageOne"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5pxh"
-                android:layout_weight="0.96" android:layout_width="0dp"
-                android:text="@{helpOneVM.helpOneModel.txtLanguageOne}"
-                style="@style/txtPoppinsregular14_4" tools:text="@string/msg_lorem_ipsum_dol3"/>
-        </LinearLayout>
-        <LinearLayout android:gravity="start"
-            android:id="@+id/linearRowthree"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_21pxh"
-            android:layout_marginStart="@dimen/_21pxh"
-            android:layout_marginTop="@dimen/_17pxv"
-            android:layout_width="match_parent" android:orientation="horizontal">
-            <TextView android:ellipsize="end" android:id="@+id/txtThree"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_21pxv"
-                android:layout_marginTop="@dimen/_1pxv"
-                android:layout_weight="0.04" android:layout_width="0dp"
-                android:singleLine="true"
-                android:text="@{helpOneVM.helpOneModel.txtThree}"
-                style="@style/txtPoppinsregular14_4" tools:text="@string/lbl_3"/>
-            <TextView android:id="@+id/txtLanguageTwo"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5pxh"
-                android:layout_weight="0.96" android:layout_width="0dp"
-                android:text="@{helpOneVM.helpOneModel.txtLanguageTwo}"
-                style="@style/txtPoppinsregular14_4" tools:text="@string/msg_lorem_ipsum_dol3"/>
-        </LinearLayout>
-        <LinearLayout android:gravity="start"
-            android:id="@+id/linearRowfour"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_21pxh"
-            android:layout_marginStart="@dimen/_21pxh"
-            android:layout_marginTop="@dimen/_17pxv"
-            android:layout_width="match_parent" android:orientation="horizontal">
-            <TextView android:ellipsize="end" android:id="@+id/txtFour"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_21pxv"
-                android:layout_marginTop="@dimen/_1pxv"
-                android:layout_weight="0.05" android:layout_width="0dp"
-                android:singleLine="true"
-                android:text="@{helpOneVM.helpOneModel.txtFour}"
-                style="@style/txtPoppinsregular14_4" tools:text="@string/lbl_4"/>
-            <TextView android:id="@+id/txtLanguageThree"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_4pxh"
-                android:layout_weight="0.95" android:layout_width="0dp"
-                android:text="@{helpOneVM.helpOneModel.txtLanguageThree}"
-                style="@style/txtPoppinsregular14_4" tools:text="@string/msg_lorem_ipsum_dol3"/>
-        </LinearLayout>
-        <LinearLayout android:gravity="start"
-            android:id="@+id/linearRowoneOne"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_21pxh"
-            android:layout_marginStart="@dimen/_21pxh"
-            android:layout_marginTop="@dimen/_17pxv"
-            android:layout_width="match_parent" android:orientation="horizontal">
-            <TextView android:ellipsize="end"
-                android:id="@+id/txtOneOne"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_21pxv"
-                android:layout_marginTop="@dimen/_1pxv"
-                android:layout_weight="0.03" android:layout_width="0dp"
-                android:singleLine="true"
-                android:text="@{helpOneVM.helpOneModel.txtOneOne}"
-                style="@style/txtPoppinsregular14_4" tools:text="@string/lbl_1"/>
-            <TextView android:id="@+id/txtLanguageFour"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8pxh"
-                android:layout_weight="0.97" android:layout_width="0dp"
-                android:text="@{helpOneVM.helpOneModel.txtLanguageFour}"
-                style="@style/txtPoppinsregular14_4" tools:text="@string/msg_lorem_ipsum_dol3"/>
-        </LinearLayout>
-        <LinearLayout android:gravity="start"
-            android:id="@+id/linearRowoneTwo"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_258pxv"
-            android:layout_marginEnd="@dimen/_21pxh"
-            android:layout_marginStart="@dimen/_21pxh"
-            android:layout_marginTop="@dimen/_17pxv"
-            android:layout_width="match_parent" android:orientation="horizontal">
-            <TextView android:ellipsize="end"
-                android:id="@+id/txtOneTwo"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_21pxv"
-                android:layout_marginTop="@dimen/_1pxv"
-                android:layout_weight="0.03" android:layout_width="0dp"
-                android:singleLine="true"
-                android:text="@{helpOneVM.helpOneModel.txtOneTwo}"
-                style="@style/txtPoppinsregular14_4" tools:text="@string/lbl_1"/>
-            <TextView android:id="@+id/txtLanguageFive"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8pxh"
-                android:layout_weight="0.97" android:layout_width="0dp"
-                android:text="@{helpOneVM.helpOneModel.txtLanguageFive}"
-                style="@style/txtPoppinsregular14_4" tools:text="@string/msg_lorem_ipsum_dol3"/>
-        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewPrivacy"
+            android:layout_width="match_parent"
+            android:paddingTop="6dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/txtLanguage"
+            />
     </LinearLayout>
 </layout>

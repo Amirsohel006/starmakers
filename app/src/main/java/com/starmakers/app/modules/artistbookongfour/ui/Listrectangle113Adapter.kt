@@ -1,17 +1,21 @@
 package com.starmakers.app.modules.artistbookongfour.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import com.starmakers.app.R
-import com.starmakers.app.databinding.RowListrectangle114Binding
-import com.starmakers.app.modules.artistbookongfour.`data`.model.Listrectangle114RowModel
+import com.starmakers.app.databinding.RowListrectangle113Binding
+import com.starmakers.app.responses.BookingResponse
+import com.starmakers.app.responses.BookingResponseList
 import kotlin.Int
 import kotlin.collections.List
 
 class Listrectangle113Adapter(
-  var list: List<Listrectangle114RowModel>
+  private var profileDataList: List<BookingResponseList>
 ) : RecyclerView.Adapter<Listrectangle113Adapter.RowListrectangle114VH>() {
   private var clickListener: OnItemClickListener? = null
 
@@ -21,18 +25,22 @@ class Listrectangle113Adapter(
   }
 
   override fun onBindViewHolder(holder: RowListrectangle114VH, position: Int) {
-    val listrectangle114RowModel = Listrectangle114RowModel()
-    // TODO uncomment following line after integration with data source
-    // val listrectangle114RowModel = list[position]
-    holder.binding.listrectangle114RowModel = listrectangle114RowModel
+    val profileData = profileDataList[position]
+
+    Picasso.get()
+      .load(profileData.data.moviePictures[0].picture)
+      .into(holder.profilePictureImageView)
+
+
+    holder.itemView.setOnClickListener {
+      clickListener?.onItemClick(it, position, profileData)
+    }
   }
 
-  override fun getItemCount(): Int = 2
-  // TODO uncomment following line after integration with data source
-  // return list.size
-
-  public fun updateData(newData: List<Listrectangle114RowModel>) {
-    list = newData
+  override fun getItemCount(): Int= profileDataList.size
+  @SuppressLint("NotifyDataSetChanged")
+  fun updateData(newData: List<BookingResponseList>) {
+    profileDataList = newData
     notifyDataSetChanged()
   }
 
@@ -44,7 +52,7 @@ class Listrectangle113Adapter(
     fun onItemClick(
       view: View,
       position: Int,
-      item: Listrectangle114RowModel
+      item: BookingResponseList
     ) {
     }
   }
@@ -52,6 +60,8 @@ class Listrectangle113Adapter(
   inner class RowListrectangle114VH(
     view: View
   ) : RecyclerView.ViewHolder(view) {
-    val binding: RowListrectangle114Binding = RowListrectangle114Binding.bind(itemView)
+   val profilePictureImageView: ImageView = itemView.findViewById(R.id.imagemovie)
+
+   //   val binding: RowListrectangle113Binding = RowListrectangle113Binding.bind(itemView)
   }
 }

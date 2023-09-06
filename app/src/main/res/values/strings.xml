@@ -169,7 +169,7 @@ Bengaluru.5678943 </string>
     <string name="lbl_pincode">Pincode</string>
     <string name="lbl_activity">Activity</string>
     <string name="lbl_recent_searches">Recent Searches</string>
-    <string name="msg_mail_id_qecur">Mail ID - qecuries@gmail.com</string>
+    <string name="msg_mail_id_qecur">Mail ID - </string>
     <string name="msg_donate_money_to">Donate money to upcoming movies</string>
     <string name="lbl_upi">UPI</string>
     <string name="lbl_time">Time :</string>
@@ -183,7 +183,7 @@ Bengaluru.5678943 </string>
     <string name="lbl_height2">Height :</string>
     <string name="lbl_role">Role :</string>
     <string name="msg_available_amoun">Available Amount</string>
-    <string name="msg_helpline_number">Helpline Number - 091 - 88484789</string>
+    <string name="msg_helpline_number">Helpline Number -</string>
     <string name="lbl_donate">Donate</string>
     <string name="msg_direct_studio_b">Direct Studio Bookings</string>
     <string name="lbl_genre">Genre :</string>
