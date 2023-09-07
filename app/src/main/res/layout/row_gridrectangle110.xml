@@ -18,15 +18,15 @@
             tools:src="@drawable/img_rectangle110_127x101"/>
         <TextView
             android:ellipsize="end"
-            android:gravity="center"
+            android:gravity="start"
             android:id="@+id/txtGroupTwenty"
             android:layout_gravity="bottom|start"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10pxv"
             android:layout_width="match_parent"
             android:paddingBottom="@dimen/_6pxv"
-            android:paddingEnd="@dimen/_19pxh"
-            android:paddingStart="@dimen/_18pxh"
+            android:paddingEnd="@dimen/_1pxh"
+            android:paddingStart="@dimen/_1pxh"
             android:paddingTop="@dimen/_6pxv"
             android:singleLine="true"
             android:text="@string/lbl_chikkanna"

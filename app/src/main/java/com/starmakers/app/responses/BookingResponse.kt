@@ -8,27 +8,33 @@ data class BookingResponseList(
     val data: BookingResponse
 )
 
-data class BookingResponse(
-    @SerializedName("id")
-    val id: Int,
-    @SerializedName("movie_pictures") val moviePictures: List<BookingMoviePicture>,
-    @SerializedName("artist_pictures") val artistPictures: List<BookingArtistPicture>,
-    @SerializedName("select_category") val selectCategory: String,
-    @SerializedName("artist_name") val artistName: String,
-    @SerializedName("mobile_number") val mobileNumber: String,
-    val location: String,
-    val age: Int,
-    val height: String,
-    val weight: String,
-    @SerializedName("choose_acting_field") val chooseActingField: String,
-    @SerializedName("total_no_of_movies") val totalNoOfMovies: Int,
-    @SerializedName("total_experience") val totalExperience: String,
-    @SerializedName("created_at") val createdAt: String,
-    @SerializedName("updated_at") val updatedAt: String,
-    val user: Int
+data class BookingResponse (
+    @SerializedName("id"                  ) var id                : Int?                      = null,
+    @SerializedName("movie_pictures"      ) var moviePictures     : ArrayList<BookingMoviePicture>  = arrayListOf(),
+    @SerializedName("artist_pictures"     ) var artistPictures    : ArrayList<BookingArtistPicture> = arrayListOf(),
+    @SerializedName("select_category"     ) var selectCategory    : String?                   = null,
+    @SerializedName("artist_name"         ) var artistName        : String?                   = null,
+    @SerializedName("mobile_number"       ) var mobileNumber      : String?                   = null,
+    @SerializedName("location"            ) var location          : String?                   = null,
+    @SerializedName("age"                 ) var age               : Int?                      = null,
+    @SerializedName("height"              ) var height            : String?                   = null,
+    @SerializedName("weight"              ) var weight            : String?                   = null,
+    @SerializedName("choose_acting_field" ) var chooseActingField : String?                   = null,
+    @SerializedName("total_no_of_movies"  ) var totalNoOfMovies   : Int?                      = null,
+    @SerializedName("total_experience"    ) var totalExperience   : String?                   = null,
+    @SerializedName("is_booked"           ) var isBooked          : Boolean?                  = null,
+    @SerializedName("created_at"          ) var createdAt         : String?                   = null,
+    @SerializedName("updated_at"          ) var updatedAt         : String?                   = null,
+    @SerializedName("user"                ) var user              : Int?                      = null
 )
 
-data class BookingMoviePicture(val picture: String)
 
-data class BookingArtistPicture(@SerializedName("artist_picture") val artistPicture: String)
+data class BookingArtistPicture (
+    @SerializedName("artist_picture" ) var artistPicture : String? = null
+)
+
+data class BookingMoviePicture (
+    @SerializedName("picture" ) var picture : String? = null
+)
+
 

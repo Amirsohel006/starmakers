@@ -1,5 +1,6 @@
 package com.starmakers.app.modules.artistbookongfour.ui
 
+import BookingArtistPictureAdapter
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -27,10 +28,11 @@ import kotlin.String
 import kotlin.Unit
 
 class ArtistBookongFourActivity :
-    BaseActivity<ActivityArtistBookongFourBinding>(R.layout.activity_artist_bookong_four) {
+  BaseActivity<ActivityArtistBookongFourBinding>(R.layout.activity_artist_bookong_four) {
   private val viewModel: ArtistBookongFourVM by viewModels<ArtistBookongFourVM>()
 
-  //private var bookingResponseList: List<BookingResponseList> = mutableListOf()
+  private var bookingResponseList: List<BookingResponseList> = mutableListOf()
+  private lateinit var adapter: BookingArtistPictureAdapter
   private lateinit var sessionManager: SessionManager
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
@@ -38,18 +40,11 @@ class ArtistBookongFourActivity :
 
     val profileDataId = intent.getIntExtra("profileDataId", -1) // Use a default value if needed
 
+//    adapter = BookingArtistPictureAdapter(this, bookingResponseList)
+//    binding.recyclerListrectanglePics.layoutManager = LinearLayoutManager(this)
+//    binding.recyclerListrectanglePics.adapter = adapter
+
     fetchData(profileDataId)
-
-    // Inside your ArtistBookongFourActivity's onInitialized() method
-
-// Assuming you have a list of BookingResponse objects named bookingResponseList
-//    val adapter = Listrectangle113Adapter(bookingResponseList)
-//    binding.recyclerListrectangle113.adapter = adapter
-
-
-   // binding.recyclerListrectangle113.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-
-
     binding.artistBookongFourVM = viewModel
     window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
 
@@ -60,6 +55,9 @@ class ArtistBookongFourActivity :
       finish()
     }
   }
+
+
+
 
   fun onClickRecyclerListrectangle113(
     view: View,
@@ -95,8 +93,8 @@ class ArtistBookongFourActivity :
             if (profileData != null) {
               binding.txtName1.text = profileData.data.artistName
               binding.txtAge1.text=profileData.data.age.toString()
-              binding.txtHeight1.text=profileData.data.weight
-              binding.txtWeight1.text=profileData.data.height
+              binding.txtHeight1.text=profileData.data.height
+              binding.txtWeight1.text=profileData.data.weight
               binding.txtNatureofArtis1.text=profileData.data.chooseActingField
               binding.txtExperience1.text=profileData.data.totalExperience
               binding.txtTotalnumberof1.text=profileData.data.totalNoOfMovies.toString()
@@ -107,14 +105,28 @@ class ArtistBookongFourActivity :
                 .load(profileData.data.artistPictures[0].artistPicture)
                 .into(imageview)
 
-              recyclerView.apply {
+              val isBooked = profileData.data.isBooked
 
-                 layoutManager = LinearLayoutManager(this@ArtistBookongFourActivity, LinearLayoutManager.HORIZONTAL, false)
-                val tarologersListAdapter =
-                  Listrectangle113Adapter(listOf(response.body()!!))
-                recyclerView.adapter=tarologersListAdapter
+              val bookButton = binding.btnBooked
+
+              if (isBooked==true) {
+                bookButton.text = "Booked"
+              } else {
+                bookButton.text = "Available to book"
+              }
+              binding.recyclerListrectangle113.apply {
+                layoutManager = LinearLayoutManager(this@ArtistBookongFourActivity, LinearLayoutManager.HORIZONTAL, false)
+                val listOfArtistAdapter =Listrectangle113Adapter(response.body()!!.data.moviePictures)
+                binding.recyclerListrectangle113.adapter=listOfArtistAdapter
+
               }
 
+
+              binding.recyclerListrectanglePics.apply {
+                layoutManager = LinearLayoutManager(this@ArtistBookongFourActivity, LinearLayoutManager.HORIZONTAL, false)
+                val listofmovies=BookingArtistPictureAdapter(this@ArtistBookongFourActivity,response.body()!!.data.artistPictures)
+                binding.recyclerListrectanglePics.adapter=listofmovies
+              }
             }
           } else {
 
@@ -136,72 +148,7 @@ class ArtistBookongFourActivity :
     })
 
 
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    val serviceGenerator= ApiManager.apiInterface
-//    val accessToken=sessionManager.fetchAuthToken()
-//    val authorization="Token $accessToken"
-//    val call=serviceGenerator.getArtistlistItem(authorization,profileDataId)
-//
-//    call.enqueue(object : retrofit2.Callback<ProfileData>{
-//      override fun onResponse(
-//        call: Call<ProfileData>,
-//        response: Response<ProfileData>
-//      ) {
-//        val json = response.body().toString() // Convert response body to JSON string
-//        Log.d("Response JSON", json)
-//        val profileData:ProfileData = response.body()!!
-//
-//
-//        if (profileData != null) {
-//          binding.txtName1.text = profileData.artistName
-//        }
-//
-////          binding.txtAge1.text = customerResponse.age.toString()
-////          binding.txtHeight1.text = customerResponse.height
-////          binding.txtWeight1.text = customerResponse.weight
-////          binding.txtNatureofArtis1.text = customerResponse.chooseActingField
-////          binding.txtExperience1.text = customerResponse.totalExperience
-////          binding.txtTotalnumberof1.text = customerResponse.totalNoOfMovies.toString()
-////          binding.txtContactNumber.text = customerResponse.mobileNumber
-//
-//          // Load profile picture using Picasso (similar to your existing code)
-////          Picasso.get().load(customerResponse.artistPictures[0].artistPicture)
-////            .transform(CircleTransformation())
-////            .placeholder(R.drawable.img_ellipse32)
-////            .into(binding.imageRectangle112)
-//
-//      }
-//
-//      override fun onFailure(call: Call<ProfileData>, t: Throwable) {
-//        t.printStackTrace()
-//        Log.e("error", t.message.toString())
-//      }
-//    })
+    }
 
 
   companion object {
