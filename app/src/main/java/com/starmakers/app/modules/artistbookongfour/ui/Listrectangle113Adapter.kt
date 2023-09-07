@@ -8,14 +8,11 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.starmakers.app.R
-import com.starmakers.app.databinding.RowListrectangle113Binding
-import com.starmakers.app.responses.BookingResponse
-import com.starmakers.app.responses.BookingResponseList
+import com.starmakers.app.responses.BookingMoviePicture
 import kotlin.Int
-import kotlin.collections.List
 
 class Listrectangle113Adapter(
-  private var profileDataList: List<BookingResponseList>
+  private var profileDataList: ArrayList<BookingMoviePicture>
 ) : RecyclerView.Adapter<Listrectangle113Adapter.RowListrectangle114VH>() {
   private var clickListener: OnItemClickListener? = null
 
@@ -24,22 +21,17 @@ class Listrectangle113Adapter(
     return RowListrectangle114VH(view)
   }
 
+  override fun getItemCount(): Int{
+     return  profileDataList.size
+  }
+  @SuppressLint("SuspiciousIndentation")
   override fun onBindViewHolder(holder: RowListrectangle114VH, position: Int) {
-    val profileData = profileDataList[position]
-
-    Picasso.get()
-      .load(profileData.data.moviePictures[0].picture)
-      .into(holder.profilePictureImageView)
-
-
-    holder.itemView.setOnClickListener {
-      clickListener?.onItemClick(it, position, profileData)
-    }
+    return  holder.bindView(profileDataList[position])
   }
 
-  override fun getItemCount(): Int= profileDataList.size
+
   @SuppressLint("NotifyDataSetChanged")
-  fun updateData(newData: List<BookingResponseList>) {
+  fun updateData(newData: ArrayList<BookingMoviePicture>) {
     profileDataList = newData
     notifyDataSetChanged()
   }
@@ -52,7 +44,7 @@ class Listrectangle113Adapter(
     fun onItemClick(
       view: View,
       position: Int,
-      item: BookingResponseList
+      item: BookingMoviePicture
     ) {
     }
   }
@@ -60,8 +52,14 @@ class Listrectangle113Adapter(
   inner class RowListrectangle114VH(
     view: View
   ) : RecyclerView.ViewHolder(view) {
-   val profilePictureImageView: ImageView = itemView.findViewById(R.id.imagemovie)
+    val profilePictureImageView: ImageView = itemView.findViewById(R.id.imagemovie)
 
-   //   val binding: RowListrectangle113Binding = RowListrectangle113Binding.bind(itemView)
+    fun bindView(postModel: BookingMoviePicture) {
+
+      Picasso.get()
+        .load(postModel.picture)
+        .into(profilePictureImageView)
+
+    }
   }
 }
