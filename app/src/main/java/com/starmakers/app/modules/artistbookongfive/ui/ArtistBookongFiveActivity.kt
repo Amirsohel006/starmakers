@@ -18,9 +18,6 @@ import com.starmakers.app.modules.artistbookongfive.`data`.model.SpinnerComponen
 import com.starmakers.app.modules.artistbookongfive.`data`.model.SpinnerGroup122Model
 import com.starmakers.app.modules.artistbookongfive.`data`.viewmodel.ArtistBookongFiveVM
 import com.starmakers.app.modules.artistbookongtwo.ui.ArtistBookongTwoActivity
-import com.starmakers.app.responses.Artist
-import com.starmakers.app.responses.ArtistListRequest
-import com.starmakers.app.responses.ProfileResponse
 import com.starmakers.app.responses.ProfileResponseList
 import com.starmakers.app.service.ApiManager
 import com.starmakers.app.service.CircleTransformation
