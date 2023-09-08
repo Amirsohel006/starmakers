@@ -1,16 +1,18 @@
 package com.starmakers.app.service
 
-import android.provider.ContactsContract.Contacts
 import com.starmakers.app.responses.AboutUsModel
-import com.starmakers.app.responses.BookingResponse
+import com.starmakers.app.responses.Audition
+import com.starmakers.app.responses.AuditionPosition
 import com.starmakers.app.responses.BookingResponseList
 import com.starmakers.app.responses.ContactUs
 import com.starmakers.app.responses.FAQItem
 import com.starmakers.app.responses.LoginResponse
+import com.starmakers.app.responses.PostReponses
 import com.starmakers.app.responses.PrivacyPolicyModel
-import com.starmakers.app.responses.ProfileData
 import com.starmakers.app.responses.ProfileResponse
 import com.starmakers.app.responses.ProfileResponseList
+import com.starmakers.app.responses.RequestAudition
+import com.starmakers.app.responses.RequestUserData
 import com.starmakers.app.responses.SignUpResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -109,4 +111,40 @@ interface ApiInterface {
     fun getAbout(
         @Header("Authorization") fetchAuthToken: String?
     ):Call<MutableList<AboutUsModel>>
+
+
+    @GET("api/audition-create/")
+    fun getAudition(
+        @Header("Authorization")fetchAuthToken: String?
+    ):Call<Audition>
+
+
+    @GET("api/request-audition/")
+    fun requestAudition(
+        @Header("Authorization")fetchAuthToken: String?
+    ):Call<RequestAudition>
+
+
+    @GET("api/get-audition-list/{id}")
+    fun requestPosition(
+        @Header("Authorization")fetchAuthToken: String?,
+        @Path("id") id: Int
+    ):Call<MutableList<AuditionPosition>>
+
+
+
+    @Multipart
+    @POST("api/request-audition/")
+    fun PostResponses(@Path("id") audition: Int,
+                      @Path("id")position_id:Int,
+                      @Part file: MultipartBody.Part,
+                      @Part file1: MultipartBody.Part,
+                      @Part file2: MultipartBody.Part,
+                      @Part file3: MultipartBody.Part,
+                      @Part file4: MultipartBody.Part,
+                      @Part file5:MultipartBody.Part,
+                      @Part file6: MultipartBody.Part)
+            :Call<PostReponses>
+
+
 }

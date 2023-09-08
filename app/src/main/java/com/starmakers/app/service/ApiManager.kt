@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiManager {
-    private val BASE_URL = "https://a744-2405-201-d02f-a8c8-5c41-1729-ceaf-89fb.ngrok-free.app/"
+    private val BASE_URL = "https://607e-2405-201-d02f-a8c8-48ce-9dd7-4fde-d8db.ngrok-free.app/"
 
     // API response interceptor
     val loggingInterceptor = HttpLoggingInterceptor()

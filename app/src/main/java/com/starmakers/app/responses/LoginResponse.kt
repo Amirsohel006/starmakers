@@ -37,18 +37,6 @@ data class ProfileResponse(
     val profile:String
 )
 
-data class ArtistListRequest(
-    @SerializedName("acting_field") val actingField: String,
-    @SerializedName("category") val category: String
-)
-
-
-data class Artist(
-    val id: Int,
-    val artistName: String,
-    val artistPicture: String
-)
-
 
 data class ProfileResponseList(
     val status: String,

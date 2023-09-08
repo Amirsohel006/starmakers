@@ -51,8 +51,9 @@
                     android:layout_marginTop="@dimen/_1pxv"
                     android:layout_width="wrap_content"
                     android:singleLine="true"
-                    android:text="@{auditionsRowModel.txtDate}"
-                    style="@style/txtPoppinsmedium14" tools:text="@string/lbl_date"/>
+                    android:text="@string/lbl_date"
+                    style="@style/txtPoppinsmedium14"
+                    tools:text="@string/lbl_date"/>
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtDateOne"
                     android:layout_height="wrap_content"
@@ -75,17 +76,33 @@
                     android:layout_marginBottom="@dimen/_1pxv"
                     android:layout_width="wrap_content"
                     android:singleLine="true"
-                    android:text="@{auditionsRowModel.txtTime}"
-                    style="@style/txtPoppinsmedium14" tools:text="@string/lbl_time"/>
-                <TextView android:ellipsize="end"
+                    android:text="@string/lbl_time"
+                    style="@style/txtPoppinsmedium14"
+                    tools:text="@string/lbl_time"/>
+                <TextView
+                    android:ellipsize="end"
                     android:id="@+id/txtTimeOne"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_5pxh"
                     android:layout_marginTop="@dimen/_1pxv"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:singleLine="true"
-                    android:text="@{auditionsRowModel.txtTimeOne}"
-                    style="@style/txtPoppinsmedium14_2" tools:text="@string/lbl_10am_12am"/>
+                    android:text="@string/lbl_10am_12am"
+                    style="@style/txtPoppinsmedium14_2"
+                    tools:text="@string/lbl_10am_12am"/>
+
+                <TextView
+                    android:ellipsize="end"
+                    android:id="@+id/txtTimeTwo"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5pxh"
+                    android:layout_marginTop="@dimen/_1pxv"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="12PM"
+                    style="@style/txtPoppinsmedium14_2"
+                    tools:text="12PM"/>
+
             </LinearLayout>
             <TextView android:ellipsize="end" android:id="@+id/txtVenue"
                 android:layout_height="wrap_content"
@@ -93,15 +110,17 @@
                 android:layout_marginTop="@dimen/_4pxv"
                 android:layout_width="wrap_content"
                 android:singleLine="true"
-                android:text="@{auditionsRowModel.txtVenue}"
-                style="@style/txtPoppinsregular14_1" tools:text="@string/lbl_venue"/>
+                android:text="@string/lbl_venue"
+                style="@style/txtPoppinsregular14_1"
+                tools:text="@string/lbl_venue"/>
             <TextView android:gravity="center_horizontal"
                 android:id="@+id/txtLanguage"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_1pxh"
                 android:layout_width="match_parent"
-                android:text="@{auditionsRowModel.txtLanguage}"
-                style="@style/txtPoppinsregular12_1" tools:text="@string/msg_gate_no_3_ba"/>
+                android:text="@string/msg_gate_no_3_ba"
+                style="@style/txtPoppinsregular12_1"
+                tools:text="@string/msg_gate_no_3_ba"/>
             <LinearLayout android:gravity="start"
                 android:id="@+id/linearRowposition"
                 android:layout_height="wrap_content"
@@ -114,8 +133,9 @@
                     android:layout_marginBottom="@dimen/_1pxv"
                     android:layout_weight="0.39"
                     android:layout_width="0dp" android:singleLine="true"
-                    android:text="@{auditionsRowModel.txtPosition}"
-                    style="@style/txtPoppinsmedium14" tools:text="@string/lbl_position"/>
+                    android:text="@string/lbl_position"
+                    style="@style/txtPoppinsmedium14"
+                    tools:text="@string/lbl_position"/>
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtDancerActor"
                     android:layout_height="wrap_content"

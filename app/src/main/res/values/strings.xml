@@ -44,7 +44,7 @@
     <string name="lbl_chikkanna">Chikkanna</string>
     <string name="lbl_my_requests">My Requests</string>
     <string name="lbl_membership">Membership</string>
-    <string name="lbl_pic_1">Pic 1</string>
+    <string name="lbl_pic_1">Image 1</string>
     <string name="msg_above_the_budge2">Above the budget amount \u2013 </string>
     <string name="lbl_venue">Venue :</string>
     <string name="msg_91_71">+91 71********  through SMS.</string>
@@ -139,7 +139,7 @@ Bookings</string>
     <string name="msg_lorem_ipsum_dol2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis.</string>
     <string name="lbl_dd_mm_yy">dd/mm/yy</string>
     <string name="msg_registration_su">Registration Successful</string>
-    <string name="lbl_10am_12am">10AM - 12AM</string>
+    <string name="lbl_10am_12am">10AM -</string>
     <string name="msg_finance_overvie">Finance Overview</string>
     <string name="lbl_upendra">Upendra</string>
     <string name="msg_collected_budge2">Collected Budget amount \u2013 </string>
@@ -214,7 +214,7 @@ Booking</string>
     <string name="msg_available_amoun2">Available amount(after sharing amount) \u2013 xxxx in INR</string>
     <string name="lbl_xxxx_in_inr2"> xxxx in INR</string>
     <string name="lbl_participate">Participate</string>
-    <string name="lbl_upload_pics">Upload Pics</string>
+    <string name="lbl_upload_pics">Upload Images</string>
     <string name="msg_didn_t_receive">Didn\u2019t receive OTP?</string>
     <string name="msg_accept_all_term">Accept all terms &amp; conditions</string>
     <string name="msg_below_the_budge2">Below the budget amount \u2013 </string>
