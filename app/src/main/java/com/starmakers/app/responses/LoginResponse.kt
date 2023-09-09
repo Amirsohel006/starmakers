@@ -18,7 +18,9 @@ data class SignUpResponse(
     val profile:String
 )
 
-
+data class LogoutResponse(
+    val message: String
+)
 data class ProfileResponse(
     val name:String,
   val artist_name:String,

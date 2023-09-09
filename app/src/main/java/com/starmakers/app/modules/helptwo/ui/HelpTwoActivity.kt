@@ -52,9 +52,6 @@ class HelpTwoActivity : BaseActivity<ActivityHelpTwoBinding>(R.layout.activity_h
       }
     })
 
-
-
-
     window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
   }
 
