@@ -134,8 +134,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
         if(customerResponse!=null){
           binding.txtRahul.text=customerResponse.name
-//          binding.txtMobileNo.text=customerResponse.mobile_number
-//          binding.txtEmail.text=customerResponse.email
+
 
           val profilePicture: ImageView =binding.profilePicture
 

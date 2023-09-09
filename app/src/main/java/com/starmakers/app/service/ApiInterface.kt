@@ -7,6 +7,7 @@ import com.starmakers.app.responses.BookingResponseList
 import com.starmakers.app.responses.ContactUs
 import com.starmakers.app.responses.FAQItem
 import com.starmakers.app.responses.LoginResponse
+import com.starmakers.app.responses.LogoutResponse
 import com.starmakers.app.responses.PostReponses
 import com.starmakers.app.responses.PrivacyPolicyModel
 import com.starmakers.app.responses.ProfileResponse
@@ -146,5 +147,7 @@ interface ApiInterface {
                       @Part file6: MultipartBody.Part)
             :Call<PostReponses>
 
+    @POST("api/logout/")
+    fun logout(@Header("Authorization")fetchAuthToken: String?):Call<LogoutResponse>
 
 }
