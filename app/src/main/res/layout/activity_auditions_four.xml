@@ -497,7 +497,7 @@
                                 android:layout_height="@dimen/_56pxv"
                                 android:layout_width="@dimen/_68pxh"
                                 style="@style/groupStylewhite_A701cornerRadius">
-                                <ImageView
+                                <VideoView
                                     android:id="@+id/imagePlusFive"
                                     android:layout_gravity="center"
                                     android:layout_marginBottom="@dimen/_18pxv"
@@ -535,7 +535,7 @@
                                 android:layout_gravity="start"
                                 android:layout_height="@dimen/_56pxv"
                                 android:layout_width="@dimen/_68pxh" style="@style/groupStylewhite_A701cornerRadius">
-                                <ImageView
+                                <VideoView
                                     android:id="@+id/imagePlusSix"
                                     android:layout_gravity="center"
                                     android:layout_marginBottom="@dimen/_18pxv"

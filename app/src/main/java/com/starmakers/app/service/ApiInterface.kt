@@ -136,8 +136,10 @@ interface ApiInterface {
 
     @Multipart
     @POST("api/request-audition/")
-    fun PostResponses(@Path("id") audition: Int,
-                      @Path("id")position_id:Int,
+    fun PostResponses(
+        @Header("Authorization")fetchAuthToken: String?,
+                      @Part("audition") audition: Int,
+                      @Part("position_id")position_id:Int,
                       @Part file: MultipartBody.Part,
                       @Part file1: MultipartBody.Part,
                       @Part file2: MultipartBody.Part,

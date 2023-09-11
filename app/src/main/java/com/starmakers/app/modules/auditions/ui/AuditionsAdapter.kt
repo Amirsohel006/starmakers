@@ -96,16 +96,5 @@ class AuditionsAdapter(
 
 
     }
-
-//    init {
-//      itemView.setOnClickListener{
-//        val context = itemView.context
-//
-//        val auditionid=list[adapterPosition]
-//        val intent=Intent(context, AuditionsFourActivity::class.java)
-//        intent.putExtra("profileDataId", auditionid.id)
-//        context.startActivity(intent)
-//      }
-//    }
   }
 }
