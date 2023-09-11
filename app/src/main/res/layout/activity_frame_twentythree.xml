@@ -33,15 +33,17 @@
                 android:layout_marginTop="@dimen/_24pxv"
                 android:layout_width="match_parent"
                 android:scaleType="fitXY"
-                imageRes="@{@drawable/img_componentlott}"
-                tools:ignore="ContentDescription" tools:src="@drawable/img_componentlott"/>
+                android:src="@drawable/done"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/done"/>
             <ImageView android:id="@+id/imageHttpslottief"
                 android:layout_gravity="start"
                 android:layout_height="@dimen/_200pxh"
                 android:layout_width="match_parent"
                 android:scaleType="fitXY"
-                imageRes="@{@drawable/img_httpslottief}"
-                tools:ignore="ContentDescription" tools:src="@drawable/img_httpslottief"/>
+                android:src="@drawable/celebration"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/celebration"/>
         </FrameLayout>
     </LinearLayout>
 </layout>

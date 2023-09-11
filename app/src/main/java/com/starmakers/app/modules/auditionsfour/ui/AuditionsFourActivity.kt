@@ -1,16 +1,25 @@
 package com.starmakers.app.modules.auditionsfour.ui
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
+import android.provider.OpenableColumns
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.Spinner
+import android.widget.VideoView
 import androidx.activity.viewModels
+import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivityAuditionsFourBinding
@@ -27,9 +36,16 @@ import com.starmakers.app.responses.RequestAudition
 import com.starmakers.app.responses.RequestUserData
 import com.starmakers.app.service.ApiManager
 import com.starmakers.app.service.SessionManager
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.internal.canParseAsIpAddress
 import retrofit2.Call
 import retrofit2.Response
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.InputStream
 import kotlin.String
 import kotlin.Unit
 
@@ -39,12 +55,69 @@ class AuditionsFourActivity :
 
 
 
+  private val pickDocument = 100
+  private val pickDocument1 =101
+  private val pickDocument2=102
+  private val pickDocument3=103
+  private val pickDocument4=104
+  private val pickVideo=105
+  private val pickVideo1=106
+
+
+  lateinit var profileDocument: ImageView
+  lateinit var profileDocument1: ImageView
+  lateinit var profileDocument2: ImageView
+  lateinit var profileDocument3: ImageView
+  lateinit var profileDocument4: ImageView
+
+  private lateinit var profilePicUri: Uri
+  private lateinit var profilePicUri1: Uri
+  private lateinit var profilePicUri2: Uri
+  private lateinit var profilePicUri3: Uri
+  private lateinit var profilePicUri4: Uri
+
+  private lateinit var fileProfilePic: File
+  private lateinit var fileProfilePic1: File
+  private lateinit var fileProfilePic2: File
+  private lateinit var fileProfilePic3: File
+  private lateinit var fileProfilePic4: File
+
+  private lateinit var fileVideo1:File
+  private lateinit var fileVideo2:File
+
+  private lateinit var videoView: VideoView
+  private lateinit var videoUri: Uri
+  private lateinit var videoView1: VideoView
+  private lateinit var videoUri1: Uri
+
   private lateinit var sessionManager: SessionManager
+
+
+  var multipartImage: MultipartBody.Part? = null
+  var multipartImage1: MultipartBody.Part? = null
+  var multipartImage2: MultipartBody.Part? = null
+  var multipartImage3: MultipartBody.Part? = null
+  var multipartImage4: MultipartBody.Part? = null
+
+  var multipartVideo: MultipartBody.Part? = null
+  var multipartVideo1: MultipartBody.Part? = null
+
+  private var positionid: Int = -1 // Initialize with a default value
+
+
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     sessionManager=SessionManager(this)
 
 
+    profileDocument=binding.imagePlus
+    profileDocument1=binding.imagePlusOne
+    profileDocument2=binding.imagePlusTwo
+    profileDocument3=binding.imagePlusThree
+    profileDocument4=binding.imagePlusFour
+
+    videoView=binding.imagePlusFive
+    videoView1=binding.imagePlusSix
 
     val profileDataId = intent.getIntExtra("artistDataId",-1)
     val serviceGenerator= ApiManager.apiInterface
@@ -62,7 +135,8 @@ class AuditionsFourActivity :
           val spinnerItems = auditionPositions.map { it.audition_positions }.toMutableList()
           spinnerItems.add(0, "Applying for this role")
 
-
+          val positionid=auditionPositions[0].id
+          this@AuditionsFourActivity.positionid = positionid
           // Assuming you have a reference to your Spinner view
           val spinner = findViewById<Spinner>(R.id.spinnerComponentNine)
 
@@ -110,28 +184,159 @@ class AuditionsFourActivity :
 
 
     fetchData()
+
+    binding.btnParticipate.setOnClickListener {
+      postResponses(positionid,profileDataId)
+    }
     window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
 
   }
 
   override fun setUpClicks(): Unit {
-    binding.btnParticipate.setOnClickListener {
-      val destIntent = FrameTwentythreeActivity.getIntent(this, null)
-      startActivity(destIntent)
-    }
+//    binding.btnParticipate.setOnClickListener {
+//      val destIntent = FrameTwentythreeActivity.getIntent(this, null)
+//      startActivity(destIntent)
+//    }
     binding.imageArrowleft.setOnClickListener {
       finish()
     }
+
+    binding.imagePlus.setOnClickListener {
+      selectFile()
+    }
+
+    binding.imagePlusOne.setOnClickListener {
+      selectFile1()
+    }
+
+    binding.imagePlusTwo.setOnClickListener {
+      selectFile2()
+    }
+
+    binding.imagePlusThree.setOnClickListener {
+      selectFile3()
+    }
+
+    binding.imagePlusFour.setOnClickListener {
+      selectFile4()
+    }
+
+    binding.linearColumnplusFive.setOnClickListener{
+      selectFile5()
+    }
+
+    binding.linearColumnplusSix.setOnClickListener{
+      selectFile6()
+    }
+
+
   }
 
 
+  private fun selectFile() {
+    val intent = Intent(Intent.ACTION_GET_CONTENT)
+    intent.type = "*/*" // Allow all file types
+    startActivityForResult(intent, pickDocument)
+  }
 
 
- /* private fun postResponses(){
+  private fun selectFile1() {
+    val intent = Intent(Intent.ACTION_GET_CONTENT)
+    intent.type = "*/*" // Allow all file types
+    startActivityForResult(intent, pickDocument1)
+  }
+  private fun selectFile2() {
+    val intent = Intent(Intent.ACTION_GET_CONTENT)
+    intent.type = "*/*" // Allow all file types
+    startActivityForResult(intent, pickDocument2)
+  }
+
+  private fun selectFile3() {
+    val intent = Intent(Intent.ACTION_GET_CONTENT)
+    intent.type = "*/*" // Allow all file types
+    startActivityForResult(intent, pickDocument3)
+  }
+
+  private fun selectFile4() {
+    val intent = Intent(Intent.ACTION_GET_CONTENT)
+    intent.type = "*/*" // Allow all file types
+    startActivityForResult(intent, pickDocument4)
+  }
+
+
+  private fun selectFile5() {
+    val intent = Intent(Intent.ACTION_GET_CONTENT)
+    intent.type = "video/*" // Specify the MIME type for videos
+    startActivityForResult(intent, pickVideo)
+  }
+
+  private fun selectFile6() {
+    val intent = Intent(Intent.ACTION_GET_CONTENT)
+    intent.type = "video/*" // Specify the MIME type for videos
+    startActivityForResult(intent, pickVideo1)
+  }
+
+  private fun postResponses(positionId: Int, profileDataId: Int){
+
+    val requestFileDocument1: RequestBody = RequestBody.create(
+      "*/*".toMediaType(),
+      fileProfilePic
+    )
+
+    val requestFileDocument2: RequestBody = RequestBody.create(
+      "*/*".toMediaType(),
+      fileProfilePic1
+    )
+    val requestFileDocument3: RequestBody = RequestBody.create(
+      "*/*".toMediaType(),
+      fileProfilePic2
+    )
+    val requestFileDocument4: RequestBody = RequestBody.create(
+      "*/*".toMediaType(),
+      fileProfilePic3
+    )
+    val requestFileDocument5: RequestBody = RequestBody.create(
+      "*/*".toMediaType(),
+      fileProfilePic4
+    )
+
+    val requestFileDocument6: RequestBody = RequestBody.create(
+      "*/*".toMediaType(),
+      fileVideo1
+    )
+
+    val requestFileDocument7: RequestBody = RequestBody.create(
+      "*/*".toMediaType(),
+      fileVideo2
+    )
+
+
+
+    multipartImage =
+      MultipartBody.Part.createFormData("acting_picture_1", fileProfilePic.getName(), requestFileDocument1)
+
+    multipartImage1 =
+      MultipartBody.Part.createFormData("acting_picture_2", fileProfilePic1.getName(), requestFileDocument2)
+    multipartImage2 =
+      MultipartBody.Part.createFormData("acting_picture_3", fileProfilePic2.getName(), requestFileDocument3)
+    multipartImage3 =
+      MultipartBody.Part.createFormData("acting_picture_4", fileProfilePic3.getName(), requestFileDocument4)
+    multipartImage4 =
+      MultipartBody.Part.createFormData("acting_picture_5", fileProfilePic4.getName(), requestFileDocument5)
+
+
+    multipartVideo =
+      MultipartBody.Part.createFormData("acting_video_1", fileVideo1.getName(), requestFileDocument6)
+
+
+    multipartVideo1 =
+      MultipartBody.Part.createFormData("acting_video_2", fileVideo2.getName(), requestFileDocument7)
+
+
     val serviceGenerator= ApiManager.apiInterface
     val accessToken=sessionManager.fetchAuthToken()
     val authorization="Token $accessToken"
-    val call=serviceGenerator.PostResponses(authorization)
+    val call=serviceGenerator.PostResponses(authorization,positionId,profileDataId,multipartImage!!,multipartImage1!!,multipartImage2!!,multipartImage3!!,multipartImage4!!,multipartVideo!!,multipartVideo1!!)
 
     call.enqueue(object : retrofit2.Callback<PostReponses>{
       override fun onResponse(
@@ -142,6 +347,27 @@ class AuditionsFourActivity :
 
         if(customerResponse!=null){
 
+
+          val dialogBinding = layoutInflater.inflate(R.layout.activity_frame_twentythree, null)
+          val myDialoge = Dialog(this@AuditionsFourActivity)
+          myDialoge.setContentView(dialogBinding)
+
+          val img=dialogBinding.findViewById<ImageView>(R.id.imageComponentlott)
+          val img1=dialogBinding.findViewById<ImageView>(R.id.imageHttpslottief)
+//
+//          val button1=dialogBinding.findViewById<AppCompatButton>(R.id.btnDone)
+//          button1.setOnClickListener{
+//            val i = SignupFourActivity.getIntent(this@SignupOneActivity,null)
+//            startActivity(i)
+//            finish()
+//          }
+
+          Glide.with(this@AuditionsFourActivity).load(R.drawable.done).into(img)
+          Glide.with(this@AuditionsFourActivity).load(R.drawable.celebration).into(img1)
+          myDialoge.setCancelable(true)
+          myDialoge.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+          myDialoge.show()
+
         }
       }
 
@@ -150,7 +376,7 @@ class AuditionsFourActivity :
         Log.e("error", t.message.toString())
       }
     })
-  }*/
+  }
 
   private fun fetchData(){
     val serviceGenerator= ApiManager.apiInterface
@@ -180,6 +406,151 @@ class AuditionsFourActivity :
         Log.e("error", t.message.toString())
       }
     })
+  }
+
+
+
+
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    super.onActivityResult(requestCode, resultCode, data)
+    if (resultCode == RESULT_OK && requestCode == pickDocument) {
+
+      profilePicUri = data?.data!!
+      profileDocument.setImageURI(profilePicUri)
+      val selectedFileURI: Uri =profilePicUri
+      fileProfilePic = getFile(this, profilePicUri)
+      //file = File(selectedFileURI.path.toString())
+      Log.d("", "File : " + fileProfilePic.name)
+      //uploadedFileName = file.toString()
+      println("upload file name ${fileProfilePic.absoluteFile}")
+
+      Log.d("my location","$fileProfilePic")
+    }
+
+    if (resultCode == RESULT_OK && requestCode == pickDocument1) {
+
+      profilePicUri1 = data?.data!!
+      profileDocument1.setImageURI(profilePicUri1)
+      val selectedFileURI: Uri =profilePicUri1
+      fileProfilePic1 = getFile(this, profilePicUri1)
+      //file = File(selectedFileURI.path.toString())
+      Log.d("", "File : " + fileProfilePic1.name)
+      //uploadedFileName = file.toString()
+      println("upload file name ${fileProfilePic1.absoluteFile}")
+
+      Log.d("my location","$fileProfilePic1")
+    }
+
+    if (resultCode == RESULT_OK && requestCode == pickDocument2) {
+
+      profilePicUri2 = data?.data!!
+      profileDocument2.setImageURI(profilePicUri2)
+      val selectedFileURI: Uri =profilePicUri2
+      fileProfilePic2 = getFile(this, profilePicUri2)
+      //file = File(selectedFileURI.path.toString())
+      Log.d("", "File : " + fileProfilePic2.name)
+      //uploadedFileName = file.toString()
+      println("upload file name ${fileProfilePic2.absoluteFile}")
+
+      Log.d("my location","$fileProfilePic2")
+    }
+    if (resultCode == RESULT_OK && requestCode == pickDocument3) {
+
+      profilePicUri3= data?.data!!
+      profileDocument3.setImageURI(profilePicUri3)
+      val selectedFileURI: Uri =profilePicUri3
+      fileProfilePic3 = getFile(this, profilePicUri3)
+      //file = File(selectedFileURI.path.toString())
+      Log.d("", "File : " + fileProfilePic3.name)
+      //uploadedFileName = file.toString()
+      println("upload file name ${fileProfilePic3.absoluteFile}")
+
+      Log.d("my location","$fileProfilePic3")
+    }
+
+    if (resultCode == RESULT_OK && requestCode == pickDocument4) {
+
+      profilePicUri4= data?.data!!
+      profileDocument4.setImageURI(profilePicUri4)
+      val selectedFileURI: Uri =profilePicUri4
+      fileProfilePic4 = getFile(this, profilePicUri4)
+      //file = File(selectedFileURI.path.toString())
+      Log.d("", "File : " + fileProfilePic4.name)
+      //uploadedFileName = file.toString()
+      println("upload file name ${fileProfilePic4.absoluteFile}")
+
+      Log.d("my location","$fileProfilePic4")
+    }
+
+    if (resultCode == RESULT_OK && requestCode == pickVideo) {
+      videoUri = data?.data!!
+      videoView.setVideoURI(videoUri)
+      fileVideo1=getFile(this,videoUri)
+      videoView.start()
+
+      // Now you have the video URI, and you can use it to upload the video to the server.
+      // You can also store the URI for later use in the same way you did for images.
+    }
+
+    if (resultCode == RESULT_OK && requestCode == pickVideo1) {
+      videoUri1 = data?.data!!
+      videoView1.setVideoURI(videoUri1)
+      fileVideo2=getFile(this,videoUri1)
+      videoView1.start()
+
+
+      // Now you have the video URI, and you can use it to upload the video to the server.
+      // You can also store the URI for later use in the same way you did for images.
+    }
+//    videoView1.stopPlayback()
+//    videoView.stopPlayback()
+
+
+
+  }
+
+
+  @Throws(IOException::class)
+  fun getFile(context: Context, uri: Uri): File {
+    val destinationFilename =
+      File(context.filesDir.path + File.separatorChar + queryName(context, uri))
+    try {
+      context.contentResolver.openInputStream(uri).use { ins ->
+        createFileFromStream(
+          ins!!,
+          destinationFilename
+        )
+      }
+    } catch (ex: Exception) {
+      Log.e("Save File", ex.message!!)
+      ex.printStackTrace()
+    }
+    return destinationFilename
+  }
+
+  fun createFileFromStream(ins: InputStream, destination: File?) {
+    try {
+      FileOutputStream(destination).use { os ->
+        val buffer = ByteArray(4096)
+        var length: Int
+        while (ins.read(buffer).also { length = it } > 0) {
+          os.write(buffer, 0, length)
+        }
+        os.flush()
+      }
+    } catch (ex: Exception) {
+      Log.e("Save File", ex.message!!)
+      ex.printStackTrace()
+    }
+  }
+
+  private fun queryName(context: Context, uri: Uri): String {
+    val returnCursor = context.contentResolver.query(uri, null, null, null, null)!!
+    val nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+    returnCursor.moveToFirst()
+    val name = returnCursor.getString(nameIndex)
+    returnCursor.close()
+    return name
   }
 
 
