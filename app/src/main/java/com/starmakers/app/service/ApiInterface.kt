@@ -14,6 +14,8 @@ import com.starmakers.app.responses.ProfileResponse
 import com.starmakers.app.responses.ProfileResponseList
 import com.starmakers.app.responses.RequestAudition
 import com.starmakers.app.responses.RequestUserData
+import com.starmakers.app.responses.SelectionDataResponse
+import com.starmakers.app.responses.SelectionListResponse
 import com.starmakers.app.responses.SignUpResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -132,6 +134,19 @@ interface ApiInterface {
         @Path("id") id: Int
     ):Call<MutableList<AuditionPosition>>
 
+
+
+    @GET("api/get-selection-list/")
+    fun get_selection_list(
+        @Header("Authorization")fetchAuthToken: String?,
+    ):Call<SelectionDataResponse>
+
+
+    @GET("api/get-selection-list-by-ID/{id}")
+    fun get_selection_list_by_id(
+        @Header("Authorization")fetchAuthToken: String?,
+        @Path("id") id: Int
+    ):Call<SelectionListResponse>
 
 
     @Multipart

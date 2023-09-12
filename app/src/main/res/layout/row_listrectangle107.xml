@@ -41,17 +41,19 @@
                     android:layout_marginTop="@dimen/_1pxv"
                     android:layout_width="wrap_content"
                     android:singleLine="true"
-                    android:text="@{listrectangle107RowModel.txtDate}"
-                    style="@style/txtPoppinsmedium14" tools:text="@string/lbl_date"/>
+                    android:text="@string/lbl_date"
+                    style="@style/txtPoppinsmedium14"
+                    tools:text="@string/lbl_date"/>
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtDateOne"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_1pxv"
                     android:layout_marginStart="@dimen/_6pxh"
-                    android:layout_width="match_parent"
+                    android:layout_width="100dp"
                     android:singleLine="true"
-                    android:text="@{listrectangle107RowModel.txtDateOne}"
-                    style="@style/txtPoppinsmedium14_2" tools:text="@string/lbl_26_05_2023"/>
+                    android:text="@string/lbl_26_05_2023"
+                    style="@style/txtPoppinsmedium14_2"
+                    tools:text="@string/lbl_26_05_2023"/>
             </LinearLayout>
             <LinearLayout android:gravity="start"
                 android:id="@+id/linearRowtime"
@@ -65,17 +67,30 @@
                     android:layout_marginBottom="@dimen/_1pxv"
                     android:layout_width="wrap_content"
                     android:singleLine="true"
-                    android:text="@{listrectangle107RowModel.txtTime}"
-                    style="@style/txtPoppinsmedium14" tools:text="@string/lbl_time"/>
+                    android:text="@string/lbl_time"
+                    style="@style/txtPoppinsmedium14"
+                    tools:text="@string/lbl_time"/>
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtTimeOne"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_5pxh"
                     android:layout_marginTop="@dimen/_1pxv"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:singleLine="true"
-                    android:text="@{listrectangle107RowModel.txtTimeOne}"
-                    style="@style/txtPoppinsmedium14_2" tools:text="@string/lbl_10am_12am"/>
+                    android:text="@string/lbl_10am_12am"
+                    style="@style/txtPoppinsmedium14_2"
+                    tools:text="@string/lbl_10am_12am"/>
+
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtTimeTwo"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5pxh"
+                    android:layout_marginTop="@dimen/_1pxv"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@string/lbl_10am_12am"
+                    style="@style/txtPoppinsmedium14_2"
+                    tools:text="@string/lbl_10am_12am"/>
             </LinearLayout>
             <TextView android:ellipsize="end" android:id="@+id/txtVenue"
                 android:layout_height="wrap_content"
@@ -83,15 +98,42 @@
                 android:layout_marginTop="@dimen/_4pxv"
                 android:layout_width="wrap_content"
                 android:singleLine="true"
-                android:text="@{listrectangle107RowModel.txtVenue}"
-                style="@style/txtPoppinsregular14_1" tools:text="@string/lbl_venue"/>
+                android:text="@string/lbl_venue"
+                style="@style/txtPoppinsregular14_1"
+                tools:text="@string/lbl_venue"/>
             <TextView android:gravity="center_horizontal"
                 android:id="@+id/txtLanguage"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_1pxh"
                 android:layout_width="match_parent"
-                android:text="@{listrectangle107RowModel.txtLanguage}"
-                style="@style/txtPoppinsregular12_1" tools:text="@string/msg_gate_no_3_ba"/>
+                android:text="@string/msg_gate_no_3_ba"
+                style="@style/txtPoppinsregular12_1"
+                tools:text="@string/msg_gate_no_3_ba"/>
+
+            <LinearLayout
+                android:id="@+id/movie_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/moviename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Movie:"
+                    style="@style/txtPoppinsmedium14"/>
+                <TextView
+                    android:id="@+id/movie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Movie:"
+                    android:layout_marginStart="@dimen/_5pxh"
+                    style="@style/txtPoppinsmedium14_2"/>
+
+
+
+            </LinearLayout>
+
+
             <LinearLayout android:gravity="start"
                 android:id="@+id/linearRowrole"
                 android:layout_height="wrap_content"
@@ -104,8 +146,9 @@
                     android:layout_marginBottom="@dimen/_1pxv"
                     android:layout_width="wrap_content"
                     android:singleLine="true"
-                    android:text="@{listrectangle107RowModel.txtRole}"
-                    style="@style/txtPoppinsmedium14" tools:text="@string/lbl_role"/>
+                    android:text="@string/lbl_role"
+                    style="@style/txtPoppinsmedium14"
+                    tools:text="@string/lbl_role"/>
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtDancer"
                     android:layout_height="wrap_content"
@@ -113,14 +156,15 @@
                     android:layout_marginTop="@dimen/_1pxv"
                     android:layout_width="match_parent"
                     android:singleLine="true"
-                    android:text="@{listrectangle107RowModel.txtDancer}"
-                    style="@style/txtPoppinsmedium14_2" tools:text="@string/lbl_dancer"/>
+                    android:text="@string/lbl_dancer"
+                    style="@style/txtPoppinsmedium14_2"
+                    tools:text="@string/lbl_dancer"/>
             </LinearLayout>
             <androidx.appcompat.widget.AppCompatButton
                 android:ellipsize="end" android:gravity="center"
                 android:id="@+id/btnSelectionListOne"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_11pxv"
+                android:layout_marginTop="@dimen/_6pxv"
                 android:layout_width="match_parent"
                 android:paddingBottom="@dimen/_6pxv"
                 android:paddingEnd="@dimen/_30pxh"

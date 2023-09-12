@@ -103,6 +103,7 @@
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             itemSpace="@{@dimen/_10pxh}"
-            tools:itemCount="2" tools:listitem="@layout/row_listrectangle107"/>
+            tools:itemCount="2"
+            tools:listitem="@layout/row_listrectangle107"/>
     </LinearLayout>
 </layout>

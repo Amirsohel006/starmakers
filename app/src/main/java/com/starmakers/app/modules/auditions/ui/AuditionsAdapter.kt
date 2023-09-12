@@ -67,6 +67,7 @@ class AuditionsAdapter(
     val imageView:ImageView=itemView.findViewById(R.id.imageRectangle106)
     val participateButton:AppCompatButton=itemView.findViewById(R.id.btnParticipate)
     var auditionId:Int=-1
+    val moviename:TextView=itemView.findViewById(R.id.movie)
 
 
     fun bindView(postModel: Data) {
@@ -78,6 +79,7 @@ class AuditionsAdapter(
       endTime.text=postModel.timings_to
 
       auditionId=postModel.id
+      moviename.text=postModel.movie_name
 
       Picasso.get()
         .load(postModel.movie_poster)
