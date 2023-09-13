@@ -94,6 +94,7 @@ class SelectionListOneActivity :
     binding.txtAuditionsOne.setOnClickListener {
       val destIntent = AuditionsActivity.getIntent(this, null)
       startActivity(destIntent)
+      finish()
     }
   }
 

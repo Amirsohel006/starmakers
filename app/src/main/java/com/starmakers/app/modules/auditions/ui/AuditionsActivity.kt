@@ -62,6 +62,7 @@ class AuditionsActivity : BaseActivity<ActivityAuditionsBinding>(R.layout.activi
     binding.txtSelectionList.setOnClickListener {
       val destIntent = SelectionListOneActivity.getIntent(this, null)
       startActivity(destIntent)
+      finish()
     }
   }
 

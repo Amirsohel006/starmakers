@@ -55,7 +55,13 @@
                     android:layout_width="wrap_content"
                     android:singleLine="true"
                     android:text="@{frame316VM.frame316Model.txtSelectFromDat}"
-                    style="@style/txtPoppinsregular16_1" tools:text="@string/msg_select_from_dat"/>
+                    style="@style/txtPoppinsregular16_1"
+                    tools:text="@string/msg_select_from_dat"/>
+
+                <RelativeLayout
+                    android:id="@+id/relative"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <EditText
                     android:background="@drawable/rectangle_border_gray_500_radius_11"
                     android:ellipsize="end"
@@ -70,9 +76,19 @@
                     android:paddingStart="@dimen/_14pxh"
                     android:paddingTop="@dimen/_11pxv"
                     android:singleLine="true"
-                    android:text="@={frame316VM.frame316Model.etGroup150Value}"
                     android:textColorHint="@color/gray_802"
-                    style="@style/etRoundedOutline_1" tools:ignore="Autofill"/>
+                    style="@style/etRoundedOutline_1"
+                    tools:ignore="Autofill"/>
+
+                    <ImageView
+                        android:id="@+id/imageview"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/calender_icon" />
+                </RelativeLayout>
             </LinearLayout>
             <LinearLayout android:gravity="start"
                 android:id="@+id/linearColumnselecttodate"
@@ -87,7 +103,14 @@
                     android:layout_width="wrap_content"
                     android:singleLine="true"
                     android:text="@{frame316VM.frame316Model.txtSelectToDate}"
-                    style="@style/txtPoppinsregular16_1" tools:text="@string/lbl_select_to_date"/>
+                    style="@style/txtPoppinsregular16_1"
+                    tools:text="@string/lbl_select_to_date"/>
+
+
+                <RelativeLayout
+                    android:id="@+id/relative1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <EditText
                     android:background="@drawable/rectangle_border_gray_500_radius_11"
                     android:ellipsize="end"
@@ -102,9 +125,19 @@
                     android:paddingStart="@dimen/_14pxh"
                     android:paddingTop="@dimen/_11pxv"
                     android:singleLine="true"
-                    android:text="@={frame316VM.frame316Model.etGroup151Value}"
                     android:textColorHint="@color/gray_802"
-                    style="@style/etRoundedOutline_1" tools:ignore="Autofill"/>
+                    style="@style/etRoundedOutline_1"
+                    tools:ignore="Autofill"/>
+
+                    <ImageView
+                        android:id="@+id/imageview1"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/calender_icon" />
+                </RelativeLayout>
             </LinearLayout>
             <EditText
                 android:background="@drawable/rectangle_border_gray_500_radius_11"

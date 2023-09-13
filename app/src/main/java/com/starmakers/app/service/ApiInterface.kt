@@ -5,26 +5,35 @@ import com.starmakers.app.responses.Audition
 import com.starmakers.app.responses.AuditionPosition
 import com.starmakers.app.responses.BookingResponseList
 import com.starmakers.app.responses.ContactUs
+import com.starmakers.app.responses.EditingStudioData
 import com.starmakers.app.responses.FAQItem
+import com.starmakers.app.responses.HouseLocationDataResponse
 import com.starmakers.app.responses.LoginResponse
 import com.starmakers.app.responses.LogoutResponse
+import com.starmakers.app.responses.MusicStudioDataResponse
 import com.starmakers.app.responses.PostReponses
 import com.starmakers.app.responses.PrivacyPolicyModel
 import com.starmakers.app.responses.ProfileResponse
 import com.starmakers.app.responses.ProfileResponseList
 import com.starmakers.app.responses.RequestAudition
+import com.starmakers.app.responses.RequestPostResponse
 import com.starmakers.app.responses.RequestUserData
 import com.starmakers.app.responses.SelectionDataResponse
+import com.starmakers.app.responses.SelectionListItem
 import com.starmakers.app.responses.SelectionListResponse
 import com.starmakers.app.responses.SignUpResponse
+import com.starmakers.app.responses.StudioRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Multipart
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.PartMap
@@ -163,6 +172,38 @@ interface ApiInterface {
                       @Part file5:MultipartBody.Part,
                       @Part file6: MultipartBody.Part)
             :Call<PostReponses>
+
+
+
+
+    @GET("api/studio-request-booking/")
+    fun getStudioRequest(@Header("Authorization")fetchAuthToken: String?,
+                         @Query("select_studio_type")sudioType:String):Call<EditingStudioData>
+
+    @GET("api/studio-request-booking/")
+    fun getMusicStudioRequest(@Header("Authorization")fetchAuthToken: String?,
+                         @Query("select_studio_type")sudioType:String):Call<MusicStudioDataResponse>
+
+
+    @GET("api/studio-request-booking/")
+    fun getHouseStudioRequest(@Header("Authorization")fetchAuthToken: String?,
+                              @Query("select_studio_type")sudioType:String):Call<HouseLocationDataResponse>
+
+
+    @POST("api/studio-request-booking/")
+    fun postRequestStudio(
+        @Header("Authorization")fetchAuthToken: String?,
+       @Body requestPostList: RequestPostResponse
+    ):Call<ResponseBody>
+
+
+    @Multipart
+    @PATCH("api/update-user-profile/")
+    fun profileUpdate(
+        @Header("Authorization")fetchAuthToken: String?,
+        @Part file: MultipartBody.Part,
+    ):Call<ProfileResponse>
+
 
     @POST("api/logout/")
     fun logout(@Header("Authorization")fetchAuthToken: String?):Call<LogoutResponse>

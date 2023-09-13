@@ -1,5 +1,6 @@
 package com.starmakers.app.modules.selectionlisttwo.ui
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -8,14 +9,12 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivitySelectionListTwoBinding
-import com.starmakers.app.modules.auditions.ui.AuditionsAdapter
 import com.starmakers.app.modules.selectionlisttwo.`data`.model.Listrectangle141RowModel
 import com.starmakers.app.modules.selectionlisttwo.`data`.viewmodel.SelectionListTwoVM
-import com.starmakers.app.responses.Audition
-import com.starmakers.app.responses.SelectionDataResponse
 import com.starmakers.app.responses.SelectionListResponse
 import com.starmakers.app.service.ApiManager
 import com.starmakers.app.service.SessionManager
@@ -37,19 +36,19 @@ class SelectionListTwoActivity :
     fetchData(auditionId)
 
     viewModel.navArguments = intent.extras?.getBundle("bundle")
-    val listrectangle140Adapter =
-    Listrectangle140Adapter(viewModel.listrectangle140List.value?:mutableListOf())
-    binding.recyclerListrectangle140.adapter = listrectangle140Adapter
-    listrectangle140Adapter.setOnItemClickListener(
-    object : Listrectangle140Adapter.OnItemClickListener {
-      override fun onItemClick(view:View, position:Int, item : Listrectangle141RowModel) {
-        onClickRecyclerListrectangle140(view, position, item)
-      }
-    }
-    )
-    viewModel.listrectangle140List.observe(this) {
-      listrectangle140Adapter.updateData(it)
-    }
+//    val listrectangle140Adapter =
+//    Listrectangle140Adapter(viewModel.listrectangle140List.value?:mutableListOf())
+//    binding.recyclerListrectangle140.adapter = listrectangle140Adapter
+//    listrectangle140Adapter.setOnItemClickListener(
+//    object : Listrectangle140Adapter.OnItemClickListener {
+//      override fun onItemClick(view:View, position:Int, item : Listrectangle141RowModel) {
+//        onClickRecyclerListrectangle140(view, position, item)
+//      }
+//    }
+//    )
+//    viewModel.listrectangle140List.observe(this) {
+//      listrectangle140Adapter.updateData(it)
+//    }
     binding.selectionListTwoVM = viewModel
     window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
   }
@@ -68,18 +67,41 @@ class SelectionListTwoActivity :
     val call=serviceGenerator.get_selection_list_by_id(authorization,auditionId)
 
     call.enqueue(object : retrofit2.Callback<SelectionListResponse>{
+      @SuppressLint("SuspiciousIndentation")
       override fun onResponse(
         call: Call<SelectionListResponse>,
         response: Response<SelectionListResponse>
       ) {
-        val customerResponse=response.body()
-        if ((customerResponse!=null) && (customerResponse.message=="success")){
-          val selectiondata=response.body()
+        val responsedata=response.body()
+
+        if((responsedata!=null)&&(responsedata.message=="success")){
+
+        val selectiondata=response.body()
 
           if (selectiondata != null) {
-            binding.moviename.text=selectiondata.data[0].movie_name
+            binding.moviename.text = selectiondata.data[0].movieName
+            binding.txtDate1.text=selectiondata.data[0].appliedDate
+            binding.txtTime1.text=selectiondata.data[0].timingsFrom
+            binding.txtVenue1.text=selectiondata.data[0].venue
+            binding.txtRole1.text=selectiondata.data[0].auditionPositions
+
+            Picasso.get()
+              .load(selectiondata.data[0].moviePoster)
+              .into(binding.imageRectangle106)
+
+
+            binding.recyclerListrectangle140.apply {
+              layoutManager = LinearLayoutManager(
+                this@SelectionListTwoActivity,
+                LinearLayoutManager.VERTICAL,
+                false
+              )
+              val audtioAdapter = Listrectangle140Adapter(listOf( selectiondata.data[0].artist))
+              binding.recyclerListrectangle140.adapter = audtioAdapter
+            }
 
           }
+
         }
 
 
