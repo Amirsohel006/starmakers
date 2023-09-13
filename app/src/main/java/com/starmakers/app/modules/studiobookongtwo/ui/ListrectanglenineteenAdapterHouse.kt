@@ -1,4 +1,4 @@
-package com.starmakers.app.modules.studiobookongone.ui
+package com.starmakers.app.modules.studiobookongtwo.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,25 +8,23 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.starmakers.app.R
-import com.starmakers.app.databinding.RowListrectanglenineteenBinding
-import com.starmakers.app.modules.studiobookongone.`data`.model.ListrectanglenineteenRowModel
-import com.starmakers.app.responses.EditingStudio
-import com.starmakers.app.responses.Studio
+import com.starmakers.app.modules.studiobookongtwo.`data`.model.Listrectanglenineteen1RowModel
+import com.starmakers.app.responses.HouseLocationStudio
 import kotlin.Int
 import kotlin.collections.List
 
-class ListrectanglenineteenAdapter(
-  var list:  List<Studio>
-) : RecyclerView.Adapter<ListrectanglenineteenAdapter.RowListrectanglenineteenVH>() {
+class ListrectanglenineteenAdapterHouse(
+  var list: List<HouseLocationStudio>
+) : RecyclerView.Adapter<ListrectanglenineteenAdapterHouse.RowListrectanglenineteen1VH>() {
   private var clickListener: OnItemClickListener? = null
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RowListrectanglenineteenVH {
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RowListrectanglenineteen1VH {
     val
-        view=LayoutInflater.from(parent.context).inflate(R.layout.row_listrectanglenineteen,parent,false)
-    return RowListrectanglenineteenVH(view)
+        view=LayoutInflater.from(parent.context).inflate(R.layout.row_listrectanglenineteen1,parent,false)
+    return RowListrectanglenineteen1VH(view)
   }
 
-  override fun onBindViewHolder(holder: RowListrectanglenineteenVH, position: Int) {
+  override fun onBindViewHolder(holder: RowListrectanglenineteen1VH, position: Int) {
     return  holder.bindView(list[position])
   }
 
@@ -34,7 +32,7 @@ class ListrectanglenineteenAdapter(
     return list.size
   }
 
-  public fun updateData(newData: List<Studio>) {
+  public fun updateData(newData: List<HouseLocationStudio>) {
     list = newData
     notifyDataSetChanged()
   }
@@ -47,15 +45,15 @@ class ListrectanglenineteenAdapter(
     fun onItemClick(
       view: View,
       position: Int,
-      item: ListrectanglenineteenRowModel
+      item: Listrectanglenineteen1RowModel
     ) {
     }
   }
 
-  inner class RowListrectanglenineteenVH(
+  inner class RowListrectanglenineteen1VH(
     view: View
   ) : RecyclerView.ViewHolder(view) {
-    //val binding: RowListrectanglenineteenBinding = RowListrectanglenineteenBinding.bind(itemView)
+    //val binding: RowListrectanglenineteen1Binding = RowListrectanglenineteen1Binding.bind(itemView)
 
 
 
@@ -64,7 +62,7 @@ class ListrectanglenineteenAdapter(
     val txtMeasurement1: TextView =itemView.findViewById(R.id.txtMeasurement1)
     val image: ImageView =itemView.findViewById(R.id.imageRectangleNineteen)
 
-    fun bindView(postModel: Studio) {
+    fun bindView(postModel: HouseLocationStudio) {
       studioName.text=postModel.studio_name
       location.text=postModel.location
       txtMeasurement1.text=postModel.budget.toString()
@@ -73,19 +71,18 @@ class ListrectanglenineteenAdapter(
         .into(image)
 
     }
-
     init {
 //      binding.imageRectangleNineteen.setOnClickListener {
 //        // TODO replace with value from datasource
-//        clickListener?.onItemClick(it, adapterPosition, ListrectanglenineteenRowModel())
+//        clickListener?.onItemClick(it, adapterPosition, Listrectanglenineteen1RowModel())
 //      }
 //      binding.txtRamanandStudio.setOnClickListener {
 //        // TODO replace with value from datasource
-//        clickListener?.onItemClick(it, adapterPosition, ListrectanglenineteenRowModel())
+//        clickListener?.onItemClick(it, adapterPosition, Listrectanglenineteen1RowModel())
 //      }
 //      binding.btnRequest.setOnClickListener {
 //        // TODO replace with value from datasource
-//        clickListener?.onItemClick(it, adapterPosition, ListrectanglenineteenRowModel())
+//        clickListener?.onItemClick(it, adapterPosition, Listrectanglenineteen1RowModel())
 //      }
     }
   }

@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiManager {
-    private val BASE_URL = "https://d628-2405-201-d02f-a8c8-fcfa-2dbc-bbba-d9c6.ngrok-free.app"
+    private val BASE_URL = "https://6976-2405-201-d02f-a8c8-9c5a-2726-33b9-6860.ngrok-free.app"
 
     // API response interceptor
     val loggingInterceptor = HttpLoggingInterceptor()
@@ -23,5 +23,9 @@ object ApiManager {
             .addConverterFactory(GsonConverterFactory.create()).client(client)
             .build()
             .create(ApiInterface::class.java)
+    }
+
+    fun getImageUrl(imagePath: String): String {
+        return BASE_URL + imagePath
     }
 }

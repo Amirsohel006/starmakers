@@ -26,7 +26,9 @@
             <LinearLayout android:gravity="start"
                 android:id="@+id/linearColumnchandru"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.83" android:layout_width="0dp" android:orientation="vertical">
+                android:layout_weight="0.83"
+                android:layout_width="0dp"
+                android:orientation="vertical">
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtChandru"
                     android:layout_height="wrap_content"
@@ -34,7 +36,8 @@
                     android:layout_width="wrap_content"
                     android:singleLine="true"
                     android:text="@{listrectangle141RowModel.txtChandru}"
-                    style="@style/txtPoppinsmedium16_4" tools:text="@string/lbl_chandru"/>
+                    style="@style/txtPoppinsmedium16_4"
+                    tools:text="@string/lbl_chandru"/>
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtYrsCounter"
                     android:layout_height="wrap_content"
@@ -43,7 +46,8 @@
                     android:layout_width="wrap_content"
                     android:singleLine="true"
                     android:text="@{listrectangle141RowModel.txtYrsCounter}"
-                    style="@style/txtPoppinsregular16_3" tools:text="@string/lbl_23_yrs"/>
+                    style="@style/txtPoppinsregular16_3"
+                    tools:text="@string/lbl_23_yrs"/>
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtBangalore"
                     android:layout_height="wrap_content"
@@ -52,7 +56,8 @@
                     android:layout_width="match_parent"
                     android:singleLine="true"
                     android:text="@{listrectangle141RowModel.txtBangalore}"
-                    style="@style/txtPoppinsregular16_3" tools:text="@string/lbl_bangalore"/>
+                    style="@style/txtPoppinsregular16_3"
+                    tools:text="@string/lbl_bangalore"/>
             </LinearLayout>
             <ImageButton
                 android:background="@drawable/rectangle_bg_white_a700_radius_16_5"

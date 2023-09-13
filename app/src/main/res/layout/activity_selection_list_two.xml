@@ -75,18 +75,18 @@
                             android:layout_marginTop="@dimen/_26pxv"
                             android:layout_width="match_parent"
                             android:singleLine="true"
-                            android:text="@{selectionListTwoVM.selectionListTwoModel.txtDancersSelecte}"
-                            style="@style/txtPoppinssemibold16_1"
+                            android:text="Selected Candidates"
+                            style="@style/txtPoppinssemibold16_11"
                             tools:text="Selected Candidates"/>
                     </LinearLayout>
                     <LinearLayout android:gravity="start"
                         android:id="@+id/linearColumnmovie"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/_60pxv"
-                        android:layout_marginEnd="@dimen/_109pxh"
+                        android:layout_marginEnd="@dimen/_49pxh"
                         android:layout_marginStart="@dimen/_18pxh"
                         android:layout_marginTop="@dimen/_41pxv"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/_150pxh"
                         android:orientation="vertical">
 
 
@@ -189,6 +189,18 @@
                                 android:text="@string/lbl_time"
                                 style="@style/txtPoppinsmedium12"
                                 tools:text="@string/lbl_time"/>
+
+
+<!--                            <TextView android:ellipsize="end"-->
+<!--                                android:id="@+id/txtTime2"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginEnd="@dimen/_9pxh"-->
+<!--                                android:layout_marginTop="@dimen/_3pxv"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:singleLine="true"-->
+<!--                                android:text="@string/lbl_time"-->
+<!--                                style="@style/txtPoppinsmedium12"-->
+<!--                                tools:text="@string/lbl_time"/>-->
                         </LinearLayout>
 
 

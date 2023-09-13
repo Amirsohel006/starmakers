@@ -3,10 +3,13 @@
     <data>
         <variable name="listrectanglenineteenRowModel" type="com.starmakers.app.modules.studiobookongone.data.model.ListrectanglenineteenRowModel"/>
     </data>
-    <LinearLayout android:id="@+id/linearRowrectanglenineteen"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:background="@drawable/rectangleforaudition"
+        android:id="@+id/linearRowrectanglenineteen"
+        android:layout_height="200dp"
         android:layout_width="match_parent"
-        android:orientation="horizontal" style="@style/groupStylewhite_8">
+        android:orientation="horizontal"
+        style="@style/groupStylewhite_8">
         <ImageView android:id="@+id/imageRectangleNineteen"
             android:layout_height="@dimen/_133pxh"
             android:layout_marginBottom="@dimen/_14pxv"
@@ -46,16 +49,42 @@
                     android:src="@drawable/img_info"
                     tools:ignore="ContentDescription" tools:src="@drawable/img_info"/>
             </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/musicstdio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
             <TextView android:ellipsize="end"
                 android:id="@+id/txtLocationJPN"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_10pxh"
                 android:layout_marginStart="@dimen/_2pxh"
                 android:layout_marginTop="@dimen/_10pxv"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:singleLine="true"
-                android:text="@{listrectanglenineteenRowModel.txtLocationJPN}"
-                style="@style/txtPoppinsmedium16_1" tools:text="@string/msg_location_jp_n"/>
+                android:text="@string/msg_location_jp_n"
+                style="@style/txtPoppinsmedium16_1"
+                tools:text="@string/msg_location_jp_n"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtLocationJPN1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_marginStart="@dimen/_2pxh"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@string/msg_location_jp_n"
+                    style="@style/txtPoppinsmedium16_1"
+                    tools:text="@string/msg_location_jp_n"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/musicstdio1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
             <TextView android:ellipsize="end"
                 android:id="@+id/txtMeasurement"
                 android:layout_height="wrap_content"
@@ -63,8 +92,20 @@
                 android:layout_marginTop="@dimen/_6pxv"
                 android:layout_width="wrap_content"
                 android:singleLine="true"
-                android:text="@{listrectanglenineteenRowModel.txtMeasurement}"
-                style="@style/txtPoppinsmedium16_1" tools:text="@string/lbl_cost_24l"/>
+                android:text="@string/lbl_cost_24l"
+                style="@style/txtPoppinsmedium16_1"
+                tools:text="@string/lbl_cost_24l"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtMeasurement1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_marginTop="@dimen/_6pxv"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@string/lbl_cost_24l"
+                    style="@style/txtPoppinsmedium16_1"
+                    tools:text="@string/lbl_cost_24l"/>
+            </LinearLayout>
             <androidx.appcompat.widget.AppCompatButton
                 android:ellipsize="end" android:gravity="center"
                 android:id="@+id/btnRequest"

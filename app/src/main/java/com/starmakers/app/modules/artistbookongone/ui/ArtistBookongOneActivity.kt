@@ -79,7 +79,7 @@ class ArtistBookongOneActivity :
           binding.etLocation.text=customerResponse.data.city
 
 
-          Picasso.get().load(customerResponse.data.profile).transform(CircleTransformation()).into(binding.profilePicture)
+          Picasso.get().load(customerResponse.data.profile).transform(CircleTransformation()).into(binding.profilepicturerounded)
         }
       }
 

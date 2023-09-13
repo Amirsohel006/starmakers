@@ -76,4 +76,5 @@
     <color name="bottomnavigation">#424040</color>
     <color name="location">#27438C</color>
     <color name="statusbar2">#424040</color>
+    <color name="bluegray_101">#d5d5d5</color>
 </resources>

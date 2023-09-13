@@ -1,24 +1,35 @@
 package com.starmakers.app.responses
 
-data class SelectionListResponse(
-    var message: String,
-    val data: List<SelectionListItem>
+import com.google.gson.annotations.SerializedName
+
+data class SelectionListResponse (
+
+    @SerializedName("message" ) var message : String?         = null,
+    @SerializedName("data"    ) var data    : ArrayList<SelectionListItem> = arrayListOf()
+
 )
 
-data class SelectionListItem(
-    val artist: SelectionListArtist,
-    val audition_name: String,
-    val movie_poster: String,
-    val audition_date: String,
-    val venue: String,
-    val movie_name: String,
-    val timings_from: String,
-    val applied_date: String,
-    val audition_position: Int?
+
+data class SelectionListItem (
+
+    @SerializedName("artist"             ) var artist            : SelectionListArtist? = SelectionListArtist(),
+    @SerializedName("audition_name"      ) var auditionName      : String? = null,
+    @SerializedName("movie_poster"       ) var moviePoster       : String? = null,
+    @SerializedName("audition_date"      ) var auditionDate      : String? = null,
+    @SerializedName("venue"              ) var venue             : String? = null,
+    @SerializedName("movie_name"         ) var movieName         : String? = null,
+    @SerializedName("timings_from"       ) var timingsFrom       : String? = null,
+    @SerializedName("applied_date"       ) var appliedDate       : String? = null,
+    @SerializedName("audition_positions" ) var auditionPositions : String? = null
+
 )
 
-data class SelectionListArtist(
-    val artist_name: String?, // Use the appropriate data type based on your actual data
-    val age: String? // Use the appropriate data type based on your actual data
+
+data class SelectionListArtist (
+
+    @SerializedName("name"    ) var name    : String? = null,
+    @SerializedName("age"     ) var age     : String? = null,
+    @SerializedName("profile" ) var profile : String? = null
+
 )
 

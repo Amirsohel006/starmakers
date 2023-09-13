@@ -11,9 +11,9 @@
     <string name="lbl_about">About :</string>
     <string name="lbl_movie_kantara">Movie : Kantara</string>
     <string name="lbl_91_71">+91 71********</string>
-    <string name="msg_music_recordin">Music\nRecordings</string>
+    <string name="msg_music_recordin">Music\nRecording</string>
     <string name="lbl_signup">Signup</string>
-    <string name="lbl_editing_dubbing">Editing\nDubbing </string>
+    <string name="lbl_editing_dubbing">Editing\nDubbing</string>
     <string name="lbl_shekar">Shekar</string>
     <string name="lbl_spent_amount">Spent Amount</string>
     <string name="lbl_netbanking">Netbanking</string>
@@ -55,7 +55,7 @@
     <string name="lbl_nil">Nil</string>
     <string name="msg_total_number_of">Total number of Movies :</string>
     <string name="msg_donation_succes">Donation Successful</string>
-    <string name="msg_house_location">House\nLocations</string>
+    <string name="msg_house_location">House\nLocation</string>
     <string name="msg_below_the_budge">Below the budget amount \u2013 xxxx in INR</string>
     <string name="lbl_city">City</string>
     <string name="msg_please_enter_th">Please enter the 5 digit OTP Sent to</string>
@@ -113,7 +113,7 @@ Bookings</string>
     <string name="lbl_enter_details">Enter Details</string>
     <string name="lbl_auditions">Auditions</string>
     <string name="lbl_studio_requests">Studio Requests</string>
-    <string name="lbl_cost_24l">Cost : 24L</string>
+    <string name="lbl_cost_24l">Cost :</string>
     <string name="lbl_through_sms">  through SMS.</string>
     <string name="msg_helpline_number2">Helpline Number -</string>
     <string name="msg_movie_rajakum">Movie : Rajakumara</string>
@@ -189,7 +189,7 @@ Bengaluru.5678943 </string>
     <string name="lbl_genre">Genre :</string>
     <string name="lbl_rahul_gmail_com">rahul@gmail.com</string>
     <string name="msg_total_spent_amo">Total spent amount \u2013 xxxx in INR</string>
-    <string name="msg_location_jp_n">Location : JP Nagar</string>
+    <string name="msg_location_jp_n">Location:</string>
     <string name="msg_nature_of_artis">Nature of Artist :</string>
     <string name="lbl_bangalore">Bangalore</string>
     <string name="lbl_overview">Overview</string>

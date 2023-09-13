@@ -101,7 +101,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
       startActivity(i)
     }
 
-
     binding.linearColumn.setOnClickListener {
       val i =Intent(requireActivity(), ArtistBookongFiveActivity::class.java)
       startActivity(i)
