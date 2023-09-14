@@ -20,6 +20,7 @@ import com.starmakers.app.databinding.ActivityFrame316Binding
 import com.starmakers.app.modules.frame315.ui.Frame315Activity
 import com.starmakers.app.modules.frame316.`data`.viewmodel.Frame316VM
 import com.starmakers.app.modules.selectionlisttwo.ui.Listrectangle140Adapter
+import com.starmakers.app.modules.studiobookong1.ui.StudioBookong1Activity
 import com.starmakers.app.responses.PostReponses
 import com.starmakers.app.responses.RequestPostResponse
 import com.starmakers.app.responses.SelectionListResponse
@@ -54,6 +55,10 @@ class Frame316Activity : BaseActivity<ActivityFrame316Binding>(R.layout.activity
     val imageView1=binding.imageview1
 
 
+    binding.imageClose.setOnClickListener {
+      val i =Intent(this,StudioBookong1Activity::class.java)
+      startActivity(i)
+    }
 
     imageView.setOnClickListener {
       showDatePickerDialog { selectedDate ->
@@ -125,7 +130,8 @@ class Frame316Activity : BaseActivity<ActivityFrame316Binding>(R.layout.activity
         response: Response<ResponseBody>
       ) {
         if(response.isSuccessful){
-        Toast.makeText(this@Frame316Activity, "Data Sent Successfully", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@Frame316Activity, "Request Sent Successfully", Toast.LENGTH_SHORT).show()
+
         }
 
       }

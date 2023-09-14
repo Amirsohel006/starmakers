@@ -44,12 +44,14 @@
                     android:text="@{gridrectangletenRowModel.txtGenreMystery}"
                     style="@style/txtPoppinsregular12" tools:text="@string/lbl_genre_mystery"/>
             </FrameLayout>
-            <LinearLayout android:gravity="center_vertical"
+            <LinearLayout
+                android:gravity="center_vertical"
                 android:id="@+id/linearRowviewdetails"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10pxv"
+                android:layout_marginTop="@dimen/_20pxv"
                 android:layout_width="match_parent"
-                android:orientation="horizontal" style="@style/groupStylegreen_600cornerRadius">
+                android:orientation="horizontal"
+                style="@style/groupStylegreen_600cornerRadius">
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtViewDetails"
                     android:layout_height="wrap_content"

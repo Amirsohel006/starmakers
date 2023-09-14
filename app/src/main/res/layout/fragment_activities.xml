@@ -38,34 +38,33 @@
                         android:id="@+id/txtRahul"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_28pxh"
-                        android:layout_weight="0.69"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:singleLine="true"
-                        android:text="@{activitiesVM.activitiesModel.txtRahul}"
-                        style="@style/txtPoppinssemibold24" tools:text="@string/lbl_rahul"/>
+                        style="@style/txtPoppinssemibold24"
+                        tools:text="@string/lbl_rahul"/>
                 </LinearLayout>
-                <LinearLayout android:id="@+id/linearRowquestion"
+                <LinearLayout
+                    android:id="@+id/linearRowquestion"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_5pxv"
-                    android:layout_marginStart="@dimen/_96pxh"
-                    android:layout_weight="0.42"
-                    android:layout_width="0dp" android:orientation="horizontal">
-                    <ImageView android:id="@+id/imageQuestion"
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/imageQuestion"
                         android:layout_height="@dimen/_24pxh"
                         android:layout_marginBottom="@dimen/_4pxv"
                         android:layout_marginTop="@dimen/_4pxv"
                         android:layout_width="@dimen/_20pxh"
                         android:scaleType="fitXY"
                         android:src="@drawable/img_question"
-                        tools:ignore="ContentDescription" tools:src="@drawable/img_question"/>
+                        tools:ignore="ContentDescription"
+                        tools:src="@drawable/img_question"/>
                     <ImageView android:id="@+id/imageEllipseOne"
                         android:layout_height="@dimen/_32pxh"
-                        android:layout_marginStart="@dimen/_40pxh"
+                        android:layout_marginStart="@dimen/_20pxh"
                         android:layout_width="@dimen/_32pxh"
                         android:scaleType="centerCrop"
-                        circular="@{true}"
-                        imageRes="@{@drawable/img_ellipse1}"
-                        tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse1"/>
+                        tools:ignore="ContentDescription" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
@@ -249,19 +248,7 @@
                             style="@style/txtPoppinsmedium14"
                             tools:text="Studio Booking"/>
                     </LinearLayout>
-
-
-
-
-
-
-
                 </LinearLayout>
-
-
-
-
-
 
 
                 <LinearLayout android:gravity="start"
@@ -322,7 +309,13 @@
                     tools:text="@string/lbl_my_auditions"/>
             </LinearLayout>
 
-                <LinearLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:orientation="horizontal"
+                    android:id="@+id/myauditions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+             <!--   <LinearLayout
                     android:gravity="start"
                     android:id="@+id/linearRowmyauditions"
                     android:layout_height="wrap_content"
@@ -355,7 +348,7 @@
                         imageRes="@{@drawable/img_rectangle107}"
                         tools:ignore="ContentDescription"
                         tools:src="@drawable/img_rectangle107"/>
-                </LinearLayout>
+                </LinearLayout>-->
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtStudiosBooked"
                     android:layout_height="wrap_content"

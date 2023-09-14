@@ -89,7 +89,14 @@
                         android:layout_marginTop="@dimen/_10pxv" android:layout_width="@dimen/_70pxh"/>
                 </FrameLayout>
             </LinearLayout>
-            <LinearLayout android:gravity="start"
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:orientation="vertical"
+                android:id="@+id/recylerviewforStudio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+          <!--  <LinearLayout android:gravity="start"
                 android:id="@+id/linearRowrectanglenineteen"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_16pxh"
@@ -175,7 +182,7 @@
                         android:textAllCaps="false"
                         style="@style/btnSolidRounded_10" tools:text="@string/lbl_requested"/>
                 </LinearLayout>
-            </LinearLayout>
+            </LinearLayout>-->
         </LinearLayout>
     </FrameLayout>
 </layout>

@@ -1,8 +1,11 @@
 package com.starmakers.app.modules.financialoverview.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import androidx.fragment.app.viewModels
+import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseFragment
 import com.starmakers.app.databinding.FragmentFinancialOverviewBinding
@@ -10,6 +13,12 @@ import com.starmakers.app.modules.auditionsone.ui.AuditionsOneActivity
 import com.starmakers.app.modules.financialoverview.`data`.model.GridrectangletenRowModel
 import com.starmakers.app.modules.financialoverview.`data`.model.SpinnerGroup122Model
 import com.starmakers.app.modules.financialoverview.`data`.viewmodel.FinancialOverviewVM
+import com.starmakers.app.responses.ProfileResponse
+import com.starmakers.app.service.ApiManager
+import com.starmakers.app.service.CircleTransformation
+import com.starmakers.app.service.SessionManager
+import retrofit2.Call
+import retrofit2.Response
 import kotlin.Int
 import kotlin.String
 import kotlin.Unit
@@ -18,9 +27,12 @@ class FinancialOverviewFragment :
     BaseFragment<FragmentFinancialOverviewBinding>(R.layout.fragment_financial_overview) {
   private val viewModel: FinancialOverviewVM by viewModels<FinancialOverviewVM>()
 
+  private lateinit var sessionManager: SessionManager
   override fun onInitialized(): Unit {
     viewModel.navArguments = arguments
 
+    sessionManager=SessionManager(requireActivity())
+    fetchData()
 
     val gridrectangletenAdapter =
     GridrectangletenAdapter(viewModel.gridrectangletenList.value?:mutableListOf())
@@ -53,6 +65,37 @@ class FinancialOverviewFragment :
         requireActivity().onBackPressed()
       }
     }
+  }
+
+  private fun fetchData(){
+    val serviceGenerator= ApiManager.apiInterface
+    val accessToken=sessionManager.fetchAuthToken()
+    val authorization="Token $accessToken"
+    val call=serviceGenerator.getProfile(authorization)
+
+    call.enqueue(object : retrofit2.Callback<ProfileResponse>{
+      override fun onResponse(
+        call: Call<ProfileResponse>,
+        response: Response<ProfileResponse>
+      ) {
+        val customerResponse=response.body()
+
+        if(customerResponse!=null){
+          binding.txtRahul.text=customerResponse.name
+
+
+          val profilePicture: ImageView =binding.imageEllipseOne
+
+
+          Picasso.get().load(customerResponse.profile).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+        }
+      }
+
+      override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
+        t.printStackTrace()
+        Log.e("error", t.message.toString())
+      }
+    })
   }
 
   companion object {

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:gravity="start"
+        android:id="@+id/linearRowmyauditions"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_10pxh"
+        android:layout_marginStart="@dimen/_2pxh"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        style="@style/groupStylecornerRadius_1">
+
+        <ImageView android:gravity="center_horizontal"
+            android:id="@+id/imageRectangle106"
+            android:layout_height="@dimen/_145pxh"
+            android:layout_marginEnd="@dimen/_4pxh"
+            android:layout_marginTop="@dimen/_10pxv"
+            android:layout_width="@dimen/_100pxh"
+            android:scaleType="fitXY"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/img_rectangle106"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import com.starmakers.app.R
@@ -18,10 +19,13 @@ import com.starmakers.app.modules.artistbookongfive.`data`.model.SpinnerComponen
 import com.starmakers.app.modules.artistbookongfive.`data`.model.SpinnerGroup122Model
 import com.starmakers.app.modules.artistbookongfive.`data`.viewmodel.ArtistBookongFiveVM
 import com.starmakers.app.modules.artistbookongtwo.ui.ArtistBookongTwoActivity
+import com.starmakers.app.responses.CategoryItem
 import com.starmakers.app.responses.ProfileResponseList
 import com.starmakers.app.service.ApiManager
 import com.starmakers.app.service.CircleTransformation
 import com.starmakers.app.service.SessionManager
+import layout.MyAuditionRequest
+import org.koin.android.ext.android.get
 import retrofit2.Call
 import retrofit2.Response
 import kotlin.String
@@ -38,6 +42,7 @@ class ArtistBookongFiveActivity :
     sessionManager=SessionManager(this)
 
 
+    getCategory()
     viewModel.spinnerComponentEightList.value = mutableListOf(
     SpinnerComponentEightModel("Choose Acting Field"),
     SpinnerComponentEightModel("movies"),
@@ -47,9 +52,10 @@ class ArtistBookongFiveActivity :
     SpinnerComponentEightAdapter(this,R.layout.spinner_item,viewModel.spinnerComponentEightList.value?:
     mutableListOf())
     binding.spinnerComponentEight.adapter = spinnerComponentEightAdapter
-    viewModel.spinnerComponentOneList.value = mutableListOf(
+    viewModel.spinnerComponentOneList.value =
+      mutableListOf(
       SpinnerComponentOneModel("Select Category"),
-      SpinnerComponentOneModel("Actor"),
+      SpinnerComponentOneModel("Actors"),
       SpinnerComponentOneModel("Actress"),
       SpinnerComponentOneModel("Director"),
       SpinnerComponentOneModel("Assistant Director"),
@@ -80,7 +86,6 @@ class ArtistBookongFiveActivity :
     mutableListOf())
     binding.spinnerComponentOne.adapter = spinnerComponentOneAdapter
     binding.artistBookongFiveVM = viewModel
-
 
 
     binding.btnSearch.setOnClickListener {
@@ -157,6 +162,30 @@ class ArtistBookongFiveActivity :
     binding.imageArrowleft.setOnClickListener {
       finish()
     }
+  }
+
+
+  fun getCategory(){
+    val serviceGenerator= ApiManager.apiInterface
+    val accessToken=sessionManager.fetchAuthToken()
+    val authorization="Token $accessToken"
+    val call=serviceGenerator.getCategory(authorization)
+    call.enqueue(object : retrofit2.Callback<MutableList<CategoryItem>> {
+      override fun onResponse(
+        call: Call<MutableList<CategoryItem>>,
+        response: Response<MutableList<CategoryItem>>
+      ) {
+        if(response.isSuccessful){
+          val categoryItems = response.body()
+                   //viewModel.spinnerComponentOneList.value(categoryItems)
+        }
+
+
+      }
+
+      override fun onFailure(call: Call<MutableList<CategoryItem>>, t: Throwable) {
+      }
+    })
   }
 
   companion object {

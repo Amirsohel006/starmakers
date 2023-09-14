@@ -17,6 +17,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".modules.profleupdate.ProfileUpdate"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".modules.splashscreen.SplashScreen1"
@@ -105,6 +106,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".modules.artistbookongfive.ui.ArtistBookongFiveActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait" />
         <activity
             android:name=".modules.selectionlisttwo.ui.SelectionListTwoActivity"
@@ -148,6 +150,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".modules.artistmembership.ui.ArtistMembershipActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait" />
         <activity
             android:name=".modules.signuofour.ui.SignUoFourActivity"

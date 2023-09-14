@@ -38,18 +38,16 @@
                         android:id="@+id/txtRahul"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_28pxh"
-                        android:layout_weight="0.69"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:singleLine="true"
-                        android:text="@{financialOverviewVM.financialOverviewModel.txtRahul}"
-                        style="@style/txtPoppinssemibold24" tools:text="@string/lbl_rahul"/>
+                        style="@style/txtPoppinssemibold24"
+                        tools:text="@string/lbl_rahul"/>
                 </LinearLayout>
                 <LinearLayout android:id="@+id/linearRowquestion"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_5pxv"
                     android:layout_marginStart="@dimen/_96pxh"
-                    android:layout_weight="0.42"
-                    android:layout_width="0dp" android:orientation="horizontal">
+                    android:layout_width="wrap_content" android:orientation="horizontal">
                     <ImageView android:id="@+id/imageQuestion"
                         android:layout_height="@dimen/_24pxh"
                         android:layout_marginBottom="@dimen/_4pxv"
@@ -58,14 +56,13 @@
                         android:scaleType="fitXY"
                         android:src="@drawable/img_question"
                         tools:ignore="ContentDescription" tools:src="@drawable/img_question"/>
-                    <ImageView android:id="@+id/imageEllipseOne"
+                    <ImageView
+                        android:id="@+id/imageEllipseOne"
                         android:layout_height="@dimen/_32pxh"
-                        android:layout_marginStart="@dimen/_40pxh"
+                        android:layout_marginStart="@dimen/_10pxh"
                         android:layout_width="@dimen/_32pxh"
                         android:scaleType="centerCrop"
-                        circular="@{true}"
-                        imageRes="@{@drawable/img_ellipse1}"
-                        tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse1"/>
+                        tools:ignore="ContentDescription"/>
                 </LinearLayout>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>

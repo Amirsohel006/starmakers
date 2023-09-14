@@ -15,6 +15,7 @@ import com.starmakers.app.databinding.ActivityArtistBookongOneBinding
 import com.starmakers.app.modules.artistbookongone.`data`.viewmodel.ArtistBookongOneVM
 import com.starmakers.app.modules.artistmembership.ui.ArtistMembershipActivity
 import com.starmakers.app.modules.artistmembershipone.ui.ArtistMembershipOneActivity
+import com.starmakers.app.modules.profleupdate.ProfileUpdate
 import com.starmakers.app.modules.signuotwo.ui.LoginActivity
 import com.starmakers.app.responses.LogoutResponse
 import com.starmakers.app.responses.ProfileResponse
@@ -33,6 +34,15 @@ class ArtistBookongOneActivity :
 
 
   private lateinit var sessionManager: SessionManager
+
+
+  private var name:String=""
+  private var mobileNumber:String=""
+  private var email:String=""
+  private var height:String=""
+  private var weight:String=""
+  private var profile_picture:String=""
+  private var chooseLocation:String=""
   override fun onInitialized(): Unit {
     sessionManager= SessionManager(this)
     viewModel.navArguments = intent.extras?.getBundle("bundle")
@@ -54,6 +64,19 @@ class ArtistBookongOneActivity :
     binding.imageArrowleft.setOnClickListener {
       finish()
     }
+
+    binding.editText.setOnClickListener {
+      val i=Intent(this,ProfileUpdate::class.java)
+//      i.putExtra("name",name)
+//      i.putExtra("mobile_number",mobileNumber)
+//      i.putExtra("email",email)
+//      i.putExtra("height",height)
+//      i.putExtra("weight",weight)
+//      i.putExtra("profile",profile_picture)
+//     //Log.d("ProfileImage",profile_picture.toString())
+//      i.putExtra("city",chooseLocation)
+      startActivity(i)
+    }
   }
 
 
@@ -73,12 +96,10 @@ class ArtistBookongOneActivity :
         if(customerResponse!=null){
           binding.etName.text=customerResponse.data.name
           binding.etMobileNumber.text=customerResponse.data.mobile_number
-         binding.etEmail.text=customerResponse.data.email
+          binding.etEmail.text=customerResponse.data.email
           binding.etHeight1.text=customerResponse.data.height
           binding.etWeight1.text=customerResponse.data.weight
           binding.etLocation.text=customerResponse.data.city
-
-
           Picasso.get().load(customerResponse.data.profile).transform(CircleTransformation()).into(binding.profilepicturerounded)
         }
       }

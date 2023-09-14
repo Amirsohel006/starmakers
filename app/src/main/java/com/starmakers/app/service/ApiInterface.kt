@@ -1,9 +1,12 @@
 package com.starmakers.app.service
 
+import android.provider.MediaStore.Audio.Artists
 import com.starmakers.app.responses.AboutUsModel
+import com.starmakers.app.responses.ArtistRequests
 import com.starmakers.app.responses.Audition
 import com.starmakers.app.responses.AuditionPosition
 import com.starmakers.app.responses.BookingResponseList
+import com.starmakers.app.responses.CategoryItem
 import com.starmakers.app.responses.ContactUs
 import com.starmakers.app.responses.EditingStudioData
 import com.starmakers.app.responses.FAQItem
@@ -23,6 +26,8 @@ import com.starmakers.app.responses.SelectionListItem
 import com.starmakers.app.responses.SelectionListResponse
 import com.starmakers.app.responses.SignUpResponse
 import com.starmakers.app.responses.StudioRequest
+import com.starmakers.app.responses.StudioRequests
+import layout.MyAuditionRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -201,10 +206,34 @@ interface ApiInterface {
     @PATCH("api/update-user-profile/")
     fun profileUpdate(
         @Header("Authorization")fetchAuthToken: String?,
+        @PartMap() partMap: MutableMap<String,RequestBody>,
         @Part file: MultipartBody.Part,
     ):Call<ProfileResponse>
 
 
+
+    @GET("api/user-artist-request/")
+    fun getUserRequest(
+        @Header("Authorization")fetchAuthToken: String?,
+    ):Call<MutableList<ArtistRequests>>
+
+
+    @GET("api/user-studio-request/")
+    fun getStudioRequest(
+        @Header("Authorization")fetchAuthToken: String?,
+    ):Call<MutableList<StudioRequests>>
+
+
+    @GET("api/user-audition-request/")
+    fun getMyAuditionRequest(
+        @Header("Authorization")fetchAuthToken: String?,
+    ):Call<MutableList<MyAuditionRequest>>
+
+
+    @GET("api/get-category-list/")
+    fun getCategory(
+        @Header("Authorization")fetchAuthToken: String?,
+    ):Call<MutableList<CategoryItem>>
     @POST("api/logout/")
     fun logout(@Header("Authorization")fetchAuthToken: String?):Call<LogoutResponse>
 
