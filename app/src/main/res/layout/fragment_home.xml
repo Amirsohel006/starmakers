@@ -42,8 +42,8 @@
                         android:layout_marginStart="@dimen/_28pxh"
                         android:layout_width="wrap_content"
                         android:singleLine="true"
-                        android:text="@{homeVM.homeModel.txtRahul}"
-                        style="@style/txtPoppinssemibold24" tools:text="@string/lbl_rahul"/>
+                        style="@style/txtPoppinssemibold24"
+                        tools:text="@string/lbl_rahul"/>
                 </LinearLayout>
                 <LinearLayout android:id="@+id/linearRowquestion"
                     android:layout_height="wrap_content"
@@ -62,14 +62,11 @@
 
                     <ImageView
                         android:id="@+id/profilePicture"
-                        circular="@{true}"
-                        imageRes="@{@drawable/img_ellipse1}"
                         android:layout_width="@dimen/_32pxh"
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/_20pxh"
                         android:scaleType="centerCrop"
-                        tools:ignore="ContentDescription"
-                        tools:src="@drawable/img_ellipse1" />
+                        tools:ignore="ContentDescription"/>
                 </LinearLayout>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>

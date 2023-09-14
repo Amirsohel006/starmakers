@@ -657,4 +657,7 @@
         <item name="android:textColorHint">@color/gray_603</item>
     </style>
 
+    <style name="AppTheme.Light" parent="Theme.AppCompat.Light">
+        <!-- Add any custom attributes or styles here -->
+    </style>
 </resources>
