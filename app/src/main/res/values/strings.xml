@@ -9,7 +9,7 @@
     <string name="lbl_rs_500">Rs. 500</string>
     <string name="msg_donation_histor">Donation History</string>
     <string name="lbl_about">About :</string>
-    <string name="lbl_movie_kantara">Movie : Kantara</string>
+    <string name="lbl_movie_kantara">Movie : </string>
     <string name="lbl_91_71">+91 71********</string>
     <string name="msg_music_recordin">Music\nRecording</string>
     <string name="lbl_signup">Signup</string>
@@ -177,7 +177,7 @@ Bengaluru.5678943 </string>
     <string name="msg_search_by_studi">Search by Studio name</string>
     <string name="msg_funding_demo_vi">Funding Demo Videos</string>
     <string name="lbl_dancer_actor">Dancer , Actor</string>
-    <string name="lbl_genre_mystery">Genre : Mystery</string>
+    <string name="lbl_genre_mystery">Genre : </string>
     <string name="lbl_introduction">Introduction</string>
     <string name="lbl_select_to_date">Select To Date:</string>
     <string name="lbl_height2">Height :</string>

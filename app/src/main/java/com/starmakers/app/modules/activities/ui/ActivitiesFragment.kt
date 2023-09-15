@@ -43,6 +43,7 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
 
     fetchData()
     getMyAuditionRequests()
+    fetchStudioRequest()
 
 
     viewModel.navArguments = arguments
@@ -65,21 +66,21 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
       startActivity(destIntent)
       requireActivity().onBackPressed()
     }
-    binding.txtRamanandStudio.setOnClickListener {
-      val destIntent = AuditionsTwoActivity.getIntent(requireActivity(), null)
-      startActivity(destIntent)
-      requireActivity().onBackPressed()
-    }
-    binding.btnViewDetails.setOnClickListener {
-      val destIntent = AuditionsTwoActivity.getIntent(requireActivity(), null)
-      startActivity(destIntent)
-      requireActivity().onBackPressed()
-    }
-    binding.imageRectangleNineteen.setOnClickListener {
-      val destIntent = AuditionsTwoActivity.getIntent(requireActivity(), null)
-      startActivity(destIntent)
-      requireActivity().onBackPressed()
-    }
+//    binding.txtRamanandStudio.setOnClickListener {
+//      val destIntent = AuditionsTwoActivity.getIntent(requireActivity(), null)
+//      startActivity(destIntent)
+//      requireActivity().onBackPressed()
+//    }
+//    binding.btnViewDetails.setOnClickListener {
+//      val destIntent = AuditionsTwoActivity.getIntent(requireActivity(), null)
+//      startActivity(destIntent)
+//      requireActivity().onBackPressed()
+//    }
+//    binding.imageRectangleNineteen.setOnClickListener {
+//      val destIntent = AuditionsTwoActivity.getIntent(requireActivity(), null)
+//      startActivity(destIntent)
+//      requireActivity().onBackPressed()
+//    }
 
 
     binding.linearColumnuntitleddesign5.setOnClickListener{
@@ -169,6 +170,39 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
       }
 
       override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
+        t.printStackTrace()
+        Log.e("error", t.message.toString())
+      }
+    })
+  }
+
+  fun fetchStudioRequest(){
+    val serviceGenerator= ApiManager.apiInterface
+    val accessToken=sessionManager.fetchAuthToken()
+    val authorization="Token $accessToken"
+    val call=serviceGenerator.getStudioRequest(authorization)
+
+
+    call.enqueue(object : retrofit2.Callback<MutableList<StudioRequests>>{
+      override fun onResponse(
+        call: Call<MutableList<StudioRequests>>,
+        response: Response<MutableList<StudioRequests>>
+      ) {
+        val customerResponse=response.body()
+
+        if(customerResponse!=null){
+          val responsefinal=response.body()
+
+          binding.recyclerforstudios.apply {
+            layoutManager=
+              LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL,false)
+            val studioadapter= responsefinal?.let { StudioRequestAdapter(it) }
+            binding.recyclerforstudios.adapter=studioadapter
+          }
+        }
+      }
+
+      override fun onFailure(call: Call<MutableList<StudioRequests>>, t: Throwable) {
         t.printStackTrace()
         Log.e("error", t.message.toString())
       }
