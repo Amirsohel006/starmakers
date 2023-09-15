@@ -54,32 +54,61 @@
             android:layout_gravity="center_horizontal"
             android:layout_height="@dimen/_757pxv"
             android:layout_marginEnd="@dimen/_1pxh"
-            android:layout_marginTop="@dimen/_24pxv"
+            android:layout_marginTop="@dimen/_4pxv"
             android:layout_width="@dimen/_359pxh"
             style="@style/groupStylewhite_A700">
             <LinearLayout
                 android:id="@+id/linearColumnrectanglenineteen"
-                android:layout_gravity="center"
+                android:layout_gravity="start"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_16pxh"
                 android:layout_marginStart="@dimen/_15pxh"
                 android:layout_width="match_parent" android:orientation="vertical">
                 <ImageView android:id="@+id/imageRectangleNineteen"
                     android:layout_height="@dimen/_183pxh"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:scaleType="fitXY"
-                    cornerRadius="@{@dimen/_10pxh}"
-                    imageRes="@{@drawable/img_rectangle19}"
-                    tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle19"/>
-                <TextView android:ellipsize="end"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/img_rectangle19"/>
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:ellipsize="end"
                     android:id="@+id/txtName"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_10pxh"
-                    android:layout_marginTop="@dimen/_37pxv"
+                    android:layout_marginTop="@dimen/_17pxv"
                     android:layout_width="wrap_content"
                     android:singleLine="true"
                     android:text="@{auditionsTwoVM.auditionsTwoModel.txtName}"
-                    style="@style/txtPoppinsmedium16" tools:text="@string/lbl_name"/>
+                    style="@style/txtPoppinsmedium16"
+                    tools:text="@string/lbl_name"/>
+                    <TextView
+                        android:ellipsize="end"
+                        android:id="@+id/txtName1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_17pxv"
+                        android:layout_width="wrap_content"
+                        android:singleLine="true"
+                        android:text="@{auditionsTwoVM.auditionsTwoModel.txtName}"
+                        style="@style/txtPoppinsmedium16"
+                        tools:text="@string/lbl_name"/>
+
+                </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtYear"
                     android:layout_height="wrap_content"
@@ -88,7 +117,19 @@
                     android:layout_width="wrap_content"
                     android:singleLine="true"
                     android:text="@{auditionsTwoVM.auditionsTwoModel.txtYear}"
-                    style="@style/txtPoppinsmedium16" tools:text="@string/lbl_year"/>
+                    style="@style/txtPoppinsmedium16"
+                    tools:text="@string/lbl_year"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtYear1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_marginTop="@dimen/_11pxv"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@{auditionsTwoVM.auditionsTwoModel.txtYear}"
+                    style="@style/txtPoppinsmedium16"
+                    tools:text="@string/lbl_year"/>
+            </LinearLayout>
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtAbout"
                     android:layout_height="wrap_content"
@@ -119,6 +160,7 @@
 
 
                 <HorizontalScrollView
+                    android:id="@+id/horiscrollView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -133,21 +175,9 @@
                             itemSpace="@{@dimen/_17pxh}"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             tools:listitem="@layout/row_auditions_two" />
-
-                        <ImageView
-                            android:id="@+id/imageRectangle125"
-                            cornerRadius="@{@dimen/_5pxh}"
-                            imageRes="@{@drawable/img_rectangle125_1}"
-                            android:layout_width="@dimen/_97pxh"
-                            android:layout_height="@dimen/_115pxh"
-                            android:layout_marginStart="@dimen/_194pxh"
-                            android:layout_marginBottom="@dimen/_132pxv"
-                            android:scaleType="fitXY"
-                            tools:ignore="ContentDescription"
-                            tools:src="@drawable/img_rectangle125_1" />
                     </LinearLayout>
                 </HorizontalScrollView>
             </LinearLayout>
@@ -162,7 +192,6 @@
             android:id="@+id/btnRequestStudio"
             android:layout_gravity="bottom|start"
             android:layout_height="wrap_content"
-
             android:layout_width="match_parent"
             android:paddingBottom="@dimen/_18pxv"
             android:paddingEnd="@dimen/_30pxh"

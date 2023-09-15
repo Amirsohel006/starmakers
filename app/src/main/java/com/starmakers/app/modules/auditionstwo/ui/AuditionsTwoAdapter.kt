@@ -1,17 +1,23 @@
 package com.starmakers.app.modules.auditionstwo.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.databinding.RowAuditionsTwoBinding
 import com.starmakers.app.modules.auditionstwo.`data`.model.AuditionsTwoRowModel
+import com.starmakers.app.responses.MyStudioMovie
+import com.starmakers.app.responses.MyStudioPicture
+import com.starmakers.app.service.ApiManager
 import kotlin.Int
 import kotlin.collections.List
 
 class AuditionsTwoAdapter(
-  var list: List<AuditionsTwoRowModel>
+  var list: List<MyStudioMovie>
 ) : RecyclerView.Adapter<AuditionsTwoAdapter.RowAuditionsTwoVH>() {
   private var clickListener: OnItemClickListener? = null
 
@@ -21,17 +27,15 @@ class AuditionsTwoAdapter(
   }
 
   override fun onBindViewHolder(holder: RowAuditionsTwoVH, position: Int) {
-    val auditionsTwoRowModel = AuditionsTwoRowModel()
-    // TODO uncomment following line after integration with data source
-    // val auditionsTwoRowModel = list[position]
-    holder.binding.auditionsTwoRowModel = auditionsTwoRowModel
+    return  holder.bindView(list[position])
   }
 
-  override fun getItemCount(): Int = 2
-  // TODO uncomment following line after integration with data source
-  // return list.size
+  override fun getItemCount(): Int {
+    return  list.size
+  }
 
-  public fun updateData(newData: List<AuditionsTwoRowModel>) {
+  @SuppressLint("NotifyDataSetChanged")
+  public fun updateData(newData: List<MyStudioMovie>) {
     list = newData
     notifyDataSetChanged()
   }
@@ -53,5 +57,12 @@ class AuditionsTwoAdapter(
     view: View
   ) : RecyclerView.ViewHolder(view) {
     val binding: RowAuditionsTwoBinding = RowAuditionsTwoBinding.bind(itemView)
+
+    val image:ImageView=itemView.findViewById(R.id.imageRectangle113)
+    fun bindView(postmodel:MyStudioMovie){
+      val file=postmodel.studio_movie
+      val imgUrl= file.let { ApiManager.getImageUrl(it) }
+      Picasso.get().load(imgUrl).into(image)
+    }
   }
 }

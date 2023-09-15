@@ -16,9 +16,18 @@
         android:theme="@style/Theme.MyApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".modules.profleupdate.ProfileUpdate"
+            android:name=".modules.artistrequestinfo.ArtistRequestInfo"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
+   
+        <activity
+            android:name=".modules.artistbookingativity.ArtistBookingAcitivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".modules.profleupdate.ProfileUpdate"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".modules.splashscreen.SplashScreen1"
             android:exported="true">
@@ -106,8 +115,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".modules.artistbookongfive.ui.ArtistBookongFiveActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".modules.selectionlisttwo.ui.SelectionListTwoActivity"
             android:screenOrientation="portrait" />
@@ -150,8 +159,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".modules.artistmembership.ui.ArtistMembershipActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".modules.signuofour.ui.SignUoFourActivity"
             android:screenOrientation="portrait" />
