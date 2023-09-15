@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".modules.artistbookingativity.ArtistBookingAcitivity">
+
+
+    <LinearLayout
+        android:id="@+id/linearColumnbookingdates"
+        android:layout_gravity="center"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/_20pxv"
+        android:layout_marginEnd="@dimen/_17pxh"
+        android:layout_marginStart="@dimen/_17pxh"
+        android:layout_marginTop="@dimen/_27pxv"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarToolbar"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10pxh"
+            android:layout_width="match_parent" app:contentInsetStart="0dp">
+            <LinearLayout android:id="@+id/linearRowbookingdates"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" android:orientation="horizontal">
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtBookingDates"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.88"
+                    android:layout_width="0dp"
+                    android:singleLine="true"
+                    android:text="@string/lbl_booking_dates"
+                    style="@style/txtPoppinssemibold20_1"
+                    tools:text="@string/lbl_booking_dates"/>
+                <ImageView android:id="@+id/imageClose"
+                    android:layout_height="@dimen/_20pxh"
+                    android:layout_marginBottom="@dimen/_6pxv"
+                    android:layout_marginStart="@dimen/_39pxh"
+                    android:layout_marginTop="@dimen/_3pxv"
+                    android:layout_width="@dimen/_20pxh"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_close"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_close"/>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearColumnselectfromdat"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20pxv"
+            android:layout_width="match_parent"
+            android:orientation="vertical" style="@style/groupStylecornerRadius">
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtSelectFromDat"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:text="Select Booking Date}"
+                style="@style/txtPoppinsregular16_1"
+                tools:text="Select Booking Date"/>
+
+            <RelativeLayout
+                android:id="@+id/relative"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:background="@drawable/rectangle_border_gray_500_radius_11"
+                    android:ellipsize="end"
+                    android:hint="@string/lbl_dd_mm_yy"
+                    android:id="@+id/etGroup150"
+                    android:inputType="text"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_7pxv"
+                    android:layout_width="match_parent"
+                    android:paddingBottom="@dimen/_10pxv"
+                    android:paddingEnd="@dimen/_30pxh"
+                    android:paddingStart="@dimen/_14pxh"
+                    android:paddingTop="@dimen/_11pxv"
+                    android:singleLine="true"
+                    android:textColorHint="@color/gray_802"
+                    style="@style/etRoundedOutline_1"
+                    tools:ignore="Autofill"/>
+
+                <ImageView
+                    android:id="@+id/imageview"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/calender_icon" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:ellipsize="end" android:gravity="center"
+            android:id="@+id/btnRequestStudio"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_32pxv"
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/_14pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_14pxv"
+            android:singleLine="true"
+            android:text="@string/lbl_request_studio"
+            android:textAllCaps="false"
+            style="@style/btnSolidRounded"
+            tools:text="@string/lbl_request_studio"/>
+    </LinearLayout>
+</FrameLayout>

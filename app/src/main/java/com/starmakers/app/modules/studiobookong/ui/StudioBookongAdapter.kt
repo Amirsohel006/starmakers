@@ -78,9 +78,15 @@ class StudioBookongAdapter(
       studioName.text=postModel.studio_name
       location.text=postModel.location
       txtMeasurement1.text=postModel.budget.toString()
-      Picasso.get()
-        .load(postModel.studio_picture[0].studio_picture)
-        .into(image)
+      if (!postModel.studio_picture.isEmpty()) {
+        Picasso.get()
+          .load(postModel.studio_picture[0].studio_picture)
+          .into(image);
+      } else {
+        // Handle the case when the studio_picture list is empty
+        // You can set a default image or show an error message.
+      }
+
 
       requestid=postModel.id
 

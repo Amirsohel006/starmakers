@@ -5,6 +5,7 @@ data class ArtistRequests(val artist_name: String,
                           val category_name: String,
                           val artist_pictures: List<ArtistPictureRequest>,
                           val artist: Int,
+                          val id:Int,
                           val booking_status: String,
                           val booking_date: String)
 

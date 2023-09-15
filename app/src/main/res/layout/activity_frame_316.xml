@@ -7,14 +7,16 @@
     <FrameLayout android:id="@+id/frameStackbookingdates"
         android:layout_height="match_parent"
         android:layout_width="match_parent" style="@style/groupStylewhite_A700">
-        <LinearLayout android:id="@+id/linearColumnbookingdates"
+        <LinearLayout
+            android:id="@+id/linearColumnbookingdates"
             android:layout_gravity="center"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/_20pxv"
             android:layout_marginEnd="@dimen/_17pxh"
             android:layout_marginStart="@dimen/_17pxh"
             android:layout_marginTop="@dimen/_27pxv"
-            android:layout_width="match_parent" android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:orientation="vertical">
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarToolbar"
                 android:layout_height="wrap_content"
@@ -169,7 +171,8 @@
                 android:singleLine="true"
                 android:text="@string/lbl_request_studio"
                 android:textAllCaps="false"
-                style="@style/btnSolidRounded" tools:text="@string/lbl_request_studio"/>
+                style="@style/btnSolidRounded"
+                tools:text="@string/lbl_request_studio"/>
         </LinearLayout>
     </FrameLayout>
 </layout>

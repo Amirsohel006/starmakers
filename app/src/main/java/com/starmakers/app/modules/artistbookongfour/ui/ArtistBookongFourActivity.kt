@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivityArtistBookongFourBinding
+import com.starmakers.app.modules.artistbookingativity.ArtistBookingAcitivity
 import com.starmakers.app.modules.artistbookongfour.`data`.model.Listrectangle114RowModel
 import com.starmakers.app.modules.artistbookongfour.`data`.viewmodel.ArtistBookongFourVM
 import com.starmakers.app.responses.BookingResponseList
@@ -99,6 +100,7 @@ class ArtistBookongFourActivity :
               binding.txtExperience1.text=profileData.data.totalExperience
               binding.txtTotalnumberof1.text=profileData.data.totalNoOfMovies.toString()
               binding.txtContactNumber1.text=profileData.data.mobileNumber
+              var artistId=-1
 
               val imageview:ImageView=binding.imageRectangle112
               Picasso.get()
@@ -113,6 +115,14 @@ class ArtistBookongFourActivity :
                 bookButton.text = "Booked"
               } else {
                 bookButton.text = "Available to book"
+              }
+
+              artistId=profileData.data.id!!
+
+              binding.btnBooked.setOnClickListener {
+                val intent = Intent(this@ArtistBookongFourActivity,ArtistBookingAcitivity::class.java)
+                intent.putExtra("artistId", artistId)
+                startActivity(intent)
               }
               binding.recyclerListrectangle113.apply {
                 layoutManager = LinearLayoutManager(this@ArtistBookongFourActivity, LinearLayoutManager.HORIZONTAL, false)

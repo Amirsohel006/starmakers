@@ -3,26 +3,33 @@
     <data>
         <variable name="gridrectangletenRowModel" type="com.starmakers.app.modules.financialoverview.data.model.GridrectangletenRowModel"/>
     </data>
-    <FrameLayout android:id="@+id/frameStackrectangleten"
-        android:layout_height="wrap_content" android:layout_width="match_parent">
-        <ImageView android:id="@+id/imageRectangleTen"
+    <FrameLayout
+        android:id="@+id/frameStackrectangleten"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+        <ImageView
+            android:id="@+id/imageRectangleTen"
             android:layout_gravity="start"
             android:layout_height="@dimen/_264pxh"
             android:layout_width="@dimen/_159pxh"
-            android:scaleType="fitXY" cornerRadius="@{@dimen/_10pxh}"
-            imageRes="@{@drawable/img_rectangle10_264x159}"
-            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle10_264x159"/>
-        <LinearLayout android:id="@+id/linearColumnmoviekantara"
+            android:scaleType="fitXY"
+            tools:ignore="ContentDescription" />
+        <LinearLayout
+            android:id="@+id/linearColumnmoviekantara"
             android:layout_gravity="bottom|start"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10pxv"
-            android:layout_width="match_parent" android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:orientation="vertical">
             <FrameLayout android:id="@+id/frameStackmoviekantara"
                 android:layout_gravity="start"
                 android:layout_height="@dimen/_37pxv"
                 android:layout_marginEnd="@dimen/_10pxh"
-                android:layout_marginStart="@dimen/_6pxh" android:layout_width="@dimen/_92pxh">
-                <TextView android:ellipsize="end"
+                android:layout_marginStart="@dimen/_6pxh"
+                android:layout_width="wrap_content">
+                <TextView
+                    android:textColor="@color/black"
+                    android:ellipsize="end"
                     android:gravity="top|start"
                     android:id="@+id/txtMovieKantara"
                     android:layout_gravity="top|center"
@@ -35,10 +42,11 @@
                     style="@style/txtPoppinsregular12" tools:text="@string/lbl_movie_kantara"/>
                 <TextView android:ellipsize="end"
                     android:gravity="top|start"
+                    android:textColor="@color/black"
                     android:id="@+id/txtGenreMystery"
                     android:layout_gravity="bottom|start"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_marginTop="@dimen/_20pxv"
                     android:layout_width="match_parent"
                     android:singleLine="true"
                     android:text="@{gridrectangletenRowModel.txtGenreMystery}"
@@ -60,8 +68,9 @@
                     android:layout_marginTop="@dimen/_7pxv"
                     android:layout_weight="0.84"
                     android:layout_width="0dp" android:singleLine="true"
-                    android:text="@{gridrectangletenRowModel.txtViewDetails}"
-                    style="@style/txtPoppinsregular12" tools:text="@string/lbl_view_details"/>
+                    android:text="@string/lbl_view_details"
+                    style="@style/txtPoppinsregular12"
+                    tools:text="@string/lbl_view_details"/>
                 <ImageView android:id="@+id/imageArrowright"
                     android:layout_height="@dimen/_14pxh"
                     android:layout_marginBottom="@dimen/_10pxv"

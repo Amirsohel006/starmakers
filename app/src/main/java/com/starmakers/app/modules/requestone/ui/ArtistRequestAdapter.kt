@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.modules.artistbookongfour.ui.ArtistBookongFourActivity
+import com.starmakers.app.modules.artistrequestinfo.ArtistRequestInfo
 import com.starmakers.app.modules.frame316.ui.Frame316Activity
 import com.starmakers.app.responses.ArtistRequests
 import com.starmakers.app.service.ApiManager
@@ -41,18 +42,22 @@ class ArtistRequestAdapter(  var list: List<ArtistRequests> ): RecyclerView.Adap
             name.text=postModel.artist_name
             actor.text=postModel.category_name
             location.text=postModel.location
-            artistId=postModel.artist
+            artistId=postModel.id
 
-            val file = postModel.artist_pictures[0].artist_picture // Assuming postModel.profile is a File object
 
-            val imgUrl= file?.let { ApiManager.getImageUrl(it) }
-            Picasso.get()
-                .load(imgUrl)
-                .into(image)
 
+            if (!postModel.artist_pictures.isEmpty()) {
+                val file =
+                    postModel.artist_pictures[0].artist_picture // Assuming postModel.profile is a File object
+
+                val imgUrl = file?.let { ApiManager.getImageUrl(it) }
+                Picasso.get()
+                    .load(imgUrl)
+                    .into(image)
+            }
             name.setOnClickListener {
                 val context = itemView.context
-                val intent = Intent(context, ArtistBookongFourActivity::class.java)
+                val intent = Intent(context, ArtistRequestInfo::class.java)
                 intent.putExtra("profileDataId", artistId) // Pass the id to the new activity
                 context.startActivity(intent)
             }

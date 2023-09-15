@@ -2,10 +2,13 @@ package com.starmakers.app.service
 
 import android.provider.MediaStore.Audio.Artists
 import com.starmakers.app.responses.AboutUsModel
+import com.starmakers.app.responses.ArtistRequestById
 import com.starmakers.app.responses.ArtistRequests
 import com.starmakers.app.responses.Audition
 import com.starmakers.app.responses.AuditionPosition
 import com.starmakers.app.responses.BookingResponseList
+import com.starmakers.app.responses.CampaignDataById
+import com.starmakers.app.responses.CampaignResponse
 import com.starmakers.app.responses.CategoryItem
 import com.starmakers.app.responses.ContactUs
 import com.starmakers.app.responses.EditingStudioData
@@ -14,10 +17,12 @@ import com.starmakers.app.responses.HouseLocationDataResponse
 import com.starmakers.app.responses.LoginResponse
 import com.starmakers.app.responses.LogoutResponse
 import com.starmakers.app.responses.MusicStudioDataResponse
+import com.starmakers.app.responses.MyStudioRequest
 import com.starmakers.app.responses.PostReponses
 import com.starmakers.app.responses.PrivacyPolicyModel
 import com.starmakers.app.responses.ProfileResponse
 import com.starmakers.app.responses.ProfileResponseList
+import com.starmakers.app.responses.RequestArtist
 import com.starmakers.app.responses.RequestAudition
 import com.starmakers.app.responses.RequestPostResponse
 import com.starmakers.app.responses.RequestUserData
@@ -202,6 +207,11 @@ interface ApiInterface {
     ):Call<ResponseBody>
 
 
+    @POST("api/send-artist-booking-request/")
+    fun postArtistRequest(
+        @Header("Authorization")fetchAuthToken: String?,
+        @Body requestArtist: RequestArtist
+    ):Call<ResponseBody>
     @Multipart
     @PATCH("api/update-user-profile/")
     fun profileUpdate(
@@ -218,10 +228,21 @@ interface ApiInterface {
     ):Call<MutableList<ArtistRequests>>
 
 
+
     @GET("api/user-studio-request/")
     fun getStudioRequest(
         @Header("Authorization")fetchAuthToken: String?,
     ):Call<MutableList<StudioRequests>>
+
+    @GET("api/user-artist-request-by-ID/{id}")
+    fun get_user_list_by_id(
+        @Header("Authorization")fetchAuthToken: String?,
+        @Path("id") id: Int
+    ):Call<ArtistRequestById>
+
+
+
+
 
 
     @GET("api/user-audition-request/")
@@ -234,6 +255,22 @@ interface ApiInterface {
     fun getCategory(
         @Header("Authorization")fetchAuthToken: String?,
     ):Call<MutableList<CategoryItem>>
+
+
+    @GET("api/mobile-studio-update-delete/{id}/")
+    fun getMyStudioRequest(
+        @Header("Authorization")fetchAuthToken: String?,
+        @Path("id") id: Int
+    ):Call<MyStudioRequest>
+
+
+    @GET("api/campaign-list-view/")
+    fun getcampaign( @Header("Authorization")fetchAuthToken: String?):Call<CampaignResponse>
+
+
+    @GET("api/campaign-list-view-by-id/{id}/")
+    fun getCampaignById(@Header("Authorization")fetchAuthToken: String?,
+                        @Path("id") id: Int):Call<CampaignDataById>
     @POST("api/logout/")
     fun logout(@Header("Authorization")fetchAuthToken: String?):Call<LogoutResponse>
 

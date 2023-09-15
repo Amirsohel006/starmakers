@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseFragment
@@ -13,6 +15,9 @@ import com.starmakers.app.modules.auditionsone.ui.AuditionsOneActivity
 import com.starmakers.app.modules.financialoverview.`data`.model.GridrectangletenRowModel
 import com.starmakers.app.modules.financialoverview.`data`.model.SpinnerGroup122Model
 import com.starmakers.app.modules.financialoverview.`data`.viewmodel.FinancialOverviewVM
+import com.starmakers.app.modules.request.ui.StudioRequestAdapter
+import com.starmakers.app.responses.CampaignResponse
+import com.starmakers.app.responses.MyStudioRequest
 import com.starmakers.app.responses.ProfileResponse
 import com.starmakers.app.service.ApiManager
 import com.starmakers.app.service.CircleTransformation
@@ -34,19 +39,20 @@ class FinancialOverviewFragment :
     sessionManager=SessionManager(requireActivity())
     fetchData()
 
-    val gridrectangletenAdapter =
-    GridrectangletenAdapter(viewModel.gridrectangletenList.value?:mutableListOf())
-    binding.recyclerGridrectangleten.adapter = gridrectangletenAdapter
-    gridrectangletenAdapter.setOnItemClickListener(
-    object : GridrectangletenAdapter.OnItemClickListener {
-      override fun onItemClick(view:View, position:Int, item : GridrectangletenRowModel) {
-        onClickRecyclerGridrectangleten(view, position, item)
-      }
-    }
-    )
-    viewModel.gridrectangletenList.observe(requireActivity()) {
-      gridrectangletenAdapter.updateData(it)
-    }
+    getCampaign()
+//    val gridrectangletenAdapter =
+//    GridrectangletenAdapter(viewModel.gridrectangletenList.value?:mutableListOf())
+//    binding.recyclerGridrectangleten.adapter = gridrectangletenAdapter
+//    gridrectangletenAdapter.setOnItemClickListener(
+//    object : GridrectangletenAdapter.OnItemClickListener {
+//      override fun onItemClick(view:View, position:Int, item : GridrectangletenRowModel) {
+//        onClickRecyclerGridrectangleten(view, position, item)
+//      }
+//    }
+//    )
+//    viewModel.gridrectangletenList.observe(requireActivity()) {
+//      gridrectangletenAdapter.updateData(it)
+//    }
     binding.financialOverviewVM = viewModel
   }
 
@@ -98,6 +104,36 @@ class FinancialOverviewFragment :
     })
   }
 
+
+
+  fun getCampaign(){
+    val serviceGenerator= ApiManager.apiInterface
+    val accessToken=sessionManager.fetchAuthToken()
+    val authorization="Token $accessToken"
+    val call=serviceGenerator.getcampaign(authorization)
+
+    call.enqueue(object : retrofit2.Callback<CampaignResponse>{
+      override fun onResponse(
+        call: Call<CampaignResponse>,
+        response: Response<CampaignResponse>
+      ) {
+        val customerResponse=response.body()
+
+        if(customerResponse!=null){
+
+          binding.recyclerGridrectangleten.apply {
+            val studioadapter= GridrectangletenAdapter(customerResponse.data)
+            binding.recyclerGridrectangleten.adapter=studioadapter
+          }
+        }
+      }
+
+      override fun onFailure(call: Call<CampaignResponse>, t: Throwable) {
+        t.printStackTrace()
+        Log.e("error", t.message.toString())
+      }
+    })
+  }
   companion object {
     const val TAG: String = "FINANCIAL_OVERVIEW_FRAGMENT"
 

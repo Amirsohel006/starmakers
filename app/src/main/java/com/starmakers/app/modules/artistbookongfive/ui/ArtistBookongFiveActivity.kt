@@ -4,7 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
@@ -52,7 +56,7 @@ class ArtistBookongFiveActivity :
     SpinnerComponentEightAdapter(this,R.layout.spinner_item,viewModel.spinnerComponentEightList.value?:
     mutableListOf())
     binding.spinnerComponentEight.adapter = spinnerComponentEightAdapter
-    viewModel.spinnerComponentOneList.value =
+  /*  viewModel.spinnerComponentOneList.value =
       mutableListOf(
       SpinnerComponentOneModel("Select Category"),
       SpinnerComponentOneModel("Actors"),
@@ -84,21 +88,21 @@ class ArtistBookongFiveActivity :
     val spinnerComponentOneAdapter =
     SpinnerComponentOneAdapter(this,R.layout.spinner_item,viewModel.spinnerComponentOneList.value?:
     mutableListOf())
-    binding.spinnerComponentOne.adapter = spinnerComponentOneAdapter
+    binding.spinnerComponentOne.adapter = spinnerComponentOneAdapter*/
     binding.artistBookongFiveVM = viewModel
 
 
     binding.btnSearch.setOnClickListener {
       val actingField = binding.spinnerComponentEight.selectedItem as SpinnerComponentEightModel
-      val category = binding.spinnerComponentOne.selectedItem as SpinnerComponentOneModel
+      val category = binding.spinnerComponentOne.selectedItem as String
 
 
-      if (actingField.itemName != "Choose Acting Field" && category.itemName != "Select Category"){
+      if (actingField.itemName != "Choose Acting Field" && category != "Select Category"){
 
         val serviceGenerator= ApiManager.apiInterface
         val accessToken=sessionManager.fetchAuthToken()
         val authorization="Token $accessToken"
-        val call=serviceGenerator.getArtistlist(authorization,actingField.itemName,category.itemName)
+        val call=serviceGenerator.getArtistlist(authorization,actingField.itemName,category)
 
         call.enqueue(object : retrofit2.Callback<ProfileResponseList>{
           override fun onResponse(
@@ -177,6 +181,39 @@ class ArtistBookongFiveActivity :
       ) {
         if(response.isSuccessful){
           val categoryItems = response.body()
+
+          val spinnerItems = categoryItems?.map { it.category_name }?.toMutableList()
+          spinnerItems!!.add(0, "Applying for this role")
+          val spinner = findViewById<Spinner>(R.id.spinnerComponentOne)
+
+          val adapter = ArrayAdapter<String>(
+            this@ArtistBookongFiveActivity, // Replace with your actual activity reference
+            android.R.layout.simple_spinner_item,
+            spinnerItems
+          )
+
+
+          adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+          spinner.adapter = adapter
+
+          spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+              parent: AdapterView<*>?,
+              view: View?,
+              position: Int,
+              id: Long
+            ) {
+              // Handle item selection here if needed
+              val selectedValue = spinnerItems[position]
+              // Do something with the selected value
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+              // Handle case when nothing is selected
+            }
+          }
+
+
                    //viewModel.spinnerComponentOneList.value(categoryItems)
         }
 
