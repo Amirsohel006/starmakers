@@ -57,6 +57,13 @@ class AuditionsOneActivity :
 
         if((customerResponse!=null) && (customerResponse.status=="success")){
 
+
+          binding.txtMovieKantara1.text=customerResponse.data.campaign_name
+          binding.txtGenreMystery1.text=customerResponse.data.genere
+          binding.txtStoryline1.text=customerResponse.data.one_line_story
+          binding.txtAppxBudget1.text=customerResponse.data.appx_budget
+          binding.txtReleasingDate1.text=customerResponse.data.audition_date
+
           binding.txtPrice1.text=customerResponse.data.collected_budget_amount
           binding.txtPriceOne1.text=customerResponse.data.spent_amount
 

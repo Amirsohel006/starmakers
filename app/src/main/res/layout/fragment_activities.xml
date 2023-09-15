@@ -358,8 +358,14 @@
                     android:layout_width="wrap_content"
                     android:singleLine="true"
                     android:text="@{activitiesVM.activitiesModel.txtStudiosBooked}"
-                    style="@style/txtPoppinsmedium16" tools:text="@string/lbl_studios_booked"/>
-                <LinearLayout
+                    style="@style/txtPoppinsmedium16"
+                    tools:text="@string/lbl_studios_booked"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerforstudios"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+               <!-- <LinearLayout
                     android:background="@drawable/studiobackground"
                     android:gravity="start"
                     android:id="@+id/linearRowrectanglenineteen"
@@ -448,7 +454,7 @@
                             style="@style/btnSolidRounded"
                             tools:text="@string/lbl_view_details"/>
                     </LinearLayout>
-                </LinearLayout>
+                </LinearLayout>-->
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

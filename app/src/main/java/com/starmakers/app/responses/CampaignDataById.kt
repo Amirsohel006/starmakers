@@ -8,6 +8,8 @@ data class CampaignDataById(
 data class CampaignInfo(
     val id: Int,
     val campaign_name: String,
+    val genere:String,
+    val one_line_story:String,
     val movie_poster: String?, // This can be a nullable String if it can be null
     val appx_budget: String,
     val collected_budget_amount: String,
@@ -20,5 +22,6 @@ data class CampaignInfo(
     val available_amount: String,
     val created_at: String, // You may want to use a Date type here
     val updated_at: String, // You may want to use a Date type here
-    val campaign: Int
+    val campaign: Int,
+    val audition_date:String
 )
