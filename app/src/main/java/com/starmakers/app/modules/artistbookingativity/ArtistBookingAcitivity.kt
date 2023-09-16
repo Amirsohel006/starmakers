@@ -11,11 +11,13 @@ import android.text.Editable
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import com.starmakers.app.R
+import com.starmakers.app.databinding.ActivityArtistBookongBinding
 import com.starmakers.app.extensions.isText
 import com.starmakers.app.modules.requestone.ui.RequestOneActivity
 import com.starmakers.app.responses.RequestArtist
@@ -41,15 +43,13 @@ class ArtistBookingAcitivity : AppCompatActivity() {
 
 
         val imageView = findViewById<ImageView>(R.id.imageview)
-        val fromdate1=findViewById<EditText>(R.id.etGroup150)
-        var bookDate=fromdate1.text.toString()
+        val fromdate1=findViewById<TextView>(R.id.etGroup150)
 
         val btnRequest=findViewById<AppCompatButton>(R.id.btnRequestStudio)
 
         imageView.setOnClickListener {
             showDatePickerDialog { selectedDate ->
-                bookDate=selectedDate
-                fromdate1.setText(selectedDate)
+                fromdate1.text=selectedDate
             }
         }
 

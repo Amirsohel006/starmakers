@@ -1,10 +1,12 @@
 package com.starmakers.app.modules.requestone.ui
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.starmakers.app.R
@@ -38,6 +40,7 @@ class ArtistRequestAdapter(  var list: List<ArtistRequests> ): RecyclerView.Adap
         val image:ImageView=itemView.findViewById(R.id.imageRectangleNineteen)
         var artistId=-1
 
+
         fun bindView(postModel: ArtistRequests) {
             name.text=postModel.artist_name
             actor.text=postModel.category_name
@@ -46,14 +49,17 @@ class ArtistRequestAdapter(  var list: List<ArtistRequests> ): RecyclerView.Adap
 
 
 
+
             if (!postModel.artist_pictures.isEmpty()) {
                 val file =
                     postModel.artist_pictures[0].artist_picture // Assuming postModel.profile is a File object
 
-                val imgUrl = file?.let { ApiManager.getImageUrl(it) }
+                val imgUrl = file.let { ApiManager.getImageUrl(it) }
                 Picasso.get()
                     .load(imgUrl)
                     .into(image)
+
+                Log.d("Image URL in HTML",imgUrl.toString())
             }
             name.setOnClickListener {
                 val context = itemView.context

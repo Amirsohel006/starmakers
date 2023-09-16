@@ -52,6 +52,7 @@
             android:text="@{signUoVM.signUoModel.txtLanguage}"
             style="@style/txtNunitoregular16" tools:text="@string/msg_91_71"/>
         <com.mukesh.OtpView
+            android:textColor="@color/black"
             android:focusableInTouchMode="true"
             android:id="@+id/otpViewOtpview"
             android:inputType="number"

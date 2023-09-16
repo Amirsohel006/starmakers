@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiManager {
-    private val BASE_URL = "https://star-makers-backend-4o7yk.ondigitalocean.app/"
+    private val BASE_URL = "https://star-makers-backend-4o7yk.ondigitalocean.app"
 
     // API response interceptor
     val loggingInterceptor = HttpLoggingInterceptor()
