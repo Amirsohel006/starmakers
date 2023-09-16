@@ -79,17 +79,18 @@ class SelectionListTwoActivity :
         val selectiondata=response.body()
 
           if (selectiondata != null) {
-            binding.moviename.text = selectiondata.data[0].movieName
-            binding.txtDate1.text=selectiondata.data[0].appliedDate
-            binding.txtTime1.text=selectiondata.data[0].timingsFrom
-            binding.txtVenue1.text=selectiondata.data[0].venue
-            binding.txtRole1.text=selectiondata.data[0].auditionPositions
+            if (!selectiondata.data.isEmpty()) {
+              binding.moviename.text = selectiondata.data[0].movieName
+              binding.txtDate1.text = selectiondata.data[0].appliedDate
+              binding.txtTime1.text = selectiondata.data[0].timingsFrom
+              binding.txtVenue1.text = selectiondata.data[0].venue
+              binding.txtRole1.text = selectiondata.data[0].auditionPositions
 
-            Picasso.get()
-              .load(selectiondata.data[0].moviePoster)
-              .into(binding.imageRectangle106)
+              Picasso.get()
+                .load(selectiondata.data[0].moviePoster)
+                .into(binding.imageRectangle106)
 
-
+            }
             binding.recyclerListrectangle140.apply {
               layoutManager = LinearLayoutManager(
                 this@SelectionListTwoActivity,

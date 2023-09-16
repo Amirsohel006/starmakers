@@ -92,6 +92,7 @@ class ArtistBookongFourActivity :
             val profileData = response.body()
 
             if (profileData != null) {
+              binding.txtChikkanna.text=profileData.data.artistName
               binding.txtName1.text = profileData.data.artistName
               binding.txtAge1.text=profileData.data.age.toString()
               binding.txtHeight1.text=profileData.data.height

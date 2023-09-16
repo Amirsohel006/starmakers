@@ -49,7 +49,7 @@ class ArtistBookongFiveActivity :
     getCategory()
     viewModel.spinnerComponentEightList.value = mutableListOf(
     SpinnerComponentEightModel("Choose Acting Field"),
-    SpinnerComponentEightModel("movies"),
+    SpinnerComponentEightModel("Movies"),
     SpinnerComponentEightModel("Serials"),
     )
     val spinnerComponentEightAdapter =

@@ -62,7 +62,7 @@
                 android:layout_marginEnd="@dimen/_10pxh"
                 android:layout_width="wrap_content"
                 android:singleLine="true"
-                android:text="Select Booking Date}"
+                android:text="Select Booking Date"
                 style="@style/txtPoppinsregular16_1"
                 tools:text="Select Booking Date"/>
 
@@ -70,7 +70,7 @@
                 android:id="@+id/relative"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <EditText
+                <TextView
                     android:background="@drawable/rectangle_border_gray_500_radius_11"
                     android:ellipsize="end"
                     android:hint="@string/lbl_dd_mm_yy"
@@ -90,8 +90,8 @@
 
                 <ImageView
                     android:id="@+id/imageview"
-                    android:layout_width="34dp"
-                    android:layout_height="34dp"
+                    android:layout_width="23dp"
+                    android:layout_height="31dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerInParent="true"
                     android:layout_marginEnd="10dp"
@@ -111,9 +111,9 @@
             android:paddingStart="@dimen/_30pxh"
             android:paddingTop="@dimen/_14pxv"
             android:singleLine="true"
-            android:text="@string/lbl_request_studio"
+            android:text="Request Artist"
             android:textAllCaps="false"
             style="@style/btnSolidRounded"
-            tools:text="@string/lbl_request_studio"/>
+            tools:text="Request Artist"/>
     </LinearLayout>
 </FrameLayout>

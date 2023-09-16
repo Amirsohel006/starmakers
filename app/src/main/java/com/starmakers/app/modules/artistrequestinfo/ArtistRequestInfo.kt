@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
 import com.starmakers.app.R
@@ -44,6 +45,7 @@ class ArtistRequestInfo : AppCompatActivity() {
                 response: Response<ArtistRequestById>
             ) {
                 val customerResponse=response.body()
+                val toolName=findViewById<TextView>(R.id.txtChikkanna)
                 val name=findViewById<TextView>(R.id.txtName1)
                 val age=findViewById<TextView>(R.id.txtAge1)
                 val height=findViewById<TextView>(R.id.txtHeight1)
@@ -53,10 +55,12 @@ class ArtistRequestInfo : AppCompatActivity() {
                 val totalnoofmovies=findViewById<TextView>(R.id.txtTotalnumberof1)
                 val mobileNumber=findViewById<TextView>(R.id.txtContactNumber1)
                 val image=findViewById<ImageView>(R.id.imageRectangle112)
+                val btnRequestse=findViewById<AppCompatButton>(R.id.btnBooked)
                 if(customerResponse!=null)
                 {
 
                     name.text=customerResponse.artist_name
+                    toolName.text=customerResponse.artist_name
                     age.text=customerResponse.age
                     height.text=customerResponse.height
                     weight.text=customerResponse.weight
@@ -65,9 +69,21 @@ class ArtistRequestInfo : AppCompatActivity() {
                     totalnoofmovies.text=customerResponse.total_no_of_movies
                     mobileNumber.text=customerResponse.mobile_number
 
+
+
+
+
+                    val isBooked=customerResponse.booking_status
+
+                    if(isBooked=="pending"){
+                        btnRequestse.text="Pending"
+                    }else{
+                        btnRequestse.text="Booked"
+                    }
+
                     val file = customerResponse.artist_pictures[0].artist_picture // Assuming postModel.profile is a File object
 
-                    val imgUrl= file?.let { ApiManager.getImageUrl(it) }
+                    val imgUrl= file.let { ApiManager.getImageUrl(it) }
                     Picasso.get()
                         .load(imgUrl)
                         .into(image)
