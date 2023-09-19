@@ -1,5 +1,4 @@
 package com.starmakers.app.modules.homecontainer.ui
-
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +9,6 @@ import androidx.fragment.app.FragmentManager
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivityHomeContainerBinding
-import com.starmakers.app.extensions.loadFragment
 import com.starmakers.app.modules.activities.ui.ActivitiesFragment
 import com.starmakers.app.modules.financialoverview.ui.FinancialOverviewFragment
 import com.starmakers.app.modules.home.ui.HomeFragment

@@ -175,6 +175,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".modules.auditionsfour.ui.AuditionsFourActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait" />
         <activity
             android:name=".modules.signuo.ui.SignUoActivity"

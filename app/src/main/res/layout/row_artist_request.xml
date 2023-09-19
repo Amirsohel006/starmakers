@@ -30,40 +30,34 @@
             android:layout_marginEnd="@dimen/_19pxh"
             android:layout_marginStart="@dimen/_12pxh"
             android:layout_marginTop="@dimen/_14pxv"
-            android:layout_weight="0.64"
-            android:layout_width="0dp" android:orientation="vertical">
+            android:layout_width="match_parent" android:orientation="vertical">
             <LinearLayout android:id="@+id/linearRowsudeep"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_2pxh"
                 android:layout_marginStart="@dimen/_2pxh"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:orientation="horizontal">
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtSudeep"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_1pxv"
-                    android:layout_width="wrap_content"
+                    android:layout_weight="0.88"
+                    android:layout_width="0dp"
                     android:singleLine="true"
                     android:text="@{requestOneVM.requestOneModel.txtSudeep}"
                     style="@style/txtPoppinsmedium16" tools:text="@string/lbl_sudeep"/>
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:id="@+id/dontknow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="90dp">
-
                     <ImageView
                         android:id="@+id/imageInfo"
                         android:layout_height="@dimen/_20pxh"
-                        android:layout_marginBottom="@dimen/_5pxv"
+                        android:layout_marginBottom="@dimen/_2pxv"
+                        android:layout_marginStart="@dimen/_14pxh"
+                        android:layout_marginTop="@dimen/_1pxv"
                         android:layout_width="@dimen/_20pxh"
                         android:scaleType="fitXY"
                         android:src="@drawable/img_info"
                         tools:ignore="ContentDescription"
                         tools:src="@drawable/img_info"/>
-                </LinearLayout>
             </LinearLayout>
             <TextView android:ellipsize="end"
                 android:id="@+id/txtActor"

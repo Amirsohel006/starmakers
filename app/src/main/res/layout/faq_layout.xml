@@ -16,6 +16,7 @@
 
 
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/txtquestion"
         android:text="1"
         android:layout_marginEnd="@dimen/_20pxh"

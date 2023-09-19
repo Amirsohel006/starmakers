@@ -59,7 +59,7 @@
                         android:src="@drawable/img_question"
                         tools:ignore="ContentDescription" tools:src="@drawable/img_question"/>
                     <ImageView
-                        android:id="@+id/imageEllipseOne"
+                        android:id="@+id/profilePicture"
                         android:layout_height="@dimen/_32pxh"
                         android:layout_marginStart="@dimen/_10pxh"
                         android:layout_width="@dimen/_32pxh"
