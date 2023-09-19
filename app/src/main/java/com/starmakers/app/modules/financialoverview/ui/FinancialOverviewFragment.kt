@@ -1,5 +1,6 @@
 package com.starmakers.app.modules.financialoverview.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,10 +12,12 @@ import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseFragment
 import com.starmakers.app.databinding.FragmentFinancialOverviewBinding
+import com.starmakers.app.modules.artistbookongone.ui.ArtistBookongOneActivity
 import com.starmakers.app.modules.auditionsone.ui.AuditionsOneActivity
 import com.starmakers.app.modules.financialoverview.`data`.model.GridrectangletenRowModel
 import com.starmakers.app.modules.financialoverview.`data`.model.SpinnerGroup122Model
 import com.starmakers.app.modules.financialoverview.`data`.viewmodel.FinancialOverviewVM
+import com.starmakers.app.modules.frame311.ui.Frame311Activity
 import com.starmakers.app.modules.request.ui.StudioRequestAdapter
 import com.starmakers.app.responses.CampaignResponse
 import com.starmakers.app.responses.MyStudioRequest
@@ -57,6 +60,15 @@ class FinancialOverviewFragment :
   }
 
   override fun setUpClicks(): Unit {
+    binding.imageMenu.setOnClickListener {
+      val i =Intent(requireActivity(),Frame311Activity::class.java)
+      startActivity(i)
+    }
+
+    binding.profilePicture.setOnClickListener {
+      val i = Intent(requireActivity(), ArtistBookongOneActivity::class.java)
+      startActivity(i)
+    }
   }
 
   fun onClickRecyclerGridrectangleten(
@@ -90,7 +102,7 @@ class FinancialOverviewFragment :
           binding.txtRahul.text=customerResponse.name
 
 
-          val profilePicture: ImageView =binding.imageEllipseOne
+          val profilePicture: ImageView =binding.profilePicture
 
 
           Picasso.get().load(customerResponse.profile).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)

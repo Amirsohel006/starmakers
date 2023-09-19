@@ -46,7 +46,8 @@
                     android:singleLine="true"
                     android:text="@{requestVM.requestModel.txtRamanandStudio}"
                     style="@style/txtPoppinsmedium16" tools:text="@string/lbl_ramanand_studio"/>
-                <ImageView android:id="@+id/imageInfo"
+                <ImageView
+                    android:id="@+id/imageInfo"
                     android:layout_height="@dimen/_20pxh"
                     android:layout_marginBottom="@dimen/_2pxv"
                     android:layout_marginStart="@dimen/_14pxh"
@@ -54,7 +55,8 @@
                     android:layout_width="@dimen/_20pxh"
                     android:scaleType="fitXY"
                     android:src="@drawable/img_info"
-                    tools:ignore="ContentDescription" tools:src="@drawable/img_info"/>
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/img_info"/>
             </LinearLayout>
 
 

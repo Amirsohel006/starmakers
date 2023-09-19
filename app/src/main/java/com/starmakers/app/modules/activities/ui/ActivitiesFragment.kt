@@ -14,10 +14,12 @@ import com.starmakers.app.databinding.FragmentActivitiesBinding
 import com.starmakers.app.modules.activities.`data`.model.ActivitiesRowModel
 import com.starmakers.app.modules.activities.`data`.viewmodel.ActivitiesVM
 import com.starmakers.app.modules.artistbookongfive.ui.ArtistBookongFiveActivity
+import com.starmakers.app.modules.artistbookongone.ui.ArtistBookongOneActivity
 import com.starmakers.app.modules.artistmembership.ui.ArtistMembershipActivity
 import com.starmakers.app.modules.auditions.ui.AuditionsActivity
 import com.starmakers.app.modules.auditionstwo.ui.AuditionsTwoActivity
 import com.starmakers.app.modules.campaignone.ui.CampaignOneActivity
+import com.starmakers.app.modules.frame311.ui.Frame311Activity
 import com.starmakers.app.modules.request.ui.StudioRequestAdapter
 import com.starmakers.app.modules.requestone.ui.RequestOneActivity
 import com.starmakers.app.modules.studiobookong1.ui.StudioBookong1Activity
@@ -51,6 +53,18 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
   }
 
   override fun setUpClicks(): Unit {
+
+
+    binding.profilePicture.setOnClickListener {
+      val i = Intent(requireActivity(), ArtistBookongOneActivity::class.java)
+      startActivity(i)
+    }
+
+
+    binding.imageMenu.setOnClickListener {
+      val i =Intent(requireActivity(), Frame311Activity::class.java)
+      startActivity(i)
+    }
 //    binding.imageRectangle107.setOnClickListener {
 //      val destIntent = CampaignOneActivity.getIntent(requireActivity(), null)
 //      startActivity(destIntent)
@@ -162,7 +176,7 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
           binding.txtRahul.text=customerResponse.name
 
 
-          val profilePicture: ImageView =binding.imageEllipseOne
+          val profilePicture: ImageView =binding.profilePicture
 
 
           Picasso.get().load(customerResponse.profile).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
