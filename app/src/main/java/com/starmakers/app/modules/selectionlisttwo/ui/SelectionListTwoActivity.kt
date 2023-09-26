@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -84,42 +85,40 @@ class SelectionListTwoActivity :
         // Create a RequestOptions object with the RoundedCorners transformation
         val requestOptions = RequestOptions()
           .transform(RoundedCorners(cornerRadiusInPixels))
-        if((responsedata!=null)&&(responsedata.message=="success")){
-
-        val selectiondata=response.body()
+        if((responsedata!=null)&&(responsedata.message=="success")) {
+          val selectiondata = response.body()
 
           if (selectiondata != null) {
-            if (!selectiondata.data.isEmpty()) {
-              binding.moviename.text = selectiondata.data[0].movieName
-              binding.txtDate1.text = selectiondata.data[0].appliedDate
-              binding.txtTime1.text = selectiondata.data[0].timingsFrom
-              binding.txtVenue1.text = selectiondata.data[0].venue
-              binding.txtRole1.text = selectiondata.data[0].auditionPositions
-//
-//              Picasso.get()
-//                .load(selectiondata.data[0].moviePoster)
-//                .into(binding.imageRectangle106)
+            val data = selectiondata.data // Store the data list in a variable for easy access
 
-
+            if (data.isNotEmpty()) {
+              binding.moviename.text = data[0].movieName
+              binding.txtDate1.text = data[0].appliedDate
+              binding.txtTime1.text = data[0].timingsFrom
+              binding.txtVenue1.text = data[0].venue
+              binding.txtRole1.text = data[0].auditionPositions
 
               Glide.with(this@SelectionListTwoActivity)
-                .load(selectiondata.data[0].moviePoster) // Replace with your image URL or resource ID
+                .load(data[0].moviePoster)
                 .apply(requestOptions)
                 .into(binding.imageRectangle106)
 
+              binding.recyclerListrectangle140.apply {
+                layoutManager = LinearLayoutManager(
+                  this@SelectionListTwoActivity,
+                  LinearLayoutManager.VERTICAL,
+                  false
+                )
+                val audtioAdapter = Listrectangle140Adapter(listOf(data[0].artist))
+                adapter = audtioAdapter
+              }
+            } else {
+              // Handle the case where data is empty
+              Toast.makeText(this@SelectionListTwoActivity,"Wait Till Selection Procedure Complete",Toast.LENGTH_LONG).show()
             }
-            binding.recyclerListrectangle140.apply {
-              layoutManager = LinearLayoutManager(
-                this@SelectionListTwoActivity,
-                LinearLayoutManager.VERTICAL,
-                false
-              )
-              val audtioAdapter = Listrectangle140Adapter(listOf( selectiondata.data[0].artist))
-              binding.recyclerListrectangle140.adapter = audtioAdapter
-            }
-
+          } else {
+            // Handle the case where response.body() is null
           }
-
         }
 
 
