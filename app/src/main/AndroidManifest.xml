@@ -61,6 +61,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".modules.signuotwo.ui.LoginActivity"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait" />
         <activity
             android:name=".modules.selectionlist.ui.SelectionListActivity"
@@ -147,6 +148,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".modules.homecontainer.ui.HomeContainerActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait" />
         <activity
             android:name=".modules.regstrationdetails.ui.RegstrationDetailsActivity"

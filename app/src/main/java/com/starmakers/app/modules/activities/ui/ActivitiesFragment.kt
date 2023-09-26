@@ -48,6 +48,8 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
     fetchStudioRequest()
 
 
+
+
     viewModel.navArguments = arguments
     binding.activitiesVM = viewModel
   }
@@ -241,12 +243,19 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
         if(customerResponse!=null){
           val responsefinal=response.body()
 
-          binding.myauditions.apply {
-            layoutManager=
-              LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL,false)
-            val myauditionadapter= responsefinal?.let { MyAuditionAdapter(it) }
-            binding.myauditions.adapter=myauditionadapter
-          }
+
+
+          val recyclerView = binding.myauditions
+          recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+          val myauditionadapter = responsefinal?.let { MyAuditionAdapter(it) }
+          recyclerView.adapter = myauditionadapter
+
+//          binding.myauditions.apply {
+//            layoutManager=
+//              LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL,false)
+//            val myauditionadapter= responsefinal?.let { MyAuditionAdapter(it) }
+//            binding.myauditions.adapter=myauditionadapter
+//          }
         }
       }
 

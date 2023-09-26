@@ -23,7 +23,6 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/frameBottombar"
-            style="@style/groupStylegray_802cornerRadius"
             android:background="@color/bottomnavigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

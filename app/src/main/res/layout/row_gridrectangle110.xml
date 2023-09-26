@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="gridrectangle110RowModel" type="com.starmakers.app.modules.artistbookongtwo.data.model.Gridrectangle110RowModel"/>
     </data>
@@ -7,18 +9,30 @@
         android:id="@+id/frameStackrectangle110"
         android:layout_height="wrap_content"
         android:layout_width="match_parent">
-        <ImageView android:id="@+id/imageRectangle110"
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="2dp"
+             app:cardUseCompatPadding="true">
+
+        <!-- Your ImageView and TextView go here -->
+        <ImageView
+            android:id="@+id/imageRectangle110"
             android:layout_gravity="start"
             android:layout_height="@dimen/_127pxh"
             android:layout_width="@dimen/_101pxh"
             android:scaleType="fitXY"
-            cornerRadius="@{@dimen/_10pxh}"
-            imageRes="@{@drawable/img_rectangle110_127x101}"
+            android:src="@drawable/img_rectangle110_127x101"
             tools:ignore="ContentDescription"
-            tools:src="@drawable/img_rectangle110_127x101"/>
+            tools:src="@drawable/img_rectangle110_127x101" />
+
         <TextView
             android:ellipsize="end"
-            android:gravity="start"
+            android:gravity="center"
             android:id="@+id/txtGroupTwenty"
             android:layout_gravity="bottom|start"
             android:layout_height="wrap_content"
@@ -31,6 +45,8 @@
             android:singleLine="true"
             android:text="@string/lbl_chikkanna"
             style="@style/txtSolidRoundedBottomCorner"
-            tools:text="@string/lbl_chikkanna"/>
-    </FrameLayout>
+            tools:text="@string/lbl_chikkanna" />
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>
 </layout>

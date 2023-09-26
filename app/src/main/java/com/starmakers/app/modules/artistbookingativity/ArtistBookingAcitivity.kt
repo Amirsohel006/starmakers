@@ -41,21 +41,30 @@ class ArtistBookingAcitivity : AppCompatActivity() {
 
         val artistId=intent.getIntExtra("artistId",-1)
 
-
         val imageView = findViewById<ImageView>(R.id.imageview)
-        val fromdate1=findViewById<TextView>(R.id.etGroup150)
+        val fromdate1 = findViewById<TextView>(R.id.etGroup150)
+        val btnRequest = findViewById<AppCompatButton>(R.id.btnRequestStudio)
 
-        val btnRequest=findViewById<AppCompatButton>(R.id.btnRequestStudio)
+        var selectedDate: String? = null // Initialize the selectedDate variable
 
         imageView.setOnClickListener {
-            showDatePickerDialog { selectedDate ->
-                fromdate1.text=selectedDate
+            showDatePickerDialog { date ->
+                // Set the selected date and update the TextView
+                selectedDate = date
+                fromdate1.text = date
             }
         }
 
         btnRequest.setOnClickListener {
-            postData(artistId,fromdate1.toString())
+            // Check if selectedDate is not null before passing it to the postData function
+            if (selectedDate != null) {
+                postData(artistId, selectedDate!!)
+            } else {
+                // Handle the case where a date hasn't been selected
+                // You can show an error message or perform appropriate actions here
+            }
         }
+
 
         window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
     }

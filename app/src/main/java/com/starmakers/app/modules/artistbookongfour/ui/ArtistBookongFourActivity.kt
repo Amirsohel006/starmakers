@@ -12,6 +12,9 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
@@ -76,6 +79,14 @@ class ArtistBookongFourActivity :
     val call = serviceGenerator.getArtistlistItem(authorization, profileDataId)
     val recyclerView:RecyclerView=binding.recyclerListrectangle113
 
+
+    // Define the corner radius in pixels (converted from dp)
+    val cornerRadiusInPixels = resources.getDimensionPixelSize(R.dimen._10pxh) // Change to your dimension resource
+
+// Create a RequestOptions object with the RoundedCorners transformation
+    val requestOptions = RequestOptions()
+      .transform(RoundedCorners(cornerRadiusInPixels))
+
     call.enqueue(object : retrofit2.Callback<BookingResponseList> {
       override fun onResponse(
         call: Call<BookingResponseList>,
@@ -104,10 +115,16 @@ class ArtistBookongFourActivity :
               var artistId=-1
 
               val imageview:ImageView=binding.imageRectangle112
-              Picasso.get()
-                .load(profileData.data.artistPictures[0].artistPicture)
-                .into(imageview)
+//              Picasso.get()
+//                .load(profileData.data.artistPictures[0].artistPicture)
+//                .into(imageview)
 
+
+
+              Glide.with(this@ArtistBookongFourActivity)
+                .load(profileData.data.artistPictures[0].artistPicture) // Replace with your image URL or resource ID
+                .apply(requestOptions)
+                .into(imageview)
               val isBooked = profileData.data.isBooked
 
               val bookButton = binding.btnBooked

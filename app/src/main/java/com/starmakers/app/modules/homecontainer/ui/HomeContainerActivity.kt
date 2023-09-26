@@ -1,5 +1,7 @@
 package com.starmakers.app.modules.homecontainer.ui
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -64,21 +66,77 @@ class HomeContainerActivity :
   }
 
 
+//  @Deprecated("Deprecated in Java")
+//  override fun onBackPressed() {
+//    val fragmentManager=supportFragmentManager
+//
+//
+//    if(fragmentManager.backStackEntryCount>1){
+//      fragmentManager.popBackStackImmediate(
+//        fragmentManager.getBackStackEntryAt(1).id,
+//        FragmentManager.POP_BACK_STACK_INCLUSIVE
+//      )
+//    }else{
+//      super.onBackPressed()
+//    }
+//
+//
+//  }
+
+
   @Deprecated("Deprecated in Java")
   override fun onBackPressed() {
     val fragmentManager=supportFragmentManager
-
-
-    if(fragmentManager.backStackEntryCount>1){
-      fragmentManager.popBackStackImmediate(
-        fragmentManager.getBackStackEntryAt(1).id,
-        FragmentManager.POP_BACK_STACK_INCLUSIVE
-      )
-    }else{
-      super.onBackPressed()
+    val fragments = supportFragmentManager.backStackEntryCount
+    if (fragments == 1) {
+      AlertDialog.Builder(this)
+        .setMessage("Are you sure you want to exit?")
+        .setCancelable(false)
+        .setPositiveButton("Yes",
+          DialogInterface.OnClickListener { dialog, id -> finish() })
+        .setNegativeButton("No", null)
+        .show()
     }
+    else {
+
+      if (fragmentManager.backStackEntryCount > 1) {
+        fragmentManager.popBackStackImmediate(
+          fragmentManager.getBackStackEntryAt(1).id,
+          FragmentManager.POP_BACK_STACK_INCLUSIVE
+        )
+
+        var selectedFragment: Fragment? = null
+        val fragments = supportFragmentManager.fragments
+        for (fragment in fragments) {
+          if (fragment != null && fragment.isVisible) {
+            selectedFragment = fragment
+            break
+          }
+        }
 
 
+
+        if(selectedFragment is HomeFragment){
+          binding.frameBottombar.selectedItemId = R.id.linearColumnhome
+        }
+        if (selectedFragment is SearchFragment) {
+          binding.frameBottombar.selectedItemId = R.id.linearColumnWallet
+        }
+        if (selectedFragment is FinancialOverviewFragment) {
+          binding.frameBottombar.selectedItemId=R.id.linearColumnLive
+        }
+        if (selectedFragment is ActivitiesFragment)
+        {
+          binding.frameBottombar.selectedItemId= R.id.linearColumnProfile
+        } else {
+          super.onBackPressed()
+        }
+      }
+      else {
+        super.onBackPressed()
+      }
+    }
+    // }
   }
 
   companion object {

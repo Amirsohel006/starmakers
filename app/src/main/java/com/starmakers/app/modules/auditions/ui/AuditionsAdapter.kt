@@ -8,6 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.modules.auditions.`data`.model.AuditionsRowModel
@@ -70,6 +73,13 @@ class AuditionsAdapter(
     val moviename:TextView=itemView.findViewById(R.id.movie)
 
 
+
+    // Define the corner radius in pixels (converted from dp)
+    private val cornerRadiusInPixels = 15 // Change to your dimension resource
+
+    // Create a RequestOptions object with the RoundedCorners transformation
+    val requestOptions = RequestOptions()
+      .transform(RoundedCorners(cornerRadiusInPixels))
     fun bindView(postModel: Data) {
       date.text=postModel.audition_date
       venue.text=postModel.venue
@@ -81,8 +91,14 @@ class AuditionsAdapter(
       auditionId=postModel.id
       moviename.text=postModel.movie_name
 
-      Picasso.get()
-        .load(postModel.movie_poster)
+//      Picasso.get()
+//        .load(postModel.movie_poster)
+//        .into(imageView)
+
+
+      Glide.with(itemView)
+        .load(postModel.movie_poster) // Replace with your image URL or resource ID
+        .apply(requestOptions)
         .into(imageView)
 
       participateButton.setOnClickListener {

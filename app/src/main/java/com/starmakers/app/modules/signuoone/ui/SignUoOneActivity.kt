@@ -60,7 +60,7 @@ class SignUoOneActivity : BaseActivity<ActivitySignUoOneBinding>(R.layout.activi
     sessionManager = SessionManager(this)
     apiService= ApiManager.apiInterface
 
-    profileImageView=binding.viewEllipseOne
+    profileImageView=binding.profilePic
 
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     binding.signUoOneVM = viewModel
@@ -87,7 +87,7 @@ class SignUoOneActivity : BaseActivity<ActivitySignUoOneBinding>(R.layout.activi
       finishAffinity()
     }
 
-    binding.frameStackellipseone.setOnClickListener{
+    binding.ivEdit.setOnClickListener{
       val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
       startActivityForResult(gallery, pickImage)
     }

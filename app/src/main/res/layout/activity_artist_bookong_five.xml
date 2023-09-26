@@ -92,7 +92,8 @@
             android:layout_marginEnd="@dimen/_15pxh"
             android:layout_marginStart="@dimen/_15pxh"
             android:layout_marginTop="@dimen/_41pxv"
-            android:layout_width="match_parent" tools:listitem="@layout/spinner_item"/>
+            android:layout_width="match_parent"
+            tools:listitem="@layout/spinner_item"/>
         <Spinner
             android:background="@drawable/layer_list_bg_white_a700_border_gray_500_radius_10"
             android:gravity="center_horizontal"
@@ -101,7 +102,8 @@
             android:layout_marginEnd="@dimen/_15pxh"
             android:layout_marginStart="@dimen/_15pxh"
             android:layout_marginTop="@dimen/_28pxv"
-            android:layout_width="match_parent" tools:listitem="@layout/spinner_item"/>
+            android:layout_width="match_parent"
+            tools:listitem="@layout/spinner_item"/>
         <androidx.appcompat.widget.AppCompatButton
             android:ellipsize="end" android:gravity="center"
             android:id="@+id/btnSearch"
