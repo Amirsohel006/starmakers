@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.modules.selectionlisttwo.`data`.model.Listrectangle141RowModel
@@ -70,6 +73,13 @@ class Listrectangle140Adapter(
    // val location:TextView=itemView.findViewById(R.id.txtBangalore)
 
 
+    // Define the corner radius in pixels (converted from dp)
+    val cornerRadiusInPixels = 15 // Change to your dimension resource
+
+    // Create a RequestOptions object with the RoundedCorners transformation
+    val requestOptions = RequestOptions()
+      .transform(RoundedCorners(cornerRadiusInPixels))
+
     fun bindView(postModel: SelectionListArtist){
       nameChandru.text=postModel.name
       age.text=postModel.age
@@ -77,11 +87,16 @@ class Listrectangle140Adapter(
 
       val imgUrl= file?.let { ApiManager.getImageUrl(it) }
 
-      Picasso.get()
-        .load(imgUrl)
+//      Picasso.get()
+//        .load(imgUrl)
+//        .into(image)
+
+
+
+      Glide.with(itemView)
+        .load(imgUrl) // Replace with your image URL or resource ID
+        .apply(requestOptions)
         .into(image)
-
-
 
 
       if (imgUrl != null) {

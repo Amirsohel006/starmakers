@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:orientation="horizontal" style="@style/groupStylewhite_1">
         <ImageView android:id="@+id/imageRectangleNineteen"
-            android:layout_height="@dimen/_133pxh"
+            android:layout_height="@dimen/_139pxh"
             android:layout_marginBottom="@dimen/_14pxv"
             android:layout_marginStart="@dimen/_20pxh"
             android:layout_marginTop="@dimen/_14pxv"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_11pxv"
             android:layout_marginEnd="@dimen/_19pxh"
-            android:layout_marginStart="@dimen/_12pxh"
+            android:layout_marginStart="@dimen/_10pxh"
             android:layout_marginTop="@dimen/_14pxv"
             android:layout_width="match_parent" android:orientation="vertical">
             <LinearLayout android:id="@+id/linearRowsudeep"
@@ -68,7 +68,8 @@
                 android:layout_width="wrap_content"
                 android:singleLine="true"
                 android:text="@{requestOneVM.requestOneModel.txtActor}"
-                style="@style/txtPoppinsmedium16_1" tools:text="@string/lbl_actor"/>
+                style="@style/txtPoppinsmedium16_1"
+                tools:text="@string/lbl_actor"/>
             <TextView android:ellipsize="end"
                 android:id="@+id/txtBangalore"
                 android:layout_height="wrap_content"

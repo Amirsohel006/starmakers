@@ -47,10 +47,10 @@
                         style="@style/txtPoppinssemibold24"
                         tools:text="@string/lbl_rahul"/>
                 </LinearLayout>
-                <LinearLayout android:id="@+id/linearRowquestion"
+                <LinearLayout
+                    android:id="@+id/linearRowquestion"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_5pxv"
-                    android:layout_marginStart="@dimen/_96pxh"
                     android:layout_width="wrap_content"
                     android:orientation="horizontal">
                     <ImageView android:id="@+id/imageQuestion"
@@ -303,7 +303,8 @@
                             android:layout_gravity="start"
                             android:layout_height="@dimen/_171pxv"
                             android:layout_width="match_parent"
-                            app:autoScroll="true" app:isInfinite="true" app:scrollInterval="5000"/>
+                            app:autoScroll="true"
+                            app:isInfinite="true" app:scrollInterval="5000"/>
 
                         <com.asksira.loopingviewpager.indicator.CustomShapePagerIndicator
                             android:id="@+id/indicatorVolume"
@@ -349,7 +350,8 @@
                             android:scaleType="fitXY"
                             cornerRadius="@{@dimen/_10pxh}"
                             imageRes="@{@drawable/img_rectangle12}"
-                            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle12"/>
+                            tools:ignore="ContentDescription"
+                            tools:src="@drawable/img_rectangle12"/>
                         <ImageView
                             android:id="@+id/imageRectangleThirteen"
                             android:layout_height="@dimen/_83pxh"

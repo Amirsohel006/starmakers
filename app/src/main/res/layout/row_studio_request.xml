@@ -15,10 +15,10 @@
         android:layout_width="match_parent"
         android:orientation="horizontal" style="@style/groupStylewhite_1">
         <ImageView android:id="@+id/imageRectangleNineteen"
-            android:layout_height="@dimen/_133pxh"
+            android:layout_height="@dimen/_139pxh"
             android:layout_marginBottom="@dimen/_14pxv"
-            android:layout_marginStart="@dimen/_10pxh"
-            android:layout_marginTop="@dimen/_14pxv"
+            android:layout_marginStart="@dimen/_18pxh"
+            android:layout_marginTop="@dimen/_16pxv"
             android:layout_width="@dimen/_102pxh"
             android:scaleType="fitXY"
             tools:ignore="ContentDescription"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_11pxv"
             android:layout_marginEnd="@dimen/_19pxh"
-            android:layout_marginStart="@dimen/_12pxh"
+            android:layout_marginStart="@dimen/_10pxh"
             android:layout_marginTop="@dimen/_12pxv"
             android:layout_weight="0.64"
             android:layout_width="0dp" android:orientation="vertical">

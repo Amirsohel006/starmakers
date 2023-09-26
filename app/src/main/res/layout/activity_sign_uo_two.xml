@@ -3,6 +3,12 @@
     <data>
         <variable name="signUoTwoVM" type="com.starmakers.app.modules.signuotwo.data.viewmodel.SignUoTwoVM"/>
     </data>
+
+    <ScrollView
+        android:id="@+id/loginScrollview"
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout android:gravity="center_horizontal"
         android:id="@+id/linearSignUoTwo"
         android:layout_height="match_parent"
@@ -154,4 +160,5 @@
                 tools:text="@string/lbl_signup"/>
         </LinearLayout>
     </LinearLayout>
+    </ScrollView>
 </layout>

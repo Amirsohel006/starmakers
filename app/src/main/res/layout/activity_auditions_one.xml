@@ -220,11 +220,9 @@
 
 
         <ScrollView
-            android:fillViewport="true"
             android:id="@+id/scrollview"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_height="wrap_content">
         <FrameLayout
             android:id="@+id/frameStackspentamount"
             android:layout_height="wrap_content"
@@ -235,7 +233,7 @@
                 android:background="@drawable/backgroundbudget"
                 android:id="@+id/linearColumnspentamount"
                 android:layout_gravity="start"
-                android:layout_height="wrap_content"
+                android:layout_height="600dp"
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 style="@style/groupStylewhite_11">

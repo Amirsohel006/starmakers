@@ -6,15 +6,17 @@
     <LinearLayout
         android:background="@drawable/rectangleforaudition"
         android:id="@+id/linearRowrectangle106"
-        android:layout_height="@dimen/_220pxh"
+        android:layout_height="@dimen/_240pxh"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         style="@style/groupStylewhite_9">
 
 
+
+
         <ImageView
             android:id="@+id/imageRectangle106"
-            android:layout_height="@dimen/_189pxh"
+            android:layout_height="@dimen/_200pxh"
             android:layout_marginBottom="@dimen/_10pxv"
             android:layout_marginStart="@dimen/_13pxh"
             android:layout_marginTop="@dimen/_15pxv"
@@ -32,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_10pxv"
             android:layout_marginEnd="@dimen/_9pxh"
-            android:layout_marginStart="@dimen/_9pxh"
+            android:layout_marginStart="@dimen/_6pxh"
             android:layout_marginTop="@dimen/_15pxv"
             android:layout_weight="0.61"
             android:layout_width="0dp"
@@ -172,15 +174,14 @@
                     style="@style/txtPoppinsmedium14_2" tools:text="@string/lbl_dancer_actor"/>
             </LinearLayout>
             <androidx.appcompat.widget.AppCompatButton
-                android:ellipsize="end" android:gravity="center"
+                android:ellipsize="end"
+                android:gravity="center"
                 android:id="@+id/btnParticipate"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_7pxv"
                 android:layout_width="match_parent"
-                android:paddingBottom="@dimen/_6pxv"
                 android:paddingEnd="@dimen/_30pxh"
                 android:paddingStart="@dimen/_30pxh"
-                android:paddingTop="@dimen/_6pxv"
                 android:singleLine="true"
                 android:text="@string/lbl_participate"
                 android:textAllCaps="false"

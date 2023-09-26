@@ -44,10 +44,10 @@
                         style="@style/txtPoppinssemibold24"
                         tools:text="@string/lbl_rahul"/>
                 </LinearLayout>
-                <LinearLayout android:id="@+id/linearRowquestion"
+                <LinearLayout
+                    android:id="@+id/linearRowquestion"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_5pxv"
-                    android:layout_marginStart="@dimen/_96pxh"
                     android:layout_width="wrap_content"
                     android:orientation="horizontal">
                     <ImageView android:id="@+id/imageQuestion"

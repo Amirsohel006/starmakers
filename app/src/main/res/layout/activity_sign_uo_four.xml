@@ -3,6 +3,12 @@
     <data>
         <variable name="signUoFourVM" type="com.starmakers.app.modules.signuofour.data.viewmodel.SignUoFourVM"/>
     </data>
+
+    <ScrollView
+        android:id="@+id/loginScrollview"
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout android:gravity="center_horizontal"
         android:id="@+id/linearSignUoFour"
         android:layout_height="match_parent"
@@ -143,4 +149,5 @@
                 style="@style/txtNunitobold16" tools:text="@string/lbl_login"/>
         </LinearLayout>
     </LinearLayout>
+    </ScrollView>
 </layout>
