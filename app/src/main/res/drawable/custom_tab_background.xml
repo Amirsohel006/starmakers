@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@android:color/transparent" />
+    <item android:right="16dp"> <!-- Adjust the right padding as needed -->
+        <shape android:shape="rectangle">
+            <solid android:color="#F0F4FF" /> <!-- Change this to your desired tab background color -->
+            <corners android:radius="4dp" /> <!-- Adjust the corner radius as needed -->
+        </shape>
+    </item>
+</layer-list>

@@ -14,6 +14,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Spinner
+import android.widget.Toast
 import android.widget.VideoView
 import androidx.activity.viewModels
 import androidx.appcompat.widget.AppCompatButton
@@ -50,7 +51,7 @@ import kotlin.String
 import kotlin.Unit
 
 class AuditionsFourActivity :
-    BaseActivity<ActivityAuditionsFourBinding>(R.layout.activity_auditions_four) {
+  BaseActivity<ActivityAuditionsFourBinding>(R.layout.activity_auditions_four) {
   private val viewModel: AuditionsFourVM by viewModels<AuditionsFourVM>()
 
 
@@ -76,14 +77,14 @@ class AuditionsFourActivity :
   private lateinit var profilePicUri3: Uri
   private lateinit var profilePicUri4: Uri
 
-  private lateinit var fileProfilePic: File
-  private lateinit var fileProfilePic1: File
-  private lateinit var fileProfilePic2: File
-  private lateinit var fileProfilePic3: File
-  private lateinit var fileProfilePic4: File
+  private  var fileProfilePic: File?=null
+  private  var fileProfilePic1: File?=null
+  private  var fileProfilePic2: File?=null
+  private  var fileProfilePic3: File?=null
+  private  var fileProfilePic4: File?=null
 
-  private lateinit var fileVideo1:File
-  private lateinit var fileVideo2:File
+  private  var fileVideo1:File?=null
+  private  var fileVideo2:File?=null
 
   private lateinit var videoView: VideoView
   private lateinit var videoUri: Uri
@@ -93,14 +94,14 @@ class AuditionsFourActivity :
   private lateinit var sessionManager: SessionManager
 
 
-  var multipartImage: MultipartBody.Part? = null
-  var multipartImage1: MultipartBody.Part? = null
-  var multipartImage2: MultipartBody.Part? = null
-  var multipartImage3: MultipartBody.Part? = null
-  var multipartImage4: MultipartBody.Part? = null
+  private var multipartImage: MultipartBody.Part? = null
+  private var multipartImage1: MultipartBody.Part? = null
+  private var multipartImage2: MultipartBody.Part? = null
+  private var multipartImage3: MultipartBody.Part? = null
+  private var multipartImage4: MultipartBody.Part? = null
 
-  var multipartVideo: MultipartBody.Part? = null
-  var multipartVideo1: MultipartBody.Part? = null
+  private var multipartVideo: MultipartBody.Part? = null
+  private var multipartVideo1: MultipartBody.Part? = null
 
   private var positionid: Int = -1 // Initialize with a default value
 
@@ -180,7 +181,7 @@ class AuditionsFourActivity :
       }
     })
 
-   binding.auditionsFourVM = viewModel
+    binding.auditionsFourVM = viewModel
 
 
     fetchData()
@@ -278,59 +279,77 @@ class AuditionsFourActivity :
 
   private fun postResponses(positionId: Int, profileDataId: Int){
 
-    val requestFileDocument1: RequestBody = RequestBody.create(
-      "*/*".toMediaType(),
-      fileProfilePic
-    )
+    val requestFileDocument1: RequestBody? =
+      fileProfilePic?.let { RequestBody.create("*/*".toMediaType(), it) }
 
-    val requestFileDocument2: RequestBody = RequestBody.create(
-      "*/*".toMediaType(),
-      fileProfilePic1
-    )
-    val requestFileDocument3: RequestBody = RequestBody.create(
-      "*/*".toMediaType(),
-      fileProfilePic2
-    )
-    val requestFileDocument4: RequestBody = RequestBody.create(
-      "*/*".toMediaType(),
-      fileProfilePic3
-    )
-    val requestFileDocument5: RequestBody = RequestBody.create(
-      "*/*".toMediaType(),
-      fileProfilePic4
-    )
-
-    val requestFileDocument6: RequestBody = RequestBody.create(
-      "*/*".toMediaType(),
-      fileVideo1
-    )
-
-    val requestFileDocument7: RequestBody = RequestBody.create(
-      "*/*".toMediaType(),
-      fileVideo2
-    )
+    val requestFileDocument2: RequestBody? =
+      fileProfilePic1?.let { RequestBody.create("*/*".toMediaType(), it) }
+    val requestFileDocument3: RequestBody? =
+      fileProfilePic2?.let { RequestBody.create("*/*".toMediaType(), it) }
+    val requestFileDocument4: RequestBody? =
+      fileProfilePic3?.let { RequestBody.create("*/*".toMediaType(), it) }
+    val requestFileDocument5: RequestBody? =
+      fileProfilePic4?.let { RequestBody.create("*/*".toMediaType(), it) }
+    val requestFileDocument6: RequestBody? =
+      fileVideo1?.let { RequestBody.create("*/*".toMediaType(), it) }
+    val requestFileDocument7: RequestBody? =
+      fileVideo2?.let { RequestBody.create("*/*".toMediaType(), it) }
 
 
 
     multipartImage =
-      MultipartBody.Part.createFormData("acting_picture_1", fileProfilePic.getName(), requestFileDocument1)
+      requestFileDocument1?.let {
+        MultipartBody.Part.createFormData("acting_picture_1", fileProfilePic?.name,
+          it
+        )
+      }
 
     multipartImage1 =
-      MultipartBody.Part.createFormData("acting_picture_2", fileProfilePic1.getName(), requestFileDocument2)
+      requestFileDocument2?.let {
+        MultipartBody.Part.createFormData("acting_picture_2", fileProfilePic1?.name,
+          it
+        )
+      }
     multipartImage2 =
-      MultipartBody.Part.createFormData("acting_picture_3", fileProfilePic2.getName(), requestFileDocument3)
+      requestFileDocument3?.let {
+        MultipartBody.Part.createFormData("acting_picture_3", fileProfilePic2?.name,
+          it
+        )
+      }
     multipartImage3 =
-      MultipartBody.Part.createFormData("acting_picture_4", fileProfilePic3.getName(), requestFileDocument4)
+      requestFileDocument4?.let {
+        MultipartBody.Part.createFormData("acting_picture_4", fileProfilePic3?.name,
+          it
+        )
+      }
     multipartImage4 =
-      MultipartBody.Part.createFormData("acting_picture_5", fileProfilePic4.getName(), requestFileDocument5)
+      requestFileDocument5?.let {
+        MultipartBody.Part.createFormData("acting_picture_5", fileProfilePic4?.name,
+          it
+        )
+      }
 
 
     multipartVideo =
-      MultipartBody.Part.createFormData("acting_video_1", fileVideo1.getName(), requestFileDocument6)
+      requestFileDocument6?.let {
+        MultipartBody.Part.createFormData("acting_video_1", fileVideo1?.name,
+          it
+        )
+      }
 
 
     multipartVideo1 =
-      MultipartBody.Part.createFormData("acting_video_2", fileVideo2.getName(), requestFileDocument7)
+      requestFileDocument7?.let {
+        MultipartBody.Part.createFormData("acting_video_2", fileVideo2?.name,
+          it
+        )
+      }
+
+    if(multipartImage==null  || multipartImage1==null  || multipartImage2==null || multipartImage3==null || multipartImage4==null ||
+      multipartVideo==null || multipartVideo1==null){
+      Toast.makeText(this,"Please Submit all given document",Toast.LENGTH_LONG).show()
+      return
+    }
 
 
     val serviceGenerator= ApiManager.apiInterface
@@ -354,13 +373,7 @@ class AuditionsFourActivity :
 
           val img=dialogBinding.findViewById<ImageView>(R.id.imageComponentlott)
           val img1=dialogBinding.findViewById<ImageView>(R.id.imageHttpslottief)
-//
-//          val button1=dialogBinding.findViewById<AppCompatButton>(R.id.btnDone)
-//          button1.setOnClickListener{
-//            val i = SignupFourActivity.getIntent(this@SignupOneActivity,null)
-//            startActivity(i)
-//            finish()
-//          }
+
 
           Glide.with(this@AuditionsFourActivity).load(R.drawable.done).into(img)
           Glide.with(this@AuditionsFourActivity).load(R.drawable.celebration).into(img1)
@@ -420,9 +433,9 @@ class AuditionsFourActivity :
       val selectedFileURI: Uri =profilePicUri
       fileProfilePic = getFile(this, profilePicUri)
       //file = File(selectedFileURI.path.toString())
-      Log.d("", "File : " + fileProfilePic.name)
+      Log.d("", "File : " + fileProfilePic!!.name)
       //uploadedFileName = file.toString()
-      println("upload file name ${fileProfilePic.absoluteFile}")
+      println("upload file name ${fileProfilePic!!.absoluteFile}")
 
       Log.d("my location","$fileProfilePic")
     }
@@ -434,9 +447,9 @@ class AuditionsFourActivity :
       val selectedFileURI: Uri =profilePicUri1
       fileProfilePic1 = getFile(this, profilePicUri1)
       //file = File(selectedFileURI.path.toString())
-      Log.d("", "File : " + fileProfilePic1.name)
+      Log.d("", "File : " + fileProfilePic1!!.name)
       //uploadedFileName = file.toString()
-      println("upload file name ${fileProfilePic1.absoluteFile}")
+      println("upload file name ${fileProfilePic1!!.absoluteFile}")
 
       Log.d("my location","$fileProfilePic1")
     }
@@ -448,9 +461,9 @@ class AuditionsFourActivity :
       val selectedFileURI: Uri =profilePicUri2
       fileProfilePic2 = getFile(this, profilePicUri2)
       //file = File(selectedFileURI.path.toString())
-      Log.d("", "File : " + fileProfilePic2.name)
+      Log.d("", "File : " + fileProfilePic2!!.name)
       //uploadedFileName = file.toString()
-      println("upload file name ${fileProfilePic2.absoluteFile}")
+      println("upload file name ${fileProfilePic2!!.absoluteFile}")
 
       Log.d("my location","$fileProfilePic2")
     }
@@ -461,9 +474,9 @@ class AuditionsFourActivity :
       val selectedFileURI: Uri =profilePicUri3
       fileProfilePic3 = getFile(this, profilePicUri3)
       //file = File(selectedFileURI.path.toString())
-      Log.d("", "File : " + fileProfilePic3.name)
+      Log.d("", "File : " + fileProfilePic3!!.name)
       //uploadedFileName = file.toString()
-      println("upload file name ${fileProfilePic3.absoluteFile}")
+      println("upload file name ${fileProfilePic3!!.absoluteFile}")
 
       Log.d("my location","$fileProfilePic3")
     }
@@ -475,9 +488,9 @@ class AuditionsFourActivity :
       val selectedFileURI: Uri =profilePicUri4
       fileProfilePic4 = getFile(this, profilePicUri4)
       //file = File(selectedFileURI.path.toString())
-      Log.d("", "File : " + fileProfilePic4.name)
+      Log.d("", "File : " + fileProfilePic4!!.name)
       //uploadedFileName = file.toString()
-      println("upload file name ${fileProfilePic4.absoluteFile}")
+      println("upload file name ${fileProfilePic4!!.absoluteFile}")
 
       Log.d("my location","$fileProfilePic4")
     }
