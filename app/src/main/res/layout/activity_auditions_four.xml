@@ -564,6 +564,13 @@
                     </LinearLayout>
                 </LinearLayout>
             </ScrollView>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
             <androidx.appcompat.widget.AppCompatButton
                 android:ellipsize="end"
                 android:gravity="center"

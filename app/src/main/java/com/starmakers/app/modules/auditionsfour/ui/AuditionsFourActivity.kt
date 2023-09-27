@@ -13,6 +13,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Spinner
 import android.widget.Toast
 import android.widget.VideoView
@@ -296,6 +297,8 @@ class AuditionsFourActivity :
       fileVideo2?.let { RequestBody.create("*/*".toMediaType(), it) }
 
 
+    val progressBar = findViewById<ProgressBar>(R.id.progressBar)
+    progressBar.visibility = View.VISIBLE
 
     multipartImage =
       requestFileDocument1?.let {
@@ -362,6 +365,7 @@ class AuditionsFourActivity :
         call: Call<PostReponses>,
         response: Response<PostReponses>
       ) {
+        progressBar.visibility = View.GONE
         val customerResponse=response.body()
 
         if(customerResponse!=null){
@@ -385,6 +389,7 @@ class AuditionsFourActivity :
       }
 
       override fun onFailure(call: Call<PostReponses>, t: Throwable) {
+        progressBar.visibility = View.GONE
         t.printStackTrace()
         Log.e("error", t.message.toString())
       }
