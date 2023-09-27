@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-<dimen name="_1pxh">1.0dp</dimen>
+    <!-- Example custom tab padding values -->
+    <dimen name="custom_tab_padding_start">16dp</dimen>
+    <dimen name="custom_tab_padding_end">16dp</dimen>
+
+    <dimen name="_1pxh">1.0dp</dimen>
 <dimen name="_2pxh">2.0dp</dimen>
 <dimen name="_3pxh">3.0dp</dimen>
 <dimen name="_4pxh">4.0dp</dimen>

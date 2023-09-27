@@ -47,7 +47,7 @@ class ArtistBookongTwoActivity :
         Toast.makeText(this,"Profile Received Successfully",Toast.LENGTH_SHORT).show()
       }
     } else {
-      Toast.makeText(this, "Failed to receive ProfileData", Toast.LENGTH_SHORT).show()
+      Toast.makeText(this, "Data is not Available", Toast.LENGTH_SHORT).show()
       Log.e("ReceiverActivity", "Failed to receive ProfileData")
     }
 

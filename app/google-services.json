@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "14027189280",
+    "project_id": "starmakerz",
+    "storage_bucket": "starmakerz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14027189280:android:1642621d218446617c2045",
+        "android_client_info": {
+          "package_name": "com.starmakers.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_WsqSkSYTydVd7vvt-n3b1tOzQKwXsow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

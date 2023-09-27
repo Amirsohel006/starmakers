@@ -1,6 +1,7 @@
 package com.starmakers.app.modules.studiobookong1.ui
 
 import android.util.Log
+import android.view.ViewGroup
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.google.android.material.tabs.TabLayout
@@ -32,6 +33,9 @@ class StudioBookong1Activity :
     val tabLayoutMediator = TabLayoutMediator(binding.tabLayoutGroup2, binding.viewPagerViewpager) { tab, position ->
       val tabText = StudioBookong1ActivityPagerAdapter.title[position]
       tab.text = tabText
+//
+//      val customTabDrawable = ContextCompat.getDrawable(this, R.drawable.selector_bg_white_a700_radius_10)
+//      tab.view.background = customTabDrawable
     }
 
     // Attach the TabLayoutMediator after setting up the tabs
@@ -41,6 +45,16 @@ class StudioBookong1Activity :
     for (position in 0 until adapter.itemCount) {
       val tab = binding.tabLayoutGroup2.getTabAt(position)
       tab?.let {
+
+        val tabPaddingStart = resources.getDimensionPixelSize(R.dimen.custom_tab_padding_start)
+        val tabPaddingEnd = resources.getDimensionPixelSize(R.dimen.custom_tab_padding_end)
+        val tabPaddingTop = 0 // Adjust the top padding as needed
+        val tabPaddingBottom = 0 // Adjust the bottom padding as needed
+
+        // Set padding for the tab's view
+        val tabView = it.view
+        tabView.setPadding(tabPaddingStart, tabPaddingTop, tabPaddingEnd, tabPaddingBottom)
+
         it.view.setOnClickListener {
           // Fetch data for the selected tab
         //  fetchStudio(StudioBookong1ActivityPagerAdapter.title[position])
