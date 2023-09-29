@@ -105,6 +105,7 @@ class AuditionsFourActivity :
   private var multipartVideo1: MultipartBody.Part? = null
 
   private var positionid: Int = -1 // Initialize with a default value
+  private var auditionid:Int=-1
 
 
   override fun onInitialized(): Unit {
@@ -122,6 +123,7 @@ class AuditionsFourActivity :
     videoView1=binding.imagePlusSix
 
     val profileDataId = intent.getIntExtra("artistDataId",-1)
+    Log.d("Profile Data Id",profileDataId.toString())
     val serviceGenerator= ApiManager.apiInterface
     val accessToken=sessionManager.fetchAuthToken()
     val authorization="Token $accessToken"
@@ -134,11 +136,12 @@ class AuditionsFourActivity :
       ) {
         val auditionPositions = response.body()
         if (auditionPositions != null) {
-          val spinnerItems = auditionPositions.map { it.audition_positions }.toMutableList()
+          val spinnerItems = auditionPositions.map {it.audition_positions}.toMutableList()
           spinnerItems.add(0, "Applying for this role")
 
-          val positionid=auditionPositions[0].id
-          this@AuditionsFourActivity.positionid = positionid
+
+//          val positionid=auditionPositions[0].id
+//          this@AuditionsFourActivity.positionid = positionid
           // Assuming you have a reference to your Spinner view
           val spinner = findViewById<Spinner>(R.id.spinnerComponentNine)
 
@@ -163,9 +166,17 @@ class AuditionsFourActivity :
               position: Int,
               id: Long
             ) {
-              // Handle item selection here if needed
-              val selectedValue = spinnerItems[position]
-              // Do something with the selected value
+              // Check if a valid item is selected
+              if (position >= 0 && position < auditionPositions.size) {
+                // Handle item selection here if needed
+                val selectedValue = auditionPositions[position].id
+                this@AuditionsFourActivity.positionid = selectedValue
+                this@AuditionsFourActivity.auditionid=auditionPositions[position].audition
+                // Do something with the selected value
+              } else {
+                // Handle the case where the user clears the selection or selects an invalid item
+                this@AuditionsFourActivity.positionid = 0 // or any other suitable value
+              }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -188,7 +199,10 @@ class AuditionsFourActivity :
     fetchData()
 
     binding.btnParticipate.setOnClickListener {
-      postResponses(positionid,profileDataId)
+      val positionId = this@AuditionsFourActivity.positionid
+      val auditionId = this@AuditionsFourActivity.auditionid
+
+      postResponses(auditionId,positionId)
     }
     window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
 
@@ -278,21 +292,25 @@ class AuditionsFourActivity :
     startActivityForResult(intent, pickVideo1)
   }
 
-  private fun postResponses(positionId: Int, profileDataId: Int){
-
+  private fun postResponses( audition: Int,positionId: Int){
     val requestFileDocument1: RequestBody? =
       fileProfilePic?.let { RequestBody.create("*/*".toMediaType(), it) }
 
     val requestFileDocument2: RequestBody? =
       fileProfilePic1?.let { RequestBody.create("*/*".toMediaType(), it) }
+
     val requestFileDocument3: RequestBody? =
       fileProfilePic2?.let { RequestBody.create("*/*".toMediaType(), it) }
+
     val requestFileDocument4: RequestBody? =
       fileProfilePic3?.let { RequestBody.create("*/*".toMediaType(), it) }
+
     val requestFileDocument5: RequestBody? =
       fileProfilePic4?.let { RequestBody.create("*/*".toMediaType(), it) }
+
     val requestFileDocument6: RequestBody? =
       fileVideo1?.let { RequestBody.create("*/*".toMediaType(), it) }
+
     val requestFileDocument7: RequestBody? =
       fileVideo2?.let { RequestBody.create("*/*".toMediaType(), it) }
 
@@ -358,7 +376,7 @@ class AuditionsFourActivity :
     val serviceGenerator= ApiManager.apiInterface
     val accessToken=sessionManager.fetchAuthToken()
     val authorization="Token $accessToken"
-    val call=serviceGenerator.PostResponses(authorization,positionId,profileDataId,multipartImage!!,multipartImage1!!,multipartImage2!!,multipartImage3!!,multipartImage4!!,multipartVideo!!,multipartVideo1!!)
+    val call=serviceGenerator.PostResponses(authorization,audition,positionId,multipartImage!!,multipartImage1!!,multipartImage2!!,multipartImage3!!,multipartImage4!!,multipartVideo!!,multipartVideo1!!)
 
     call.enqueue(object : retrofit2.Callback<PostReponses>{
       override fun onResponse(
@@ -369,7 +387,6 @@ class AuditionsFourActivity :
         val customerResponse=response.body()
 
         if(customerResponse!=null){
-
 
           val dialogBinding = layoutInflater.inflate(R.layout.activity_frame_twentythree, null)
           val myDialoge = Dialog(this@AuditionsFourActivity)

@@ -128,7 +128,7 @@ Bookings</string>
     <string name="lbl_view_details">View Details</string>
     <string name="lbl_upload_video">Upload Video</string>
     <string name="lbl_weight_in_kg">Weight in KG</string>
-    <string name="lbl_kgf_auditions">KGF Auditions </string>
+    <string name="lbl_kgf_auditions">Apply For Audition</string>
     <string name="lbl_home">Home</string>
     <string name="msg_already_have_an">Already have an account ?</string>
     <string name="msg_participate_in">Participate in other Auditions</string>
