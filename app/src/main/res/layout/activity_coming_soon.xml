@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".modules.membershipoptioncomingsoon.ComingSoon">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarToolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" app:contentInsetStart="0dp">
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearRowarrowleft"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal" style="@style/groupStylegray_802">
+            <ImageView android:id="@+id/imageArrowleft"
+                android:layout_height="@dimen/_24pxh"
+                android:layout_marginBottom="@dimen/_11pxv"
+                android:layout_marginStart="@dimen/_23pxh"
+                android:layout_marginTop="@dimen/_27pxv"
+                android:layout_width="@dimen/_24pxh"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_arrowleft"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_arrowleft"/>
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtArtistMembersh"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_2pxv"
+                android:layout_marginEnd="@dimen/_57pxh"
+                android:layout_marginStart="@dimen/_29pxh"
+                android:layout_marginTop="@dimen/_23pxv"
+                android:layout_weight="0.9"
+                android:layout_width="0dp" android:singleLine="true"
+                android:text="@string/msg_artist_membersh"
+                style="@style/txtPoppinssemibold24"
+                tools:text="@string/msg_artist_membersh"/>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <ImageView
+        android:layout_marginTop="@dimen/_250pxh"
+        android:layout_gravity="center"
+        android:src="@drawable/comingsoon"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150pxh"/>
+
+</LinearLayout>

@@ -15,6 +15,7 @@ import com.starmakers.app.databinding.ActivityArtistBookongOneBinding
 import com.starmakers.app.modules.artistbookongone.`data`.viewmodel.ArtistBookongOneVM
 import com.starmakers.app.modules.artistmembership.ui.ArtistMembershipActivity
 import com.starmakers.app.modules.artistmembershipone.ui.ArtistMembershipOneActivity
+import com.starmakers.app.modules.membershipoptioncomingsoon.ComingSoon
 import com.starmakers.app.modules.profleupdate.ProfileUpdate
 import com.starmakers.app.modules.signuotwo.ui.LoginActivity
 import com.starmakers.app.responses.LogoutResponse
@@ -58,7 +59,8 @@ class ArtistBookongOneActivity :
       logout()
     }
     binding.btnTakeMembershipOne.setOnClickListener {
-      val destIntent = ArtistMembershipActivity.getIntent(this, null)
+      //val destIntent = ArtistMembershipActivity.getIntent(this, null)
+      val destIntent = Intent(this,ComingSoon::class.java)
       startActivity(destIntent)
     }
     binding.imageArrowleft.setOnClickListener {

@@ -48,7 +48,7 @@ class HelpActivity : BaseActivity<ActivityHelpBinding>(R.layout.activity_help) {
 
     fetchFaqs()
 
-    fetchContact()
+    //fetchContact()
 
     window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
   }
