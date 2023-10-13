@@ -20,6 +20,7 @@ import com.starmakers.app.modules.auditions.ui.AuditionsActivity
 import com.starmakers.app.modules.auditionstwo.ui.AuditionsTwoActivity
 import com.starmakers.app.modules.campaignone.ui.CampaignOneActivity
 import com.starmakers.app.modules.frame311.ui.Frame311Activity
+import com.starmakers.app.modules.membershipoptioncomingsoon.ComingSoon
 import com.starmakers.app.modules.request.ui.StudioRequestAdapter
 import com.starmakers.app.modules.requestone.ui.RequestOneActivity
 import com.starmakers.app.modules.studiobookong1.ui.StudioBookong1Activity
@@ -105,8 +106,13 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
     }
 
 
-    binding.linearColumnuntitleddesign.setOnClickListener {
-      val i=Intent(requireActivity(),ArtistMembershipActivity::class.java)
+//    binding.linearColumnuntitleddesign.setOnClickListener {
+//      val i=Intent(requireActivity(),ArtistMembershipActivity::class.java)
+//      startActivity(i)
+//    }
+
+        binding.linearColumnuntitleddesign.setOnClickListener {
+      val i=Intent(requireActivity(),ComingSoon::class.java)
       startActivity(i)
     }
 

@@ -18,6 +18,7 @@ import com.starmakers.app.modules.frame311.ui.Frame311Activity
 import com.starmakers.app.modules.home.`data`.model.ImageSliderSliderrectangleelevenModel
 import com.starmakers.app.modules.home.`data`.model.SpinnerGroup122Model
 import com.starmakers.app.modules.home.`data`.viewmodel.HomeVM
+import com.starmakers.app.modules.membershipoptioncomingsoon.ComingSoon
 import com.starmakers.app.modules.studiobookong1.ui.StudioBookong1Activity
 import com.starmakers.app.responses.ProfileResponse
 import com.starmakers.app.service.ApiManager
@@ -97,7 +98,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
       startActivity(i)
     }
     binding.linearColumnuntitleddesign.setOnClickListener {
-      val i=Intent(requireActivity(), ArtistMembershipActivity::class.java)
+      val i=Intent(requireActivity(), ComingSoon::class.java)
       startActivity(i)
     }
 

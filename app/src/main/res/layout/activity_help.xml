@@ -269,9 +269,9 @@
                 android:layout_marginTop="@dimen/_14pxv"
                 android:layout_width="wrap_content"
                 android:singleLine="true"
-                android:text="91085232323"
+                android:text="+91 8073878306"
                 style="@style/txtNunitosemibold16"
-                tools:text="91085232323"/>
+                tools:text="+91 8073878306"/>
 
         </LinearLayout>
 
@@ -306,9 +306,9 @@
             android:layout_marginTop="@dimen/_15pxv"
             android:layout_width="wrap_content"
             android:singleLine="true"
-            android:text="@string/msg_mail_id_qecur"
+            android:text="info@starmakerzz.com"
             style="@style/txtNunitosemibold16"
-            tools:text="@string/msg_mail_id_qecur"/>
+            tools:text="info@starmakerzz.com"/>
 
     </LinearLayout>
     </LinearLayout>

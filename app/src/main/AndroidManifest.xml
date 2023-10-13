@@ -16,10 +16,12 @@
         android:theme="@style/Theme.MyApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".modules.artistrequestinfo.ArtistRequestInfo"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:name=".modules.membershipoptioncomingsoon.ComingSoon"
             android:exported="false" />
-   
+        <activity
+            android:name=".modules.artistrequestinfo.ArtistRequestInfo"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".modules.artistbookingativity.ArtistBookingAcitivity"
             android:exported="false"
@@ -61,8 +63,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".modules.signuotwo.ui.LoginActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".modules.selectionlist.ui.SelectionListActivity"
             android:screenOrientation="portrait" />
@@ -148,8 +150,8 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".modules.homecontainer.ui.HomeContainerActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".modules.regstrationdetails.ui.RegstrationDetailsActivity"
             android:screenOrientation="portrait" />
@@ -177,8 +179,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".modules.auditionsfour.ui.AuditionsFourActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".modules.signuo.ui.SignUoActivity"
             android:screenOrientation="portrait" />
