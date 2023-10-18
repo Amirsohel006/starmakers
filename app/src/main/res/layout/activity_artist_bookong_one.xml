@@ -21,13 +21,16 @@
                 android:layout_gravity="top|start"
                 android:layout_height="@dimen/_191pxv"
                 android:layout_marginBottom="@dimen/_10pxv" android:layout_width="match_parent">
-                <ImageView android:id="@+id/profilePicture"
-                    android:layout_gravity="start"
-                    android:layout_height="@dimen/_191pxh"
-                    android:layout_width="match_parent"
-                    android:scaleType="fitXY"
+
+                <ImageView
+                    android:id="@+id/profilePicture"
                     imageRes="@{@drawable/img_ellipse60}"
-                    tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse60"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="225dp"
+                    android:layout_gravity="start"
+                    android:scaleType="fitXY"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/img_ellipse60" />
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbarToolbar"
                     android:layout_gravity="center"

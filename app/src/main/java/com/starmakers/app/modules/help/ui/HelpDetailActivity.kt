@@ -2,6 +2,7 @@ package com.starmakers.app.modules.help.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -25,6 +26,11 @@ class HelpDetailActivity : AppCompatActivity() {
         val notificationId = intent.getIntExtra("faqId", -1)
 
         fetchNotificationDetails(notificationId)
+
+        val backbuttonImage:ImageView=findViewById(R.id.imageArrowleft)
+        backbuttonImage.setOnClickListener {
+            finish()
+        }
 
         window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
     }
