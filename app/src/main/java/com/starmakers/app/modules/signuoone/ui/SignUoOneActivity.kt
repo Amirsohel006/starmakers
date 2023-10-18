@@ -42,7 +42,7 @@ class SignUoOneActivity : BaseActivity<ActivitySignUoOneBinding>(R.layout.activi
   private lateinit var apiService: ApiInterface
   private lateinit var sessionManager: SessionManager
   private val pickImage = 100
-  private lateinit var imageUri: Uri
+  private var imageUri: Uri? = null
 
 
 
@@ -142,7 +142,7 @@ class SignUoOneActivity : BaseActivity<ActivitySignUoOneBinding>(R.layout.activi
             Log.d("response_data",responseBody.toString())
             finishAffinity()
           } else {
-            Toast.makeText(this@SignUoOneActivity, "Registration failed", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@SignUoOneActivity, "Registration failed!! Mobile Number Already Registered", Toast.LENGTH_SHORT).show()
             Log.d(responseBody,"This fails in signup response")
           }
         }
@@ -164,8 +164,8 @@ class SignUoOneActivity : BaseActivity<ActivitySignUoOneBinding>(R.layout.activi
 
       imageUri = data?.data!!
       profileImageView.setImageURI(imageUri)
-      val selectedFileURI: Uri =imageUri
-      file = getFile(this, imageUri)
+      val selectedFileURI: Uri = imageUri as Uri
+      file = getFile(this, imageUri!!)
       //file = File(selectedFileURI.path.toString())
       Log.d("", "File : " + file.name)
       //uploadedFileName = file.toString()
