@@ -30,6 +30,12 @@ class ArtistRequestInfo : AppCompatActivity() {
         setContentView(R.layout.activity_artist_request_info)
         sessionManager=SessionManager(this)
 
+
+        val imageBackButton:ImageView=findViewById(R.id.imageArrowleft)
+        imageBackButton.setOnClickListener {
+            finish()
+        }
+
         val artistId=intent.getIntExtra("profileDataId",-1)
         getMyArtistRequests(artistId)
     }

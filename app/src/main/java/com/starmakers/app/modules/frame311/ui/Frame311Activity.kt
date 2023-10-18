@@ -1,7 +1,9 @@
 package com.starmakers.app.modules.frame311.ui
 
+import android.content.Intent
 import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.squareup.picasso.Picasso
@@ -15,6 +17,7 @@ import com.starmakers.app.modules.frame311.`data`.viewmodel.Frame311VM
 import com.starmakers.app.modules.help.ui.HelpActivity
 import com.starmakers.app.modules.helpone.ui.HelpOneActivity
 import com.starmakers.app.modules.helptwo.ui.HelpTwoActivity
+import com.starmakers.app.modules.membershipoptioncomingsoon.ComingSoon
 import com.starmakers.app.modules.selectionlist.ui.SelectionListActivity
 import com.starmakers.app.modules.selectionlistthree.ui.SelectionListThreeActivity
 import com.starmakers.app.responses.ProfileResponse
@@ -58,8 +61,10 @@ class Frame311Activity : BaseActivity<ActivityFrame311Binding>(R.layout.activity
       startActivity(destIntent)
     }
     binding.linearRowcomputer.setOnClickListener {
-      val destIntent = ArtistMembershipActivity.getIntent(this, null)
-      startActivity(destIntent)
+      val i= Intent(this, ComingSoon::class.java)
+      startActivity(i)
+     //val destIntent = ArtistMembershipActivity.getIntent(this, null)
+//      startActivity(destIntent)
     }
     binding.linearRowquestion.setOnClickListener {
       val destIntent = HelpActivity.getIntent(this, null)
@@ -72,6 +77,10 @@ class Frame311Activity : BaseActivity<ActivityFrame311Binding>(R.layout.activity
     binding.linearRowinfoOne.setOnClickListener {
       val destIntent = HelpTwoActivity.getIntent(this, null)
       startActivity(destIntent)
+    }
+
+    binding.linearRowshare.setOnClickListener {
+      Toast.makeText(this,"This Feature Will Be Available Soon",Toast.LENGTH_SHORT).show()
     }
   }
 

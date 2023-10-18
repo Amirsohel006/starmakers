@@ -44,10 +44,10 @@ class ArtistBookongTwoActivity :
       // Handle the list of ProfileData objects here
       for (profileData in profileDataList) {
         Log.d("ReceiverActivity", "Received ProfileData: ${profileData.artistName}")
-        Toast.makeText(this,"Profile Received Successfully",Toast.LENGTH_SHORT).show()
+       // Toast.makeText(this,"Profile Received Successfully",Toast.LENGTH_SHORT).show()
       }
     } else {
-      Toast.makeText(this, "Data is not Available", Toast.LENGTH_SHORT).show()
+      Toast.makeText(this, "Data is Not Available", Toast.LENGTH_SHORT).show()
       Log.e("ReceiverActivity", "Failed to receive ProfileData")
     }
 

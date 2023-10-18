@@ -49,8 +49,6 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
     fetchStudioRequest()
 
 
-
-
     viewModel.navArguments = arguments
     binding.activitiesVM = viewModel
   }

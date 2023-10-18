@@ -52,7 +52,6 @@ class LoginOTPActivity :
       TokenManager.initialize(this)
       sessionManager= SessionManager(this)
 
-
 //
 //      sharedPreferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
 //
@@ -81,8 +80,6 @@ class LoginOTPActivity :
         }
       }
 
-
-
       viewModel.navArguments = intent.extras?.getBundle("bundle")
      // startSmartUserConsent()
       binding.signUoThreeVM = viewModel
@@ -99,16 +96,17 @@ class LoginOTPActivity :
     }
 
     override fun setUpClicks(): Unit {
-      binding.btnVerify.setOnClickListener {
-        val destIntent = HomeContainerActivity.getIntent(this, null)
-        startActivity(destIntent)
-      }
+//      binding.btnVerify.setOnClickListener {
+//        val destIntent = HomeContainerActivity.getIntent(this, null)
+//        startActivity(destIntent)
+//      }
     }
 
   private fun navigateToNextPage() {
     val i= HomeContainerActivity.getIntent(this,null)
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
     startActivity(i)
+    finish()
   }
 
     private fun startSmartUserConsent(): Unit {
