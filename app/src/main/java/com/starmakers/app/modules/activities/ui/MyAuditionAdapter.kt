@@ -51,7 +51,7 @@ data class MyAuditionAdapter(  var list: List<MyAuditionRequest> ): RecyclerView
             val file =
                 postModel.movie_poster// Assuming postModel.profile is a File object
 
-            val imgUrl = file?.let { ApiManager.getImageUrl(it) }
+            val imgUrl = file.let { ApiManager.getImageUrl(it) }
 //            Picasso.get()
 //                .load(imgUrl)
 //                .into(image)

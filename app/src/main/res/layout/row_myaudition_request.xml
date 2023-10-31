@@ -21,8 +21,7 @@
             android:layout_marginTop="@dimen/_10pxv"
             android:layout_width="@dimen/_100pxh"
             android:scaleType="fitXY"
-            tools:ignore="ContentDescription"
-            tools:src="@drawable/img_rectangle106"/>
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
 </LinearLayout>
