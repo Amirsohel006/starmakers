@@ -33,13 +33,13 @@ import kotlin.collections.ArrayList
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
   private val imageUri: Uri =
-      Uri.parse("android.resource://com.starmakers.app/drawable/img_rectangle11")
+      Uri.parse("https://firebasestorage.googleapis.com/v0/b/starmakerz.appspot.com/o/img_rectangle11.png?alt=media&token=20cd0197-3af2-40da-bc53-a950f7ef933f&_gl=1*1kqjzek*_ga*NjczMjE3ODc4LjE2OTg3NDE5ODA.*_ga_CW55HF8NVT*MTY5ODc1NDMzMy4zLjEuMTY5ODc1NDgxMy4yNS4wLjA.")
   private val imageUri1: Uri =
-    Uri.parse("android.resource://com.starmakers.app/drawable/image2")
+    Uri.parse("https://firebasestorage.googleapis.com/v0/b/starmakerz.appspot.com/o/image5.png?alt=media&token=bb5b116c-9863-4e1f-992e-4fdefd605780&_gl=1*kgctb8*_ga*NjczMjE3ODc4LjE2OTg3NDE5ODA.*_ga_CW55HF8NVT*MTY5ODc1NDMzMy4zLjEuMTY5ODc1NDkzMi41OS4wLjA.")
   private val imageUri2: Uri =
-    Uri.parse("android.resource://com.starmakers.app/drawable/image3")
+    Uri.parse("https://firebasestorage.googleapis.com/v0/b/starmakerz.appspot.com/o/image3.png?alt=media&token=7cef87b6-c751-40e7-a0ad-0287e1e614cc&_gl=1*117l19v*_ga*NjczMjE3ODc4LjE2OTg3NDE5ODA.*_ga_CW55HF8NVT*MTY5ODc1NDMzMy4zLjEuMTY5ODc1NDk1My4zOC4wLjA.")
   private val imageUri3: Uri =
-    Uri.parse("android.resource://com.starmakers.app/drawable/image5")
+    Uri.parse("https://firebasestorage.googleapis.com/v0/b/starmakerz.appspot.com/o/image2.png?alt=media&token=aa8af948-f15e-403c-bf13-8903cba245e3&_gl=1*1jov726*_ga*NjczMjE3ODc4LjE2OTg3NDE5ODA.*_ga_CW55HF8NVT*MTY5ODc1NDMzMy4zLjEuMTY5ODc1NDk3My4xOC4wLjA.")
 
 
   private lateinit var sessionManager: SessionManager
