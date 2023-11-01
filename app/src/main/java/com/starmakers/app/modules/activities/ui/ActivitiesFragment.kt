@@ -17,8 +17,6 @@ import com.starmakers.app.modules.artistbookongfive.ui.ArtistBookongFiveActivity
 import com.starmakers.app.modules.artistbookongone.ui.ArtistBookongOneActivity
 import com.starmakers.app.modules.artistmembership.ui.ArtistMembershipActivity
 import com.starmakers.app.modules.auditions.ui.AuditionsActivity
-import com.starmakers.app.modules.auditionstwo.ui.AuditionsTwoActivity
-import com.starmakers.app.modules.campaignone.ui.CampaignOneActivity
 import com.starmakers.app.modules.frame311.ui.Frame311Activity
 import com.starmakers.app.modules.membershipoptioncomingsoon.ComingSoon
 import com.starmakers.app.modules.request.ui.StudioRequestAdapter
@@ -29,7 +27,7 @@ import com.starmakers.app.responses.StudioRequests
 import com.starmakers.app.service.ApiManager
 import com.starmakers.app.service.CircleTransformation
 import com.starmakers.app.service.SessionManager
-import layout.MyAuditionRequest
+import com.starmakers.app.responses.MyAuditionRequest
 import retrofit2.Call
 import retrofit2.Response
 import kotlin.Int
@@ -212,6 +210,9 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
 
         if(customerResponse!=null){
           val responsefinal=response.body()
+          binding.mystudiostext.visibility=View.GONE
+          binding.recyclerforstudios.visibility=View.VISIBLE
+
 
           binding.recyclerforstudios.apply {
             layoutManager=
@@ -229,13 +230,13 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
     })
   }
 
-
   private fun getMyAuditionRequests(){
 
     val serviceGenerator= ApiManager.apiInterface
     val accessToken=sessionManager.fetchAuthToken()
     val authorization="Token $accessToken"
     val call=serviceGenerator.getMyAuditionRequest(authorization)
+
 
     call.enqueue(object : retrofit2.Callback<MutableList<MyAuditionRequest>>{
       override fun onResponse(
@@ -247,13 +248,16 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
         if(customerResponse!=null){
           val responsefinal=response.body()
 
-
+          binding.audiotiontext.visibility=View.GONE
+          binding.myauditions.visibility=View.VISIBLE
 
           val recyclerView = binding.myauditions
-          recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-          val myauditionadapter = responsefinal?.let { MyAuditionAdapter(it) }
-          recyclerView.adapter = myauditionadapter
-
+          recyclerView.apply {
+            recyclerView.layoutManager =
+              LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            val myauditionadapter = responsefinal?.let { MyAuditionAdapter(it) }
+            recyclerView.adapter = myauditionadapter
+          }
 //          binding.myauditions.apply {
 //            layoutManager=
 //              LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL,false)

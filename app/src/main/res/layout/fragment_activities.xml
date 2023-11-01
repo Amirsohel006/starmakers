@@ -277,7 +277,8 @@
                         android:layout_width="0dp"
                         android:singleLine="true"
                         android:text="@{activitiesVM.activitiesModel.txtMyRequests}"
-                        style="@style/txtPoppinsmedium20" tools:text="@string/lbl_my_requests"/>
+                        style="@style/txtPoppinsmedium20"
+                        tools:text="@string/lbl_my_requests"/>
                     <TextView android:ellipsize="end"
                         android:id="@+id/txtOne"
                         android:layout_height="wrap_content"
@@ -309,7 +310,17 @@
                     tools:text="@string/lbl_my_auditions"/>
             </LinearLayout>
 
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/audiotiontext"
+                    android:visibility="visible"
+                    android:textColor="@color/gray_800"
+                    android:textStyle="italic"
+                    android:text="Not applied for auditioins yet "
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
                 <androidx.recyclerview.widget.RecyclerView
+                    android:visibility="gone"
                     android:orientation="horizontal"
                     android:id="@+id/myauditions"
                     android:layout_width="match_parent"
@@ -361,7 +372,17 @@
                     style="@style/txtPoppinsmedium16"
                     tools:text="@string/lbl_studios_booked"/>
 
+                <TextView
+                    android:id="@+id/mystudiostext"
+                    android:visibility="visible"
+                    android:textColor="@color/gray_800"
+                    android:textStyle="italic"
+                    android:gravity="center"
+                    android:text="Studios Are Not Booked Yet!!"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
                 <androidx.recyclerview.widget.RecyclerView
+                    android:visibility="gone"
                     android:id="@+id/recyclerforstudios"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>

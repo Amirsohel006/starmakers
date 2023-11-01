@@ -1,6 +1,5 @@
 package com.starmakers.app.service
 
-import android.provider.MediaStore.Audio.Artists
 import com.starmakers.app.responses.AboutUsModel
 import com.starmakers.app.responses.ArtistRequestById
 import com.starmakers.app.responses.ArtistRequests
@@ -25,14 +24,11 @@ import com.starmakers.app.responses.ProfileResponseList
 import com.starmakers.app.responses.RequestArtist
 import com.starmakers.app.responses.RequestAudition
 import com.starmakers.app.responses.RequestPostResponse
-import com.starmakers.app.responses.RequestUserData
 import com.starmakers.app.responses.SelectionDataResponse
-import com.starmakers.app.responses.SelectionListItem
 import com.starmakers.app.responses.SelectionListResponse
 import com.starmakers.app.responses.SignUpResponse
-import com.starmakers.app.responses.StudioRequest
 import com.starmakers.app.responses.StudioRequests
-import layout.MyAuditionRequest
+import com.starmakers.app.responses.MyAuditionRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody

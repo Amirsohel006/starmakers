@@ -19,6 +19,8 @@ import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivityFrame316Binding
 import com.starmakers.app.modules.frame315.ui.Frame315Activity
 import com.starmakers.app.modules.frame316.`data`.viewmodel.Frame316VM
+import com.starmakers.app.modules.request.ui.RequestActivity
+import com.starmakers.app.modules.requestone.ui.RequestOneActivity
 import com.starmakers.app.modules.selectionlisttwo.ui.Listrectangle140Adapter
 import com.starmakers.app.modules.studiobookong1.ui.StudioBookong1Activity
 import com.starmakers.app.responses.PostReponses
@@ -131,6 +133,9 @@ class Frame316Activity : BaseActivity<ActivityFrame316Binding>(R.layout.activity
       ) {
         if(response.isSuccessful){
         Toast.makeText(this@Frame316Activity, "Request Sent Successfully", Toast.LENGTH_SHORT).show()
+          val i=Intent(this@Frame316Activity, RequestActivity::class.java)
+          startActivity(i)
+          finish()
 
         }
 
