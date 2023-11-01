@@ -1,4 +1,4 @@
-package layout
+package com.starmakers.app.responses
 
 data class MyAuditionRequest(
     val id: Int,
