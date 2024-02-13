@@ -69,18 +69,39 @@
                 android:layout_weight="0.69" android:layout_width="0dp"
                 android:singleLine="true"
                 android:text="@{regstrationDetailsVM.regstrationDetailsModel.txtRegistrationFe}"
-                style="@style/txtPoppinsmedium16_3" tools:text="@string/msg_registration_fe"/>
+                style="@style/txtPoppinsmedium16_3"
+                tools:text="@string/msg_registration_fe"/>
+
+
+            <LinearLayout
+                android:id="@+id/amount"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
             <TextView android:ellipsize="end"
                 android:id="@+id/txtRsCounter"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_22pxv"
-                android:layout_marginEnd="@dimen/_13pxh"
+                android:layout_marginEnd="@dimen/_5pxh"
                 android:layout_marginStart="@dimen/_119pxh"
                 android:layout_marginTop="@dimen/_16pxv"
                 android:layout_weight="0.31" android:layout_width="0dp"
                 android:singleLine="true"
-                android:text="@{regstrationDetailsVM.regstrationDetailsModel.txtRsCounter}"
-                style="@style/txtPoppinsmedium16_4" tools:text="@string/lbl_rs_500"/>
+                android:text="@string/lbl_rs_500"
+                style="@style/txtPoppinsmedium16_4"
+                tools:text="@string/lbl_rs_500"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtRsCounter1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_22pxv"
+                    android:layout_marginEnd="@dimen/_13pxh"
+                    android:layout_marginTop="@dimen/_16pxv"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="500"
+                    style="@style/txtPoppinsmedium16_4"
+                    tools:text="500"/>
+            </LinearLayout>
         </LinearLayout>
         <TextView
             android:ellipsize="end" android:gravity="start"
@@ -122,6 +143,13 @@
             itemSpace="@{@dimen/_16pxh}"
             tools:itemCount="2"
             tools:listitem="@layout/row_listellipsetwentysix2"/>
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
         <androidx.appcompat.widget.AppCompatButton
             android:ellipsize="end"
             android:gravity="center"
@@ -136,6 +164,7 @@
             android:singleLine="true"
             android:text="@string/msg_pay_and_registe"
             android:textAllCaps="false"
-            style="@style/btnSolid_1" tools:text="@string/msg_pay_and_registe"/>
+            style="@style/btnSolid_1"
+            tools:text="@string/msg_pay_and_registe"/>
     </LinearLayout>
 </layout>

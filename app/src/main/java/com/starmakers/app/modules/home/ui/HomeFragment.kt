@@ -98,7 +98,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
       startActivity(i)
     }
     binding.linearColumnuntitleddesign.setOnClickListener {
-      val i=Intent(requireActivity(), ComingSoon::class.java)
+      val i=Intent(requireActivity(), ArtistMembershipActivity::class.java)
       startActivity(i)
     }
 

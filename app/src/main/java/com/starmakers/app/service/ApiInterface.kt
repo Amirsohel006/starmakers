@@ -29,6 +29,7 @@ import com.starmakers.app.responses.SelectionListResponse
 import com.starmakers.app.responses.SignUpResponse
 import com.starmakers.app.responses.StudioRequests
 import com.starmakers.app.responses.MyAuditionRequest
+import com.starmakers.app.responses.PaymentRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -181,6 +182,24 @@ interface ApiInterface {
 
 
 
+    @Multipart
+    @POST("api/artist/membership/")
+    fun PostMembershipResponses(
+        @Header("Authorization")fetchAuthToken: String?,
+        @PartMap() partMap: MutableMap<String,RequestBody>,
+//        @Part("artist_name")artistName:String,
+//        @Part("mobile_number")mobile_number:String,
+//        @Part("location")location:String,
+//        @Part("age")age:String,
+//        @Part("height")height:String,
+//        @Part("weight")weight:String,
+//        @Part("choose_acting_field")actingField:String,
+//        @Part("total_no_of_movies")movies:String,
+//        @Part("total_experience")exp:String,
+//        @Part("select_category")category:String,
+        @Part images: List<MultipartBody.Part>
+    ):Call<ProfileResponse>
+
 
     @GET("api/studio-request-booking/")
     fun getStudioRequest(@Header("Authorization")fetchAuthToken: String?,
@@ -270,4 +289,7 @@ interface ApiInterface {
     @POST("api/logout/")
     fun logout(@Header("Authorization")fetchAuthToken: String?):Call<LogoutResponse>
 
+
+    @POST("api/payment/initiate/")
+    fun initiatePayment(@Body paymentRequest: PaymentRequest):Call<ResponseBody>
 }
