@@ -14,6 +14,7 @@ class SessionManager (context: Context) {
     companion object {
         const val USER_TOKEN = "access_token"
         const val REFRESH_TOKEN = "refresh_token"
+        const val USER_ID="id"
     }
 
     private val sharedPreferences =
@@ -32,6 +33,16 @@ class SessionManager (context: Context) {
         editor.apply()
     }
 
+
+    fun saveuserId(id:String){
+        val userId=prefs.edit()
+        userId.putString(USER_ID,id)
+        userId.apply()
+    }
+
+    fun getUserId(): String? {
+        return sharedPreferences.getString(USER_ID, null)
+    }
     /**
      * Function to fetch auth token
      */

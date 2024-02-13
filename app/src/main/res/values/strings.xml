@@ -6,7 +6,7 @@
     <string name="lbl_continue">Continue</string>
     <string name="lbl_dancer">Dancer</string>
     <string name="lbl_logout">Logout</string>
-    <string name="lbl_rs_500">Rs. 500</string>
+    <string name="lbl_rs_500">Rs.</string>
     <string name="msg_donation_histor">Donation History</string>
     <string name="lbl_about">About :</string>
     <string name="lbl_movie_kantara">Movie : </string>
