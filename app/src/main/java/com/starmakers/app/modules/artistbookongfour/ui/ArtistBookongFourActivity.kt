@@ -120,11 +120,15 @@ class ArtistBookongFourActivity :
 //                .into(imageview)
 
 
+              val image=profileData.data.artistPictures[0].artistPicture
+
+              val file=ApiManager.getImageUrl(image!!)
 
               Glide.with(this@ArtistBookongFourActivity)
-                .load(profileData.data.artistPictures[0].artistPicture) // Replace with your image URL or resource ID
+                .load(file) // Replace with your image URL or resource ID
                 .apply(requestOptions)
                 .into(imageview)
+
               val isBooked = profileData.data.isBooked
 
               val bookButton = binding.btnBooked

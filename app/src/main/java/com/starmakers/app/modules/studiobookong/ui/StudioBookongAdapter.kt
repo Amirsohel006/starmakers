@@ -19,6 +19,7 @@ import com.starmakers.app.modules.frame316.ui.Frame316Activity
 import com.starmakers.app.modules.studiobookong.`data`.model.StudioBookongRowModel
 import com.starmakers.app.responses.Data
 import com.starmakers.app.responses.EditingStudio
+import com.starmakers.app.service.ApiManager
 import org.w3c.dom.Text
 import kotlin.Int
 import kotlin.collections.List
@@ -94,8 +95,12 @@ class StudioBookongAdapter(
 //          .into(image);
 
 
+        val imagefile=postModel.studio_picture[0].studio_picture
+
+        val file=ApiManager.getImageUrl(imagefile)
+
         Glide.with(itemView)
-          .load(postModel.studio_picture[0].studio_picture) // Replace with your image URL or resource ID
+          .load(file) // Replace with your image URL or resource ID
           .apply(requestOptions)
           .into(image)
       } else {

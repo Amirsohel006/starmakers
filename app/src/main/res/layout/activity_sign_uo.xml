@@ -98,6 +98,12 @@
                 android:text="@{signUoVM.signUoModel.txtResendOTP}"
                 style="@style/txtNunitobold16" tools:text="@string/lbl_resend_otp"/>
         </LinearLayout>
+        <ProgressBar
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/progressBar"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
         <androidx.appcompat.widget.AppCompatButton
             android:ellipsize="end" android:gravity="center"
             android:id="@+id/btnVerify"

@@ -12,6 +12,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.responses.BookingMoviePicture
+import com.starmakers.app.service.ApiManager
 import kotlin.Int
 
 class Listrectangle113Adapter(
@@ -70,8 +71,12 @@ class Listrectangle113Adapter(
 //        .load(postModel.picture)
 //        .into(profilePictureImageView)
 
+      val image=postModel.picture
+
+      val file=ApiManager.getImageUrl(image!!)
+
       Glide.with(itemView)
-        .load(postModel.picture) // Replace with your image URL or resource ID
+        .load(file) // Replace with your image URL or resource ID
         .apply(requestOptions)
         .into(profilePictureImageView)
     }

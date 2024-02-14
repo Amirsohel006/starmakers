@@ -43,12 +43,15 @@ class SessionManager (context: Context) {
     fun getUserId(): String? {
         return sharedPreferences.getString(USER_ID, null)
     }
+
     /**
      * Function to fetch auth token
      */
+
     fun fetchAuthToken(): String? {
         return prefs.getString(USER_TOKEN,null)
     }
+
     fun fetchRefreshToken(): String? {
         return prefs.getString(REFRESH_TOKEN,null)
     }

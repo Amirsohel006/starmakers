@@ -471,17 +471,19 @@ class ArtistMembershipActivity :
         if (response.isSuccessful) {
           binding.progressBar.visibility=View.GONE
           val responseBody = response.body()
+
+          if(response.code()==201) {
+            val destIntent =
+              RegstrationDetailsActivity.getIntent(this@ArtistMembershipActivity, null)
+            startActivity(destIntent)
+            finishAffinity()
+          }
           if (responseBody != null) {
             Toast.makeText(this@ArtistMembershipActivity, "Uploaded Successfull", Toast.LENGTH_SHORT).show()
             //Log.d("response_message",responseBody.)
             Log.d("response_data",responseBody.toString())
 
-            if(response.code()==200) {
-              val destIntent =
-                RegstrationDetailsActivity.getIntent(this@ArtistMembershipActivity, null)
-              startActivity(destIntent)
-              finishAffinity()
-            }
+
           } else {
             Toast.makeText(this@ArtistMembershipActivity, "Uploaded failed", Toast.LENGTH_SHORT).show()
             Log.d(responseBody,"This fails in signup response")

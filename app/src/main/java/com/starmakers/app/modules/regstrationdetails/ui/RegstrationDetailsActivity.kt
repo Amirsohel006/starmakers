@@ -11,9 +11,11 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivityRegstrationDetailsBinding
@@ -22,8 +24,10 @@ import com.starmakers.app.modules.regstrationdetails.`data`.model.Listellipsetwe
 import com.starmakers.app.modules.regstrationdetails.`data`.model.Listpaypalone2RowModel
 import com.starmakers.app.modules.regstrationdetails.`data`.viewmodel.RegstrationDetailsVM
 import com.starmakers.app.responses.PaymentRequest
+import com.starmakers.app.responses.ProfileResponse
 import com.starmakers.app.service.ApiInterface
 import com.starmakers.app.service.ApiManager
+import com.starmakers.app.service.CircleTransformation
 import com.starmakers.app.service.SessionManager
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -39,50 +43,24 @@ class RegstrationDetailsActivity :
 
 
   private lateinit var sessionManager: SessionManager
+
+  private lateinit var userId:String
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
 
     sessionManager= SessionManager(this)
 
 
-    val userId=sessionManager.getUserId()
-
-    Toast.makeText(this,"User Id:$userId",Toast.LENGTH_SHORT).show()
+    fetchData()
 
 
 
-    val listpaypaloneAdapter =
-    ListpaypaloneAdapter(viewModel.listpaypaloneList.value?:mutableListOf())
-    binding.recyclerListpaypalone.adapter = listpaypaloneAdapter
-    listpaypaloneAdapter.setOnItemClickListener(
-    object : ListpaypaloneAdapter.OnItemClickListener {
-      override fun onItemClick(view:View, position:Int, item : Listpaypalone2RowModel) {
-        onClickRecyclerListpaypalone(view, position, item)
-      }
-    }
-    )
-    viewModel.listpaypaloneList.observe(this) {
-      listpaypaloneAdapter.updateData(it)
-    }
-    val listellipsetwentysixAdapter =
-    ListellipsetwentysixAdapter(viewModel.listellipsetwentysixList.value?:mutableListOf())
-    binding.recyclerListellipsetwentysix.adapter = listellipsetwentysixAdapter
-    listellipsetwentysixAdapter.setOnItemClickListener(
-    object : ListellipsetwentysixAdapter.OnItemClickListener {
-      override fun onItemClick(view:View, position:Int, item :
-      Listellipsetwentysix2RowModel) {
-        onClickRecyclerListellipsetwentysix(view, position, item)
-      }
-    }
-    )
 
-    viewModel.listellipsetwentysixList.observe(this) {
-      listellipsetwentysixAdapter.updateData(it)
-    }
 
 
     binding.btnPayAndRegisterOne.setOnClickListener {
       initiatePayment()
+      binding.progressBar.visibility=View.VISIBLE
     }
 
     window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
@@ -92,8 +70,35 @@ class RegstrationDetailsActivity :
   }
 
 
+  private fun fetchData(){
+    val serviceGenerator= ApiManager.apiInterface
+    val accessToken=sessionManager.fetchAuthToken()
+    val authorization="Token $accessToken"
+    val call=serviceGenerator.getProfile(authorization)
+
+    call.enqueue(object : retrofit2.Callback<ProfileResponse>{
+      override fun onResponse(
+        call: Call<ProfileResponse>,
+        response: Response<ProfileResponse>
+      ) {
+        val customerResponse=response.body()
+
+        if(customerResponse!=null){
+
+          userId=customerResponse.id.toString()
+
+        }
+      }
+
+      override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
+        t.printStackTrace()
+        Log.e("error", t.message.toString())
+      }
+    })
+  }
+
   private fun initiatePayment() {
-    val user_id = sessionManager.getUserId()
+    val user_id = userId
     val amount =binding.txtRsCounter1.text.toString()
 //    val serviceGenerator = APIManager.apiInterface
     val apiInterface: ApiInterface = ApiManager.apiInterface
@@ -110,6 +115,7 @@ class RegstrationDetailsActivity :
         call: Call<ResponseBody>,
         response: Response<ResponseBody>,
       ) {
+        binding.progressBar.visibility=View.GONE
         if (response.isSuccessful) {
           binding.progressBar.visibility=View.GONE
           val contentType = response.headers()["Content-Type"]
@@ -128,7 +134,7 @@ class RegstrationDetailsActivity :
         } else {
           binding.progressBar.visibility=View.GONE
           Log.d("Response Error", response.message())
-          Toast.makeText(this@RegstrationDetailsActivity, "Please Enter The Amount And Select The Payment Method!!", Toast.LENGTH_SHORT).show()
+          Toast.makeText(this@RegstrationDetailsActivity, "Payment Failed", Toast.LENGTH_SHORT).show()
         }
       }
 
@@ -197,9 +203,8 @@ class RegstrationDetailsActivity :
     dialog.window!!.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM)
 
 
-
-
   }
+
   override fun setUpClicks(): Unit {
     binding.imageArrowleft.setOnClickListener {
       finish()

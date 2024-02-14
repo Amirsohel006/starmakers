@@ -22,8 +22,9 @@ data class LogoutResponse(
     val message: String
 )
 data class ProfileResponse(
+    val id:Int,
     val name:String,
-  val artist_name:String,
+    val artist_name:String,
     val mobile_number:String,
     val location:String,
     val age:String,

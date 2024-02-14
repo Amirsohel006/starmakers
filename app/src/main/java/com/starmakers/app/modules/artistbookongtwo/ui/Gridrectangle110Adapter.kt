@@ -16,6 +16,7 @@ import com.starmakers.app.databinding.RowGridrectangle110Binding
 import com.starmakers.app.modules.artistbookongfour.ui.ArtistBookongFourActivity
 import com.starmakers.app.modules.artistbookongtwo.data.model.Gridrectangle110RowModel
 import com.starmakers.app.responses.ProfileData
+import com.starmakers.app.service.ApiManager
 
 class Gridrectangle110Adapter(
   private var profileDataList: List<ProfileData>
@@ -30,8 +31,11 @@ class Gridrectangle110Adapter(
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     val profileData = profileDataList[position]
     holder.artistNameTextView.text = profileData.artistName
+    val image=profileData.artistPictures[0].artistPicture
+    val file=ApiManager.getImageUrl(image)
+
     Picasso.get()
-      .load(profileData.artistPictures[0].artistPicture)
+      .load(file)
       .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE) // Disable memory caching
       .networkPolicy(NetworkPolicy.NO_CACHE) // Disable network caching
       .into(holder.profilePictureImageView)

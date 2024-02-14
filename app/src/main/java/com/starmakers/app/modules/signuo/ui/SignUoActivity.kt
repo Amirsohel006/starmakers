@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
@@ -76,6 +77,7 @@ class SignUoActivity : BaseActivity<ActivitySignUoBinding>(R.layout.activity_sig
         if (enteredOtp.length == 6) {
           // OTP is valid, so post it to the API
           login(enteredOtp)
+          binding.progressBar.visibility=View.VISIBLE
         } else {
           // Handle invalid OTP length
         }
@@ -109,7 +111,7 @@ class SignUoActivity : BaseActivity<ActivitySignUoBinding>(R.layout.activity_sig
     call.enqueue(object : Callback<LoginResponse> {
       override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
         if (response.isSuccessful) {
-
+          binding.progressBar.visibility=View.GONE
           val loginResponse = response.body()
           if (loginResponse != null) {
 //            val accessToken = loginResponse.access_token
@@ -119,13 +121,16 @@ class SignUoActivity : BaseActivity<ActivitySignUoBinding>(R.layout.activity_sig
             navigateToNextPage()
           } else {
             Toast.makeText(this@SignUoActivity, "Login failed", Toast.LENGTH_SHORT).show()
+            binding.progressBar.visibility=View.GONE
           }
         } else {
           Toast.makeText(this@SignUoActivity, "Login failed", Toast.LENGTH_SHORT).show()
+          binding.progressBar.visibility=View.GONE
         }
       }
       override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
         Toast.makeText(this@SignUoActivity, "Login failed: ${t.message}", Toast.LENGTH_SHORT).show()
+        binding.progressBar.visibility=View.GONE
       }
     })
   }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
@@ -42,6 +43,7 @@ class LoginActivity : BaseActivity<ActivitySignUoTwoBinding>(R.layout.activity_s
 
       if (mobile.isNotEmpty()) {
         getOtp(mobile)
+        binding.progressBar.visibility= View.VISIBLE
       } else {
         Toast.makeText(this, "Please enter a mobile number", Toast.LENGTH_SHORT).show()
       }
@@ -64,22 +66,26 @@ class LoginActivity : BaseActivity<ActivitySignUoTwoBinding>(R.layout.activity_s
     val call=apiService.getOtp(mobile)
     call.enqueue(object : Callback<LoginResponse> {
       override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+        binding.progressBar.visibility= View.GONE
         if (response.isSuccessful) {
 
           val loginResponse = response.body()
           if (loginResponse != null) {
-            Toast.makeText(this@LoginActivity, "Otp Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
+            //Toast.makeText(this@LoginActivity, "Otp Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
             navigateToNextPage()
             finishAffinity()
           } else {
             Toast.makeText(this@LoginActivity, "Login failed", Toast.LENGTH_SHORT).show()
+            binding.progressBar.visibility= View.GONE
           }
         } else {
           Toast.makeText(this@LoginActivity, "Login failed", Toast.LENGTH_SHORT).show()
+          binding.progressBar.visibility= View.GONE
         }
       }
       override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
         Toast.makeText(this@LoginActivity, "Login failed: ${t.message}", Toast.LENGTH_SHORT).show()
+        binding.progressBar.visibility= View.GONE
       }
     })
   }

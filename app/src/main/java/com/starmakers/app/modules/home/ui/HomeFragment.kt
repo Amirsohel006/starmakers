@@ -135,6 +135,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         if(customerResponse!=null){
           binding.txtRahul.text=customerResponse.name
 
+          sessionManager.saveuserId(customerResponse.id.toString())
 
           val profilePicture: ImageView =binding.profilePicture
 
@@ -149,6 +150,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
       }
     })
   }
+
   companion object {
     const val TAG: String = "HOME_FRAGMENT"
 
