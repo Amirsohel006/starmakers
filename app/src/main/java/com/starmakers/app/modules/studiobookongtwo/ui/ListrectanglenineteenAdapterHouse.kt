@@ -16,6 +16,7 @@ import com.starmakers.app.R
 import com.starmakers.app.modules.frame316.ui.Frame316Activity
 import com.starmakers.app.modules.studiobookongtwo.`data`.model.Listrectanglenineteen1RowModel
 import com.starmakers.app.responses.HouseLocationStudio
+import com.starmakers.app.service.ApiManager
 import kotlin.Int
 import kotlin.collections.List
 
@@ -86,8 +87,10 @@ class ListrectanglenineteenAdapterHouse(
 //          .load(postModel.studio_picture[0].studio_picture)
 //          .into(image);
 
+        val imagefile=postModel.studio_picture[0].studio_picture
+        val file=ApiManager.getImageUrl(imagefile)
         Glide.with(itemView)
-          .load(postModel.studio_picture[0].studio_picture) // Replace with your image URL or resource ID
+          .load(file) // Replace with your image URL or resource ID
           .apply(requestOptions)
           .into(image)
       } else {

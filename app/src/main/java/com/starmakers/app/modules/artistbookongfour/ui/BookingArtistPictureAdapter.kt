@@ -8,11 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.gms.common.api.Api
 import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.responses.BookingArtistPicture
 import com.starmakers.app.responses.BookingMoviePicture
 import com.starmakers.app.responses.BookingResponseList
+import com.starmakers.app.service.ApiManager
 
 class BookingArtistPictureAdapter(private val context: Context, private val artistPictures: ArrayList<BookingArtistPicture>) :
     RecyclerView.Adapter<BookingArtistPictureAdapter.ViewHolder>() {
@@ -48,8 +50,11 @@ class BookingArtistPictureAdapter(private val context: Context, private val arti
 //                .into(profilePictureImageView)
 
 
+            val image=postModel.artistPicture
+            val file=ApiManager.getImageUrl(image!!)
+
             Glide.with(itemView)
-                .load(postModel.artistPicture) // Replace with your image URL or resource ID
+                .load(file) // Replace with your image URL or resource ID
                 .apply(requestOptions)
                 .into(profilePictureImageView)
         }

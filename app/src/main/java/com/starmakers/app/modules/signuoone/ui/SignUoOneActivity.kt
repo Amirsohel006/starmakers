@@ -8,10 +8,12 @@ import android.provider.MediaStore
 import android.provider.OpenableColumns
 import android.text.TextUtils
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.VIEW_MODEL_STORE_OWNER_KEY
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivitySignUoOneBinding
@@ -86,10 +88,7 @@ class SignUoOneActivity : BaseActivity<ActivitySignUoOneBinding>(R.layout.activi
         Toast.makeText(this@SignUoOneActivity, "Please fill in all the required fields and select a profile picture.", Toast.LENGTH_SHORT).show()
       } else {
         signUp() // Call signUp function if all fields are filled
-
-        val destIntent = LoginActivity.getIntent(this, null)
-        startActivity(destIntent)
-        finishAffinity()
+        binding.progressBar.visibility= View.VISIBLE
       }
 
 
@@ -134,26 +133,31 @@ class SignUoOneActivity : BaseActivity<ActivitySignUoOneBinding>(R.layout.activi
     call.enqueue(object : Callback<SignUpResponse> {
       override fun onResponse(call: Call<SignUpResponse>, response: Response<SignUpResponse>) {
         if (response.isSuccessful) {
-
+          binding.progressBar.visibility= View.GONE
           val responseBody = response.body()
           if (responseBody != null) {
             Toast.makeText(this@SignUoOneActivity, "Registration successful,Please Login!!", Toast.LENGTH_SHORT).show()
             //Log.d("response_message",responseBody.)
             Log.d("response_data",responseBody.toString())
+            val destIntent = LoginActivity.getIntent(this@SignUoOneActivity, null)
+            startActivity(destIntent)
             finishAffinity()
           } else {
             Toast.makeText(this@SignUoOneActivity, "Registration failed!! Mobile Number Already Registered", Toast.LENGTH_SHORT).show()
             Log.d(responseBody,"This fails in signup response")
+            binding.progressBar.visibility= View.GONE
           }
         }
         else {
           Toast.makeText(this@SignUoOneActivity, "Registration Failed Mobile Number Already Registered", Toast.LENGTH_SHORT).show()
           Log.d(response.message(),"This fails in registration response")
+          binding.progressBar.visibility= View.GONE
         }
       }
       override fun onFailure(call: Call<SignUpResponse>, t: Throwable) {
         Toast.makeText(this@SignUoOneActivity, "Registration failed: ${t.message}", Toast.LENGTH_SHORT).show()
         Log.d(t.message,"This fails in signup response")
+        binding.progressBar.visibility= View.GONE
       }
     })
   }

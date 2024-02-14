@@ -660,4 +660,9 @@
     <style name="AppTheme.Light" parent="Theme.AppCompat.Light">
         <!-- Add any custom attributes or styles here -->
     </style>
+
+
+    <style name="groupStylecornerRadius_12">
+        <item name="android:background">@drawable/rectangle_border_gray_403_radius_10</item>
+    </style>
 </resources>

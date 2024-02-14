@@ -166,6 +166,13 @@
                 android:text="@{signUoOneVM.signUoOneModel.txtTermAndCondition}"
                 style="@style/txtPoppinsregular16_2" tools:text="@string/msg_accept_all_term"/>
         </LinearLayout>
+
+        <ProgressBar
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/progressBar"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
         <androidx.appcompat.widget.AppCompatButton
             android:ellipsize="end" android:gravity="center"
             android:id="@+id/btnComplete"
@@ -180,7 +187,9 @@
             android:paddingStart="@dimen/_30pxh"
             android:paddingTop="@dimen/_16pxv" android:singleLine="true"
             android:text="@string/lbl_complete"
-            android:textAllCaps="false" style="@style/btnSolidRounded_2" tools:text="@string/lbl_complete"/>
+            android:textAllCaps="false"
+            style="@style/btnSolidRounded_2"
+            tools:text="@string/lbl_complete"/>
     </LinearLayout>
     </ScrollView>
 </layout>
