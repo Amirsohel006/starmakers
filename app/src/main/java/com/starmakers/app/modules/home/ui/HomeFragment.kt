@@ -15,12 +15,14 @@ import com.starmakers.app.modules.artistbookongfive.ui.ArtistBookongFiveActivity
 import com.starmakers.app.modules.artistbookongone.ui.ArtistBookongOneActivity
 import com.starmakers.app.modules.artistmembership.ui.ArtistMembershipActivity
 import com.starmakers.app.modules.auditions.ui.AuditionsActivity
+import com.starmakers.app.modules.financialoverview.ui.GridrectangletenAdapter
 import com.starmakers.app.modules.frame311.ui.Frame311Activity
 import com.starmakers.app.modules.home.`data`.model.ImageSliderSliderrectangleelevenModel
 import com.starmakers.app.modules.home.`data`.model.SpinnerGroup122Model
 import com.starmakers.app.modules.home.`data`.viewmodel.HomeVM
 import com.starmakers.app.modules.membershipoptioncomingsoon.ComingSoon
 import com.starmakers.app.modules.studiobookong1.ui.StudioBookong1Activity
+import com.starmakers.app.responses.CampaignResponse
 import com.starmakers.app.responses.ProfileResponse
 import com.starmakers.app.service.ApiManager
 import com.starmakers.app.service.CircleTransformation
@@ -65,6 +67,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     fetchData()
 
 
+    getBanner()
 
     val sliderrectangleelevenAdapter =
     SliderrectangleelevenAdapter(imageSliderSliderrectangleelevenItems,true)
@@ -120,6 +123,35 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
   }
 
+
+  fun getBanner(){
+    val serviceGenerator= ApiManager.apiInterface
+    val accessToken=sessionManager.fetchAuthToken()
+    val authorization="Token $accessToken"
+    val call=serviceGenerator.getBanners(authorization)
+
+    call.enqueue(object : retrofit2.Callback<CampaignResponse>{
+      override fun onResponse(
+        call: Call<CampaignResponse>,
+        response: Response<CampaignResponse>
+      ) {
+        val customerResponse=response.body()
+
+        if(customerResponse!=null){
+
+//          binding.recyclerGridrectangleten.apply {
+//            val studioadapter= GridrectangletenAdapter(customerResponse.data)
+//            binding.recyclerGridrectangleten.adapter=studioadapter
+//          }
+        }
+      }
+
+      override fun onFailure(call: Call<CampaignResponse>, t: Throwable) {
+        t.printStackTrace()
+        Log.e("error", t.message.toString())
+      }
+    })
+  }
 
   private fun fetchData(){
     val serviceGenerator = ApiManager.apiInterface

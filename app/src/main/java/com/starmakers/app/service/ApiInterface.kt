@@ -292,4 +292,8 @@ interface ApiInterface {
 
     @POST("api/payment/initiate/")
     fun initiatePayment(@Body paymentRequest: PaymentRequest):Call<ResponseBody>
+
+
+    @GET("api/home/banner/")
+    fun getBanners(@Header("Authorization")fetchAuthToken: String?):Call<CampaignResponse>
 }
