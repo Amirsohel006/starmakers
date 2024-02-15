@@ -152,6 +152,9 @@ class LoginOTPActivity :
             val accessToken = loginResponse.access_token
             TokenManager.setTokens(accessToken)
             sessionManager.saveAuthToken(accessToken)
+
+
+
             Toast.makeText(this@LoginOTPActivity, "Login successful", Toast.LENGTH_SHORT).show()
             navigateToNextPage()
           } else {
@@ -169,10 +172,9 @@ class LoginOTPActivity :
       }
     })
   }
+
     companion object {
       const val TAG: String = "SIGN_UO_THREE_ACTIVITY"
-
-
       fun getIntent(context: Context, bundle: Bundle?): Intent {
         val destIntent = Intent(context, LoginOTPActivity::class.java)
         destIntent.putExtra("bundle", bundle)

@@ -472,7 +472,7 @@ class ArtistMembershipActivity :
           binding.progressBar.visibility=View.GONE
           val responseBody = response.body()
 
-          if(response.code()==201) {
+          if(response.code()==201 || response.code()==200 ) {
             val destIntent =
               RegstrationDetailsActivity.getIntent(this@ArtistMembershipActivity, null)
             startActivity(destIntent)

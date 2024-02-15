@@ -22,24 +22,26 @@ data class LogoutResponse(
     val message: String
 )
 data class ProfileResponse(
-    val id:Int,
-    val name:String,
-    val artist_name:String,
-    val mobile_number:String,
-    val location:String,
-    val age:String,
-    val email:String,
-    val height:String,
-    val weight:String,
-    val choose_acting_field:String,
-    val total_no_of_movies:String,
-    val total_experience:String,
-    val created_at:String,
-    val updated_at:String,
-    val user:Int,
-    val profile:String
+    @SerializedName("id"                  ) var id                : Int?                      = null,
+    @SerializedName("name"                ) var name              : String?                   = null,
+    @SerializedName("email"               ) var email             : String?                   = null,
+    @SerializedName("age"                 ) var age               : Int?                      = null,
+    @SerializedName("height"              ) var height            : String?                   = null,
+    @SerializedName("weight"              ) var weight            : String?                   = null,
+    @SerializedName("mobile_number"       ) var mobileNumber      : String?                   = null,
+    @SerializedName("location"            ) var location          : String?                   = null,
+    @SerializedName("category_name"       ) var categoryName      : String?                   = null,
+    @SerializedName("choose_acting_field" ) var chooseActingField : String?                   = null,
+    @SerializedName("created_at"          ) var createdAt         : String?                   = null,
+    @SerializedName("artist_pictures"     ) var artistPictures    : ArrayList<ArtistPictures1> = arrayListOf(),
+    @SerializedName("profile")  val profile:String?=null
 )
 
+data class ArtistPictures1 (
+
+    @SerializedName("artist_picture" ) var artistPicture : String? = null
+
+)
 
 data class ProfileResponseList(
     val status: String,
