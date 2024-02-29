@@ -40,6 +40,20 @@
                     style="@style/txtPoppinssemibold24" tools:text="@string/lbl_my_auditions"/>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
+
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:fillViewport="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
         <androidx.recyclerview.widget.RecyclerView
             android:gravity="center_horizontal"
             android:id="@+id/recyclerListrectangle106"
@@ -53,23 +67,30 @@
             itemSpace="@{@dimen/_16pxh}"
             tools:itemCount="2"
             tools:listitem="@layout/row_listrectangle106"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:ellipsize="end" android:gravity="center"
-            android:id="@+id/btnParticipateInOtherAuditions"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_20pxv"
-            android:layout_marginEnd="@dimen/_15pxh"
-            android:layout_marginStart="@dimen/_16pxh"
-            android:layout_marginTop="@dimen/_37pxv"
-            android:layout_width="match_parent"
-            android:paddingBottom="@dimen/_14pxv"
-            android:paddingEnd="@dimen/_30pxh"
-            android:paddingStart="@dimen/_30pxh"
-            android:paddingTop="@dimen/_14pxv"
-            android:singleLine="true"
-            android:text="@string/msg_participate_in"
-            android:textAllCaps="false"
-            style="@style/btnSolidRounded_8"
-            tools:text="@string/msg_participate_in"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:ellipsize="end" android:gravity="center"
+                    android:id="@+id/btnParticipateInOtherAuditions"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_20pxv"
+                    android:layout_marginEnd="@dimen/_15pxh"
+                    android:layout_marginStart="@dimen/_16pxh"
+                    android:layout_marginTop="@dimen/_37pxv"
+                    android:layout_width="match_parent"
+                    android:paddingBottom="@dimen/_14pxv"
+                    android:paddingEnd="@dimen/_30pxh"
+                    android:paddingStart="@dimen/_30pxh"
+                    android:paddingTop="@dimen/_14pxv"
+                    android:singleLine="true"
+                    android:text="@string/msg_participate_in"
+                    android:textAllCaps="false"
+                    style="@style/btnSolidRounded_8"
+                    tools:text="@string/msg_participate_in"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
     </LinearLayout>
 </layout>

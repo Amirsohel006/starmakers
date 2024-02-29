@@ -22,19 +22,23 @@ class SelectionListActivity :
 
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
-    val selectionListAdapter =
-    SelectionListAdapter(viewModel.selectionListList.value?:mutableListOf())
-    binding.recyclerSelectionList.adapter = selectionListAdapter
-    selectionListAdapter.setOnItemClickListener(
-    object : SelectionListAdapter.OnItemClickListener {
-      override fun onItemClick(view:View, position:Int, item : SelectionListRowModel) {
-        onClickRecyclerSelectionList(view, position, item)
-      }
-    }
-    )
-    viewModel.selectionListList.observe(this) {
-      selectionListAdapter.updateData(it)
-    }
+
+
+//    val selectionListAdapter =
+//    SelectionListAdapter(viewModel.selectionListList.value?:mutableListOf())
+//    binding.recyclerSelectionList.adapter = selectionListAdapter
+//    selectionListAdapter.setOnItemClickListener(
+//    object : SelectionListAdapter.OnItemClickListener {
+//      override fun onItemClick(view:View, position:Int, item : SelectionListRowModel) {
+//        onClickRecyclerSelectionList(view, position, item)
+//      }
+//    }
+//    )
+//    viewModel.selectionListList.observe(this) {
+//      selectionListAdapter.updateData(it)
+//    }
+
+
     binding.selectionListVM = viewModel
 
     window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)

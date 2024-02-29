@@ -272,14 +272,14 @@
                             </LinearLayout>
                     </LinearLayout>
                     <ImageView android:id="@+id/imageRectangle153"
-                        android:layout_gravity="center_horizontal"
+                        android:layout_gravity="start"
                         android:layout_height="@dimen/_111pxh"
-                        android:layout_marginEnd="@dimen/_2pxh"
                         android:layout_marginTop="@dimen/_18pxv"
                         android:layout_width="@dimen/_358pxh"
                         android:scaleType="fitXY"
                         imageRes="@{@drawable/img_rectangle153}"
-                        tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle153"/>
+                        tools:ignore="ContentDescription"
+                        tools:src="@drawable/img_rectangle153"/>
                     <TextView android:ellipsize="end"
                         android:id="@+id/txtCrowdFundingZ"
                         android:layout_height="wrap_content"
@@ -339,46 +339,51 @@
                         android:gravity="end"
                         android:id="@+id/linearRowrectangletwelve"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_10pxh"
                         android:layout_marginTop="@dimen/_11pxv"
                         android:layout_width="wrap_content"
                         android:orientation="horizontal">
-                        <ImageView
-                            android:id="@+id/imageRectangleTwelve"
-                            android:layout_height="@dimen/_83pxh"
-                            android:layout_width="@dimen/_119pxh"
-                            android:scaleType="fitXY"
-                            cornerRadius="@{@dimen/_10pxh}"
-                            imageRes="@{@drawable/img_rectangle12}"
-                            tools:ignore="ContentDescription"
-                            tools:src="@drawable/img_rectangle12"/>
-                        <ImageView
-                            android:id="@+id/imageRectangleThirteen"
-                            android:layout_height="@dimen/_83pxh"
-                            android:layout_marginStart="@dimen/_14pxh"
-                            android:layout_width="@dimen/_119pxh"
-                            android:scaleType="fitXY"
-                            cornerRadius="@{@dimen/_10pxh}"
-                            imageRes="@{@drawable/img_rectangle12}"
-                            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle12"/>
-                        <ImageView
-                            android:id="@+id/imageRectangleFourteen"
-                            android:layout_height="@dimen/_83pxh"
-                            android:layout_marginStart="@dimen/_14pxh"
-                            android:layout_width="@dimen/_119pxh"
-                            android:scaleType="fitXY"
-                            cornerRadius="@{@dimen/_10pxh}"
-                            imageRes="@{@drawable/img_rectangle14}"
-                            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle14"/>
-                        <ImageView
-                            android:id="@+id/imageRectangleFifteen"
-                            android:layout_height="@dimen/_83pxh"
-                            android:layout_marginStart="@dimen/_14pxh"
-                            android:layout_width="@dimen/_119pxh"
-                            android:scaleType="fitXY"
-                            cornerRadius="@{@dimen/_10pxh}"
-                            imageRes="@{@drawable/img_rectangle15}"
-                            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle15"/>
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerviewforfundingvideos"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+<!--                        <ImageView-->
+<!--                            android:id="@+id/imageRectangleTwelve"-->
+<!--                            android:layout_height="@dimen/_83pxh"-->
+<!--                            android:layout_width="@dimen/_119pxh"-->
+<!--                            android:scaleType="fitXY"-->
+<!--                            cornerRadius="@{@dimen/_10pxh}"-->
+<!--                            imageRes="@{@drawable/img_rectangle12}"-->
+<!--                            tools:ignore="ContentDescription"-->
+<!--                            tools:src="@drawable/img_rectangle12"/>-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/imageRectangleThirteen"-->
+<!--                            android:layout_height="@dimen/_83pxh"-->
+<!--                            android:layout_marginStart="@dimen/_14pxh"-->
+<!--                            android:layout_width="@dimen/_119pxh"-->
+<!--                            android:scaleType="fitXY"-->
+<!--                            cornerRadius="@{@dimen/_10pxh}"-->
+<!--                            imageRes="@{@drawable/img_rectangle12}"-->
+<!--                            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle12"/>-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/imageRectangleFourteen"-->
+<!--                            android:layout_height="@dimen/_83pxh"-->
+<!--                            android:layout_marginStart="@dimen/_14pxh"-->
+<!--                            android:layout_width="@dimen/_119pxh"-->
+<!--                            android:scaleType="fitXY"-->
+<!--                            cornerRadius="@{@dimen/_10pxh}"-->
+<!--                            imageRes="@{@drawable/img_rectangle14}"-->
+<!--                            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle14"/>-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/imageRectangleFifteen"-->
+<!--                            android:layout_height="@dimen/_83pxh"-->
+<!--                            android:layout_marginStart="@dimen/_14pxh"-->
+<!--                            android:layout_width="@dimen/_119pxh"-->
+<!--                            android:scaleType="fitXY"-->
+<!--                            cornerRadius="@{@dimen/_10pxh}"-->
+<!--                            imageRes="@{@drawable/img_rectangle15}"-->
+<!--                            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle15"/>-->
                     </LinearLayout>
                     </HorizontalScrollView>
                     <TextView android:ellipsize="end"

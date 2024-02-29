@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.responses.RequestUserData
+import com.starmakers.app.service.ApiManager
 
 class profilepicadapter(
     private var profileDataList: List<RequestUserData>):
@@ -36,8 +37,9 @@ class profilepicadapter(
 
         fun bindView(postModel: RequestUserData) {
 
+            val image=postModel.profile
             Picasso.get()
-                .load(postModel.profile)
+                .load(image)
                 .into(profilePicture)
 
         }

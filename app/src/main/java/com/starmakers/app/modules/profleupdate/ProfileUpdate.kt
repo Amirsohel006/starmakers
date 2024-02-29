@@ -9,8 +9,10 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.OpenableColumns
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
@@ -38,6 +40,7 @@ class ProfileUpdate : AppCompatActivity() {
     private lateinit var sessionManager: SessionManager
 
 
+    private lateinit var progressBar: ProgressBar
 
     private var name:String=""
     private var height:String=""
@@ -61,6 +64,13 @@ class ProfileUpdate : AppCompatActivity() {
 
         fetchData()
 
+        progressBar=findViewById(R.id.progressBar)
+
+        val backImage:ImageView=findViewById(R.id.imageArrowleft)
+
+        backImage.setOnClickListener {
+            this.finish()
+        }
 
         val editProfileImage:ImageView=findViewById(R.id.editProfileImageView)
         editProfileImage.setOnClickListener {
@@ -87,6 +97,9 @@ class ProfileUpdate : AppCompatActivity() {
 
 
             updateData()
+
+            progressBar.visibility=View.VISIBLE
+
         }
 
     }
@@ -122,7 +135,10 @@ class ProfileUpdate : AppCompatActivity() {
                     newHeight.setText(customerResponse.data.height)
                     newWeight.setText(customerResponse.data.weight)
                     newLocation.setText(customerResponse.data.city)
-                    Picasso.get().load(customerResponse.data.profile).transform(CircleTransformation()).into(profileImage)
+                    val imageProf=customerResponse.data.profile
+                    val file=ApiManager.getImageUrl(imageProf!!)
+
+                    Picasso.get().load(imageProf).transform(CircleTransformation()).into(profileImage)
                     profile_picture=customerResponse.data.profile
                 }
             }
@@ -166,6 +182,7 @@ class ProfileUpdate : AppCompatActivity() {
                 call: Call<ProfileResponse>,
                 response: Response<ProfileResponse>,
             ) {
+                progressBar.visibility=View.GONE
                 if (response.isSuccessful) {
                     val profileResponse = response.body()
 //                   if(profileResponse!=null){
@@ -196,6 +213,7 @@ class ProfileUpdate : AppCompatActivity() {
             override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
                 // Handle network failures or other errors
                 Toast.makeText(this@ProfileUpdate, "Error fetching data", Toast.LENGTH_SHORT).show()
+                progressBar.visibility=View.GONE
             }
         })
 

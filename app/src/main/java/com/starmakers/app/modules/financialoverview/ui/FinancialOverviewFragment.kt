@@ -160,6 +160,9 @@ class FinancialOverviewFragment :
       }
     })
   }
+
+
+
   companion object {
     const val TAG: String = "FINANCIAL_OVERVIEW_FRAGMENT"
 

@@ -61,7 +61,7 @@ class Frame311Activity : BaseActivity<ActivityFrame311Binding>(R.layout.activity
       startActivity(destIntent)
     }
     binding.linearRowcomputer.setOnClickListener {
-      val i= Intent(this, ComingSoon::class.java)
+      val i= Intent(this, ArtistMembershipActivity::class.java)
       startActivity(i)
      //val destIntent = ArtistMembershipActivity.getIntent(this, null)
 //      startActivity(destIntent)
@@ -100,6 +100,9 @@ class Frame311Activity : BaseActivity<ActivityFrame311Binding>(R.layout.activity
 
         if(customerResponse != null) {
           binding.txtRahul.text = customerResponse.name
+          binding.txtMobileNo.text=customerResponse.mobileNumber
+          binding.txtEmail.text=customerResponse.email
+
           sessionManager.saveuserId(customerResponse.id.toString())
 
           // Check if artistPictures is not null and not empty
@@ -107,6 +110,7 @@ class Frame311Activity : BaseActivity<ActivityFrame311Binding>(R.layout.activity
             // Load the first artist picture if available
             val profilePicture: ImageView = binding.profilePicture
             val image = customerResponse.artistPictures[0].artistPicture
+
             val file = ApiManager.getImageUrl(image!!)
             Picasso.get().load(file).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
           } else {
@@ -114,7 +118,7 @@ class Frame311Activity : BaseActivity<ActivityFrame311Binding>(R.layout.activity
             val profilePicture: ImageView = binding.profilePicture
             val image = customerResponse.profile
             if (!image.isNullOrEmpty()) {
-              val file = ApiManager.getImageUrl(image!!)
+              val file = ApiManager.getImageUrl(image)
               Picasso.get().load(file).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
             } else {
               // Load a default picture if both artistPictures and profile are empty

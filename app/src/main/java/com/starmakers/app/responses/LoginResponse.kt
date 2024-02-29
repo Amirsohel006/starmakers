@@ -25,6 +25,7 @@ data class ProfileResponse(
     @SerializedName("id"                  ) var id                : Int?                      = null,
     @SerializedName("name"                ) var name              : String?                   = null,
     @SerializedName("email"               ) var email             : String?                   = null,
+    @SerializedName("artist_name"         ) var artistName        : String?                   = null,
     @SerializedName("age"                 ) var age               : Int?                      = null,
     @SerializedName("height"              ) var height            : String?                   = null,
     @SerializedName("weight"              ) var weight            : String?                   = null,

@@ -96,12 +96,39 @@ class ArtistBookongOneActivity :
         val customerResponse=response.body()
 
         if(customerResponse!=null){
-          binding.etName.text=customerResponse.data.name
-          binding.etMobileNumber.text=customerResponse.data.mobile_number
-          binding.etEmail.text=customerResponse.data.email
-          binding.etHeight1.text=customerResponse.data.height
-          binding.etWeight1.text=customerResponse.data.weight
-          binding.etLocation.text=customerResponse.data.city
+
+          // Check if artistPictures is not null and not empty
+          if (!customerResponse.data.artistPictures.isNullOrEmpty()) {
+            // Load the first artist picture if available
+            val profilePicture: ImageView = binding.profilepicturerounded
+            val image = customerResponse.data.artistPictures[0].artistPicture
+            binding.etName.text=customerResponse.data.artistName
+            binding.etMobileNumber.text=customerResponse.data.phoneNumber
+            binding.etLocation.text=customerResponse.data.location
+            val file = ApiManager.getImageUrl(image!!)
+            Picasso.get().load(file).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+          } else {
+            // Check if profile picture is not empty
+            val profilePicture: ImageView = binding.profilepicturerounded
+            val image = customerResponse.data.profile
+
+            binding.etName.text=customerResponse.data.name
+            binding.etMobileNumber.text=customerResponse.data.mobile_number
+            binding.etEmail.text=customerResponse.data.email
+            binding.etHeight1.text=customerResponse.data.height
+            binding.etWeight1.text=customerResponse.data.weight
+            binding.etLocation.text=customerResponse.data.city
+            if (!image.isNullOrEmpty()) {
+              val file = ApiManager.getImageUrl(image)
+              Picasso.get().load(file).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+            } else {
+              // Load a default picture if both artistPictures and profile are empty
+              Picasso.get().load(R.drawable.default_profile_pic).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+            }
+          }
+
+
+
           Picasso.get().load(customerResponse.data.profile).transform(CircleTransformation()).into(binding.profilepicturerounded)
         }
       }
