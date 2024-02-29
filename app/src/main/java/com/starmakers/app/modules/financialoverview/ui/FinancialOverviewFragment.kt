@@ -86,26 +86,41 @@ class FinancialOverviewFragment :
   }
 
   private fun fetchData(){
-    val serviceGenerator= ApiManager.apiInterface
-    val accessToken=sessionManager.fetchAuthToken()
-    val authorization="Token $accessToken"
-    val call=serviceGenerator.getProfile(authorization)
+    val serviceGenerator = ApiManager.apiInterface
+    val accessToken = sessionManager.fetchAuthToken()
+    val authorization = "Token $accessToken"
+    val call = serviceGenerator.getProfile(authorization)
 
     call.enqueue(object : retrofit2.Callback<ProfileResponse>{
       override fun onResponse(
         call: Call<ProfileResponse>,
         response: Response<ProfileResponse>
       ) {
-        val customerResponse=response.body()
+        val customerResponse = response.body()
 
-        if(customerResponse!=null){
-          binding.txtRahul.text=customerResponse.name
+        if(customerResponse != null) {
+          binding.txtRahul.text = customerResponse.name
+          sessionManager.saveuserId(customerResponse.id.toString())
 
-
-          val profilePicture: ImageView =binding.profilePicture
-
-
-          Picasso.get().load(customerResponse.profile).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+          // Check if artistPictures is not null and not empty
+          if (!customerResponse.artistPictures.isNullOrEmpty()) {
+            // Load the first artist picture if available
+            val profilePicture: ImageView = binding.profilePicture
+            val image = customerResponse.artistPictures[0].artistPicture
+            val file = ApiManager.getImageUrl(image!!)
+            Picasso.get().load(file).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+          } else {
+            // Check if profile picture is not empty
+            val profilePicture: ImageView = binding.profilePicture
+            val image = customerResponse.profile
+            if (!image.isNullOrEmpty()) {
+              val file = ApiManager.getImageUrl(image!!)
+              Picasso.get().load(file).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+            } else {
+              // Load a default picture if both artistPictures and profile are empty
+              Picasso.get().load(R.drawable.default_profile_pic).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+            }
+          }
         }
       }
 
@@ -115,7 +130,6 @@ class FinancialOverviewFragment :
       }
     })
   }
-
 
 
   fun getCampaign(){
@@ -146,6 +160,9 @@ class FinancialOverviewFragment :
       }
     })
   }
+
+
+
   companion object {
     const val TAG: String = "FINANCIAL_OVERVIEW_FRAGMENT"
 

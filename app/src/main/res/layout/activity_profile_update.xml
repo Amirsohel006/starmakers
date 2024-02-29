@@ -325,7 +325,8 @@
                 <EditText
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/rectangle_border_gray_500_radius_10"
-                    android:ellipsize="end" android:hint="@string/lbl_location"
+                    android:ellipsize="end"
+                    android:hint="@string/lbl_location"
                     android:id="@+id/etLocation1"
                     android:inputType="text"
                     android:layout_height="wrap_content"
@@ -335,12 +336,17 @@
                     android:paddingEnd="@dimen/_30pxh"
                     android:paddingStart="@dimen/_16pxh"
                     android:paddingTop="@dimen/_10pxv" android:singleLine="true"
-                    android:text="@={artistBookongOneVM.artistBookongOneModel.etGroup487Value}"
                     android:textColorHint="@color/gray_802"
                     style="@style/etRoundedOutline_3"
                     tools:ignore="Autofill"/>
 
 
+                <ProgressBar
+                    android:visibility="gone"
+                    android:id="@+id/progressBar"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
 
 
@@ -348,6 +354,8 @@
             </LinearLayout>
         </FrameLayout>
     </ScrollView>
+
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnUpdate"
         android:layout_width="match_parent"

@@ -19,6 +19,7 @@ import com.starmakers.app.modules.selectionlistone.`data`.model.Listrectangle107
 import com.starmakers.app.modules.selectionlisttwo.ui.SelectionListTwoActivity
 import com.starmakers.app.responses.Data
 import com.starmakers.app.responses.SelectionItem
+import com.starmakers.app.service.ApiManager
 import convertToReadableDate
 import kotlin.Int
 import kotlin.collections.List
@@ -97,10 +98,13 @@ class Listrectangle106Adapter(
 //            .load(postModel.audition.movie_poster)
 //            .into(imageView)
 
+        val image=postModel.audition.movie_poster
+
+        val file=ApiManager.getImageUrl(image)
 
 
         Glide.with(itemView)
-            .load(postModel.audition.movie_poster) // Replace with your image URL or resource ID
+            .load(image) // Replace with your image URL or resource ID
             .apply(requestOptions)
             .into(imageView)
         selectionButton.setOnClickListener {

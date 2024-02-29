@@ -5,13 +5,17 @@ import com.starmakers.app.responses.ArtistRequestById
 import com.starmakers.app.responses.ArtistRequests
 import com.starmakers.app.responses.Audition
 import com.starmakers.app.responses.AuditionPosition
+import com.starmakers.app.responses.BannerResponses
 import com.starmakers.app.responses.BookingResponseList
 import com.starmakers.app.responses.CampaignDataById
 import com.starmakers.app.responses.CampaignResponse
 import com.starmakers.app.responses.CategoryItem
 import com.starmakers.app.responses.ContactUs
+import com.starmakers.app.responses.CrowdByIdResponses
+import com.starmakers.app.responses.CrowdResponses
 import com.starmakers.app.responses.EditingStudioData
 import com.starmakers.app.responses.FAQItem
+import com.starmakers.app.responses.FundingDemoVideos
 import com.starmakers.app.responses.HouseLocationDataResponse
 import com.starmakers.app.responses.LoginResponse
 import com.starmakers.app.responses.LogoutResponse
@@ -30,6 +34,7 @@ import com.starmakers.app.responses.SignUpResponse
 import com.starmakers.app.responses.StudioRequests
 import com.starmakers.app.responses.MyAuditionRequest
 import com.starmakers.app.responses.PaymentRequest
+import com.starmakers.app.responses.PaymentRequestForDonate
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -292,4 +297,27 @@ interface ApiInterface {
 
     @POST("api/payment/initiate/")
     fun initiatePayment(@Body paymentRequest: PaymentRequest):Call<ResponseBody>
+
+
+    @GET("api/home/banner/")
+    fun getBanners(@Header("Authorization")fetchAuthToken: String?):Call<List<BannerResponses>>
+
+    @GET("api/funding/video/")
+    fun getFundingVideos(@Header("Authorization")fetchAuthToken: String?):Call<List<FundingDemoVideos>>
+
+
+    @GET("api/crowd/funding/")
+    fun getCrowdFundingImages(@Header("Authorization")fetchAuthToken: String?):Call<List<CrowdResponses>>
+
+
+    @GET("api/campaign/details/{id}/")
+    fun getCrowdImageByid(
+        @Header("Authorization")fetchAuthToken: String?,
+        @Path("id")id:String
+    ):Call<CrowdByIdResponses>
+
+    @POST("api/campaign/payment/initiate/")
+    fun getDonatePaymentInitiate(
+        @Body paymentRequest: PaymentRequestForDonate
+    ):Call<ResponseBody>
 }

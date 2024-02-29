@@ -41,14 +41,26 @@
                     style="@style/txtPoppinssemibold24" tools:text="@string/lbl_notifications"/>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerSelectionList"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_573pxv"
-            android:layout_marginTop="@dimen/_20pxv"
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            itemSpace="@{@dimen/_9pxh}" tools:itemCount="2" tools:listitem="@layout/row_selection_list"/>
+
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="No Notification"
+            style="@style/txtNunitobold16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/recyclerSelectionList"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="@dimen/_573pxv"-->
+<!--            android:layout_marginTop="@dimen/_20pxv"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:orientation="vertical"-->
+<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--            itemSpace="@{@dimen/_9pxh}"-->
+<!--            tools:itemCount="2"-->
+<!--            tools:listitem="@layout/row_selection_list"/>-->
     </LinearLayout>
 </layout>

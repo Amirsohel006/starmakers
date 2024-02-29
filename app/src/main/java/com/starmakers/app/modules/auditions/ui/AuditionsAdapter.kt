@@ -17,6 +17,7 @@ import com.starmakers.app.modules.auditions.`data`.model.AuditionsRowModel
 import com.starmakers.app.modules.auditionsfour.ui.AuditionsFourActivity
 import com.starmakers.app.responses.AuditionsPosition
 import com.starmakers.app.responses.Data
+import com.starmakers.app.service.ApiManager
 import kotlin.Int
 import kotlin.collections.List
 
@@ -95,9 +96,12 @@ class AuditionsAdapter(
 //        .load(postModel.movie_poster)
 //        .into(imageView)
 
+      val image=postModel.movie_poster
+
+      val file=ApiManager.getImageUrl(image)
 
       Glide.with(itemView)
-        .load(postModel.movie_poster) // Replace with your image URL or resource ID
+        .load(file) // Replace with your image URL or resource ID
         .apply(requestOptions)
         .into(imageView)
 

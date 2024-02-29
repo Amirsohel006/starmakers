@@ -61,7 +61,7 @@ class Frame311Activity : BaseActivity<ActivityFrame311Binding>(R.layout.activity
       startActivity(destIntent)
     }
     binding.linearRowcomputer.setOnClickListener {
-      val i= Intent(this, ComingSoon::class.java)
+      val i= Intent(this, ArtistMembershipActivity::class.java)
       startActivity(i)
      //val destIntent = ArtistMembershipActivity.getIntent(this, null)
 //      startActivity(destIntent)
@@ -86,27 +86,45 @@ class Frame311Activity : BaseActivity<ActivityFrame311Binding>(R.layout.activity
 
 
   private fun fetchData(){
-    val serviceGenerator= ApiManager.apiInterface
-    val accessToken=sessionManager.fetchAuthToken()
-    val authorization="Token $accessToken"
-    val call=serviceGenerator.getProfile(authorization)
+    val serviceGenerator = ApiManager.apiInterface
+    val accessToken = sessionManager.fetchAuthToken()
+    val authorization = "Token $accessToken"
+    val call = serviceGenerator.getProfile(authorization)
 
     call.enqueue(object : retrofit2.Callback<ProfileResponse>{
       override fun onResponse(
         call: Call<ProfileResponse>,
         response: Response<ProfileResponse>
       ) {
-        val customerResponse=response.body()
+        val customerResponse = response.body()
 
-        if(customerResponse!=null){
-          binding.txtRahul.text=customerResponse.name
-          binding.txtMobileNo.text=customerResponse.mobile_number
+        if(customerResponse != null) {
+          binding.txtRahul.text = customerResponse.name
+          binding.txtMobileNo.text=customerResponse.mobileNumber
           binding.txtEmail.text=customerResponse.email
 
-          val profilePicture: ImageView =binding.profilePicture
+          sessionManager.saveuserId(customerResponse.id.toString())
 
+          // Check if artistPictures is not null and not empty
+          if (!customerResponse.artistPictures.isNullOrEmpty()) {
+            // Load the first artist picture if available
+            val profilePicture: ImageView = binding.profilePicture
+            val image = customerResponse.artistPictures[0].artistPicture
 
-          Picasso.get().load(customerResponse.profile).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+            val file = ApiManager.getImageUrl(image!!)
+            Picasso.get().load(file).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+          } else {
+            // Check if profile picture is not empty
+            val profilePicture: ImageView = binding.profilePicture
+            val image = customerResponse.profile
+            if (!image.isNullOrEmpty()) {
+              val file = ApiManager.getImageUrl(image)
+              Picasso.get().load(file).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+            } else {
+              // Load a default picture if both artistPictures and profile are empty
+              Picasso.get().load(R.drawable.default_profile_pic).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+            }
+          }
         }
       }
 
@@ -116,6 +134,7 @@ class Frame311Activity : BaseActivity<ActivityFrame311Binding>(R.layout.activity
       }
     })
   }
+
   companion object {
     const val TAG: String = "FRAME311ACTIVITY"
 

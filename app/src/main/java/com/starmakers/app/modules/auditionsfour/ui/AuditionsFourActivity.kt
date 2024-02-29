@@ -368,7 +368,8 @@ class AuditionsFourActivity :
 
     if(multipartImage==null  || multipartImage1==null  || multipartImage2==null || multipartImage3==null || multipartImage4==null ||
       multipartVideo==null || multipartVideo1==null){
-      Toast.makeText(this,"Please Submit all given document",Toast.LENGTH_LONG).show()
+      Toast.makeText(this,"Please Submit All Videos And Images For Verification!!",Toast.LENGTH_LONG).show()
+      binding.progressBar.visibility=View.GONE
       return
     }
 
@@ -429,7 +430,7 @@ class AuditionsFourActivity :
         if(customerResponse!=null){
           binding.etName.text=customerResponse.data.name
           binding.etmobileNumber.text=customerResponse.data.mobile_number
-          binding.etAge1.text=customerResponse.data.age
+          binding.etAge1.text= customerResponse.data.age.toString()
           binding.etHeight1.text=customerResponse.data.height
           binding.etWeight.text=customerResponse.data.weight
 

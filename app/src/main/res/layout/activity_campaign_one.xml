@@ -8,7 +8,8 @@
         android:id="@+id/linearColumnarrowleft"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:orientation="vertical" style="@style/groupStylegray_900">
+        android:orientation="vertical"
+        style="@style/groupStylegray_900">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarToolbar"
             android:layout_height="wrap_content"
@@ -63,40 +64,91 @@
                             android:scaleType="fitXY"
                             cornerRadius="@{@dimen/_10pxh}"
                             imageRes="@{@drawable/img_rectangle10_424x355}"
-                            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle10_424x355"/>
+                            tools:ignore="ContentDescription"
+                            tools:src="@drawable/img_rectangle10_424x355"/>
+
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_17pxh"
+                            android:layout_marginStart="@dimen/_17pxh"
+                            android:layout_marginTop="@dimen/_29pxv">
+
                         <TextView android:ellipsize="end"
                             android:id="@+id/txtMovieKantara"
                             android:layout_gravity="start"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/_17pxh"
-                            android:layout_marginStart="@dimen/_17pxh"
-                            android:layout_marginTop="@dimen/_29pxv"
                             android:layout_width="wrap_content"
                             android:singleLine="true"
                             android:text="@{campaignOneVM.campaignOneModel.txtMovieKantara}"
-                            style="@style/txtPoppinsregular16_4" tools:text="@string/lbl_movie_kantara"/>
+                            style="@style/txtPoppinsregular16_4"
+                            tools:text="@string/lbl_movie_kantara"/>
+                            <TextView android:ellipsize="end"
+                                android:id="@+id/txtMovieKantara1"
+                                android:layout_gravity="start"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:singleLine="true"
+                                android:layout_marginStart="10dp"
+                                android:text="@{campaignOneVM.campaignOneModel.txtMovieKantara}"
+                                style="@style/txtPoppinsregular16_4"
+                                tools:text="@string/lbl_movie_kantara"/>
+
+                        </LinearLayout>
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_17pxh"
+                    android:layout_marginStart="@dimen/_17pxh"
+                    android:layout_marginTop="@dimen/_29pxv">
+
                         <TextView android:ellipsize="end"
                             android:id="@+id/txtGenreMystery"
                             android:layout_gravity="start"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/_17pxh"
-                            android:layout_marginStart="@dimen/_17pxh"
-                            android:layout_marginTop="@dimen/_10pxv"
                             android:layout_width="wrap_content"
                             android:singleLine="true"
                             android:text="@{campaignOneVM.campaignOneModel.txtGenreMystery}"
-                            style="@style/txtPoppinsregular16_4" tools:text="@string/lbl_genre_mystery"/>
+                            style="@style/txtPoppinsregular16_4"
+                            tools:text="@string/lbl_genre_mystery"/>
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtGenreMystery1"
+                        android:layout_gravity="start"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:singleLine="true"
+                        android:layout_marginStart="10dp"
+                        android:text="@{campaignOneVM.campaignOneModel.txtGenreMystery}"
+                        style="@style/txtPoppinsregular16_4"
+                        tools:text="@string/lbl_genre_mystery"/>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_17pxh"
+                    android:layout_marginStart="@dimen/_17pxh"
+                    android:layout_marginTop="@dimen/_29pxv">
+
                         <TextView android:ellipsize="end"
                             android:id="@+id/txtStoryline"
                             android:layout_gravity="start"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/_17pxh"
-                            android:layout_marginStart="@dimen/_17pxh"
-                            android:layout_marginTop="@dimen/_7pxv"
                             android:layout_width="wrap_content"
                             android:singleLine="true"
                             android:text="@{campaignOneVM.campaignOneModel.txtStoryline}"
-                            style="@style/txtPoppinsregular16_4" tools:text="@string/lbl_storyline"/>
+                            style="@style/txtPoppinsregular16_4"
+                            tools:text="@string/lbl_storyline"/>
+
+                </LinearLayout>
                         <TextView android:gravity="center_horizontal"
                             android:id="@+id/txtDescription"
                             android:layout_height="wrap_content"
@@ -106,50 +158,133 @@
                             android:layout_width="match_parent"
                             android:text="@{campaignOneVM.campaignOneModel.txtDescription}"
                             style="@style/txtPoppinsregular14_7" tools:text="@string/msg_in_1847_there"/>
+
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_17pxh"
+                    android:layout_marginStart="@dimen/_17pxh"
+                    android:layout_marginTop="@dimen/_29pxv">
+
                         <TextView android:ellipsize="end"
                             android:id="@+id/txtAppxBudget"
                             android:layout_gravity="start"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/_17pxh"
-                            android:layout_marginStart="@dimen/_17pxh"
-                            android:layout_marginTop="@dimen/_11pxv"
                             android:layout_width="wrap_content"
                             android:singleLine="true"
                             android:text="@{campaignOneVM.campaignOneModel.txtAppxBudget}"
-                            style="@style/txtPoppinsregular16_4" tools:text="@string/lbl_appx_budget"/>
+                            style="@style/txtPoppinsregular16_4"
+                            tools:text="@string/lbl_appx_budget"/>
+
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtAppxBudget1"
+                        android:layout_gravity="start"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:singleLine="true"
+                        android:text="@{campaignOneVM.campaignOneModel.txtAppxBudget}"
+                        style="@style/txtPoppinsregular16_4"
+                        tools:text="@string/lbl_appx_budget"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_17pxh"
+                    android:layout_marginStart="@dimen/_17pxh"
+                    android:layout_marginTop="@dimen/_29pxv">
+
                         <TextView android:ellipsize="end"
                             android:id="@+id/txtMovieStartDat"
                             android:layout_gravity="start"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/_17pxh"
-                            android:layout_marginStart="@dimen/_17pxh"
-                            android:layout_marginTop="@dimen/_8pxv"
                             android:layout_width="wrap_content"
                             android:singleLine="true"
                             android:text="@{campaignOneVM.campaignOneModel.txtMovieStartDat}"
-                            style="@style/txtPoppinsregular16_4" tools:text="@string/msg_movie_start_dat"/>
+                            style="@style/txtPoppinsregular16_4"
+                            tools:text="@string/msg_movie_start_dat"/>
+
+
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtMovieStartDat1"
+                        android:layout_gravity="start"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:singleLine="true"
+                        android:layout_marginStart="10dp"
+                        android:text="@{campaignOneVM.campaignOneModel.txtMovieStartDat}"
+                        style="@style/txtPoppinsregular16_4"
+                        tools:text="@string/msg_movie_start_dat"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_17pxh"
+                    android:layout_marginStart="@dimen/_17pxh"
+                    android:layout_marginTop="@dimen/_29pxv">
                         <TextView android:ellipsize="end"
                             android:id="@+id/txtMovieEndDate"
                             android:layout_gravity="start"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/_17pxh"
-                            android:layout_marginStart="@dimen/_17pxh"
-                            android:layout_marginTop="@dimen/_14pxv"
                             android:layout_width="wrap_content"
                             android:singleLine="true"
                             android:text="@{campaignOneVM.campaignOneModel.txtMovieEndDate}"
                             style="@style/txtPoppinsregular16_4" tools:text="@string/msg_movie_end_date"/>
+
+
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtMovieEndDate1"
+                        android:layout_gravity="start"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:singleLine="true"
+                        android:layout_marginStart="10dp"
+                        android:text="@{campaignOneVM.campaignOneModel.txtMovieEndDate}"
+                        style="@style/txtPoppinsregular16_4"
+                        tools:text="@string/msg_movie_end_date"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_17pxh"
+                    android:layout_marginStart="@dimen/_17pxh"
+                    android:layout_marginTop="@dimen/_29pxv">
+
                         <TextView android:ellipsize="end"
                             android:id="@+id/txtReleasingDate"
                             android:layout_gravity="start"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/_17pxh"
-                            android:layout_marginStart="@dimen/_17pxh"
-                            android:layout_marginTop="@dimen/_14pxv"
                             android:layout_width="wrap_content"
                             android:singleLine="true"
                             android:text="@{campaignOneVM.campaignOneModel.txtReleasingDate}"
-                            style="@style/txtPoppinsregular16_4" tools:text="@string/msg_releasing_date"/>
+                            style="@style/txtPoppinsregular16_4"
+                            tools:text="@string/msg_releasing_date"/>
+
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtReleasingDate1"
+                        android:layout_gravity="start"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:singleLine="true"
+                        android:text="@{campaignOneVM.campaignOneModel.txtReleasingDate}"
+                        style="@style/txtPoppinsregular16_4"
+                        tools:text="@string/msg_releasing_date"/>
+
+                </LinearLayout>
                         <TextView
                             android:ellipsize="end"
                             android:id="@+id/txtTimeZone"
@@ -201,33 +336,34 @@
                                 cornerRadius="@{@dimen/_10pxh}"
                                 imageRes="@{@drawable/img_rectangle149}"
                                 tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle149"/>
-                            <ImageView
-                                android:id="@+id/imageRectangle150"
-                                android:layout_height="@dimen/_78pxh"
-                                android:layout_marginStart="@dimen/_9pxh"
-                                android:layout_width="@dimen/_78pxh"
-                                android:scaleType="fitXY"
-                                cornerRadius="@{@dimen/_10pxh}"
-                                imageRes="@{@drawable/img_rectangle150}"
-                                tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle150"/>
-                            <ImageView
-                                android:id="@+id/imageRectangle151"
-                                android:layout_height="@dimen/_78pxh"
-                                android:layout_marginStart="@dimen/_9pxh"
-                                android:layout_width="@dimen/_78pxh"
-                                android:scaleType="fitXY"
-                                cornerRadius="@{@dimen/_10pxh}"
-                                imageRes="@{@drawable/img_rectangle151}"
-                                tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle151"/>
-                            <ImageView
-                                android:id="@+id/imageRectangle152"
-                                android:layout_height="@dimen/_78pxh"
-                                android:layout_marginStart="@dimen/_9pxh"
-                                android:layout_width="@dimen/_78pxh"
-                                android:scaleType="fitXY"
-                                cornerRadius="@{@dimen/_10pxh}"
-                                imageRes="@{@drawable/img_rectangle152}"
-                                tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle152"/>
+<!--                            <ImageView-->
+<!--                                android:id="@+id/imageRectangle150"-->
+<!--                                android:layout_height="@dimen/_78pxh"-->
+<!--                                android:layout_marginStart="@dimen/_9pxh"-->
+<!--                                android:layout_width="@dimen/_78pxh"-->
+<!--                                android:scaleType="fitXY"-->
+<!--                                cornerRadius="@{@dimen/_10pxh}"-->
+<!--                                imageRes="@{@drawable/img_rectangle150}"-->
+<!--                                tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle150"/>-->
+<!--                            <ImageView-->
+<!--                                android:id="@+id/imageRectangle151"-->
+<!--                                android:layout_height="@dimen/_78pxh"-->
+<!--                                android:layout_marginStart="@dimen/_9pxh"-->
+<!--                                android:layout_width="@dimen/_78pxh"-->
+<!--                                android:scaleType="fitXY"-->
+<!--                                cornerRadius="@{@dimen/_10pxh}"-->
+<!--                                imageRes="@{@drawable/img_rectangle151}"-->
+<!--                                tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle151"/>-->
+<!--                            <ImageView-->
+<!--                                android:id="@+id/imageRectangle152"-->
+<!--                                android:layout_height="@dimen/_78pxh"-->
+<!--                                android:layout_marginStart="@dimen/_9pxh"-->
+<!--                                android:layout_width="@dimen/_78pxh"-->
+<!--                                android:scaleType="fitXY"-->
+<!--                                cornerRadius="@{@dimen/_10pxh}"-->
+<!--                                imageRes="@{@drawable/img_rectangle152}"-->
+<!--                                tools:ignore="ContentDescription" -->
+<!--                                tools:src="@drawable/img_rectangle152"/>-->
                         </LinearLayout>
                         </HorizontalScrollView>
                     </LinearLayout>
@@ -240,16 +376,15 @@
             android:id="@+id/btnParticipate"
             android:layout_gravity="bottom|start"
             android:layout_height="wrap_content"
-
             android:layout_width="match_parent"
             android:paddingBottom="@dimen/_17pxv"
             android:paddingEnd="@dimen/_30pxh"
             android:paddingStart="@dimen/_30pxh"
             android:paddingTop="@dimen/_17pxv"
             android:singleLine="true"
-            android:text="@string/lbl_participate"
+            android:text="Donate"
             android:textAllCaps="false"
             style="@style/btnSolid"
-            tools:text="@string/lbl_participate"/>
+            tools:text="Donate"/>
     </LinearLayout>
 </layout>
