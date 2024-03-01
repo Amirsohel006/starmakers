@@ -21,6 +21,7 @@ import com.starmakers.app.modules.frame311.ui.Frame311Activity
 import com.starmakers.app.modules.membershipoptioncomingsoon.ComingSoon
 import com.starmakers.app.modules.request.ui.StudioRequestAdapter
 import com.starmakers.app.modules.requestone.ui.RequestOneActivity
+import com.starmakers.app.modules.selectionlist.ui.SelectionListActivity
 import com.starmakers.app.modules.studiobookong1.ui.StudioBookong1Activity
 import com.starmakers.app.responses.ProfileResponse
 import com.starmakers.app.responses.StudioRequests
@@ -54,6 +55,11 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
   override fun setUpClicks(): Unit {
 
 
+    binding.imageQuestion.setOnClickListener {
+      val i=Intent(requireActivity(), SelectionListActivity::class.java)
+      startActivity(i)
+    }
+
     binding.profilePicture.setOnClickListener {
       val i = Intent(requireActivity(), ArtistBookongOneActivity::class.java)
       startActivity(i)
@@ -74,11 +80,16 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
 //      startActivity(destIntent)
 //      requireActivity().onBackPressed()
 //    }
+
+
     binding.linearRowuntitleddesignFour.setOnClickListener {
       val destIntent = RequestOneActivity.getIntent(requireActivity(), null)
       startActivity(destIntent)
       requireActivity().onBackPressed()
     }
+
+
+
 //    binding.txtRamanandStudio.setOnClickListener {
 //      val destIntent = AuditionsTwoActivity.getIntent(requireActivity(), null)
 //      startActivity(destIntent)
@@ -94,6 +105,7 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
 //      startActivity(destIntent)
 //      requireActivity().onBackPressed()
 //    }
+
 
 
     binding.linearColumnuntitleddesign5.setOnClickListener{

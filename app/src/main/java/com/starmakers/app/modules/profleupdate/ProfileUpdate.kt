@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.OpenableColumns
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.EditText
@@ -129,16 +130,36 @@ class ProfileUpdate : AppCompatActivity() {
 
 
                 if(customerResponse!=null){
-                    newName.setText(customerResponse.data.name)
+                    newName.setText(customerResponse.data.artist_name)
                    newMobileNumber.text=customerResponse.data.mobile_number
                     newEmail.text=customerResponse.data.email
                     newHeight.setText(customerResponse.data.height)
                     newWeight.setText(customerResponse.data.weight)
                     newLocation.setText(customerResponse.data.city)
-                    val imageProf=customerResponse.data.profile
-                    val file=ApiManager.getImageUrl(imageProf!!)
+                    if(customerResponse != null) {
+                        newName.setText(customerResponse.data.artist_name)
+                        newMobileNumber.text = customerResponse.data.mobile_number
+                        newEmail.text = customerResponse.data.email
+                        newHeight.setText(customerResponse.data.height)
+                        newWeight.setText(customerResponse.data.weight)
+                        newLocation.setText(customerResponse.data.city)
 
-                    Picasso.get().load(imageProf).transform(CircleTransformation()).into(profileImage)
+                        val imageProf = customerResponse.data.profile ?: ""
+
+                        // Check if profile image URL is not empty
+                        if (!TextUtils.isEmpty(imageProf)) {
+                            // Load the profile image using Picasso
+                            Picasso.get().load(imageProf).transform(CircleTransformation()).into(profileImage)
+                        } else {
+                            // Handle the case when profile image URL is empty
+                            // For example, you can set a placeholder image
+                            profileImage.setImageResource(R.drawable.rounded_profile_image)
+                        }
+
+                        // Set the profile picture variable
+                        profile_picture = customerResponse.data.profile
+                    }
+
                     profile_picture=customerResponse.data.profile
                 }
             }

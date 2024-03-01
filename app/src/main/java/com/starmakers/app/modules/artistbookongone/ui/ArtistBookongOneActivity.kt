@@ -2,6 +2,7 @@ package com.starmakers.app.modules.artistbookongone.ui
 
 import android.content.Intent
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
@@ -97,27 +98,51 @@ class ArtistBookongOneActivity :
 
         if(customerResponse!=null){
 
-          // Check if artistPictures is not null and not empty
-          if (!customerResponse.data.artistPictures.isNullOrEmpty()) {
-            // Load the first artist picture if available
-            val profilePicture: ImageView = binding.profilepicturerounded
-            val image = customerResponse.data.artistPictures[0].artistPicture
-            binding.etName.text=customerResponse.data.artistName
-            binding.etMobileNumber.text=customerResponse.data.phoneNumber
-            binding.etLocation.text=customerResponse.data.location
-            val file = ApiManager.getImageUrl(image!!)
-            Picasso.get().load(file).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
-          } else {
-            // Check if profile picture is not empty
             val profilePicture: ImageView = binding.profilepicturerounded
             val image = customerResponse.data.profile
 
-            binding.etName.text=customerResponse.data.name
+
             binding.etMobileNumber.text=customerResponse.data.mobile_number
             binding.etEmail.text=customerResponse.data.email
             binding.etHeight1.text=customerResponse.data.height
             binding.etWeight1.text=customerResponse.data.weight
+
+          if (!customerResponse.data.artist_name.isNullOrEmpty()) {
+            // Load the first artist picture if available
+            binding.etName.text=customerResponse.data.artist_name
+            binding.btnTakeMembershipOne.visibility = View.GONE
+
+            binding.etLocation.text=customerResponse.data.location
+            val profilePicture: ImageView = binding.profilepicturerounded
+            val artistPictures = customerResponse.data.artist_pictures
+            if (artistPictures.isNotEmpty()) {
+              val image = artistPictures[0].artist_picture
+              if (image != null) {
+                Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+              }
+            } else {
+              Toast.makeText(this@ArtistBookongOneActivity,"Profile Pic Not Available",Toast.LENGTH_SHORT).show()
+            }
+          } else {
+            binding.etName.text=customerResponse.data.name
+            // Check if profile picture is not empty
+            val profilePicture: ImageView = binding.profilepicturerounded
+            val image = customerResponse.data.profile
             binding.etLocation.text=customerResponse.data.city
+            binding.btnTakeMembershipOne.visibility= View.VISIBLE
+            if (!image.isNullOrEmpty()) {
+              //val file = ApiManager.getImageUrl(image)
+              Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+            } else {
+              // Load a default picture if both artistPictures and profile are empty
+              Picasso.get().load(R.drawable.default_profile_pic).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+            }
+          }
+
+
+
+
+
             if (!image.isNullOrEmpty()) {
               val file = ApiManager.getImageUrl(image)
               Picasso.get().load(file).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
@@ -125,7 +150,7 @@ class ArtistBookongOneActivity :
               // Load a default picture if both artistPictures and profile are empty
               Picasso.get().load(R.drawable.default_profile_pic).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
             }
-          }
+         // }
 
 
 

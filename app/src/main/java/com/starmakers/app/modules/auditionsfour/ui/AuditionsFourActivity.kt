@@ -428,7 +428,7 @@ class AuditionsFourActivity :
         val customerResponse=response.body()
 
         if(customerResponse!=null){
-          binding.etName.text=customerResponse.data.name
+          binding.etName.text=customerResponse.data.artist_name
           binding.etmobileNumber.text=customerResponse.data.mobile_number
           binding.etAge1.text= customerResponse.data.age.toString()
           binding.etHeight1.text=customerResponse.data.height
