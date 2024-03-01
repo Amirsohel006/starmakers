@@ -2,6 +2,7 @@ package com.starmakers.app.modules.frame311.ui
 
 import android.content.Intent
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -19,6 +20,7 @@ import com.starmakers.app.modules.helpone.ui.HelpOneActivity
 import com.starmakers.app.modules.helptwo.ui.HelpTwoActivity
 import com.starmakers.app.modules.membershipoptioncomingsoon.ComingSoon
 import com.starmakers.app.modules.selectionlist.ui.SelectionListActivity
+import com.starmakers.app.modules.selectionlistone.ui.SelectionListOneActivity
 import com.starmakers.app.modules.selectionlistthree.ui.SelectionListThreeActivity
 import com.starmakers.app.responses.ProfileResponse
 import com.starmakers.app.service.ApiManager
@@ -44,6 +46,11 @@ class Frame311Activity : BaseActivity<ActivityFrame311Binding>(R.layout.activity
   }
 
   override fun setUpClicks(): Unit {
+
+    binding.imageMenu.setOnClickListener {
+      this.finish()
+    }
+
     binding.linearRowgroup.setOnClickListener {
       val destIntent = SelectionListThreeActivity.getIntent(this, null)
       startActivity(destIntent)
@@ -82,6 +89,12 @@ class Frame311Activity : BaseActivity<ActivityFrame311Binding>(R.layout.activity
     binding.linearRowshare.setOnClickListener {
       Toast.makeText(this,"This Feature Will Be Available Soon",Toast.LENGTH_SHORT).show()
     }
+
+
+    binding.linearRowcalculator.setOnClickListener {
+      val i=Intent(this, SelectionListOneActivity::class.java)
+      startActivity(i)
+    }
   }
 
 
@@ -99,24 +112,33 @@ class Frame311Activity : BaseActivity<ActivityFrame311Binding>(R.layout.activity
         val customerResponse = response.body()
 
         if(customerResponse != null) {
-          binding.txtRahul.text = customerResponse.name
+
           binding.txtMobileNo.text=customerResponse.mobileNumber
           binding.txtEmail.text=customerResponse.email
 
           sessionManager.saveuserId(customerResponse.id.toString())
 
           // Check if artistPictures is not null and not empty
-          if (!customerResponse.artistPictures.isNullOrEmpty()) {
+          if (!customerResponse.artistName.isNullOrEmpty()) {
             // Load the first artist picture if available
+            binding.txtRahul.text=customerResponse.artistName
             val profilePicture: ImageView = binding.profilePicture
-            val image = customerResponse.artistPictures[0].artistPicture
-
-            val file = ApiManager.getImageUrl(image!!)
-            Picasso.get().load(file).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+            binding.btnMemberactor.visibility= View.VISIBLE
+            val artistPictures = customerResponse.artistPictures
+            if (artistPictures.isNotEmpty()) {
+              val image = artistPictures[0].artistPicture
+              if (image != null) {
+                Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+              }
+            } else {
+              Toast.makeText(this@Frame311Activity,"Profile Pic Not Available",Toast.LENGTH_SHORT).show()
+            }
           } else {
             // Check if profile picture is not empty
+            binding.txtRahul.text = customerResponse.name
             val profilePicture: ImageView = binding.profilePicture
             val image = customerResponse.profile
+            binding.btnMemberactor.visibility= View.GONE
             if (!image.isNullOrEmpty()) {
               val file = ApiManager.getImageUrl(image)
               Picasso.get().load(file).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)

@@ -44,70 +44,90 @@
                         android:id="@+id/linearRowvideocameraOne"
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent" android:orientation="horizontal">
-                        <LinearLayout android:gravity="start"
+
+                        <LinearLayout
                             android:id="@+id/linearColumnarrowleft"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/_1pxv"
                             android:layout_weight="0.85"
-                            android:layout_width="0dp" android:orientation="vertical">
-                            <LinearLayout android:gravity="start"
+                            android:gravity="start"
+                            android:orientation="vertical">
+
+                            <LinearLayout
                                 android:id="@+id/linearRowarrowleft"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="@dimen/_10pxh"
-                                android:layout_width="wrap_content" android:orientation="horizontal">
+                                android:gravity="start"
+                                android:orientation="horizontal">
+
                                 <ImageView
                                     android:id="@+id/imageArrowleft"
-                                    android:layout_height="@dimen/_24pxh"
-                                    android:layout_marginBottom="@dimen/_5pxv"
-                                    android:layout_marginTop="@dimen/_7pxv"
                                     android:layout_width="@dimen/_24pxh"
+                                    android:layout_height="@dimen/_24pxh"
+                                    android:layout_marginTop="@dimen/_7pxv"
+                                    android:layout_marginBottom="@dimen/_5pxv"
                                     android:scaleType="fitXY"
                                     android:src="@drawable/img_arrowleft"
-                                    tools:ignore="ContentDescription" tools:src="@drawable/img_arrowleft"/>
-                                <TextView android:ellipsize="end"
+                                    tools:ignore="ContentDescription"
+                                    tools:src="@drawable/img_arrowleft" />
+
+                                <TextView
                                     android:id="@+id/txtProfile"
+                                    style="@style/txtPoppinssemibold24"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="@dimen/_19pxh"
-                                    android:layout_width="match_parent"
+                                    android:ellipsize="end"
                                     android:singleLine="true"
                                     android:text="@{artistBookongOneVM.artistBookongOneModel.txtProfile}"
-                                    style="@style/txtPoppinssemibold24" tools:text="@string/lbl_profile"/>
+                                    tools:text="@string/lbl_profile" />
                             </LinearLayout>
-                            <LinearLayout android:gravity="start"
+
+                            <LinearLayout
                                 android:id="@+id/linearRowvideocamera"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="@dimen/_10pxh"
                                 android:layout_marginStart="@dimen/_4pxh"
                                 android:layout_marginTop="@dimen/_8pxv"
-                                android:layout_width="wrap_content" android:orientation="horizontal">
+                                android:layout_marginEnd="@dimen/_10pxh"
+                                android:gravity="start"
+                                android:orientation="horizontal">
+
                                 <ImageView
                                     android:id="@+id/imageVideocamera"
+                                    android:layout_width="@dimen/_16pxh"
                                     android:layout_height="@dimen/_16pxh"
                                     android:layout_marginTop="@dimen/_5pxv"
-                                    android:layout_width="@dimen/_16pxh"
                                     android:scaleType="fitXY"
                                     android:src="@drawable/img_videocamera"
-                                    tools:ignore="ContentDescription" tools:src="@drawable/img_videocamera"/>
+                                    tools:ignore="ContentDescription"
+                                    tools:src="@drawable/img_videocamera" />
+
                                 <ImageView
                                     android:id="@+id/imageLocation"
-                                    android:layout_height="@dimen/_20pxh"
-                                    android:layout_marginBottom="@dimen/_1pxv"
-                                    android:layout_marginStart="@dimen/_84pxh"
                                     android:layout_width="@dimen/_16pxh"
+                                    android:layout_height="@dimen/_20pxh"
+                                    android:layout_marginStart="@dimen/_84pxh"
+                                    android:layout_marginBottom="@dimen/_1pxv"
                                     android:scaleType="fitXY"
                                     android:src="@drawable/img_location_white_a700"
-                                    tools:ignore="ContentDescription" tools:src="@drawable/img_location_white_a700"/>
+                                    tools:ignore="ContentDescription"
+                                    tools:src="@drawable/img_location_white_a700" />
                             </LinearLayout>
+
                             <ImageView
                                 android:id="@+id/imageVideocameraOne"
+                                android:layout_width="@dimen/_24pxh"
                                 android:layout_height="@dimen/_23pxh"
-                                android:layout_marginEnd="@dimen/_18pxh"
                                 android:layout_marginStart="@dimen/_18pxh"
                                 android:layout_marginTop="@dimen/_34pxv"
-                                android:layout_width="@dimen/_24pxh"
+                                android:layout_marginEnd="@dimen/_18pxh"
                                 android:scaleType="fitXY"
                                 android:src="@drawable/img_videocamera_white_a700"
-                                tools:ignore="ContentDescription" tools:src="@drawable/img_videocamera_white_a700"/>
+                                tools:ignore="ContentDescription"
+                                tools:src="@drawable/img_videocamera_white_a700" />
                         </LinearLayout>
                         <ImageView android:id="@+id/imageUser"
                             android:layout_height="@dimen/_16pxh"
@@ -135,8 +155,8 @@
                 android:layout_marginEnd="@dimen/_102pxh"
                 android:layout_marginStart="@dimen/_102pxh"
                 android:layout_width="match_parent"
-                android:src="@drawable/img_arrowdown_gray_802"
-                android:orientation="vertical" style="@style/groupStylewhite_2">
+                android:orientation="vertical"
+                style="@style/groupStylewhite_2">
 <!--                <ImageView android:id="@+id/imageArrowdown"-->
 <!--                    android:layout_gravity="center_horizontal"-->
 <!--                    android:layout_height="@dimen/_48pxh"-->

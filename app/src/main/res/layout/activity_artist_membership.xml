@@ -503,16 +503,16 @@
                             android:text="@string/lbl_continue"
                             android:textAllCaps="false"
                             style="@style/btnSolidRounded_3" tools:text="@string/lbl_continue"/>
-                        <TextView android:ellipsize="end"
-                            android:id="@+id/txtLanguage"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/_10pxh"
-                            android:layout_marginTop="@dimen/_30pxv"
-                            android:layout_width="wrap_content"
-                            android:singleLine="true"
-                            android:text="@{artistMembershipVM.artistMembershipModel.txtLanguage}"
-                            style="@style/txtPoppinssemibold16"
-                            tools:text="@string/msg_membership_arti"/>
+<!--                        <TextView android:ellipsize="end"-->
+<!--                            android:id="@+id/txtLanguage"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginEnd="@dimen/_10pxh"-->
+<!--                            android:layout_marginTop="@dimen/_30pxv"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:singleLine="true"-->
+<!--                            android:text="@{artistMembershipVM.artistMembershipModel.txtLanguage}"-->
+<!--                            style="@style/txtPoppinssemibold16"-->
+<!--                            tools:text="@string/msg_membership_arti"/>-->
 
 
 

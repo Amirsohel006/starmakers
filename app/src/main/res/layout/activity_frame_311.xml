@@ -12,11 +12,26 @@
         style="@style/groupStylewhite_6">
 
 
+
         <LinearLayout android:gravity="start"
             android:id="@+id/linearRowellipsethirtytwo"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:orientation="horizontal" style="@style/groupStyle">
+            android:orientation="horizontal"
+            style="@style/groupStyle">
+
+            <ImageView
+                android:id="@+id/imageMenu"
+                android:layout_height="@dimen/_24pxh"
+                android:layout_marginBottom="@dimen/_9pxv"
+                android:layout_marginTop="@dimen/_10pxv"
+                android:layout_marginStart="10dp"
+                android:layout_width="@dimen/_32pxh"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_menu"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/img_menu"/>
+
             <ImageView android:id="@+id/profilePicture"
                 android:layout_height="@dimen/_114pxh"
                 android:layout_marginBottom="@dimen/_12pxv"
@@ -26,7 +41,11 @@
                 android:scaleType="fitXY"
                 cornerRadius="@{@dimen/_57pxh}"
                 imageRes="@{@drawable/img_ellipse32}"
-                tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse32"/>
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/img_ellipse32"/>
+
+
+
             <LinearLayout android:gravity="start"
                 android:id="@+id/linearColumnrahul"
                 android:layout_height="wrap_content"
@@ -76,6 +95,10 @@
                     android:textAllCaps="false"
                     style="@style/btnGradientRounded_2" tools:text="@string/lbl_member_actor"/>
             </LinearLayout>
+
+
+
+
         </LinearLayout>
 
 

@@ -19,6 +19,7 @@ import com.starmakers.app.modules.financialoverview.`data`.model.SpinnerGroup122
 import com.starmakers.app.modules.financialoverview.`data`.viewmodel.FinancialOverviewVM
 import com.starmakers.app.modules.frame311.ui.Frame311Activity
 import com.starmakers.app.modules.request.ui.StudioRequestAdapter
+import com.starmakers.app.modules.selectionlist.ui.SelectionListActivity
 import com.starmakers.app.responses.CampaignResponse
 import com.starmakers.app.responses.MyStudioRequest
 import com.starmakers.app.responses.ProfileResponse
@@ -43,6 +44,11 @@ class FinancialOverviewFragment :
     fetchData()
 
     getCampaign()
+
+    binding.spinnerGroup1221.text=sessionManager.fetchCityName()
+
+
+    binding.spinnerGroup1222.text=sessionManager.fetchPinCode()
 //    val gridrectangletenAdapter =
 //    GridrectangletenAdapter(viewModel.gridrectangletenList.value?:mutableListOf())
 //    binding.recyclerGridrectangleten.adapter = gridrectangletenAdapter
@@ -60,6 +66,12 @@ class FinancialOverviewFragment :
   }
 
   override fun setUpClicks(): Unit {
+
+    binding.imageQuestion.setOnClickListener {
+      val i=Intent(requireActivity(), SelectionListActivity::class.java)
+      startActivity(i)
+    }
+
     binding.imageMenu.setOnClickListener {
       val i =Intent(requireActivity(),Frame311Activity::class.java)
       startActivity(i)

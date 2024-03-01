@@ -1,15 +1,21 @@
 package com.starmakers.app.modules.home.ui
 
 import SliderrectangleelevenAdapter
+import android.Manifest
 import android.content.Intent
-import android.net.Uri
+import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.common.api.Api
 import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseFragment
@@ -19,40 +25,32 @@ import com.starmakers.app.modules.artistbookongone.ui.ArtistBookongOneActivity
 import com.starmakers.app.modules.artistmembership.ui.ArtistMembershipActivity
 import com.starmakers.app.modules.auditions.ui.AuditionsActivity
 import com.starmakers.app.modules.campaignone.ui.CampaignOneActivity
-import com.starmakers.app.modules.financialoverview.ui.GridrectangletenAdapter
 import com.starmakers.app.modules.frame311.ui.Frame311Activity
-import com.starmakers.app.modules.home.`data`.model.ImageSliderSliderrectangleelevenModel
-import com.starmakers.app.modules.home.`data`.model.SpinnerGroup122Model
 import com.starmakers.app.modules.home.`data`.viewmodel.HomeVM
-import com.starmakers.app.modules.membershipoptioncomingsoon.ComingSoon
-import com.starmakers.app.modules.studiobookong.ui.StudioBookongAdapter
+import com.starmakers.app.modules.selectionlist.ui.SelectionListActivity
 import com.starmakers.app.modules.studiobookong1.ui.StudioBookong1Activity
 import com.starmakers.app.responses.BannerResponses
-import com.starmakers.app.responses.CampaignResponse
 import com.starmakers.app.responses.CrowdResponses
 import com.starmakers.app.responses.FundingDemoVideos
 import com.starmakers.app.responses.ProfileResponse
 import com.starmakers.app.service.ApiManager
 import com.starmakers.app.service.CircleTransformation
 import com.starmakers.app.service.SessionManager
-import org.koin.android.ext.android.bind
 import retrofit2.Call
 import retrofit2.Response
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.ArrayList
 
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import java.io.IOException
+
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
-//  private val imageUri: Uri =
-//      Uri.parse("https://firebasestorage.googleapis.com/v0/b/starmakerz.appspot.com/o/img_rectangle11.png?alt=media&token=20cd0197-3af2-40da-bc53-a950f7ef933f&_gl=1*1kqjzek*_ga*NjczMjE3ODc4LjE2OTg3NDE5ODA.*_ga_CW55HF8NVT*MTY5ODc1NDMzMy4zLjEuMTY5ODc1NDgxMy4yNS4wLjA.")
-//  private val imageUri1: Uri =
-//    Uri.parse("https://firebasestorage.googleapis.com/v0/b/starmakerz.appspot.com/o/image5.png?alt=media&token=bb5b116c-9863-4e1f-992e-4fdefd605780&_gl=1*kgctb8*_ga*NjczMjE3ODc4LjE2OTg3NDE5ODA.*_ga_CW55HF8NVT*MTY5ODc1NDMzMy4zLjEuMTY5ODc1NDkzMi41OS4wLjA.")
-//  private val imageUri2: Uri =
-//    Uri.parse("https://firebasestorage.googleapis.com/v0/b/starmakerz.appspot.com/o/image3.png?alt=media&token=7cef87b6-c751-40e7-a0ad-0287e1e614cc&_gl=1*117l19v*_ga*NjczMjE3ODc4LjE2OTg3NDE5ODA.*_ga_CW55HF8NVT*MTY5ODc1NDMzMy4zLjEuMTY5ODc1NDk1My4zOC4wLjA.")
-//  private val imageUri3: Uri =
-//    Uri.parse("https://firebasestorage.googleapis.com/v0/b/starmakerz.appspot.com/o/image2.png?alt=media&token=aa8af948-f15e-403c-bf13-8903cba245e3&_gl=1*1jov726*_ga*NjczMjE3ODc4LjE2OTg3NDE5ODA.*_ga_CW55HF8NVT*MTY5ODc1NDMzMy4zLjEuMTY5ODc1NDk3My4xOC4wLjA.")
 
 
+  private lateinit var fusedLocationClient: FusedLocationProviderClient
+  
   private lateinit var sessionManager: SessionManager
 
 
@@ -62,22 +60,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
 
 
-//  private val imageSliderSliderrectangleelevenItems:
-//      ArrayList<ImageSliderSliderrectangleelevenModel> =
-//      arrayListOf(ImageSliderSliderrectangleelevenModel(imageRectangleEleven =
-//  imageUri.toString()),ImageSliderSliderrectangleelevenModel(imageRectangleEleven =
-//  imageUri1.toString()),ImageSliderSliderrectangleelevenModel(imageRectangleEleven =
-//      imageUri2.toString()),ImageSliderSliderrectangleelevenModel(imageRectangleEleven =
-//      imageUri3.toString()))
-
 
   private val viewModel: HomeVM by viewModels<HomeVM>()
 
+
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View? {
+    fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+    return super.onCreateView(inflater, container, savedInstanceState)
+  }
   override fun onInitialized(): Unit {
     viewModel.navArguments = arguments
     sessionManager=SessionManager(requireActivity())
 
 
+    requestLocationPermissions()
     val recyclerView=binding.recyclerviewforfundingvideos
 
     // Initialize the adapter with an empty list initially
@@ -113,6 +113,88 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     binding.homeVM = viewModel
   }
 
+
+
+
+
+
+  private fun requestLocationPermissions() {
+    if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+      requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
+    } else {
+      getLocation()
+    }
+  }
+
+
+
+  private fun getLocation() {
+    if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+      return
+    }
+    fusedLocationClient.lastLocation
+      .addOnSuccessListener { location ->
+        location?.let {
+          val address = getAddressFromLocation(location.latitude, location.longitude)
+          address?.let {
+            val cityName = it.locality ?: ""
+            val pinCode = it.postalCode ?: ""
+            sessionManager.saveCityName(cityName)
+            sessionManager.savePinCode(pinCode)
+            binding.spinnerGroup1221.text=cityName
+            binding.spinnerGroup1222.text=pinCode
+            Log.d("City Name", cityName)
+            Log.d("Pin Code", pinCode)
+            // Now you can handle cityName and pinCode as needed
+          }
+        }
+      }
+      .addOnFailureListener { e ->
+        Toast.makeText(requireContext(), "Error getting location: ${e.message}", Toast.LENGTH_SHORT).show()
+      }
+  }
+
+  private fun getAddressFromLocation(latitude: Double, longitude: Double): Address? {
+    val geocoder = Geocoder(requireContext())
+    var address: Address? = null
+
+    try {
+      val addresses = geocoder.getFromLocation(latitude, longitude, 1)
+      if (addresses!!.isNotEmpty()) {
+        address = addresses[0]
+        Toast.makeText(requireActivity(), "Country Code: ${address.countryCode}", Toast.LENGTH_SHORT).show()
+      }
+    } catch (e: IOException) {
+      e.printStackTrace()
+    }
+
+    return address
+  }
+
+
+
+
+  @Deprecated("Deprecated in Java")
+  override fun onRequestPermissionsResult(
+    requestCode: Int,
+    permissions: Array<out String>,
+    grantResults: IntArray
+  ) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+      if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        getLocation()
+        Toast.makeText(requireContext(), "Location permission Granted!!", Toast.LENGTH_SHORT).show()
+      } else {
+        // Handle the case where the user denies the permission
+        Toast.makeText(requireContext(), "Location permission denied", Toast.LENGTH_SHORT).show()
+      }
+    }
+  }
+
+
+
+
   override fun onPause(): Unit {
     binding.imageSliderSliderrectangleeleven.pauseAutoScroll()
     super.onPause()
@@ -124,6 +206,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
   }
 
   override fun setUpClicks(): Unit {
+
+    binding.imageQuestion.setOnClickListener {
+      val i=Intent(requireActivity(), SelectionListActivity::class.java)
+      startActivity(i)
+    }
+
+
     binding.imageMenu.setOnClickListener{
       val i =Intent(requireActivity(),Frame311Activity::class.java)
       startActivity(i)
@@ -233,8 +322,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
           //videoAdapter.updateData(customerResponse)
 
           binding.recyclerviewforfundingvideos.apply {
-            layoutManager=
-              LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL,false)
+            //layoutManager=
+             // LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL,false)
             val audtioAdapter= VideoAdapter(customerResponse)
             binding.recyclerviewforfundingvideos.adapter=audtioAdapter
           }
@@ -299,6 +388,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
   companion object {
     const val TAG: String = "HOME_FRAGMENT"
 
+    private const val LOCATION_PERMISSION_REQUEST_CODE = 1001
 
     fun getInstance(bundle: Bundle?): HomeFragment {
       val fragment = HomeFragment()

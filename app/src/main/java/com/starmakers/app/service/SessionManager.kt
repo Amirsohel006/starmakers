@@ -15,6 +15,8 @@ class SessionManager (context: Context) {
         const val USER_TOKEN = "access_token"
         const val REFRESH_TOKEN = "refresh_token"
         const val USER_ID="id"
+        const val CITY_NAME="city_name"
+        const val PIN_CODE="pin_code"
     }
 
     private val sharedPreferences =
@@ -22,6 +24,20 @@ class SessionManager (context: Context) {
     /**
      * Function to save auth token
      */
+
+    fun saveCityName(cityName:String){
+        val editor=prefs.edit()
+        editor.putString(CITY_NAME,cityName)
+        editor.apply()
+    }
+
+
+    fun savePinCode(pincode:String){
+        val editor=prefs.edit()
+        editor.putString(PIN_CODE,pincode)
+        editor.apply()
+    }
+
     fun saveAuthToken(token: String) {
         val editor = prefs.edit()
         editor.putString(USER_TOKEN, token)
@@ -56,6 +72,15 @@ class SessionManager (context: Context) {
         return prefs.getString(REFRESH_TOKEN,null)
     }
 
+
+    fun fetchCityName():String? {
+        return prefs.getString(CITY_NAME,null)
+    }
+
+
+    fun fetchPinCode():String?{
+        return prefs.getString(PIN_CODE,null)
+    }
 
     fun logout() {
         prefs.edit().apply {

@@ -31,7 +31,7 @@ class Gridrectangle110Adapter(
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     val profileData = profileDataList[position]
     holder.artistNameTextView.text = profileData.artistName
-    val image=profileData.artistPictures[0].artistPicture
+    val image=profileData.artistPictures[0].artistPicture?:""
     val file=ApiManager.getImageUrl(image)
 
     Picasso.get()

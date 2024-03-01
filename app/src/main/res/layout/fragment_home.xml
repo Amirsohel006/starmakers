@@ -37,7 +37,8 @@
                         android:layout_width="@dimen/_32pxh"
                         android:scaleType="fitXY"
                         android:src="@drawable/img_menu"
-                        tools:ignore="ContentDescription" tools:src="@drawable/img_menu"/>
+                        tools:ignore="ContentDescription"
+                        tools:src="@drawable/img_menu"/>
                     <TextView android:ellipsize="end"
                         android:id="@+id/txtRahul"
                         android:layout_height="wrap_content"
@@ -102,16 +103,45 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"/>
 
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="10dp"
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
             <TextView
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="10dp"
+
                 android:textSize="15sp"
                 android:textColor="@color/location"
-                android:text="Your Location-Bangalore 560068"
+                android:text="Your Location-"
                 android:layout_gravity="center"
                 android:id="@+id/spinnerGroup122"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content" />
+
+                    <TextView
+                        android:layout_marginStart="5dp"
+                        android:textSize="15sp"
+                        android:textColor="@color/location"
+                        android:text="Bangalore"
+                        android:layout_gravity="center"
+                        android:id="@+id/spinnerGroup1221"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content" />
+
+                    <TextView
+                        android:layout_marginStart="5dp"
+                        android:textSize="15sp"
+                        android:textColor="@color/location"
+                        android:text="587110"
+                        android:layout_gravity="center"
+                        android:id="@+id/spinnerGroup1222"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content" />
+
+                </LinearLayout>
 
 
                 <ImageView
