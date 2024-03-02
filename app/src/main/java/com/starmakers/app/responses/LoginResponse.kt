@@ -35,7 +35,8 @@ data class ProfileResponse(
     @SerializedName("choose_acting_field" ) var chooseActingField : String?                   = null,
     @SerializedName("created_at"          ) var createdAt         : String?                   = null,
     @SerializedName("artist_pictures"     ) var artistPictures    : ArrayList<ArtistPictures1> = arrayListOf(),
-    @SerializedName("profile")  val profile:String?=null
+    @SerializedName("profile")  val profile:String?=null,
+    @SerializedName("user_id")val userId:String?=null
 )
 
 data class ArtistPictures1 (

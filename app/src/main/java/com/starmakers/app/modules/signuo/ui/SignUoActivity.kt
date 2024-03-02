@@ -39,6 +39,8 @@ class SignUoActivity : BaseActivity<ActivitySignUoBinding>(R.layout.activity_sig
   private lateinit var sessionManager: SessionManager
   private lateinit var sharedPreferences: SharedPreferences
 
+  private var mobile:String=""
+
   val getActivityResult: ActivityResultLauncher<Intent> =
       registerForActivityResult(ActivityResultContracts.StartActivityForResult(),
   ActivityResultCallback {
@@ -58,6 +60,8 @@ class SignUoActivity : BaseActivity<ActivitySignUoBinding>(R.layout.activity_sig
 
       sharedPreferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
 
+
+      mobile=intent.getStringExtra("mobileNumber")!!
 
       val isFirstTime = sharedPreferences.getBoolean("is_first_time", true)
       if (isFirstTime) {
@@ -89,6 +93,31 @@ class SignUoActivity : BaseActivity<ActivitySignUoBinding>(R.layout.activity_sig
       window.statusBarColor= ContextCompat.getColor(this,R.color.white)
     }
 
+
+  private fun getResendSignUpOtp(mobile: String){
+    val call=apiService.getSignUpOTP(mobile)
+    call.enqueue(object : Callback<LoginResponse> {
+      override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+        if (response.isSuccessful) {
+          binding.progressBar.visibility=View.GONE
+          val loginResponse = response.body()
+          if (loginResponse != null) {
+            Toast.makeText(this@SignUoActivity, "Otp Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
+          } else {
+            Toast.makeText(this@SignUoActivity, "Login failed", Toast.LENGTH_SHORT).show()
+            binding.progressBar.visibility=View.GONE
+          }
+        } else {
+          Toast.makeText(this@SignUoActivity, "Login failed", Toast.LENGTH_SHORT).show()
+          binding.progressBar.visibility=View.GONE
+        }
+      }
+      override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+        Toast.makeText(this@SignUoActivity, "Login failed: ${t.message}", Toast.LENGTH_SHORT).show()
+        binding.progressBar.visibility=View.GONE
+      }
+    })
+  }
 
   private fun navigateToNextPage() {
     val i= SignUoOneActivity.getIntent(this,null)
@@ -135,10 +164,10 @@ class SignUoActivity : BaseActivity<ActivitySignUoBinding>(R.layout.activity_sig
     })
   }
     override fun setUpClicks(): Unit {
-//      binding.btnVerify.setOnClickListener {
-//        val destIntent = SignUoOneActivity.getIntent(this, null)
-//        startActivity(destIntent)
-//      }
+binding.txtResendOTP.setOnClickListener {
+  getResendSignUpOtp(mobile)
+  binding.progressBar.visibility=View.VISIBLE
+}
     }
 
     private fun startSmartUserConsent(): Unit {

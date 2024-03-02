@@ -7,6 +7,8 @@ import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +18,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseFragment
@@ -58,6 +61,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
   private lateinit var videoAdapter: VideoAdapter
 
+  private lateinit var autoScrollHandler: Handler
+  private lateinit var autoScrollRunnable: Runnable
+
 
 
 
@@ -96,19 +102,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     getCrowdFundingZone()
 
-    val sliderAdapter = SliderrectangleelevenAdapter(imageSliderItems, true) { itemId ->
-      val intent = Intent(requireActivity(), CampaignOneActivity::class.java)
-      intent.putExtra("itemId", itemId) // Pass the id to the next activity
-      startActivity(intent)
-    }
-
-
-    binding.imageSliderSliderrectangleeleven.adapter = sliderAdapter
-    binding.imageSliderSliderrectangleeleven.onIndicatorProgress = { selectingPosition, progress ->
-      Log.d("IndicatorProgress", "SelectingPosition: $selectingPosition, Progress: $progress")
-     // binding.indicatorVolume.onPageScrolled(selectingPosition, progress)
-    }
-    binding.indicatorVolume.updateIndicatorCounts(binding.imageSliderSliderrectangleeleven.indicatorCount)
+   setupImageSlider()
+    startAutoScroll()
 
     binding.homeVM = viewModel
   }
@@ -116,6 +111,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
 
 
+  private fun setupImageSlider() {
+    val sliderAdapter = SliderrectangleelevenAdapter(imageSliderItems, true) { itemId ->
+      val intent = Intent(requireActivity(), CampaignOneActivity::class.java)
+      intent.putExtra("itemId", itemId) // Pass the id to the next activity
+      startActivity(intent)
+    }
+    binding.imageSliderSliderrectangleeleven.adapter = sliderAdapter
+    binding.imageSliderSliderrectangleeleven.onIndicatorProgress = { selectingPosition, progress ->
+      binding.indicatorVolume.onPageScrolled(selectingPosition, progress)
+    }
+    binding.indicatorVolume.updateIndicatorCounts(binding.imageSliderSliderrectangleeleven.indicatorCount)
+  }
 
 
   private fun requestLocationPermissions() {
@@ -155,7 +162,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
   }
 
   private fun getAddressFromLocation(latitude: Double, longitude: Double): Address? {
-    val geocoder = Geocoder(requireContext())
+    val context = context ?: return null // Check if the fragment is attached to a context
+    val geocoder = Geocoder(context)
     var address: Address? = null
 
     try {
@@ -170,6 +178,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     return address
   }
+
 
 
 
@@ -193,6 +202,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
   }
 
 
+  private fun startAutoScroll() {
+    autoScrollHandler = Handler(Looper.getMainLooper())
+    autoScrollRunnable = object : Runnable {
+      override fun run() {
+        val currentItem = binding.imageSliderSliderrectangleeleven.currentItem
+        val nextItem = (currentItem + 1) % imageSliderItems.size
+        binding.imageSliderSliderrectangleeleven.setCurrentItem(nextItem, true)
+        autoScrollHandler.postDelayed(this, AUTO_SCROLL_DELAY_MS)
+      }
+    }
+    autoScrollHandler.postDelayed(autoScrollRunnable, AUTO_SCROLL_DELAY_MS)
+  }
 
 
   override fun onPause(): Unit {
@@ -304,39 +325,54 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
   }
 
 
-  fun fundingVideos(){
-    val serviceGenerator= ApiManager.apiInterface
-    val accessToken=sessionManager.fetchAuthToken()
-    val authorization="Token $accessToken"
-    val call=serviceGenerator.getFundingVideos(authorization)
+  fun fundingVideos() {
+    if (!isAdded) {
+      // Fragment is not attached to an activity
+      return
+    }
 
-    call.enqueue(object : retrofit2.Callback<List<FundingDemoVideos>>{
+    val serviceGenerator = ApiManager.apiInterface
+    val accessToken = sessionManager.fetchAuthToken()
+    val authorization = "Token $accessToken"
+    val call = serviceGenerator.getFundingVideos(authorization)
+
+    call.enqueue(object : retrofit2.Callback<List<FundingDemoVideos>> {
       override fun onResponse(
         call: Call<List<FundingDemoVideos>>,
         response: Response<List<FundingDemoVideos>>
       ) {
-        val customerResponse=response.body()
+        if (!isAdded) {
+          // Fragment is not attached to an activity
+          return
+        }
 
+        val customerResponse = response.body()
+
+        binding.mystudiostext.visibility=View.GONE
+        binding.recyclerviewforfundingvideos.visibility=View.VISIBLE
         if (customerResponse != null) {
           // Update the adapter with the list of videos
-          //videoAdapter.updateData(customerResponse)
-
           binding.recyclerviewforfundingvideos.apply {
-            //layoutManager=
-             // LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL,false)
-            val audtioAdapter= VideoAdapter(customerResponse)
-            binding.recyclerviewforfundingvideos.adapter=audtioAdapter
+            layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+            val audtioAdapter = VideoAdapter(customerResponse)
+            adapter = audtioAdapter
           }
-
         }
       }
 
       override fun onFailure(call: Call<List<FundingDemoVideos>>, t: Throwable) {
+        if (!isAdded) {
+          // Fragment is not attached to an activity
+          return
+        }
+
         t.printStackTrace()
         Log.e("error", t.message.toString())
       }
     })
   }
+
+
   private fun fetchData(){
     val serviceGenerator = ApiManager.apiInterface
     val accessToken = sessionManager.fetchAuthToken()
@@ -389,6 +425,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     const val TAG: String = "HOME_FRAGMENT"
 
     private const val LOCATION_PERMISSION_REQUEST_CODE = 1001
+
+    private const val AUTO_SCROLL_DELAY_MS = 5000L
+    private const val AUTO_SCROLL_HANDLER_DELAY_MS = 3000L
 
     fun getInstance(bundle: Bundle?): HomeFragment {
       val fragment = HomeFragment()

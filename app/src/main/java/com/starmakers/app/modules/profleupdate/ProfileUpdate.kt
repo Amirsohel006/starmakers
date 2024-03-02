@@ -144,17 +144,16 @@ class ProfileUpdate : AppCompatActivity() {
                         newWeight.setText(customerResponse.data.weight)
                         newLocation.setText(customerResponse.data.city)
 
-                        val imageProf = customerResponse.data.profile ?: ""
 
-                        // Check if profile image URL is not empty
-                        if (!TextUtils.isEmpty(imageProf)) {
-                            // Load the profile image using Picasso
-                            Picasso.get().load(imageProf).transform(CircleTransformation()).into(profileImage)
-                        } else {
-                            // Handle the case when profile image URL is empty
-                            // For example, you can set a placeholder image
-                            profileImage.setImageResource(R.drawable.rounded_profile_image)
+                        if (!customerResponse.data.artist_pictures.isNullOrEmpty()){
+
+                            val imageProf=customerResponse.data.artist_pictures[0].artist_picture?:""
+                            Picasso.get().load(imageProf).placeholder(R.drawable.rounded_profile_image).transform(CircleTransformation()).into(profileImage)
+                        }else{
+                            val imageProf=customerResponse.data.profile?:""
+                            Picasso.get().load(imageProf).placeholder(R.drawable.rounded_profile_image).transform(CircleTransformation()).into(profileImage)
                         }
+
 
                         // Set the profile picture variable
                         profile_picture = customerResponse.data.profile

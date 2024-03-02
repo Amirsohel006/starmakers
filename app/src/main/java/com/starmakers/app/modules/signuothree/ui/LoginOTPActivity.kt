@@ -47,12 +47,14 @@ class LoginOTPActivity :
     })
 
 
+  private var mobile:String=""
     private val viewModel: SignUoThreeVM by viewModels<SignUoThreeVM>()
 
     override fun onInitialized(): Unit {
       TokenManager.initialize(this)
       sessionManager= SessionManager(this)
 
+      mobile=intent.getStringExtra("mobileNumber")!!
 //
 //      sharedPreferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
 //
@@ -102,6 +104,11 @@ class LoginOTPActivity :
 //        val destIntent = HomeContainerActivity.getIntent(this, null)
 //        startActivity(destIntent)
 //      }
+
+      binding.txtResendOTP.setOnClickListener {
+        resendOtp(mobile)
+        binding.progressBar.visibility=View.VISIBLE
+      }
     }
 
   private fun navigateToNextPage() {
@@ -140,6 +147,32 @@ class LoginOTPActivity :
     }
 
 
+
+  private fun resendOtp(mobile: String){
+    val call=apiService.getOtp(mobile)
+    call.enqueue(object : Callback<LoginResponse> {
+      override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+        binding.progressBar.visibility= View.GONE
+        if (response.isSuccessful) {
+
+          val loginResponse = response.body()
+          if (loginResponse != null) {
+            Toast.makeText(this@LoginOTPActivity, "Otp Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
+          } else {
+            Toast.makeText(this@LoginOTPActivity, "Login failed", Toast.LENGTH_SHORT).show()
+            binding.progressBar.visibility= View.GONE
+          }
+        } else {
+          Toast.makeText(this@LoginOTPActivity, "Login failed", Toast.LENGTH_SHORT).show()
+          binding.progressBar.visibility= View.GONE
+        }
+      }
+      override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+        Toast.makeText(this@LoginOTPActivity, "Login failed: ${t.message}", Toast.LENGTH_SHORT).show()
+        binding.progressBar.visibility= View.GONE
+      }
+    })
+  }
 
   private  fun login(otp: String) {
     val call = apiService.verifyLoginOtp(otp)

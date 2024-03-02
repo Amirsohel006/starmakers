@@ -31,6 +31,8 @@ class SignUoFourActivity : BaseActivity<ActivitySignUoFourBinding>(R.layout.acti
   private lateinit var apiService: ApiInterface
   private lateinit var sessionManager: SessionManager
 
+  private var mobile:String=""
+
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     binding.signUoFourVM = viewModel
@@ -38,7 +40,7 @@ class SignUoFourActivity : BaseActivity<ActivitySignUoFourBinding>(R.layout.acti
     apiService= ApiManager.apiInterface
     sessionManager= SessionManager(this)
     binding.btnSignup.setOnClickListener{
-      val  mobile=binding.txtEnterMobilenu.text.toString()
+        mobile=binding.txtEnterMobilenu.text.toString()
 
       if (mobile.isNotEmpty()) {
         getOtp(mobile)
@@ -93,6 +95,7 @@ class SignUoFourActivity : BaseActivity<ActivitySignUoFourBinding>(R.layout.acti
 
   private fun navigateToNextPage() {
     val i=Intent(this, SignUoActivity::class.java)
+    i.putExtra("mobileNumber",mobile)
     startActivity(i)
   }
 

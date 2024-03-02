@@ -19,6 +19,7 @@ import com.starmakers.app.modules.help.ui.HelpActivity
 import com.starmakers.app.modules.helpone.ui.HelpOneActivity
 import com.starmakers.app.modules.helptwo.ui.HelpTwoActivity
 import com.starmakers.app.modules.membershipoptioncomingsoon.ComingSoon
+import com.starmakers.app.modules.requestone.ui.RequestOneActivity
 import com.starmakers.app.modules.selectionlist.ui.SelectionListActivity
 import com.starmakers.app.modules.selectionlistone.ui.SelectionListOneActivity
 import com.starmakers.app.modules.selectionlistthree.ui.SelectionListThreeActivity
@@ -92,7 +93,7 @@ class Frame311Activity : BaseActivity<ActivityFrame311Binding>(R.layout.activity
 
 
     binding.linearRowcalculator.setOnClickListener {
-      val i=Intent(this, SelectionListOneActivity::class.java)
+      val i=Intent(this, RequestOneActivity::class.java)
       startActivity(i)
     }
   }
@@ -119,16 +120,17 @@ class Frame311Activity : BaseActivity<ActivityFrame311Binding>(R.layout.activity
           sessionManager.saveuserId(customerResponse.id.toString())
 
           // Check if artistPictures is not null and not empty
-          if (!customerResponse.artistName.isNullOrEmpty()) {
+          if (!customerResponse.artistPictures.isNullOrEmpty()) {
             // Load the first artist picture if available
-            binding.txtRahul.text=customerResponse.artistName
+            binding.txtRahul.text=customerResponse.name
             val profilePicture: ImageView = binding.profilePicture
             binding.btnMemberactor.visibility= View.VISIBLE
             val artistPictures = customerResponse.artistPictures
             if (artistPictures.isNotEmpty()) {
               val image = artistPictures[0].artistPicture
+              val file=ApiManager.getImageUrl(image!!)
               if (image != null) {
-                Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+                Picasso.get().load(file).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
               }
             } else {
               Toast.makeText(this@Frame311Activity,"Profile Pic Not Available",Toast.LENGTH_SHORT).show()

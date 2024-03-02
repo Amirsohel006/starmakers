@@ -59,11 +59,7 @@ class ArtistBookongOneActivity :
     binding.btnLogout.setOnClickListener {
       logout()
     }
-    binding.btnTakeMembershipOne.setOnClickListener {
-      //val destIntent = ArtistMembershipActivity.getIntent(this, null)
-      val destIntent = Intent(this,ComingSoon::class.java)
-      startActivity(destIntent)
-    }
+
     binding.imageArrowleft.setOnClickListener {
       finish()
     }
@@ -107,7 +103,7 @@ class ArtistBookongOneActivity :
             binding.etHeight1.text=customerResponse.data.height
             binding.etWeight1.text=customerResponse.data.weight
 
-          if (!customerResponse.data.artist_name.isNullOrEmpty()) {
+          if (!customerResponse.data.artist_pictures.isNullOrEmpty()) {
             // Load the first artist picture if available
             binding.etName.text=customerResponse.data.artist_name
             binding.btnTakeMembershipOne.visibility = View.GONE
@@ -117,9 +113,8 @@ class ArtistBookongOneActivity :
             val artistPictures = customerResponse.data.artist_pictures
             if (artistPictures.isNotEmpty()) {
               val image = artistPictures[0].artist_picture
-              if (image != null) {
-                Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
-              }
+              Log.d("Retreived Image",image!!)
+              Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
             } else {
               Toast.makeText(this@ArtistBookongOneActivity,"Profile Pic Not Available",Toast.LENGTH_SHORT).show()
             }
@@ -130,12 +125,19 @@ class ArtistBookongOneActivity :
             val image = customerResponse.data.profile
             binding.etLocation.text=customerResponse.data.city
             binding.btnTakeMembershipOne.visibility= View.VISIBLE
+
+            binding.btnTakeMembershipOne.setOnClickListener {
+              //val destIntent = ArtistMembershipActivity.getIntent(this, null)
+              val destIntent = Intent(this@ArtistBookongOneActivity,ArtistMembershipActivity::class.java)
+              startActivity(destIntent)
+            }
+
             if (!image.isNullOrEmpty()) {
               //val file = ApiManager.getImageUrl(image)
               Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
             } else {
               // Load a default picture if both artistPictures and profile are empty
-              Picasso.get().load(R.drawable.default_profile_pic).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+              Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
             }
           }
 
@@ -143,18 +145,18 @@ class ArtistBookongOneActivity :
 
 
 
-            if (!image.isNullOrEmpty()) {
-              val file = ApiManager.getImageUrl(image)
-              Picasso.get().load(file).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
-            } else {
-              // Load a default picture if both artistPictures and profile are empty
-              Picasso.get().load(R.drawable.default_profile_pic).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
-            }
-         // }
-
-
-
-          Picasso.get().load(customerResponse.data.profile).transform(CircleTransformation()).into(binding.profilepicturerounded)
+//            if (!image.isNullOrEmpty()) {
+//              val file = ApiManager.getImageUrl(image)
+//              Picasso.get().load(file).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+//            } else {
+//              // Load a default picture if both artistPictures and profile are empty
+//              Picasso.get().load(R.drawable.default_profile_pic).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+//            }
+//         // }
+//
+//
+//
+//          Picasso.get().load(customerResponse.data.profile).transform(CircleTransformation()).into(binding.profilepicturerounded)
         }
       }
 

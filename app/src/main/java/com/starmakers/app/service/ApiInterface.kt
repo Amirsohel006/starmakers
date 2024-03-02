@@ -1,5 +1,6 @@
 package com.starmakers.app.service
 
+import android.app.appsearch.SearchResult
 import com.starmakers.app.responses.AboutUsModel
 import com.starmakers.app.responses.ArtistRequestById
 import com.starmakers.app.responses.ArtistRequests
@@ -7,6 +8,7 @@ import com.starmakers.app.responses.Audition
 import com.starmakers.app.responses.AuditionPosition
 import com.starmakers.app.responses.BannerResponses
 import com.starmakers.app.responses.BookingResponseList
+import com.starmakers.app.responses.BudgetResponse
 import com.starmakers.app.responses.CampaignDataById
 import com.starmakers.app.responses.CampaignResponse
 import com.starmakers.app.responses.CategoryItem
@@ -35,6 +37,7 @@ import com.starmakers.app.responses.StudioRequests
 import com.starmakers.app.responses.MyAuditionRequest
 import com.starmakers.app.responses.PaymentRequest
 import com.starmakers.app.responses.PaymentRequestForDonate
+import com.starmakers.app.responses.SearchResponses
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -320,4 +323,14 @@ interface ApiInterface {
     fun getDonatePaymentInitiate(
         @Body paymentRequest: PaymentRequestForDonate
     ):Call<ResponseBody>
+
+
+    @GET("api/campaign-funding-details/")
+    fun getSearchDetails(
+        @Header("Authorization")fetchAuthToken: String?
+    ):Call<List<BudgetResponse>>
+
+
+    @GET("api/search-api")
+    fun search(@Query("q") query: String): Call<SearchResponses>
 }

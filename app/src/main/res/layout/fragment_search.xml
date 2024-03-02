@@ -26,9 +26,10 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/img_search_bluegray_100"
                     tools:ignore="ContentDescription" tools:src="@drawable/img_search_bluegray_100"/>
-                <androidx.appcompat.widget.AppCompatButton
+                <EditText
                     android:ellipsize="end" android:gravity="center"
                     android:id="@+id/btnSearchHere"
+                    android:hint="@string/lbl_search_here"
                     android:layout_gravity="bottom|center"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_19pxv"
@@ -41,200 +42,18 @@
                     android:paddingStart="@dimen/_30pxh"
                     android:paddingTop="@dimen/_4pxv"
                     android:singleLine="true"
-                    android:text="@string/lbl_search_here"
                     android:textAllCaps="false"
-                    style="@style/btnRoundedOutline" tools:text="@string/lbl_search_here"/>
+                    style="@style/btnRoundedOutline" />
             </FrameLayout>
-            <TextView android:ellipsize="end"
-                android:id="@+id/txtRecentSearches"
-                android:layout_gravity="start"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_16pxh"
-                android:layout_marginStart="@dimen/_16pxh"
-                android:layout_marginTop="@dimen/_10pxv"
-                android:layout_width="wrap_content"
-                android:singleLine="true"
-                android:text="@{searchVM.searchModel.txtRecentSearches}"
-                style="@style/txtPoppinsregular14" tools:text="@string/lbl_recent_searches"/>
-            <LinearLayout android:id="@+id/linearRowrajkumara"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_15pxh"
-                android:layout_marginStart="@dimen/_15pxh"
-                android:layout_marginTop="@dimen/_11pxv"
-                android:layout_width="match_parent" android:orientation="horizontal">
-                <TextView android:ellipsize="end"
-                    android:id="@+id/txtRajkumara"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.86"
-                    android:layout_width="0dp" android:singleLine="true"
-                    android:text="@{searchVM.searchModel.txtRajkumara}"
-                    style="@style/txtPoppinsregular16" tools:text="@string/lbl_rajkumara"/>
-                <ImageView android:id="@+id/imageMaximize"
-                    android:layout_height="@dimen/_14pxh"
-                    android:layout_marginBottom="@dimen/_6pxv"
-                    android:layout_marginStart="@dimen/_226pxh"
-                    android:layout_marginTop="@dimen/_3pxv"
-                    android:layout_width="@dimen/_14pxh"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/img_maximize"
-                    tools:ignore="ContentDescription" tools:src="@drawable/img_maximize"/>
-            </LinearLayout>
-            <View android:background="@color/gray_500"
-                android:id="@+id/lineLineTwentySix"
-                android:layout_gravity="start"
-                android:layout_height="@dimen/_1pxv"
-                android:layout_marginTop="@dimen/_1pxv" android:layout_width="@dimen/_360pxh"/>
-            <LinearLayout android:id="@+id/linearRowkantara"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_15pxh"
-                android:layout_marginStart="@dimen/_15pxh"
-                android:layout_marginTop="@dimen/_8pxv"
-                android:layout_width="match_parent" android:orientation="horizontal">
-                <TextView android:ellipsize="end"
-                    android:id="@+id/txtKantara"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.82"
-                    android:layout_width="0dp" android:singleLine="true"
-                    android:text="@{searchVM.searchModel.txtKantara}"
-                    style="@style/txtPoppinsregular16" tools:text="@string/lbl_kantara"/>
-                <ImageView android:id="@+id/imageMaximizeOne"
-                    android:layout_height="@dimen/_14pxh"
-                    android:layout_marginBottom="@dimen/_6pxv"
-                    android:layout_marginStart="@dimen/_250pxh"
-                    android:layout_marginTop="@dimen/_3pxv"
-                    android:layout_width="@dimen/_14pxh"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/img_maximize"
-                    tools:ignore="ContentDescription" tools:src="@drawable/img_maximize"/>
-            </LinearLayout>
-            <View android:background="@color/gray_500"
-                android:id="@+id/lineLineTwentySeven"
-                android:layout_gravity="start"
-                android:layout_height="@dimen/_1pxv"
-                android:layout_marginTop="@dimen/_1pxv" android:layout_width="@dimen/_360pxh"/>
-            <LinearLayout android:id="@+id/linearRowrobert"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_15pxh"
-                android:layout_marginStart="@dimen/_15pxh"
-                android:layout_marginTop="@dimen/_7pxv"
-                android:layout_width="match_parent" android:orientation="horizontal">
-                <TextView android:ellipsize="end"
-                    android:id="@+id/txtRobert"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.79"
-                    android:layout_width="0dp" android:singleLine="true"
-                    android:text="@{searchVM.searchModel.txtRobert}"
-                    style="@style/txtPoppinsregular16" tools:text="@string/lbl_robert"/>
-                <ImageView android:id="@+id/imageMaximizeTwo"
-                    android:layout_height="@dimen/_14pxh"
-                    android:layout_marginBottom="@dimen/_6pxv"
-                    android:layout_marginStart="@dimen/_261pxh"
-                    android:layout_marginTop="@dimen/_3pxv"
-                    android:layout_width="@dimen/_14pxh"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/img_maximize"
-                    tools:ignore="ContentDescription" tools:src="@drawable/img_maximize"/>
-            </LinearLayout>
-            <View android:background="@color/gray_500"
-                android:id="@+id/lineLineTwentySevenOne"
-                android:layout_gravity="start"
-                android:layout_height="@dimen/_1pxv"
-                android:layout_marginTop="@dimen/_1pxv" android:layout_width="@dimen/_360pxh"/>
-            <TextView android:ellipsize="end"
-                android:id="@+id/txtPopularSearch"
-                android:layout_gravity="start"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_16pxh"
-                android:layout_marginStart="@dimen/_16pxh"
-                android:layout_marginTop="@dimen/_21pxv"
-                android:layout_width="wrap_content"
-                android:singleLine="true"
-                android:text="@{searchVM.searchModel.txtPopularSearch}"
-                style="@style/txtPoppinsregular14" tools:text="@string/lbl_popular_search"/>
-            <LinearLayout android:id="@+id/linearRowdarshan"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_15pxh"
-                android:layout_marginStart="@dimen/_15pxh"
-                android:layout_marginTop="@dimen/_12pxv"
-                android:layout_width="match_parent" android:orientation="horizontal">
-                <TextView android:ellipsize="end"
-                    android:id="@+id/txtDarshan"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.83"
-                    android:layout_width="0dp" android:singleLine="true"
-                    android:text="@{searchVM.searchModel.txtDarshan}"
-                    style="@style/txtPoppinsregular16" tools:text="@string/lbl_darshan"/>
-                <ImageView android:id="@+id/imageMaximizeThree"
-                    android:layout_height="@dimen/_14pxh"
-                    android:layout_marginBottom="@dimen/_6pxv"
-                    android:layout_marginStart="@dimen/_247pxh"
-                    android:layout_marginTop="@dimen/_3pxv"
-                    android:layout_width="@dimen/_14pxh"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/img_maximize"
-                    tools:ignore="ContentDescription" tools:src="@drawable/img_maximize"/>
-            </LinearLayout>
-            <View android:background="@color/gray_500"
-                android:id="@+id/lineLineTwentySevenTwo"
-                android:layout_gravity="start"
-                android:layout_height="@dimen/_1pxv"
-                android:layout_marginTop="@dimen/_2pxv" android:layout_width="@dimen/_360pxh"/>
-            <LinearLayout android:id="@+id/linearRowauditions"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_15pxh"
-                android:layout_marginStart="@dimen/_15pxh"
-                android:layout_marginTop="@dimen/_9pxv"
-                android:layout_width="match_parent" android:orientation="horizontal">
-                <TextView android:ellipsize="end"
-                    android:id="@+id/txtAuditions"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.84"
-                    android:layout_width="0dp" android:singleLine="true"
-                    android:text="@{searchVM.searchModel.txtAuditions}"
-                    style="@style/txtPoppinsregular16" tools:text="@string/lbl_auditions"/>
-                <ImageView android:id="@+id/imageMaximizeFour"
-                    android:layout_height="@dimen/_14pxh"
-                    android:layout_marginBottom="@dimen/_5pxv"
-                    android:layout_marginStart="@dimen/_239pxh"
-                    android:layout_marginTop="@dimen/_4pxv"
-                    android:layout_width="@dimen/_14pxh"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/img_maximize"
-                    tools:ignore="ContentDescription" tools:src="@drawable/img_maximize"/>
-            </LinearLayout>
-            <View android:background="@color/gray_500"
-                android:id="@+id/lineLineTwentySevenThree"
-                android:layout_gravity="start"
-                android:layout_height="@dimen/_1pxv"
-                android:layout_marginTop="@dimen/_2pxv" android:layout_width="@dimen/_360pxh"/>
-            <LinearLayout android:id="@+id/linearRowsuryatej"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_15pxh"
-                android:layout_marginStart="@dimen/_15pxh"
-                android:layout_marginTop="@dimen/_11pxv"
-                android:layout_width="match_parent" android:orientation="horizontal">
-                <TextView android:ellipsize="end"
-                    android:id="@+id/txtSuryatej"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.82"
-                    android:layout_width="0dp" android:singleLine="true"
-                    android:text="@{searchVM.searchModel.txtSuryatej}"
-                    style="@style/txtPoppinsregular16" tools:text="@string/lbl_suryatej"/>
-                <ImageView android:id="@+id/imageMaximizeFive"
-                    android:layout_height="@dimen/_14pxh"
-                    android:layout_marginBottom="@dimen/_7pxv"
-                    android:layout_marginStart="@dimen/_248pxh"
-                    android:layout_marginTop="@dimen/_2pxv"
-                    android:layout_width="@dimen/_14pxh"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/img_maximize"
-                    tools:ignore="ContentDescription" tools:src="@drawable/img_maximize"/>
-            </LinearLayout>
-            <View android:background="@color/gray_500"
-                android:id="@+id/lineLineTwentySevenFour"
-                android:layout_gravity="start"
-                android:layout_height="@dimen/_1pxv"
-                android:layout_marginTop="@dimen/_1pxv" android:layout_width="@dimen/_360pxh"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerforSearch"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </LinearLayout>
 </layout>
