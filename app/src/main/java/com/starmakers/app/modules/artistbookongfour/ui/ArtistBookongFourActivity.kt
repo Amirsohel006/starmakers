@@ -120,14 +120,24 @@ class ArtistBookongFourActivity :
 //                .into(imageview)
 
 
-              val image=profileData.data.artistPictures[0].artistPicture
+              val image = profileData.data.artistPictures.getOrNull(0)?.artistPicture ?: ""
 
-              val file=ApiManager.getImageUrl(image!!)
+              if (image.isNotEmpty()) {
 
-              Glide.with(this@ArtistBookongFourActivity)
-                .load(file) // Replace with your image URL or resource ID
-                .apply(requestOptions)
-                .into(imageview)
+                val file=ApiManager.getImageUrl(image!!)
+
+                Glide.with(this@ArtistBookongFourActivity)
+                  .load(file) // Replace with your image URL or resource ID
+                  .apply(requestOptions)
+                  .into(imageview)
+              } else {
+                // If image is null or empty, display a placeholder image or handle it as needed
+                imageview.setImageResource(R.drawable.img_ellipse32)
+                // Or you can set it to null
+                // holder.profilePictureImageView.setImageDrawable(null)
+              }
+
+
 
               val isBooked = profileData.data.isBooked
 

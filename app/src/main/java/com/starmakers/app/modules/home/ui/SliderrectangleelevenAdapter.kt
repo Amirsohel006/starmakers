@@ -19,13 +19,11 @@ class SliderrectangleelevenAdapter(
     viewType: Int
   ) {
     if (binding is SlideritemHome1Binding) {
-      // Calculate the real position based on the size of dataList
       val realPosition = listPosition % dataList.size
       val item = dataList[realPosition]
 
       val itemmovie=item.movie_poster
       val file=ApiManager.getImageUrl(itemmovie!!)
-      // Convert CrowdResponses to ImageSliderSliderrectangleelevenModel
       val imageModel = ImageSliderSliderrectangleelevenModel(file ?: "")
 
       // Assign the converted model to the binding

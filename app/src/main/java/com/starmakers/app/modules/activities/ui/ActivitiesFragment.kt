@@ -82,29 +82,12 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
 //    }
 
 
+
+
     binding.linearRowuntitleddesignFour.setOnClickListener {
-      val destIntent = RequestOneActivity.getIntent(requireActivity(), null)
-      startActivity(destIntent)
-      requireActivity().onBackPressed()
+      val i=Intent(requireActivity(),RequestOneActivity::class.java)
+      startActivity(i)
     }
-
-
-
-//    binding.txtRamanandStudio.setOnClickListener {
-//      val destIntent = AuditionsTwoActivity.getIntent(requireActivity(), null)
-//      startActivity(destIntent)
-//      requireActivity().onBackPressed()
-//    }
-//    binding.btnViewDetails.setOnClickListener {
-//      val destIntent = AuditionsTwoActivity.getIntent(requireActivity(), null)
-//      startActivity(destIntent)
-//      requireActivity().onBackPressed()
-//    }
-//    binding.imageRectangleNineteen.setOnClickListener {
-//      val destIntent = AuditionsTwoActivity.getIntent(requireActivity(), null)
-//      startActivity(destIntent)
-//      requireActivity().onBackPressed()
-//    }
 
 
 
@@ -114,13 +97,9 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
     }
 
 
-//    binding.linearColumnuntitleddesign.setOnClickListener {
-//      val i=Intent(requireActivity(),ArtistMembershipActivity::class.java)
-//      startActivity(i)
-//    }
 
-        binding.linearColumnuntitleddesign.setOnClickListener {
-      val i=Intent(requireActivity(),ComingSoon::class.java)
+    binding.linearColumnuntitleddesign.setOnClickListener {
+      val i=Intent(requireActivity(),ArtistMembershipActivity::class.java)
       startActivity(i)
     }
 
@@ -137,42 +116,6 @@ class ActivitiesFragment : BaseFragment<FragmentActivitiesBinding>(R.layout.frag
     }
   }
 
-  fun onClickRecyclerActivities(
-    view: View,
-    position: Int,
-    item: ActivitiesRowModel
-  ): Unit {
-    when(view.id) {
-      R.id.linearColumnuntitleddesign -> {
-        onClickRecyclerActivitiesLinearColumnuntitleddesign(view, position, item)
-      }
-    }
-  }
-
-  fun onClickRecyclerActivitiesLinearColumnuntitleddesign(
-    view: View,
-    position: Int,
-    item: ActivitiesRowModel
-  ): Unit {
-    /** TODO As per your logic, Add constant type for item click.*/
-    when(0) {
-      0 -> {
-        val destIntent = AuditionsActivity.getIntent(requireActivity(), null)
-        startActivity(destIntent)
-        requireActivity().onBackPressed()
-      }
-      1 -> {
-        val destIntent = ArtistMembershipActivity.getIntent(requireActivity(), null)
-        startActivity(destIntent)
-        requireActivity().onBackPressed()
-      }
-      2 -> {
-        val destIntent = ArtistBookongFiveActivity.getIntent(requireActivity(), null)
-        startActivity(destIntent)
-        requireActivity().onBackPressed()
-      }
-    }
-  }
 
 
   private fun fetchData(){

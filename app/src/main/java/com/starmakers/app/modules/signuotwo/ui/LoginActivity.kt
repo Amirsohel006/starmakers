@@ -31,6 +31,7 @@ class LoginActivity : BaseActivity<ActivitySignUoTwoBinding>(R.layout.activity_s
   private lateinit var sharedPreferences: SharedPreferences
   private lateinit var apiService: ApiInterface
   private lateinit var sessionManager: SessionManager
+  private var mobile:String=""
 
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
@@ -39,7 +40,7 @@ class LoginActivity : BaseActivity<ActivitySignUoTwoBinding>(R.layout.activity_s
 
 
     binding.btnLogin.setOnClickListener{
-     val  mobile=binding.editTextMobileNumber.text.toString()
+       mobile=binding.editTextMobileNumber.text.toString()
 
       if (mobile.isNotEmpty()) {
         getOtp(mobile)
@@ -92,6 +93,7 @@ class LoginActivity : BaseActivity<ActivitySignUoTwoBinding>(R.layout.activity_s
 
   private fun navigateToNextPage() {
     val i=Intent(this,LoginOTPActivity::class.java)
+    i.putExtra("mobileNumber",mobile)
     startActivity(i)
   }
 

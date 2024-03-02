@@ -51,6 +51,8 @@
             android:layout_width="match_parent"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            itemSpace="@{@dimen/_14pxh}" tools:itemCount="2" tools:listitem="@layout/row_listrectangle146"/>
+            itemSpace="@{@dimen/_14pxh}"
+            tools:itemCount="2"
+            tools:listitem="@layout/row_listrectangle146"/>
     </LinearLayout>
 </layout>

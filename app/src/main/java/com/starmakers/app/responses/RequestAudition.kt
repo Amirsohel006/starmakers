@@ -20,7 +20,7 @@ data class RequestUserData(
    var artist_name        : String?                   = null,
     var id                : Int?                      = null,
    var movie_pictures     : ArrayList<String>         = arrayListOf(),
-  var artist_pictures    : ArrayList<artist_pictures> = arrayListOf(),
+  @SerializedName("artist_pictures")var artist_pictures    : ArrayList<artist_pictures> = arrayListOf(),
  var choose_acting_field : String?                   = null,
  var total_no_of_movies   : Int?                      = null,
  var total_experience   : String?                   = null,

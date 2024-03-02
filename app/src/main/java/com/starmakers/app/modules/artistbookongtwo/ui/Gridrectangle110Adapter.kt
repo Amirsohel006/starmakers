@@ -31,20 +31,30 @@ class Gridrectangle110Adapter(
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     val profileData = profileDataList[position]
     holder.artistNameTextView.text = profileData.artistName
-    val image=profileData.artistPictures[0].artistPicture?:""
-    val file=ApiManager.getImageUrl(image)
 
-    Picasso.get()
-      .load(file)
-      .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE) // Disable memory caching
-      .networkPolicy(NetworkPolicy.NO_CACHE) // Disable network caching
-      .into(holder.profilePictureImageView)
+    // Check if artistPictures list is not empty and the first element is not null
+    if (!profileData.artistPictures.isNullOrEmpty() && profileData.artistPictures[0].artistPicture != null) {
+      val image = profileData.artistPictures[0].artistPicture
+      val file = ApiManager.getImageUrl(image)
+
+      Picasso.get()
+        .load(file)
+        .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE) // Disable memory caching
+        .networkPolicy(NetworkPolicy.NO_CACHE) // Disable network caching
+        .into(holder.profilePictureImageView)
+    } else {
+      // If image is null, display a placeholder image or handle it as needed
+      holder.profilePictureImageView.setImageResource(R.drawable.default_profile_pic)
+      // Or you can set it to null
+      // holder.profilePictureImageView.setImageDrawable(null)
+    }
 
     // Set an item click listener
     holder.itemView.setOnClickListener {
       clickListener?.onItemClick(it, position, profileData)
     }
   }
+
 
   override fun getItemCount(): Int = profileDataList.size
 

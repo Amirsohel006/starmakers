@@ -134,7 +134,7 @@ class PaymentPageActivity : BaseActivity<ActivityPaymentPageBinding>(R.layout.ac
 
             if(customerResponse!=null){
 
-              userId=customerResponse.id.toString()
+              userId=customerResponse.userId!!
 
             }
           }
