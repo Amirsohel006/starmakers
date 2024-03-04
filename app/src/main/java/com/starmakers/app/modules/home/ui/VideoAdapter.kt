@@ -1,30 +1,14 @@
-package com.starmakers.app.modules.home.ui
-
 import android.content.Context
-import android.net.ConnectivityManager
-import android.net.Network
-import android.os.Build
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.OptIn
-import androidx.annotation.RequiresApi
-import androidx.media3.common.util.UnstableApi
-import androidx.media3.datasource.DefaultHttpDataSource
+import android.widget.FrameLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
-import com.google.android.exoplayer2.source.hls.HlsMediaSource
-import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
-import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
-import com.google.android.exoplayer2.trackselection.TrackSelector
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DataSource
-import com.google.android.exoplayer2.upstream.DefaultDataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.starmakers.app.R
@@ -32,10 +16,10 @@ import com.starmakers.app.responses.FundingDemoVideos
 
 class VideoAdapter(
     private val context: Context,
-    var list: List<FundingDemoVideos>
+    private var list: List<FundingDemoVideos>
 ) : RecyclerView.Adapter<VideoAdapter.RowListrectanglenineteenVH>() {
-    private var clickListener: OnItemClickListener? = null
-    private var exoPlayer: SimpleExoPlayer = SimpleExoPlayer.Builder(context).build()
+
+    private var exoPlayer: SimpleExoPlayer? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RowListrectanglenineteenVH {
         val view = LayoutInflater.from(parent.context)
@@ -56,23 +40,12 @@ class VideoAdapter(
         notifyDataSetChanged()
     }
 
-    fun setOnItemClickListener(clickListener: OnItemClickListener) {
-        this.clickListener = clickListener
-    }
-
-    interface OnItemClickListener {
-        fun onItemClick(
-            view: View,
-            position: Int,
-            item: FundingDemoVideos
-        )
-    }
-
     inner class RowListrectanglenineteenVH(view: View) : RecyclerView.ViewHolder(view) {
-        val exoplayerView: PlayerView = itemView.findViewById(R.id.playerView)
+        private val exoplayerView: PlayerView = itemView.findViewById(R.id.playerView)
+        private val playerContainer: FrameLayout = itemView.findViewById(R.id.playerContainer)
 
         init {
-            exoplayerView.player = exoPlayer
+            exoplayerView.keepScreenOn = true
         }
 
         fun bindView(postModel: FundingDemoVideos) {
@@ -81,6 +54,13 @@ class VideoAdapter(
                 // For example, show an empty state or perform any other action
                 exoplayerView.visibility = View.GONE
             } else {
+                exoplayerView.visibility = View.VISIBLE
+
+                if (exoPlayer == null) {
+                    exoPlayer = SimpleExoPlayer.Builder(context).build()
+                    exoplayerView.player = exoPlayer
+                }
+
                 val videoUri = postModel.video
                 val mediaItem = MediaItem.fromUri(videoUri!!)
                 val dataSourceFactory: DefaultDataSourceFactory =
@@ -88,10 +68,32 @@ class VideoAdapter(
                 val mediaSource: MediaSource = ProgressiveMediaSource.Factory(dataSourceFactory)
                     .createMediaSource(mediaItem)
 
-                exoPlayer.setMediaSource(mediaSource)
-                exoPlayer.prepare()
+                exoPlayer?.setMediaSource(mediaSource)
+                exoPlayer?.prepare()
             }
         }
+
+        // Ensure to release the ExoPlayer when the ViewHolder is recycled
+        fun releasePlayer() {
+            exoPlayer?.stop()
+            exoPlayer?.release()
+            exoPlayer = null
+        }
+    }
+
+    override fun onViewRecycled(holder: RowListrectanglenineteenVH) {
+        super.onViewRecycled(holder)
+        holder.releasePlayer()
+    }
+
+    override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
+        super.onDetachedFromRecyclerView(recyclerView)
+        releasePlayer()
+    }
+
+    private fun releasePlayer() {
+        exoPlayer?.stop()
+        exoPlayer?.release()
+        exoPlayer = null
     }
 }
-

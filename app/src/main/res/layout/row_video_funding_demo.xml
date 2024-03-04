@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <com.google.android.exoplayer2.ui.PlayerView
-        android:id="@+id/playerView"
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_10pxh"
-        android:layout_width="@dimen/_139pxh"
-        android:layout_height="@dimen/_93pxh"
-        android:layout_gravity="start"/>
+        android:layout_gravity="start"
+        android:radius="@dimen/corner_radius">
+
+        <FrameLayout
+            android:id="@+id/playerContainer"
+            android:layout_width="@dimen/_139pxh"
+            android:layout_height="@dimen/_93pxh">
+
+            <com.google.android.exoplayer2.ui.PlayerView
+                android:id="@+id/playerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </FrameLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
+

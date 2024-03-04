@@ -1,6 +1,7 @@
 package com.starmakers.app.modules.home.ui
 
 import SliderrectangleelevenAdapter
+import VideoAdapter
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -59,7 +60,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
   private val imageSliderItems: ArrayList<CrowdResponses> = arrayListOf()
 
-  private lateinit var videoAdapter: VideoAdapter
+
 
   private lateinit var autoScrollHandler: Handler
   private lateinit var autoScrollRunnable: Runnable
@@ -97,13 +98,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
 
     requestLocationPermissions()
-    val recyclerView=binding.recyclerviewforfundingvideos
 
-    // Initialize the adapter with an empty list initially
-    videoAdapter = VideoAdapter(requireActivity(),emptyList())
-
-    // Set the adapter to RecyclerView
-    recyclerView.adapter = videoAdapter
 
     fetchData()
 
@@ -359,8 +354,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
         Log.d("Total Videos",customerResponse.toString())
 
-        binding.mystudiostext.visibility=View.VISIBLE
-        binding.recyclerviewforfundingvideos.visibility=View.GONE
+        binding.mystudiostext.visibility=View.GONE
+        binding.recyclerviewforfundingvideos.visibility=View.VISIBLE
         if (customerResponse != null) {
           // Update the adapter with the list of videos
           binding.recyclerviewforfundingvideos.apply {
