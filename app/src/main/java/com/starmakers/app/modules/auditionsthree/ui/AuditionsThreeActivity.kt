@@ -13,7 +13,6 @@ import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivityAuditionsThreeBinding
 import com.starmakers.app.modules.auditionsthree.`data`.model.Listrectangle146RowModel
 import com.starmakers.app.modules.auditionsthree.`data`.viewmodel.AuditionsThreeVM
-import com.starmakers.app.modules.home.ui.VideoAdapter
 import com.starmakers.app.responses.BudgetResponse
 import com.starmakers.app.responses.CampaignResponse
 import com.starmakers.app.service.ApiManager
