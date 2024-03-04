@@ -18,6 +18,9 @@
         android:theme="@style/Theme.MyApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".modules.artistandauditioninfo.InfoActivityForSearch"
+            android:exported="false" />
+        <activity
             android:name=".modules.membershipoptioncomingsoon.ComingSoon"
             android:exported="false" />
         <activity

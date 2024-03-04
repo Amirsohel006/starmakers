@@ -41,8 +41,8 @@
                         android:layout_marginStart="@dimen/_28pxh"
                         android:layout_width="wrap_content"
                         android:singleLine="true"
-                        style="@style/txtPoppinssemibold24"
-                        tools:text="@string/lbl_rahul"/>
+                        android:text="..."
+                        style="@style/txtPoppinssemibold24" />
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linearRowquestion"
@@ -125,7 +125,7 @@
                             android:layout_marginStart="5dp"
                             android:textSize="15sp"
                             android:textColor="@color/location"
-                            android:text="Bangalore"
+                            android:text="..."
                             android:layout_gravity="center"
                             android:id="@+id/spinnerGroup1221"
                             android:layout_height="wrap_content"
@@ -135,7 +135,7 @@
                             android:layout_marginStart="5dp"
                             android:textSize="15sp"
                             android:textColor="@color/location"
-                            android:text="587110"
+                            android:text="..."
                             android:layout_gravity="center"
                             android:id="@+id/spinnerGroup1222"
                             android:layout_height="wrap_content"

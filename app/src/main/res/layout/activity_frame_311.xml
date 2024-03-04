@@ -39,10 +39,7 @@
                 android:layout_marginTop="@dimen/_50pxv"
                 android:layout_width="@dimen/_104pxh"
                 android:scaleType="fitXY"
-                cornerRadius="@{@dimen/_57pxh}"
-                imageRes="@{@drawable/img_ellipse32}"
-                tools:ignore="ContentDescription"
-                tools:src="@drawable/img_ellipse32"/>
+                tools:ignore="ContentDescription" />
 
 
 
@@ -60,8 +57,8 @@
                     android:layout_marginEnd="@dimen/_10pxh"
                     android:layout_width="match_parent"
                     android:singleLine="true"
-                    android:text="@{frame311VM.frame311Model.txtRahul}"
-                    style="@style/txtNunitobold24" tools:text="@string/lbl_rahul"/>
+                    android:text="..."
+                    style="@style/txtNunitobold24" />
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtMobileNo"
                     android:layout_height="wrap_content"
@@ -69,16 +66,16 @@
                     android:layout_marginTop="@dimen/_4pxv"
                     android:layout_width="match_parent"
                     android:singleLine="true"
-                    android:text="@{frame311VM.frame311Model.txtMobileNo}"
-                    style="@style/txtNunitomedium16_1" tools:text="@string/lbl_9373636366"/>
+                    android:text="..."
+                    style="@style/txtNunitomedium16_1" />
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtEmail"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5pxv"
                     android:layout_width="match_parent"
                     android:singleLine="true"
-                    android:text="@{frame311VM.frame311Model.txtEmail}"
-                    style="@style/txtNunitomedium16_1" tools:text="@string/lbl_rahul_gmail_com"/>
+                    android:text="..."
+                    style="@style/txtNunitomedium16_1" />
                 <androidx.appcompat.widget.AppCompatButton
                     android:ellipsize="end" android:gravity="center"
                     android:id="@+id/btnMemberactor"

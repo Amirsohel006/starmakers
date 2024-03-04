@@ -55,6 +55,7 @@ class LoginOTPActivity :
       sessionManager= SessionManager(this)
 
       mobile=intent.getStringExtra("mobileNumber")!!
+      binding.txtLanguage.text=mobile
 //
 //      sharedPreferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
 //

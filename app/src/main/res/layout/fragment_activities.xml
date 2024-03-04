@@ -39,9 +39,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_28pxh"
                         android:layout_width="wrap_content"
+                        android:text="..."
                         android:singleLine="true"
-                        style="@style/txtPoppinssemibold24"
-                        tools:text="@string/lbl_rahul"/>
+                        style="@style/txtPoppinssemibold24" />
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linearRowquestion"

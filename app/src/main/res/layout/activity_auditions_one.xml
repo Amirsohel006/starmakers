@@ -15,7 +15,8 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarToolbar"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent" app:contentInsetStart="0dp">
+            android:layout_width="match_parent"
+            app:contentInsetStart="0dp">
             <LinearLayout
                 android:gravity="start"
                 android:id="@+id/linearRowarrowleft"

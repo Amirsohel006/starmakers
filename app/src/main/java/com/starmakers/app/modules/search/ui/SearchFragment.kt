@@ -1,18 +1,26 @@
 package com.starmakers.app.modules.search.ui
 
 import android.app.appsearch.SearchResult
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseFragment
 import com.starmakers.app.databinding.FragmentSearchBinding
+import com.starmakers.app.modules.artistandauditioninfo.InfoActivityForSearch
+import com.starmakers.app.modules.artistbookongfour.ui.ArtistBookongFourActivity
+import com.starmakers.app.modules.artistmembership.ui.ArtistMembershipActivity
+import com.starmakers.app.modules.campaignone.ui.CampaignOneActivity
 import com.starmakers.app.modules.financialoverview.ui.GridrectangletenAdapter
 import com.starmakers.app.modules.search.`data`.viewmodel.SearchVM
+import com.starmakers.app.responses.Artists
 import com.starmakers.app.responses.CampaignResponse
+import com.starmakers.app.responses.Campaigns
 import com.starmakers.app.responses.SearchResponses
 import com.starmakers.app.service.ApiManager
 import com.starmakers.app.service.SessionManager
@@ -22,7 +30,7 @@ import retrofit2.Response
 import kotlin.String
 import kotlin.Unit
 
-class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
+class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) , SearchAdapter.OnItemClickListener{
   private val viewModel: SearchVM by viewModels<SearchVM>()
 
   private lateinit var sessionManager:SessionManager
@@ -53,14 +61,25 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
   }
 
 
+  override fun onItemClick(item: Any) {
+    // Handle item click here, navigate to the specified activity with the info from the clicked item
+    // You can pass necessary data using Intent extras
+    if (item is Artists) {
+      // Handle artist item click
+      val intent = Intent(requireActivity(), ArtistBookongFourActivity::class.java)
+      intent.putExtra("profileDataId", item.id)
+      startActivity(intent)
+    } else if (item is Campaigns) {
+      val intent = Intent(requireActivity(), CampaignOneActivity::class.java)
+      intent.putExtra("itemId", item.id.toString())
+      startActivity(intent)
+    }
+  }
 
   private fun setupRecyclerView() {
-    val adapter = SearchAdapter(emptyList()) { item ->
-      // Handle item click, navigate to detail activity
-      // You can pass necessary data using Intent extras
-    }
+    val adapter = SearchAdapter(emptyList(), this)
     binding.recyclerforSearch.adapter = adapter
-    binding.recyclerforSearch.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+    binding.recyclerforSearch.layoutManager = GridLayoutManager(requireActivity(),3)
   }
 
 

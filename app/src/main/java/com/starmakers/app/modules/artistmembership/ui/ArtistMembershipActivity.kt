@@ -407,31 +407,40 @@ class ArtistMembershipActivity :
     // Add each image file as a MultipartBody.Part object to the list
     fileProfilePic?.let { file ->
       val requestFile: RequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), file)
-      val imagePart: MultipartBody.Part = MultipartBody.Part.createFormData("images", file.name, requestFile)
+      val imagePart: MultipartBody.Part = MultipartBody.Part.createFormData("artist_pictures", file.name, requestFile)
       imageParts.add(imagePart)
     }
     fileProfilePic1?.let { file ->
       val requestFile: RequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), file)
-      val imagePart: MultipartBody.Part = MultipartBody.Part.createFormData("images", file.name, requestFile)
+      val imagePart: MultipartBody.Part = MultipartBody.Part.createFormData("artist_pictures", file.name, requestFile)
       imageParts.add(imagePart)
     }
     fileProfilePic2?.let { file ->
       val requestFile: RequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), file)
-      val imagePart: MultipartBody.Part = MultipartBody.Part.createFormData("images", file.name, requestFile)
+      val imagePart: MultipartBody.Part = MultipartBody.Part.createFormData("artist_pictures", file.name, requestFile)
       imageParts.add(imagePart)
     }
     fileProfilePic3?.let { file ->
       val requestFile: RequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), file)
-      val imagePart: MultipartBody.Part = MultipartBody.Part.createFormData("images", file.name, requestFile)
+      val imagePart: MultipartBody.Part = MultipartBody.Part.createFormData("artist_pictures", file.name, requestFile)
       imageParts.add(imagePart)
     }
     fileProfilePic4?.let { file ->
       val requestFile: RequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), file)
-      val imagePart: MultipartBody.Part = MultipartBody.Part.createFormData("images", file.name, requestFile)
+      val imagePart: MultipartBody.Part = MultipartBody.Part.createFormData("artist_pictures", file.name, requestFile)
       imageParts.add(imagePart)
     }
 
 
+
+    listOf(fileProfilePic, fileProfilePic1, fileProfilePic2, fileProfilePic3, fileProfilePic4)
+      .forEach { file ->
+        file?.let {
+          val requestFile: RequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), it)
+          val imagePart: MultipartBody.Part = MultipartBody.Part.createFormData("artist_pictures", it.name, requestFile)
+          imageParts.add(imagePart)
+        }
+      }
 
     val map: MutableMap<String, RequestBody> = mutableMapOf()
     val artistName = createPartFromString(artistName)

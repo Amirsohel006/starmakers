@@ -63,6 +63,8 @@ class SignUoActivity : BaseActivity<ActivitySignUoBinding>(R.layout.activity_sig
 
       mobile=intent.getStringExtra("mobileNumber")!!
 
+      binding.txtLanguage.text=mobile
+
       val isFirstTime = sharedPreferences.getBoolean("is_first_time", true)
       if (isFirstTime) {
         sharedPreferences.edit().clear().apply()
