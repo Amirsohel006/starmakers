@@ -195,16 +195,6 @@ interface ApiInterface {
     fun PostMembershipResponses(
         @Header("Authorization")fetchAuthToken: String?,
         @PartMap() partMap: MutableMap<String,RequestBody>,
-//        @Part("artist_name")artistName:String,
-//        @Part("mobile_number")mobile_number:String,
-//        @Part("location")location:String,
-//        @Part("age")age:String,
-//        @Part("height")height:String,
-//        @Part("weight")weight:String,
-//        @Part("choose_acting_field")actingField:String,
-//        @Part("total_no_of_movies")movies:String,
-//        @Part("total_experience")exp:String,
-//        @Part("select_category")category:String,
         @Part images: List<MultipartBody.Part>
     ):Call<ProfileResponse>
 

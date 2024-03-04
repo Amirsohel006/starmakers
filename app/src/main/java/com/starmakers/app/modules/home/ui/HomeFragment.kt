@@ -76,8 +76,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     savedInstanceState: Bundle?
   ): View? {
     fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+
     return super.onCreateView(inflater, container, savedInstanceState)
   }
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+   // startAutoScroll()
+
+    Handler().postDelayed({
+      setupImageSlider()
+    }, 1000) // Delay initialization by 1 second
+
+
+  }
+
   override fun onInitialized(): Unit {
     viewModel.navArguments = arguments
     sessionManager=SessionManager(requireActivity())
@@ -87,7 +100,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     val recyclerView=binding.recyclerviewforfundingvideos
 
     // Initialize the adapter with an empty list initially
-    videoAdapter = VideoAdapter(emptyList())
+    videoAdapter = VideoAdapter(requireActivity(),emptyList())
 
     // Set the adapter to RecyclerView
     recyclerView.adapter = videoAdapter
@@ -102,8 +115,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     getCrowdFundingZone()
 
-   setupImageSlider()
-    startAutoScroll()
 
     binding.homeVM = viewModel
   }
@@ -117,9 +128,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
       intent.putExtra("itemId", itemId) // Pass the id to the next activity
       startActivity(intent)
     }
+
     binding.imageSliderSliderrectangleeleven.adapter = sliderAdapter
     binding.imageSliderSliderrectangleeleven.onIndicatorProgress = { selectingPosition, progress ->
-      binding.indicatorVolume.onPageScrolled(selectingPosition, progress)
+     binding.indicatorVolume.onPageScrolled(selectingPosition, progress)
     }
     binding.indicatorVolume.updateIndicatorCounts(binding.imageSliderSliderrectangleeleven.indicatorCount)
   }
@@ -178,9 +190,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     return address
   }
-
-
-
 
 
   @Deprecated("Deprecated in Java")
@@ -348,14 +357,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
         val customerResponse = response.body()
 
-        binding.mystudiostext.visibility=View.GONE
-        binding.recyclerviewforfundingvideos.visibility=View.VISIBLE
+        Log.d("Total Videos",customerResponse.toString())
+
+        binding.mystudiostext.visibility=View.VISIBLE
+        binding.recyclerviewforfundingvideos.visibility=View.GONE
         if (customerResponse != null) {
           // Update the adapter with the list of videos
           binding.recyclerviewforfundingvideos.apply {
             layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
-            val audtioAdapter = VideoAdapter(customerResponse)
-            adapter = audtioAdapter
+            val audtioAdapter = VideoAdapter(requireActivity(),customerResponse)
+            binding.recyclerviewforfundingvideos.adapter = audtioAdapter
           }
         }
       }

@@ -20,10 +20,7 @@
             android:layout_marginTop="@dimen/_10pxv"
             android:layout_width="@dimen/_114pxh"
             android:scaleType="fitXY"
-            cornerRadius="@{@dimen/_5pxh}"
-            imageRes="@{@drawable/img_rectangle106}"
-            tools:ignore="ContentDescription"
-            tools:src="@drawable/img_rectangle106"/>
+            tools:ignore="ContentDescription" />
 
         <LinearLayout android:gravity="start"
             android:id="@+id/linearColumnmoviekantara"

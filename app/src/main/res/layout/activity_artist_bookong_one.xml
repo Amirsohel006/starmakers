@@ -144,7 +144,8 @@
                             android:layout_width="@dimen/_19pxh"
                             android:scaleType="fitXY"
                             android:src="@drawable/img_vector"
-                            tools:ignore="ContentDescription" tools:src="@drawable/img_vector"/>
+                            tools:ignore="ContentDescription"
+                            tools:src="@drawable/img_vector"/>
                     </LinearLayout>
                 </androidx.appcompat.widget.Toolbar>
             </FrameLayout>
@@ -191,7 +192,8 @@
                 android:layout_width="@dimen/_20pxh"
                 android:scaleType="fitXY"
                 android:src="@drawable/img_car"
-                tools:ignore="ContentDescription" tools:src="@drawable/img_car"/>
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/img_car"/>
         </FrameLayout>
 
 
@@ -238,9 +240,9 @@
             android:paddingEnd="@dimen/_30pxh"
             android:paddingStart="@dimen/_16pxh"
             android:paddingTop="@dimen/_11pxv" android:singleLine="true"
-            android:text="@={artistBookongOneVM.artistBookongOneModel.etGroup149Value}"
             android:textColorHint="@color/gray_802"
-            style="@style/etRoundedOutline_3" tools:ignore="Autofill"/>
+            style="@style/etRoundedOutline_3"
+            tools:ignore="Autofill"/>
         <TextView
             android:background="@drawable/rectangle_border_gray_500_radius_10"
             android:ellipsize="end"
@@ -255,7 +257,6 @@
             android:paddingEnd="@dimen/_30pxh"
             android:paddingStart="@dimen/_16pxh"
             android:paddingTop="@dimen/_10pxv" android:singleLine="true"
-            android:text="@={artistBookongOneVM.artistBookongOneModel.etGroup153Value}"
             android:textColorHint="@color/gray_802"
             style="@style/etRoundedOutline_3" tools:ignore="Autofill"/>
         <TextView
@@ -272,7 +273,6 @@
             android:paddingEnd="@dimen/_30pxh"
             android:paddingStart="@dimen/_16pxh"
             android:paddingTop="@dimen/_10pxv" android:singleLine="true"
-            android:text="@={artistBookongOneVM.artistBookongOneModel.etGroup150Value}"
             android:textColorHint="@color/gray_802"
             style="@style/etRoundedOutline_3" tools:ignore="Autofill"/>
 
@@ -380,7 +380,6 @@
             android:paddingEnd="@dimen/_30pxh"
             android:paddingStart="@dimen/_16pxh"
             android:paddingTop="@dimen/_10pxv" android:singleLine="true"
-            android:text="@={artistBookongOneVM.artistBookongOneModel.etGroup487Value}"
             android:textColorHint="@color/gray_802"
             style="@style/etRoundedOutline_3"
             tools:ignore="Autofill"/>

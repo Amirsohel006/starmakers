@@ -44,9 +44,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_28pxh"
                         android:layout_width="wrap_content"
+                        android:text="..."
                         android:singleLine="true"
-                        style="@style/txtPoppinssemibold24"
-                        tools:text="@string/lbl_rahul"/>
+                        style="@style/txtPoppinssemibold24" />
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linearRowquestion"
@@ -125,7 +125,7 @@
                         android:layout_marginStart="5dp"
                         android:textSize="15sp"
                         android:textColor="@color/location"
-                        android:text="Bangalore"
+                        android:text="..."
                         android:layout_gravity="center"
                         android:id="@+id/spinnerGroup1221"
                         android:layout_height="wrap_content"
@@ -135,7 +135,7 @@
                         android:layout_marginStart="5dp"
                         android:textSize="15sp"
                         android:textColor="@color/location"
-                        android:text="587110"
+                        android:text="..."
                         android:layout_gravity="center"
                         android:id="@+id/spinnerGroup1222"
                         android:layout_height="wrap_content"
@@ -374,12 +374,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
+                    <HorizontalScrollView
+                        android:id="@+id/scrollview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
                         <androidx.recyclerview.widget.RecyclerView
                             android:visibility="gone"
                             android:id="@+id/recyclerviewforfundingvideos"
                             android:layout_width="match_parent"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_11pxv"/>
+
+                    </HorizontalScrollView>
 <!--                        <ImageView-->
 <!--                            android:id="@+id/imageRectangleTwelve"-->
 <!--                            android:layout_height="@dimen/_83pxh"-->

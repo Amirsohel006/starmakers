@@ -16,20 +16,35 @@ import com.starmakers.app.service.ApiManager
 
 class SearchAdapter(
     var items: List<Any>, // List of artists and campaigns
-    private val onItemClick: (Any) -> Unit // Click listener
+    private val onItemClick: OnItemClickListener
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+
+
+    interface OnItemClickListener {
+        fun onItemClick(item: Any)
+    }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imageView: ImageView = itemView.findViewById(R.id.imageView)
         private val nameTextView: TextView = itemView.findViewById(R.id.nameTextView)
 
+
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClick.onItemClick(items[position])
+                }
+            }
+        }
         fun bind(item: Any) {
             if (item is Artists) {
                 // Bind artist data
                 nameTextView.text = item.artistName
 
-                val image=item.artistPictures.firstOrNull()?.artistPicture
-                val file=ApiManager.getImageUrl(image!!)
+                val image=item.artistPictures.firstOrNull()?.artistPicture?:""
+                val file=ApiManager.getImageUrl(image)
                 // Load image using Glide or any other image loading library
                 Glide.with(itemView).load(file).into(imageView)
             } else if (item is Campaigns) {
@@ -41,7 +56,7 @@ class SearchAdapter(
                 Glide.with(itemView).load(file).into(imageView)
             }
 
-            itemView.setOnClickListener { onItemClick(item) }
+
         }
     }
 

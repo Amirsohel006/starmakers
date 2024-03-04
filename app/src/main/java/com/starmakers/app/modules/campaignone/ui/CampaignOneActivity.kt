@@ -37,7 +37,7 @@ class CampaignOneActivity : BaseActivity<ActivityCampaignOneBinding>(R.layout.ac
     sessionManager= SessionManager(this)
      itemId=intent.getStringExtra("itemId")!!
 
-    getCrowdFundingZone(itemId!!)
+    getCrowdFundingZone(itemId)
 
 
     window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)

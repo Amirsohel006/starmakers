@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:singleLine="true"
             android:text="@{signUoVM.signUoModel.txtLanguage}"
-            style="@style/txtNunitoregular16" tools:text="@string/msg_91_71"/>
+            style="@style/txtNunitoregular16" />
         <com.mukesh.OtpView
             android:textColor="@color/black"
             android:focusableInTouchMode="true"

@@ -44,18 +44,37 @@
             android:layout_width="match_parent"
             android:singleLine="true"
             android:text="@{signUoThreeVM.signUoThreeModel.txtPleaseenterth}"
-            style="@style/txtPoppinsregular16_1" tools:text="@string/msg_please_enter_th"/>
-        <TextView android:ellipsize="end"
+            style="@style/txtPoppinsregular16_1"
+            tools:text="@string/msg_please_enter_th"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:gravity="center_horizontal"
-            android:id="@+id/txtLanguage"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
             android:layout_marginEnd="@dimen/_20pxh"
             android:layout_marginStart="@dimen/_20pxh"
             android:layout_marginTop="@dimen/_6pxv"
-            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+            android:text="+91"
+            style="@style/txtNunitoregular16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView android:ellipsize="end"
+            android:id="@+id/txtLanguage"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
             android:singleLine="true"
-            android:text="@{signUoThreeVM.signUoThreeModel.txtLanguage}"
-            style="@style/txtNunitoregular16" tools:text="@string/msg_91_71"/>
+            android:text="..."
+            style="@style/txtNunitoregular16" />
+            <TextView
+                android:id="@+id/text"
+                android:text="through SMS."
+                android:layout_marginStart="7dp"
+                android:layout_width="wrap_content"
+                style="@style/txtNunitoregular16"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
         <com.mukesh.OtpView
             android:textColor="@color/black"
             android:focusableInTouchMode="true"

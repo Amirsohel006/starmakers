@@ -114,7 +114,7 @@ class ArtistBookongOneActivity :
             if (artistPictures.isNotEmpty()) {
               val image = artistPictures[0].artist_picture
               Log.d("Retreived Image",image!!)
-              Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+              Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.rounded_profile_image).into(profilePicture)
             } else {
               Toast.makeText(this@ArtistBookongOneActivity,"Profile Pic Not Available",Toast.LENGTH_SHORT).show()
             }
@@ -134,10 +134,10 @@ class ArtistBookongOneActivity :
 
             if (!image.isNullOrEmpty()) {
               //val file = ApiManager.getImageUrl(image)
-              Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+              Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.rounded_profile_image).into(profilePicture)
             } else {
               // Load a default picture if both artistPictures and profile are empty
-              Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
+              Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.rounded_profile_image).into(profilePicture)
             }
           }
 
