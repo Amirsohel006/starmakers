@@ -58,27 +58,27 @@ class AuditionsOneActivity :
         if((customerResponse!=null) && (customerResponse.status=="success")){
 
 
-          binding.txtMovieKantara1.text=customerResponse.data.campaign_name
-          binding.txtGenreMystery1.text=customerResponse.data.genere
-          binding.txtStoryline1.text=customerResponse.data.one_line_story
-          binding.txtAppxBudget1.text=customerResponse.data.appx_budget
-          binding.txtReleasingDate1.text=customerResponse.data.audition_date
+          binding.txtMovieKantara1.text=customerResponse.campaignData!!.campaignsName
+          binding.txtGenreMystery1.text=customerResponse.campaignData!!.genere
+          binding.txtStoryline1.text=customerResponse.campaignData!!.oneLineStory
+          binding.txtAppxBudget1.text=customerResponse.campaignData!!.appxBudget
+          binding.txtReleasingDate1.text=customerResponse.campaignData!!.movieStartDate
 
-          binding.txtPrice1.text=customerResponse.data.collected_budget_amount
-          binding.txtPriceOne1.text=customerResponse.data.spent_amount
+          binding.txtPrice1.text=customerResponse.financeData!!.collectedBudgetAmount
+          binding.txtPriceOne1.text=customerResponse.financeData!!.spentAmount
 
-          binding.txtPriceTwo1.text=customerResponse.data.required_additional_budget
-          binding.txtPriceThree1.text=customerResponse.data.total_spent_amount
+          binding.txtPriceTwo1.text=customerResponse.financeData!!.requiredAdditionalBudget
+          binding.txtPriceThree1.text=customerResponse.financeData!!.totalSpentAmount
 
-          binding.txtPriceFour1.text=customerResponse.data.above_the_budget_amount
-          binding.txtPriceFive1.text=customerResponse.data.below_the_budget_amount
+          binding.txtPriceFour1.text=customerResponse.financeData!!.aboveTheBudgetAmount
+          binding.txtPriceFive1.text=customerResponse.financeData!!.belowTheBudgetAmount
 
-          binding.txtShareamountif1.text=customerResponse.data.share_amount
-          binding.txtPriceSix1.text=customerResponse.data.share_amount
+          binding.txtShareamountif1.text=customerResponse.financeData!!.shareAmount
+          binding.txtPriceSix1.text=customerResponse.financeData!!.shareAmount
 
-          binding.txtPriceSeven1.text=customerResponse.data.available_amount
+          binding.txtPriceSeven1.text=customerResponse.financeData!!.availableAmount
 
-          val file = customerResponse.data.movie_poster // Assuming postModel.profile is a File object
+          val file = customerResponse.campaignData!!.moviePoster // Assuming postModel.profile is a File object
 
           val imgUrl= file?.let { ApiManager.getImageUrl(it) }
           Picasso.get()

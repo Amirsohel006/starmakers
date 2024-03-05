@@ -33,13 +33,12 @@
                     android:id="@+id/txtKANTARA"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_6pxv"
-                    android:layout_marginEnd="@dimen/_180pxh"
+                    android:layout_marginEnd="@dimen/_120pxh"
                     android:layout_marginStart="@dimen/_19pxh"
                     android:layout_marginTop="@dimen/_23pxv"
                     android:layout_weight="0.82"
                     android:layout_width="0dp" android:singleLine="true"
-                    android:text="@{campaignOneVM.campaignOneModel.txtKANTARA}"
-                    style="@style/txtPoppinssemibold24" tools:text="@string/lbl_kantara3"/>
+                    style="@style/txtPoppinssemibold24" />
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
         <ScrollView
@@ -62,10 +61,7 @@
                             android:layout_height="@dimen/_424pxh"
                             android:layout_width="@dimen/_355pxh"
                             android:scaleType="fitXY"
-                            cornerRadius="@{@dimen/_10pxh}"
-                            imageRes="@{@drawable/img_rectangle10_424x355}"
-                            tools:ignore="ContentDescription"
-                            tools:src="@drawable/img_rectangle10_424x355"/>
+                            tools:ignore="ContentDescription" />
 
 
                         <LinearLayout
@@ -92,9 +88,7 @@
                                 android:layout_width="wrap_content"
                                 android:singleLine="true"
                                 android:layout_marginStart="10dp"
-                                android:text="@{campaignOneVM.campaignOneModel.txtMovieKantara}"
-                                style="@style/txtPoppinsregular16_4"
-                                tools:text="@string/lbl_movie_kantara"/>
+                                style="@style/txtPoppinsregular16_4" />
 
                         </LinearLayout>
 
@@ -123,9 +117,7 @@
                         android:layout_width="wrap_content"
                         android:singleLine="true"
                         android:layout_marginStart="10dp"
-                        android:text="@{campaignOneVM.campaignOneModel.txtGenreMystery}"
-                        style="@style/txtPoppinsregular16_4"
-                        tools:text="@string/lbl_genre_mystery"/>
+                        style="@style/txtPoppinsregular16_4" />
                 </LinearLayout>
 
 
@@ -156,8 +148,8 @@
                             android:layout_marginStart="@dimen/_16pxh"
                             android:layout_marginTop="@dimen/_9pxv"
                             android:layout_width="match_parent"
-                            android:text="@{campaignOneVM.campaignOneModel.txtDescription}"
-                            style="@style/txtPoppinsregular14_7" tools:text="@string/msg_in_1847_there"/>
+                            style="@style/txtPoppinsregular14_7"
+                           />
 
 
 
@@ -186,9 +178,7 @@
                         android:layout_width="wrap_content"
                         android:layout_marginStart="10dp"
                         android:singleLine="true"
-                        android:text="@{campaignOneVM.campaignOneModel.txtAppxBudget}"
-                        style="@style/txtPoppinsregular16_4"
-                        tools:text="@string/lbl_appx_budget"/>
+                        style="@style/txtPoppinsregular16_4" />
                 </LinearLayout>
 
 
@@ -218,9 +208,7 @@
                         android:layout_width="wrap_content"
                         android:singleLine="true"
                         android:layout_marginStart="10dp"
-                        android:text="@{campaignOneVM.campaignOneModel.txtMovieStartDat}"
-                        style="@style/txtPoppinsregular16_4"
-                        tools:text="@string/msg_movie_start_dat"/>
+                        style="@style/txtPoppinsregular16_4" />
 
                 </LinearLayout>
 
@@ -249,9 +237,8 @@
                         android:layout_width="wrap_content"
                         android:singleLine="true"
                         android:layout_marginStart="10dp"
-                        android:text="@{campaignOneVM.campaignOneModel.txtMovieEndDate}"
                         style="@style/txtPoppinsregular16_4"
-                        tools:text="@string/msg_movie_end_date"/>
+                       />
                 </LinearLayout>
 
 
@@ -280,9 +267,7 @@
                         android:layout_width="wrap_content"
                         android:layout_marginStart="10dp"
                         android:singleLine="true"
-                        android:text="@{campaignOneVM.campaignOneModel.txtReleasingDate}"
-                        style="@style/txtPoppinsregular16_4"
-                        tools:text="@string/msg_releasing_date"/>
+                        style="@style/txtPoppinsregular16_4" />
 
                 </LinearLayout>
                         <TextView
@@ -315,27 +300,21 @@
                                 android:layout_height="@dimen/_78pxh"
                                 android:layout_width="@dimen/_78pxh"
                                 android:scaleType="fitXY"
-                                cornerRadius="@{@dimen/_10pxh}"
-                                imageRes="@{@drawable/img_rectangle147}"
-                                tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle147"/>
+                                tools:ignore="ContentDescription" />
                             <ImageView
                                 android:id="@+id/imageRectangle148"
                                 android:layout_height="@dimen/_78pxh"
                                 android:layout_marginStart="@dimen/_9pxh"
                                 android:layout_width="@dimen/_78pxh"
                                 android:scaleType="fitXY"
-                                cornerRadius="@{@dimen/_10pxh}"
-                                imageRes="@{@drawable/img_rectangle148}"
-                                tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle148"/>
+                                tools:ignore="ContentDescription" />
                             <ImageView
                                 android:id="@+id/imageRectangle149"
                                 android:layout_height="@dimen/_78pxh"
                                 android:layout_marginStart="@dimen/_9pxh"
                                 android:layout_width="@dimen/_78pxh"
                                 android:scaleType="fitXY"
-                                cornerRadius="@{@dimen/_10pxh}"
-                                imageRes="@{@drawable/img_rectangle149}"
-                                tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle149"/>
+                                tools:ignore="ContentDescription" />
 <!--                            <ImageView-->
 <!--                                android:id="@+id/imageRectangle150"-->
 <!--                                android:layout_height="@dimen/_78pxh"-->

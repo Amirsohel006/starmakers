@@ -315,7 +315,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
         if(customerResponse!=null){
 
-          val image=customerResponse[0].image
+          val image=customerResponse[0].image?:""
             val file = ApiManager.getImageUrl(image!!)
             Picasso.get().load(file).into(binding.imageRectangle153)
         }
@@ -352,16 +352,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
         val customerResponse = response.body()
 
-        Log.d("Total Videos",customerResponse.toString())
+        binding.mystudiostext.visibility = if (customerResponse.isNullOrEmpty()) View.VISIBLE else View.GONE
+        binding.recyclerviewforfundingvideos.visibility = if (customerResponse.isNullOrEmpty()) View.GONE else View.VISIBLE
 
-        binding.mystudiostext.visibility=View.GONE
-        binding.recyclerviewforfundingvideos.visibility=View.VISIBLE
-        if (customerResponse != null) {
+        if (!customerResponse.isNullOrEmpty()) {
           // Update the adapter with the list of videos
           binding.recyclerviewforfundingvideos.apply {
-            layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
-            val audtioAdapter = VideoAdapter(requireActivity(),customerResponse)
-            binding.recyclerviewforfundingvideos.adapter = audtioAdapter
+            layoutManager =
+              LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+            val audtioAdapter = VideoAdapter(requireActivity(), customerResponse)
+            adapter = audtioAdapter
           }
         }
       }
@@ -376,6 +376,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         Log.e("error", t.message.toString())
       }
     })
+
   }
 
 
