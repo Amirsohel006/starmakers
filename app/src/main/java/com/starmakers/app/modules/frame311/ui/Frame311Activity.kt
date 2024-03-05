@@ -78,10 +78,10 @@ class Frame311Activity : BaseActivity<ActivityFrame311Binding>(R.layout.activity
       val destIntent = HelpActivity.getIntent(this, null)
       startActivity(destIntent)
     }
-    binding.txtRahul.setOnClickListener {
-      val destIntent = ArtistBookongActivity.getIntent(this, null)
-      startActivity(destIntent)
-    }
+//    binding.txtRahul.setOnClickListener {
+//      val destIntent = ArtistBookongActivity.getIntent(this, null)
+//      startActivity(destIntent)
+//    }
     binding.linearRowinfoOne.setOnClickListener {
       val destIntent = HelpTwoActivity.getIntent(this, null)
       startActivity(destIntent)

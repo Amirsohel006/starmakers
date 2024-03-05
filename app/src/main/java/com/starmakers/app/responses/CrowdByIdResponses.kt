@@ -3,8 +3,9 @@ package com.starmakers.app.responses
 import com.google.gson.annotations.SerializedName
 
 data class CrowdByIdResponses(
-    @SerializedName("status" ) var status : String? = null,
-    @SerializedName("data"   ) var data   : CrowByIdData?   = CrowByIdData()
+    @SerializedName("status"        ) var status       : String?       = null,
+    @SerializedName("campaign_data" ) var campaignData : CrowByIdData? = CrowByIdData(),
+    @SerializedName("finance_data"  ) var financeData  : FinanceData?  = FinanceData()
 )
 
 

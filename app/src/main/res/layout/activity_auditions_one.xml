@@ -66,15 +66,14 @@
                 android:layout_width="@dimen/_117pxh"
                 android:scaleType="fitXY"
                 cornerRadius="@{@dimen/_10pxh}"
-                imageRes="@{@drawable/img_rectangle10_264x159}"
-                tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle10_264x159"/>
+                tools:ignore="ContentDescription" />
             <LinearLayout android:gravity="start"
                 android:id="@+id/linearColumnmoviekantara"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_9pxv"
-                android:layout_marginStart="@dimen/_18pxh"
+                android:layout_marginStart="@dimen/_10pxh"
                 android:layout_marginTop="@dimen/_11pxv"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -98,9 +97,7 @@
                         android:layout_marginEnd="@dimen/_3pxh"
                         android:layout_width="match_parent"
                         android:singleLine="true"
-                        android:text="@{auditionsOneVM.auditionsOneModel.txtMovieKantara}"
-                        style="@style/txtPoppinsmedium14_3"
-                        tools:text="@string/lbl_movie_kantara"/>
+                        style="@style/txtPoppinsmedium14_3" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -127,9 +124,7 @@
                         android:layout_marginTop="@dimen/_13pxv"
                         android:layout_width="match_parent"
                         android:singleLine="true"
-                        android:text="@{auditionsOneVM.auditionsOneModel.txtGenreMystery}"
-                        style="@style/txtPoppinsmedium14_3"
-                        tools:text="@string/lbl_genre_mystery"/>
+                        style="@style/txtPoppinsmedium14_3" />
 
                 </LinearLayout>
 
@@ -155,9 +150,7 @@
                         android:layout_marginTop="@dimen/_11pxv"
                         android:layout_width="wrap_content"
                         android:singleLine="true"
-                        android:text="@{auditionsOneVM.auditionsOneModel.txtStoryline}"
-                        style="@style/txtPoppinsmedium14_3"
-                        tools:text="@string/lbl_storyline"/>
+                        style="@style/txtPoppinsmedium14_3" />
 
                 </LinearLayout>
 
@@ -183,9 +176,7 @@
                         android:layout_marginTop="@dimen/_11pxv"
                         android:layout_width="wrap_content"
                         android:singleLine="true"
-                        android:text="@{auditionsOneVM.auditionsOneModel.txtAppxBudget}"
-                        style="@style/txtPoppinsmedium14_3"
-                        tools:text="@string/lbl_appx_budget"/>
+                        style="@style/txtPoppinsmedium14_3" />
                 </LinearLayout>
                 <LinearLayout
                     android:orientation="horizontal"
@@ -209,9 +200,7 @@
                         android:layout_marginTop="@dimen/_11pxv"
                         android:layout_width="wrap_content"
                         android:singleLine="true"
-                        android:text="@{auditionsOneVM.auditionsOneModel.txtReleasingDate}"
-                        style="@style/txtPoppinsmedium14_3"
-                        tools:text="@string/msg_releasing_date"/>
+                        style="@style/txtPoppinsmedium14_3" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -303,13 +292,10 @@
                     android:id="@+id/txtPriceOne1"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_16pxh"
-                    android:layout_marginStart="@dimen/_16pxh"
                     android:layout_marginTop="@dimen/_7pxv"
                     android:layout_width="match_parent"
                     android:singleLine="true"
-                    android:text="@{auditionsOneVM.auditionsOneModel.txtPriceOne}"
-                    style="@style/txtPoppinsregular14_8"
-                    tools:text="@string/msg_spent_amount"/>
+                    style="@style/txtPoppinsregular14_8" />
 
             </LinearLayout>
 
@@ -333,13 +319,10 @@
                     android:id="@+id/txtPriceTwo1"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_16pxh"
-                    android:layout_marginStart="@dimen/_16pxh"
                     android:layout_marginTop="@dimen/_8pxv"
                     android:layout_width="wrap_content"
                     android:singleLine="true"
-                    android:text="@{auditionsOneVM.auditionsOneModel.txtPriceTwo}"
-                    style="@style/txtPoppinsregular14_8"
-                    tools:text="@string/msg_required_addnl"/>
+                    style="@style/txtPoppinsregular14_8" />
 
             </LinearLayout>
 
@@ -368,9 +351,7 @@
                     android:layout_marginTop="@dimen/_7pxv"
                     android:layout_width="wrap_content"
                     android:singleLine="true"
-                    android:text="@{auditionsOneVM.auditionsOneModel.txtPriceThree}"
-                    style="@style/txtPoppinsregular14_8"
-                    tools:text="@string/msg_total_spent_amo"/>
+                    style="@style/txtPoppinsregular14_8" />
 
             </LinearLayout>
                 <TextView android:ellipsize="end"
@@ -407,13 +388,10 @@
                     style="@style/txtPoppinsregular14_8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:layout_marginTop="@dimen/_9pxv"
                     android:layout_marginEnd="@dimen/_16pxh"
                     android:ellipsize="end"
-                    android:singleLine="true"
-                    android:text="@{auditionsOneVM.auditionsOneModel.txtPriceFour}"
-                    tools:text="@string/msg_above_the_budge" />
+                    android:singleLine="true" />
 
             </LinearLayout>
 
@@ -441,9 +419,7 @@
                     android:layout_marginTop="@dimen/_8pxv"
                     android:layout_width="wrap_content"
                     android:singleLine="true"
-                    android:text="@{auditionsOneVM.auditionsOneModel.txtPriceFive}"
-                    style="@style/txtPoppinsregular14_8"
-                    tools:text="@string/msg_below_the_budge"/>
+                    style="@style/txtPoppinsregular14_8" />
             </LinearLayout>
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtShareAmount"
@@ -484,9 +460,7 @@
                     android:layout_marginTop="@dimen/_10pxv"
                     android:layout_width="wrap_content"
                     android:singleLine="true"
-                    android:text="@{auditionsOneVM.auditionsOneModel.txtShareamountif}"
-                    style="@style/txtPoppinsregular14_8"
-                    tools:text="@string/msg_share_amount_if"/>
+                    style="@style/txtPoppinsregular14_8" />
 
             </LinearLayout>
 
@@ -515,9 +489,7 @@
                     android:layout_marginTop="@dimen/_8pxv"
                     android:layout_width="match_parent"
                     android:singleLine="true"
-                    android:text="@{auditionsOneVM.auditionsOneModel.txtPriceSix}"
-                    style="@style/txtPoppinsregular14_8"
-                    tools:text="@string/msg_share_amount_if3"/>
+                    style="@style/txtPoppinsregular14_8" />
 
             </LinearLayout>
                 <TextView android:ellipsize="end"

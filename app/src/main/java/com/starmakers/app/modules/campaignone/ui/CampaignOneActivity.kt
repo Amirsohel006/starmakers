@@ -68,36 +68,36 @@ class CampaignOneActivity : BaseActivity<ActivityCampaignOneBinding>(R.layout.ac
 
             val crowdByIdResponses = response.body()
 
-            if(crowdByIdResponses!!.status=="success" || crowdByIdResponses.data!= null) {
-              val movieposter = crowdByIdResponses.data!!.moviePoster
+            if(crowdByIdResponses!!.status=="success" || crowdByIdResponses.campaignData!= null) {
+              val movieposter = crowdByIdResponses.campaignData!!.moviePoster?:""
 
-              val file = ApiManager.getImageUrl(movieposter!!)
+              val file = ApiManager.getImageUrl(movieposter)
 
               Picasso.get().load(file).into(binding.imageRectangleTen)
 
 
-              binding.txtKANTARA.text=crowdByIdResponses.data!!.campaignsName
+              binding.txtKANTARA.text=crowdByIdResponses.campaignData!!.campaignsName
 
-              binding.txtMovieKantara1.text = crowdByIdResponses.data!!.campaignsName
+              binding.txtMovieKantara1.text = crowdByIdResponses.campaignData!!.campaignsName
 
-              binding.txtGenreMystery1.text = crowdByIdResponses.data!!.genere
+              binding.txtGenreMystery1.text = crowdByIdResponses.campaignData!!.genere
 
-              binding.txtDescription.text = crowdByIdResponses.data!!.oneLineStory
+              binding.txtDescription.text = crowdByIdResponses.campaignData!!.oneLineStory
 
-              binding.txtAppxBudget1.text = crowdByIdResponses.data!!.appxBudget
+              binding.txtAppxBudget1.text = crowdByIdResponses.campaignData!!.appxBudget
 
-              binding.txtMovieStartDat1.text = crowdByIdResponses.data!!.movieStartDate
+              binding.txtMovieStartDat1.text = crowdByIdResponses.campaignData!!.movieStartDate
 
-              binding.txtMovieEndDate1.text = crowdByIdResponses.data!!.movieStartEnd
+              binding.txtMovieEndDate1.text = crowdByIdResponses.campaignData!!.movieStartEnd
 
 
-              binding.txtReleasingDate1.text=crowdByIdResponses.data!!.movieStartEnd
+              binding.txtReleasingDate1.text=crowdByIdResponses.campaignData!!.movieStartEnd
 
-              val actor1 = crowdByIdResponses.data!!.actorPicture1
+              val actor1 = crowdByIdResponses.campaignData!!.actorPicture1
 
-              val actor2 = crowdByIdResponses.data!!.actorPicture2
+              val actor2 = crowdByIdResponses.campaignData!!.actorPicture2
 
-              val actor3 = crowdByIdResponses.data!!.actorPicture3
+              val actor3 = crowdByIdResponses.campaignData!!.actorPicture3
 
               val file1 = ApiManager.getImageUrl(actor1?:"")
               val file2 = ApiManager.getImageUrl(actor2?:"")

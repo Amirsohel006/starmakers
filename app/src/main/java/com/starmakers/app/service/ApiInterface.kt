@@ -281,7 +281,7 @@ interface ApiInterface {
     fun getcampaign( @Header("Authorization")fetchAuthToken: String?):Call<CampaignResponse>
 
 
-    @GET("api/campaign-list-view-by-id/{id}/")
+    @GET("api/campaign/details/{id}/")
     fun getCampaignById(@Header("Authorization")fetchAuthToken: String?,
                         @Path("id") id: Int):Call<CampaignDataById>
     @POST("api/logout/")
