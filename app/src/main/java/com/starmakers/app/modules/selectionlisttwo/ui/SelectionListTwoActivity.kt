@@ -96,7 +96,7 @@ class SelectionListTwoActivity :
               binding.txtDate1.text = data[0].appliedDate
               binding.txtTime1.text = data[0].timingsFrom
               binding.txtVenue1.text = data[0].venue
-              binding.txtRole1.text = data[0].auditionPositions
+              binding.txtRole1.text = data.map { it.auditionPositions }.toString()
 
               Glide.with(this@SelectionListTwoActivity)
                 .load(data[0].moviePoster)
@@ -109,7 +109,7 @@ class SelectionListTwoActivity :
                   LinearLayoutManager.VERTICAL,
                   false
                 )
-                val audtioAdapter = Listrectangle140Adapter(listOf(data[0].artist))
+                val audtioAdapter = Listrectangle140Adapter(data.map { it.artist })
                 adapter = audtioAdapter
               }
             } else {

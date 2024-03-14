@@ -16,6 +16,7 @@ import com.starmakers.app.modules.selectionlistone.`data`.model.Listrectangle107
 import com.starmakers.app.modules.selectionlistone.`data`.viewmodel.SelectionListOneVM
 import com.starmakers.app.modules.selectionlisttwo.ui.SelectionListTwoActivity
 import com.starmakers.app.responses.SelectionDataResponse
+import com.starmakers.app.responses.SelectionItem
 import com.starmakers.app.service.ApiManager
 import com.starmakers.app.service.SessionManager
 import retrofit2.Call
@@ -61,26 +62,25 @@ class SelectionListOneActivity :
     val authorization="Token $accessToken"
     val call=serviceGenerator.get_selection_list(authorization)
 
-    call.enqueue(object : retrofit2.Callback<SelectionDataResponse>{
+    call.enqueue(object : retrofit2.Callback<SelectionItem>{
       override fun onResponse(
-        call: Call<SelectionDataResponse>,
-        response: Response<SelectionDataResponse>
+        call: Call<SelectionItem>,
+        response: Response<SelectionItem>
       ) {
 
         val selectionResponse=response.body()
         if((selectionResponse!=null)   && (selectionResponse.message=="Success")){
-          val selectionData= response.body()
 
           binding.recyclerListrectangle106.apply {
             layoutManager=
               LinearLayoutManager(this@SelectionListOneActivity, LinearLayoutManager.VERTICAL,false)
-            val selectionAdapter=Listrectangle106Adapter(selectionData!!.data)
+            val selectionAdapter=Listrectangle106Adapter(selectionResponse.data1)
             binding.recyclerListrectangle106.adapter =selectionAdapter
           }
         }
       }
 
-      override fun onFailure(call: Call<SelectionDataResponse>, t: Throwable) {
+      override fun onFailure(call: Call<SelectionItem>, t: Throwable) {
         t.printStackTrace()
         Log.e("error", t.message.toString())
       }

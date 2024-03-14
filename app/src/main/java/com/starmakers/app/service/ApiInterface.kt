@@ -38,6 +38,7 @@ import com.starmakers.app.responses.MyAuditionRequest
 import com.starmakers.app.responses.PaymentRequest
 import com.starmakers.app.responses.PaymentRequestForDonate
 import com.starmakers.app.responses.SearchResponses
+import com.starmakers.app.responses.SelectionItem
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -163,7 +164,7 @@ interface ApiInterface {
     @GET("api/get-selection-list/")
     fun get_selection_list(
         @Header("Authorization")fetchAuthToken: String?,
-    ):Call<SelectionDataResponse>
+    ):Call<SelectionItem>
 
 
     @GET("api/get-selection-list-by-ID/{id}")

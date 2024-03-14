@@ -137,9 +137,10 @@
             <LinearLayout android:gravity="start"
                 android:id="@+id/linearRowrole"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_marginEnd="2dp"
                 android:layout_marginTop="@dimen/_2pxv"
-                android:layout_width="wrap_content" android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
                 <TextView android:ellipsize="end"
                     android:id="@+id/txtRole"
                     android:layout_height="wrap_content"

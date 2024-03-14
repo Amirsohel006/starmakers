@@ -73,7 +73,7 @@ class SignUoFourActivity : BaseActivity<ActivitySignUoFourBinding>(R.layout.acti
           binding.progressBar.visibility=View.GONE
           val loginResponse = response.body()
           if (loginResponse != null) {
-            Toast.makeText(this@SignUoFourActivity, "Otp Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
+            //Toast.makeText(this@SignUoFourActivity, "Otp Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
             navigateToNextPage()
             finish()
           } else {

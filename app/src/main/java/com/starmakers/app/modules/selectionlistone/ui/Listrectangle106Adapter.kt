@@ -18,6 +18,7 @@ import com.starmakers.app.R
 import com.starmakers.app.modules.selectionlistone.`data`.model.Listrectangle107RowModel
 import com.starmakers.app.modules.selectionlisttwo.ui.SelectionListTwoActivity
 import com.starmakers.app.responses.Data
+import com.starmakers.app.responses.Data1
 import com.starmakers.app.responses.SelectionItem
 import com.starmakers.app.service.ApiManager
 import convertToReadableDate
@@ -25,7 +26,7 @@ import kotlin.Int
 import kotlin.collections.List
 
 class Listrectangle106Adapter(
-  var list: List<SelectionItem>
+  var list: List<Data1>
 ) : RecyclerView.Adapter<Listrectangle106Adapter.RowListrectangle107VH>() {
   private var clickListener: OnItemClickListener? = null
 
@@ -42,7 +43,7 @@ class Listrectangle106Adapter(
     return list.size
   }
 
- fun updateData(newData: List<SelectionItem>) {
+ fun updateData(newData: List<Data1>) {
     list = newData
     notifyDataSetChanged()
   }
@@ -84,23 +85,24 @@ class Listrectangle106Adapter(
           .transform(RoundedCorners(cornerRadiusInPixels))
 
     @SuppressLint("SuspiciousIndentation")
-    fun bindView(postModel: SelectionItem) {
+    fun bindView(postModel: Data1) {
 
-        date.text=postModel.applied_date
-      venue.text=postModel.audition.venue
-      position1.text=postModel.audition.auditions_positions.joinToString { it.audition_positions }
-      startTime.text=postModel.audition.timings_from
-      endTime.text=postModel.audition.timings_to
-      moviename.text=postModel.audition.movie_name
-        auditionId=postModel.audition.id
+        date.text=postModel.appliedDate
+      venue.text=postModel.audition!!.venue
+      position1.text=
+          postModel.audition!!.auditionsPositions.map { it.auditionPositions }.toString()
+      startTime.text=postModel.audition!!.timingsFrom
+      endTime.text=postModel.audition!!.timingsTo
+      moviename.text=postModel.audition!!.movieName
+        auditionId=postModel.audition!!.id!!
 
 //        Picasso.get()
 //            .load(postModel.audition.movie_poster)
 //            .into(imageView)
 
-        val image=postModel.audition.movie_poster
+        val image=postModel.audition!!.moviePoster
 
-        val file=ApiManager.getImageUrl(image)
+        val file=ApiManager.getImageUrl(image!!)
 
 
         Glide.with(itemView)

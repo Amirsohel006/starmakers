@@ -72,7 +72,7 @@ class LoginActivity : BaseActivity<ActivitySignUoTwoBinding>(R.layout.activity_s
 
           val loginResponse = response.body()
           if (loginResponse != null) {
-            Toast.makeText(this@LoginActivity, "Otp Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
+            //Toast.makeText(this@LoginActivity, "Otp Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
             navigateToNextPage()
             finishAffinity()
           } else {

@@ -29,7 +29,8 @@ data class SelectionListArtist (
 
     @SerializedName("name"    ) var name    : String? = null,
     @SerializedName("age"     ) var age     : String? = null,
-    @SerializedName("profile" ) var profile : String? = null
+    @SerializedName("profile" ) var profile : String? = null,
+    @SerializedName("location") val location: String? =null
 
 )
 
