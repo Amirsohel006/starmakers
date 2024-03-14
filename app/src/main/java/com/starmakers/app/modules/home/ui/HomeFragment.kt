@@ -177,7 +177,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
       val addresses = geocoder.getFromLocation(latitude, longitude, 1)
       if (addresses!!.isNotEmpty()) {
         address = addresses[0]
-        Toast.makeText(requireActivity(), "Country Code: ${address.countryCode}", Toast.LENGTH_SHORT).show()
+       // Toast.makeText(requireActivity(), "Country Code: ${address.countryCode}", Toast.LENGTH_SHORT).show()
       }
     } catch (e: IOException) {
       e.printStackTrace()

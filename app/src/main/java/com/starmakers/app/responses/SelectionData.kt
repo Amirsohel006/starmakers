@@ -1,7 +1,7 @@
 package com.starmakers.app.responses
 
 data class SelectionDataResponse(
-    val `data`: List<SelectionItem>,
+    val `data`: SelectionItem,
     val message: String
 )
 

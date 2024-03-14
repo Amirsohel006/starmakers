@@ -69,7 +69,8 @@
                 android:paddingHorizontal="@dimen/_7pxh"
                 android:paddingVertical="@dimen/_7pxv"
                 android:scaleType="fitCenter"
-                android:src="@drawable/img_arrowright" tools:ignore="ContentDescription"/>
+                android:src="@drawable/img_arrowright"
+                tools:ignore="ContentDescription"/>
         </LinearLayout>
     </LinearLayout>
 </layout>

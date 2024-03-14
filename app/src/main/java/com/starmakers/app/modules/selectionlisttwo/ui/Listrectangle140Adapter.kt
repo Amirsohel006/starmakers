@@ -70,7 +70,7 @@ class Listrectangle140Adapter(
     val nameChandru:TextView=itemView.findViewById(R.id.txtChandru)
     val age:TextView=itemView.findViewById(R.id.txtYrsCounter)
     val image:ImageView=itemView.findViewById(R.id.imageRectangle140)
-   // val location:TextView=itemView.findViewById(R.id.txtBangalore)
+   val location:TextView=itemView.findViewById(R.id.txtBangalore)
 
 
     // Define the corner radius in pixels (converted from dp)
@@ -83,7 +83,8 @@ class Listrectangle140Adapter(
     fun bindView(postModel: SelectionListArtist){
       nameChandru.text=postModel.name
       age.text=postModel.age
-      val file = postModel.profile // Assuming postModel.profile is a File object
+      val file = postModel.profile
+      location.text=postModel.location?:""
 
       val imgUrl= file?.let { ApiManager.getImageUrl(it) }
 

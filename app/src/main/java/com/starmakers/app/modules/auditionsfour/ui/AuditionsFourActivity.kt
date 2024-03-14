@@ -137,7 +137,7 @@ class AuditionsFourActivity :
         val auditionPositions = response.body()
         if (auditionPositions != null) {
           val spinnerItems = auditionPositions.map {it.audition_positions}.toMutableList()
-          spinnerItems.add(0, "Applying for this role")
+
 
 
 //          val positionid=auditionPositions[0].id
@@ -148,7 +148,7 @@ class AuditionsFourActivity :
           // Create an ArrayAdapter to populate the Spinner
           val adapter = ArrayAdapter<String>(
             this@AuditionsFourActivity, // Replace with your actual activity reference
-            android.R.layout.simple_spinner_item,
+            R.layout.spinner_layout,
             spinnerItems
           )
 

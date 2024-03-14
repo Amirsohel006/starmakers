@@ -75,6 +75,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_10pxh"
                         android:layout_marginTop="@dimen/_24pxv"
+                        android:paddingStart="10dp"
+                        android:paddingBottom="5dp"
                         android:layout_width="match_parent"
                         tools:listitem="@layout/spinner_item"/>
                     <TextView
