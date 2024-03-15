@@ -172,7 +172,7 @@ class ProfileUpdate : AppCompatActivity() {
 
 
     private fun updateData(){
-        val map: MutableMap<String, RequestBody> = mutableMapOf()
+            val map: MutableMap<String, RequestBody> = mutableMapOf()
         val name=createPartFromString(name)
         val height=createPartFromString(height)
         val weight=createPartFromString(weight)

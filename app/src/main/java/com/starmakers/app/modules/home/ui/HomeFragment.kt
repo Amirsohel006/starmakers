@@ -1,10 +1,10 @@
 package com.starmakers.app.modules.home.ui
-
 import SliderrectangleelevenAdapter
 import VideoAdapter
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
@@ -14,6 +14,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -380,6 +381,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
   }
 
 
+
+
   private fun fetchData(){
     val serviceGenerator = ApiManager.apiInterface
     val accessToken = sessionManager.fetchAuthToken()
@@ -442,4 +445,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
       return fragment
     }
   }
+
+
+
 }
