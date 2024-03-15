@@ -59,6 +59,8 @@ class SignUoOneActivity : BaseActivity<ActivitySignUoOneBinding>(R.layout.activi
   var uploadedFileName:String=""
 
   var multipartImage: MultipartBody.Part? = null
+
+
   override fun onInitialized(): Unit {
     sessionManager = SessionManager(this)
     apiService= ApiManager.apiInterface
