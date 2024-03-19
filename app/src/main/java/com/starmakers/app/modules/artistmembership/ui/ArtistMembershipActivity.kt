@@ -188,16 +188,23 @@ class ArtistMembershipActivity :
   override fun setUpClicks(): Unit {
 
     binding.btnContinue.setOnClickListener {
-      artistName=binding.etGroup149.text.toString()
-      mobileNumber=binding.etGroup153.text.toString()
-      age=binding.etGroup150.text.toString()
-      height=binding.etGroup151.text.toString()
-      weight=binding.etGroup152.text.toString()
+      if (!binding.checkBoxAcceptallterm.isChecked) {
+        // Terms and conditions checkbox not selected, show a message or handle accordingly
+        // For example:
+        Toast.makeText(this, "Please accept the terms and conditions", Toast.LENGTH_SHORT).show()
+      } else {
+        // Terms and conditions checkbox is selected, proceed with signUp()
+        artistName = binding.etGroup149.text.toString()
+        mobileNumber = binding.etGroup153.text.toString()
+        age = binding.etGroup150.text.toString()
+        height = binding.etGroup151.text.toString()
+        weight = binding.etGroup152.text.toString()
 
-
-      binding.progressBar.visibility=View.VISIBLE
-      signUp()
+        binding.progressBar.visibility = View.VISIBLE
+        signUp()
+      }
     }
+
 
     binding.imagePlus.setOnClickListener {
       selectFile()
