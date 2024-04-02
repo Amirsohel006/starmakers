@@ -199,38 +199,44 @@
                                 style="@style/txtPoppinsmedium8"
                                 tools:text="@string/msg_artist_members"/>
                         </LinearLayout>
+
                         <LinearLayout
-                            android:background="@drawable/backgroundforhome"
-                            android:gravity="center_horizontal"
                             android:id="@+id/linearColumn"
+                            style="@style/groupStylecornerRadius"
+                            android:layout_width="0dp"
                             android:layout_height="90dp"
                             android:layout_marginStart="@dimen/_21pxh"
                             android:layout_weight="0.30"
-                            android:layout_width="0dp"
-                            android:orientation="vertical" style="@style/groupStylecornerRadius">
-                                <ImageView
-                                    android:id="@+id/imageUntitleddesignOne"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_height="@dimen/_30pxh"
-                                    android:layout_marginEnd="@dimen/_12pxh"
-                                    android:layout_marginStart="@dimen/_12pxh"
-                                    android:layout_marginTop="@dimen/_8pxv"
-                                    android:layout_width="@dimen/_42pxh"
-                                    android:scaleType="fitXY"
-                                    android:src="@drawable/img_untitleddesign_62x87"
-                                    tools:ignore="ContentDescription" tools:src="@drawable/img_untitleddesign_62x87"/>
-                                <TextView
-                                    android:gravity="center"
-                                    android:id="@+id/txtArtistBooking"
-                                    android:layout_gravity="center"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="@dimen/_6pxv"
-                                    android:layout_marginEnd="@dimen/_12pxh"
-                                    android:layout_marginStart="@dimen/_12pxh"
-                                    android:layout_marginTop="@dimen/_4pxv"
-                                    android:layout_width="wrap_content"
-                                    android:text="@{homeVM.homeModel.txtArtistBooking}"
-                                    style="@style/txtPoppinsmedium8" tools:text="@string/lbl_artist_booking"/>
+                            android:background="@drawable/backgroundforhome"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageUntitleddesignOne"
+                                android:layout_width="@dimen/_42pxh"
+                                android:layout_height="@dimen/_30pxh"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginStart="@dimen/_12pxh"
+                                android:layout_marginTop="@dimen/_8pxv"
+                                android:layout_marginEnd="@dimen/_12pxh"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/img_untitleddesign_62x87"
+                                tools:ignore="ContentDescription"
+                                tools:src="@drawable/img_untitleddesign_62x87" />
+
+                            <TextView
+                                android:id="@+id/txtArtistBooking"
+                                style="@style/txtPoppinsmedium8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="@dimen/_12pxh"
+                                android:layout_marginTop="@dimen/_4pxv"
+                                android:layout_marginEnd="@dimen/_12pxh"
+                                android:layout_marginBottom="@dimen/_6pxv"
+                                android:gravity="center"
+                                android:text="@{homeVM.homeModel.txtArtistBooking}"
+                                tools:text="@string/lbl_artist_booking" />
                         </LinearLayout>
                         <LinearLayout
                             android:background="@drawable/backgroundforhome"

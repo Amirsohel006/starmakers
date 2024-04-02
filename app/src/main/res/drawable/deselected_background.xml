@@ -1,0 +1,16 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- White circle -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF"/> <!-- White color -->
+            <size android:width="48dp" android:height="48dp"/> <!-- Change size as needed -->
+        </shape>
+    </item>
+    <!-- Gray border (radius line) -->
+    <item>
+        <shape android:shape="oval">
+            <stroke android:color="@color/gray_800" android:width="2dp"/> <!-- Gray color with 2dp width -->
+            <size android:width="48dp" android:height="48dp"/> <!-- Change size as needed -->
+        </shape>
+    </item>
+</layer-list>

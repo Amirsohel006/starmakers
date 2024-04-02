@@ -42,14 +42,19 @@ class SignUoFourActivity : BaseActivity<ActivitySignUoFourBinding>(R.layout.acti
     binding.btnSignup.setOnClickListener{
         mobile=binding.txtEnterMobilenu.text.toString()
 
-      if (mobile.isNotEmpty()) {
+      if (isValidMobileNumber(mobile)) {
         getOtp(mobile)
-        binding.progressBar.visibility=View.VISIBLE
+        binding.progressBar.visibility = View.VISIBLE
       } else {
-        Toast.makeText(this, "Please enter a mobile number", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Please enter a valid mobile number", Toast.LENGTH_SHORT).show()
       }
     }
     window.statusBarColor= ContextCompat.getColor(this,R.color.white)
+  }
+
+  private fun isValidMobileNumber(mobile: String): Boolean {
+    // Check if the mobile number is exactly 10 digits and contains only digits
+    return mobile.length == 10 && mobile.all { it.isDigit() }
   }
 
   override fun setUpClicks(): Unit {

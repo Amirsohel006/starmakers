@@ -24,6 +24,8 @@ import com.starmakers.app.service.ApiInterface
 import com.starmakers.app.service.ApiManager
 import com.starmakers.app.service.SessionManager
 import com.starmakers.app.service.TokenManager
+import org.json.JSONException
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -110,8 +112,23 @@ class SignUoActivity : BaseActivity<ActivitySignUoBinding>(R.layout.activity_sig
             binding.progressBar.visibility=View.GONE
           }
         } else {
-          Toast.makeText(this@SignUoActivity, "Login failed", Toast.LENGTH_SHORT).show()
-          binding.progressBar.visibility=View.GONE
+          if (response.code() == 400) {
+            binding.progressBar.visibility= View.GONE
+            val errorBody = response.errorBody()?.string()
+            if (!errorBody.isNullOrEmpty()) {
+              try {
+                val jsonObject = JSONObject(errorBody)
+                val errorMessage = jsonObject.getString("error")
+                Toast.makeText(this@SignUoActivity, errorMessage, Toast.LENGTH_SHORT).show()
+              } catch (e: JSONException) {
+                Toast.makeText(this@SignUoActivity, "User Already Registered!!", Toast.LENGTH_SHORT).show()
+              }
+            } else {
+              Toast.makeText(this@SignUoActivity, "User Already Registered!!", Toast.LENGTH_SHORT).show()
+            }
+          } else {
+            Toast.makeText(this@SignUoActivity, "Login failed", Toast.LENGTH_SHORT).show()
+          }
         }
       }
       override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
@@ -123,6 +140,7 @@ class SignUoActivity : BaseActivity<ActivitySignUoBinding>(R.layout.activity_sig
 
   private fun navigateToNextPage() {
     val i= SignUoOneActivity.getIntent(this,null)
+    i.putExtra("mobile",mobile)
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
     startActivity(i)
   }

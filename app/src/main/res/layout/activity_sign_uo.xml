@@ -54,7 +54,7 @@
             android:layout_marginTop="@dimen/_6pxv"
             android:layout_width="match_parent"
             android:singleLine="true"
-            android:text="@{signUoVM.signUoModel.txtLanguage}"
+            android:text=""
             style="@style/txtNunitoregular16" />
         <com.mukesh.OtpView
             android:textColor="@color/black"

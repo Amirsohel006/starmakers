@@ -9,32 +9,48 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical"
-        style="@style/groupStylewhite_A700">
+        style="@style/groupStylegray_100cornerRadius">
 
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
 
         <TextView
             android:ellipsize="end"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:id="@+id/txtParticipationS"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_12pxh"
-            android:layout_marginStart="@dimen/_12pxh"
-            android:layout_marginTop="@dimen/_41pxv"
-            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/_42pxh"
+            android:layout_width="wrap_content"
             android:singleLine="true"
             android:text="@string/msg_participation_s"
             style="@style/txtPoppinsmedium20_1"
             tools:text="@string/msg_participation_s"/>
 
+            <ImageView
+                android:id="@+id/closeImage"
+                android:src="@drawable/img_close"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
 
-        <FrameLayout android:id="@+id/frameStackcomponentlott"
+        </LinearLayout>
+        <FrameLayout
+            android:id="@+id/frameStackcomponentlott"
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_17pxv"
             android:layout_marginEnd="@dimen/_12pxh"
             android:layout_marginStart="@dimen/_12pxh"
-            android:layout_marginTop="@dimen/_6pxv" android:layout_width="@dimen/_303pxh">
-            <ImageView android:id="@+id/imageComponentlott"
+            android:layout_marginTop="@dimen/_6pxv"
+            android:layout_width="@dimen/_303pxh">
+
+            <ImageView
+                android:id="@+id/imageComponentlott"
                 android:layout_gravity="center"
                 android:layout_height="@dimen/_169pxv"
                 android:layout_marginBottom="@dimen/_24pxv"
@@ -44,7 +60,9 @@
                 android:src="@drawable/done"
                 tools:ignore="ContentDescription"
                 tools:src="@drawable/done"/>
-            <ImageView android:id="@+id/imageHttpslottief"
+
+            <ImageView
+                android:id="@+id/imageHttpslottief"
                 android:layout_gravity="start"
                 android:layout_height="@dimen/_200pxh"
                 android:layout_width="match_parent"
@@ -52,6 +70,8 @@
                 android:src="@drawable/celebration"
                 tools:ignore="ContentDescription"
                 tools:src="@drawable/celebration"/>
+
+
         </FrameLayout>
     </LinearLayout>
 </layout>

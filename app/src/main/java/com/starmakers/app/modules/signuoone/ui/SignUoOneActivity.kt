@@ -67,6 +67,12 @@ class SignUoOneActivity : BaseActivity<ActivitySignUoOneBinding>(R.layout.activi
 
     profileImageView=binding.profilePic
 
+    val mobile=intent.getStringExtra("mobile")
+
+
+    binding.etGroupMobileNumber.text=mobile.toString()
+
+
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     binding.signUoOneVM = viewModel
 
@@ -78,19 +84,35 @@ class SignUoOneActivity : BaseActivity<ActivitySignUoOneBinding>(R.layout.activi
 //      val destIntent = HomeContainerActivity.getIntent(this, null)
 //      startActivity(destIntent)
 
+
+
       name=binding.etGroupName.text.toString()
       mobilenumber=binding.etGroupMobileNumber.text.toString()
       city=binding.etGroupCity.text.toString()
       pincode=binding.etGroupPincode.text.toString()
       email=binding.etGroupEmail.text.toString()
 
+      val isTermsChecked = binding.imageCheckmark.isChecked
+
       // Check if any field is empty
-      if (TextUtils.isEmpty(name) || TextUtils.isEmpty(mobilenumber) || TextUtils.isEmpty(city) || TextUtils.isEmpty(pincode) || TextUtils.isEmpty(email) || imageUri == null) {
+      if (TextUtils.isEmpty(name) || TextUtils.isEmpty(mobilenumber) || TextUtils.isEmpty(city) || TextUtils.isEmpty(pincode) || TextUtils.isEmpty(email) || imageUri == null ) {
         // Display an error message
-        Toast.makeText(this@SignUoOneActivity, "Please fill in all the required fields and select a profile picture.", Toast.LENGTH_SHORT).show()
-      } else {
+        Toast.makeText(this@SignUoOneActivity, "Please fill in all the required fields, select a profile picture!!", Toast.LENGTH_SHORT).show()
+      } else if (!email.endsWith("@gmail.com")) {
+        // Check if email does not end with "@gmail.com"
+        Toast.makeText(this@SignUoOneActivity, "Please enter a valid Gmail address.", Toast.LENGTH_SHORT).show()
+      } else if (name.length > 10) {
+        // Check if full name is more than 6 characters
+        Toast.makeText(this@SignUoOneActivity, "Full Name should not exceed 10 characters.", Toast.LENGTH_SHORT).show()
+      } else if (!isValidPincode(pincode)) {
+        // Check if pincode is invalid
+        Toast.makeText(this@SignUoOneActivity, "Please enter a valid pincode.", Toast.LENGTH_SHORT).show()
+      } else if(!isTermsChecked){
+        Toast.makeText(this@SignUoOneActivity, "Please Accept terms and conditions", Toast.LENGTH_SHORT).show()
+      }
+      else {
         signUp() // Call signUp function if all fields are filled
-        binding.progressBar.visibility= View.VISIBLE
+        binding.progressBar.visibility = View.VISIBLE
       }
 
 
@@ -100,6 +122,12 @@ class SignUoOneActivity : BaseActivity<ActivitySignUoOneBinding>(R.layout.activi
       val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
       startActivityForResult(gallery, pickImage)
     }
+  }
+
+
+  private fun isValidPincode(pincode: String): Boolean {
+    // Check if the pincode is exactly 6 digits
+    return pincode.length == 6 && pincode.all { it.isDigit() }
   }
 
 

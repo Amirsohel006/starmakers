@@ -27,6 +27,7 @@ import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivityAuditionsFourBinding
 import com.starmakers.app.modules.artistbookongfour.ui.Listrectangle113Adapter
 import com.starmakers.app.modules.artistmembership.data.model.SpinnerComponentOneModel
+import com.starmakers.app.modules.auditions.ui.AuditionsActivity
 import com.starmakers.app.modules.auditions.ui.AuditionsAdapter
 import com.starmakers.app.modules.auditionsfour.`data`.model.SpinnerComponentNineModel
 import com.starmakers.app.modules.auditionsfour.`data`.viewmodel.AuditionsFourVM
@@ -396,6 +397,13 @@ class AuditionsFourActivity :
           val img=dialogBinding.findViewById<ImageView>(R.id.imageComponentlott)
           val img1=dialogBinding.findViewById<ImageView>(R.id.imageHttpslottief)
 
+
+          val closeImage=dialogBinding.findViewById<ImageView>(R.id.closeImage)
+          closeImage.setOnClickListener {
+            val i=Intent(this@AuditionsFourActivity,AuditionsActivity::class.java)
+            startActivity(i)
+            finish()
+          }
 
           Glide.with(this@AuditionsFourActivity).load(R.drawable.done).into(img)
           Glide.with(this@AuditionsFourActivity).load(R.drawable.celebration).into(img1)

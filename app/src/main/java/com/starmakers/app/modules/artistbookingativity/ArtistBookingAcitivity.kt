@@ -45,7 +45,14 @@ class ArtistBookingAcitivity : AppCompatActivity() {
         val fromdate1 = findViewById<TextView>(R.id.etGroup150)
         val btnRequest = findViewById<AppCompatButton>(R.id.btnRequestStudio)
 
+        val closeImage=findViewById<ImageView>(R.id.imageClose)
+
         var selectedDate: String? = null // Initialize the selectedDate variable
+
+
+        closeImage.setOnClickListener {
+            this.finish()
+        }
 
         imageView.setOnClickListener {
             showDatePickerDialog { date ->

@@ -46,6 +46,11 @@
                     style="@style/btnRoundedOutline" />
             </FrameLayout>
 
+            <ImageView
+                android:id="@+id/searchguide"
+                android:src="@drawable/search_guider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_290pxh"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerforSearch"

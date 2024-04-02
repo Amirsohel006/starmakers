@@ -27,6 +27,8 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONException
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -193,17 +195,28 @@ class ArtistMembershipActivity :
         // For example:
         Toast.makeText(this, "Please accept the terms and conditions", Toast.LENGTH_SHORT).show()
       } else {
-        // Terms and conditions checkbox is selected, proceed with signUp()
-        artistName = binding.etGroup149.text.toString()
-        mobileNumber = binding.etGroup153.text.toString()
-        age = binding.etGroup150.text.toString()
-        height = binding.etGroup151.text.toString()
-        weight = binding.etGroup152.text.toString()
+         artistName = binding.etGroup149.text.toString()
+         mobileNumber = binding.etGroup153.text.toString()
+         age = binding.etGroup150.text.toString()
+         height = binding.etGroup151.text.toString()
+         weight = binding.etGroup152.text.toString()
 
-        binding.progressBar.visibility = View.VISIBLE
-        signUp()
+        if (artistName.length > 10) {
+          Toast.makeText(this, "Name should be less than or equal to 10 characters", Toast.LENGTH_SHORT).show()
+        } else if (mobileNumber.length < 10 || mobileNumber.length >
+          10) {
+          Toast.makeText(this, "Please Enter Valid Mobile Number!!", Toast.LENGTH_SHORT).show()
+        } else if (age.isEmpty() && age.length != 3) {
+          Toast.makeText(this, "Age should not be either Empty or 3 digits", Toast.LENGTH_SHORT).show()
+        } else if (height.isEmpty() || weight.isEmpty()) {
+          Toast.makeText(this, "Please fill in height and weight", Toast.LENGTH_SHORT).show()
+        } else {
+          binding.progressBar.visibility = View.VISIBLE
+          signUp()
+        }
       }
     }
+
 
 
     binding.imagePlus.setOnClickListener {
@@ -488,7 +501,7 @@ class ArtistMembershipActivity :
           binding.progressBar.visibility=View.GONE
           val responseBody = response.body()
 
-          if(response.code()==201 || response.code()==200 || response.code()==400) {
+          if(response.code()==201 || response.code()==200 ) {
             val destIntent =
               RegstrationDetailsActivity.getIntent(this@ArtistMembershipActivity, null)
             startActivity(destIntent)
@@ -507,9 +520,23 @@ class ArtistMembershipActivity :
           }
         }
         else {
-          Toast.makeText(this@ArtistMembershipActivity, "Uploaded failed", Toast.LENGTH_SHORT).show()
-          Log.d(response.message(),"This fails in registration response")
-          binding.progressBar.visibility=View.GONE
+          if (response.code() == 400 ) {
+            binding.progressBar.visibility= View.GONE
+            val errorBody = response.errorBody()?.string()
+            if (!errorBody.isNullOrEmpty()) {
+              try {
+                val jsonObject = JSONObject(errorBody)
+                val errorMessage = jsonObject.getString("error")
+                Toast.makeText(this@ArtistMembershipActivity, errorMessage, Toast.LENGTH_SHORT).show()
+              } catch (e: JSONException) {
+                Toast.makeText(this@ArtistMembershipActivity, "User is Already Member!!", Toast.LENGTH_SHORT).show()
+              }
+            } else {
+              Toast.makeText(this@ArtistMembershipActivity, "User is Already Member!!", Toast.LENGTH_SHORT).show()
+            }
+          } else {
+            Toast.makeText(this@ArtistMembershipActivity, "Invalid Mobile Number", Toast.LENGTH_SHORT).show()
+          }
         }
       }
       override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {

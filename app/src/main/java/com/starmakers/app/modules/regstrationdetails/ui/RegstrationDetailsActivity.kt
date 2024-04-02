@@ -59,9 +59,53 @@ class RegstrationDetailsActivity :
 
 
     binding.btnPayAndRegisterOne.setOnClickListener {
-      initiatePayment()
-      binding.progressBar.visibility=View.VISIBLE
+      if (binding.viewEllipseTwentyNine1.isSelected) {
+        // If the radio button is selected, initiate the payment
+        initiatePayment()
+        binding.progressBar.visibility = View.VISIBLE
+      } else {
+        // If the radio button is not selected, show a toast
+        Toast.makeText(this, "Please select a payment option", Toast.LENGTH_SHORT).show()
+      }
     }
+
+
+    binding.linearRowpaypaltwo11.setOnClickListener {
+      val isSelected = binding.viewEllipseTwentyNine1.isSelected
+      binding.viewEllipseTwentyNine1.isSelected = !isSelected
+
+      // Update the appearance of the radio button based on its selection state
+      if (isSelected) {
+        // Set the background to the deselected state
+        binding.viewEllipseTwentyNine1.setBackgroundResource(R.drawable.deselected_background)
+        // Or set the tint color to the deselected color if using a vector drawable
+        // binding.viewEllipseTwentyNine1.setColorFilter(ContextCompat.getColor(this, R.color.deselected_color))
+      } else {
+        // Set the background to the selected state
+        binding.viewEllipseTwentyNine1.setBackgroundResource(R.drawable.selected_background)
+        // Or set the tint color to the selected color if using a vector drawable
+        // binding.viewEllipseTwentyNine1.setColorFilter(ContextCompat.getColor(this, R.color.selected_color))
+      }
+    }
+
+    binding.viewEllipseTwentyNine1.setOnClickListener {
+      val isSelected = binding.viewEllipseTwentyNine1.isSelected
+      binding.viewEllipseTwentyNine1.isSelected = !isSelected
+
+      // Update the appearance of the radio button based on its selection state
+      if (isSelected) {
+        // Set the background to the deselected state
+        binding.viewEllipseTwentyNine1.setBackgroundResource(R.drawable.deselected_background)
+        // Or set the tint color to the deselected color if using a vector drawable
+        // binding.viewEllipseTwentyNine1.setColorFilter(ContextCompat.getColor(this, R.color.deselected_color))
+      } else {
+        // Set the background to the selected state
+        binding.viewEllipseTwentyNine1.setBackgroundResource(R.drawable.selected_background)
+        // Or set the tint color to the selected color if using a vector drawable
+        // binding.viewEllipseTwentyNine1.setColorFilter(ContextCompat.getColor(this, R.color.selected_color))
+      }
+    }
+
 
     window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
     binding.regstrationDetailsVM = viewModel
@@ -213,6 +257,8 @@ class RegstrationDetailsActivity :
       val destIntent = FrameTwentyfourActivity.getIntent(this, null)
       startActivity(destIntent)
     }
+
+
   }
 
   fun onClickRecyclerListpaypalone(

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,6 +55,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
       override fun afterTextChanged(s: Editable?) {
         // Perform search when text changes
         performSearch(s.toString().trim())
+        binding.searchguide.visibility= View.GONE
       }
     })
 

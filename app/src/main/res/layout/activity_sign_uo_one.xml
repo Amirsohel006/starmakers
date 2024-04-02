@@ -67,7 +67,7 @@
             android:text="@={signUoOneVM.signUoOneModel.etGroup421Value}"
             android:textColorHint="@color/indigo_800"
             style="@style/etRoundedOutline" tools:ignore="Autofill"/>
-        <EditText
+        <TextView
             android:background="@drawable/rectangle_border_gray_600_radius_5"
             android:ellipsize="end"
             android:hint="@string/lbl_mobile_number"
@@ -80,10 +80,12 @@
             android:paddingBottom="@dimen/_14pxv"
             android:paddingEnd="@dimen/_30pxh"
             android:paddingStart="@dimen/_17pxh"
-            android:paddingTop="@dimen/_13pxv" android:singleLine="true"
-            android:text="@={signUoOneVM.signUoOneModel.etGroup422Value}"
+            android:paddingTop="@dimen/_13pxv"
+            android:singleLine="true"
             android:textColorHint="@color/indigo_800"
-            style="@style/etRoundedOutline" tools:ignore="Autofill"/>
+            style="@style/etRoundedOutline"
+            tools:ignore="Autofill"/>
+
         <EditText
             android:background="@drawable/rectangle_border_gray_600_radius_5"
             android:ellipsize="end" android:hint="@string/lbl_email_id"
@@ -142,19 +144,19 @@
             android:layout_width="match_parent" android:orientation="horizontal">
             <FrameLayout android:id="@+id/frameStackcheckmark"
                 android:layout_height="@dimen/_25pxv"
+                android:layout_gravity="center"
                 android:layout_marginBottom="@dimen/_1pxv"
-                android:layout_width="@dimen/_23pxh" style="@style/groupStylecornerRadius_3">
-                <ImageView android:id="@+id/imageCheckmark"
+                android:layout_width="@dimen/_25pxh">
+                <CheckBox
+                    android:id="@+id/imageCheckmark"
                     android:layout_gravity="top|center"
-                    android:layout_height="@dimen/_12pxh"
-                    android:layout_marginBottom="@dimen/_10pxv"
+                    android:layout_height="match_parent"
                     android:layout_marginEnd="@dimen/_4pxh"
                     android:layout_marginStart="@dimen/_4pxh"
                     android:layout_marginTop="@dimen/_5pxv"
-                    android:layout_width="@dimen/_14pxh"
+                    android:layout_width="match_parent"
                     android:scaleType="fitXY"
-                    android:src="@drawable/img_checkmark"
-                    tools:ignore="ContentDescription" tools:src="@drawable/img_checkmark"/>
+                    tools:ignore="ContentDescription"/>
             </FrameLayout>
             <TextView android:ellipsize="end"
                 android:id="@+id/txtTermAndCondition"

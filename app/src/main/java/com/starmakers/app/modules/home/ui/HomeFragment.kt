@@ -69,6 +69,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
 
 
+  private val CAMERA_PERMISSION_REQUEST_CODE = 101
+
+  private val PERMISSION_REQUEST_CODE=102
+
   private val viewModel: HomeVM by viewModels<HomeVM>()
 
 
@@ -97,9 +101,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     viewModel.navArguments = arguments
     sessionManager=SessionManager(requireActivity())
 
+//
+//    requestLocationPermissions()
+//
+//    requestCameraPermission()
 
-    requestLocationPermissions()
 
+    requestPermissions()
 
     fetchData()
 
@@ -110,6 +118,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
 
     getCrowdFundingZone()
+
+
+
 
 
     binding.homeVM = viewModel
@@ -133,14 +144,62 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
   }
 
 
-  private fun requestLocationPermissions() {
-    if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-      requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
+
+
+  private fun requestPermissions() {
+    val locationPermissionGranted = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+    val cameraPermissionGranted = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+
+    val permissionsToRequest = ArrayList<String>()
+
+    // Check if location permission is not granted
+    if (!locationPermissionGranted) {
+      permissionsToRequest.add(Manifest.permission.ACCESS_FINE_LOCATION)
+    }
+
+    // Check if camera permission is not granted
+    if (!cameraPermissionGranted) {
+      permissionsToRequest.add(Manifest.permission.CAMERA)
+    }
+
+    // Request permissions if there are any to request
+    if (permissionsToRequest.isNotEmpty()) {
+      ActivityCompat.requestPermissions(
+        requireActivity(),
+        permissionsToRequest.toTypedArray(),
+        PERMISSION_REQUEST_CODE
+      )
     } else {
+      // Both permissions are already granted, you can perform your tasks here
       getLocation()
+      // Perform camera-related tasks here
     }
   }
 
+//  private fun requestLocationPermissions() {
+//    if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//      requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
+//    } else {
+//      getLocation()
+//    }
+//  }
+
+
+//  private fun requestCameraPermission() {
+//    if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
+//      != PackageManager.PERMISSION_GRANTED
+//    ) {
+//      ActivityCompat.requestPermissions(
+//        requireActivity(),
+//        arrayOf(Manifest.permission.CAMERA),
+//        CAMERA_PERMISSION_REQUEST_CODE
+//      )
+//    } else {
+//      // Permission already granted
+//      // You can perform your camera related tasks here
+//      //Toast.makeText(requireActivity(),"Please Give Camera Access Permission",Toast.LENGTH_SHORT).show()
+//    }
+//  }
 
 
   private fun getLocation() {
@@ -156,11 +215,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             val pinCode = it.postalCode ?: ""
             sessionManager.saveCityName(cityName)
             sessionManager.savePinCode(pinCode)
-            binding.spinnerGroup1221.text=cityName
-            binding.spinnerGroup1222.text=pinCode
+            binding.spinnerGroup1221.text = cityName
+            binding.spinnerGroup1222.text = pinCode
             Log.d("City Name", cityName)
             Log.d("Pin Code", pinCode)
             // Now you can handle cityName and pinCode as needed
+            // Update UI here after location data is fetched
+            // For example:
+            // binding.spinnerGroup1221.text = cityName
+            // binding.spinnerGroup1222.text = pinCode
           }
         }
       }
@@ -168,6 +231,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         Toast.makeText(requireContext(), "Error getting location: ${e.message}", Toast.LENGTH_SHORT).show()
       }
   }
+
 
   private fun getAddressFromLocation(latitude: Double, longitude: Double): Address? {
     val context = context ?: return null // Check if the fragment is attached to a context
@@ -188,6 +252,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
   }
 
 
+
+
+
+
+
+
+
   @Deprecated("Deprecated in Java")
   override fun onRequestPermissionsResult(
     requestCode: Int,
@@ -195,16 +266,34 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     grantResults: IntArray
   ) {
     super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
-      if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-        getLocation()
-        Toast.makeText(requireContext(), "Location permission Granted!!", Toast.LENGTH_SHORT).show()
-      } else {
-        // Handle the case where the user denies the permission
-        Toast.makeText(requireContext(), "Location permission denied", Toast.LENGTH_SHORT).show()
+    when (requestCode) {
+      LOCATION_PERMISSION_REQUEST_CODE -> {
+        if (permissions.contains(Manifest.permission.ACCESS_FINE_LOCATION) &&
+          grantResults.isNotEmpty() && grantResults[permissions.indexOf(Manifest.permission.ACCESS_FINE_LOCATION)] == PackageManager.PERMISSION_GRANTED
+        ) {
+          getLocation()
+          Toast.makeText(requireContext(), "Location permission Granted!!", Toast.LENGTH_SHORT).show()
+        } else {
+          // Handle the case where the user denies the location permission
+          Toast.makeText(requireContext(), "Location permission denied", Toast.LENGTH_SHORT).show()
+        }
       }
+      CAMERA_PERMISSION_REQUEST_CODE -> {
+        if (permissions.contains(Manifest.permission.CAMERA) &&
+          grantResults.isNotEmpty() && grantResults[permissions.indexOf(Manifest.permission.CAMERA)] == PackageManager.PERMISSION_GRANTED
+        ) {
+          // Camera permission granted
+          // You can perform your camera related tasks here
+          Toast.makeText(requireContext(), "Camera permission Granted!!", Toast.LENGTH_SHORT).show()
+        } else {
+          // Camera permission denied
+          Toast.makeText(requireContext(), "Camera permission denied", Toast.LENGTH_SHORT).show()
+        }
+      }
+      // Add more cases for other permissions if needed
     }
   }
+
 
 
   private fun startAutoScroll() {
