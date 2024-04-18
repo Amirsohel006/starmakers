@@ -1,5 +1,6 @@
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.net.ConnectivityManager
 import android.net.Uri
@@ -28,6 +29,7 @@ import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.starmakers.app.R
+import com.starmakers.app.modules.videoplayeractivity.VideoPlayerActivity
 import com.starmakers.app.responses.FundingDemoVideos
 
 class VideoAdapter(
@@ -64,12 +66,16 @@ class VideoAdapter(
         private val orientationIcon: ImageView = itemView.findViewById(R.id.orientationIcon)
         private val playerContainer: FrameLayout = itemView.findViewById(R.id.playerContainer)
 
+
         init {
             // Initialize ExoPlayer in the constructor
             val bandwidthMeter: BandwidthMeter = DefaultBandwidthMeter()
             val trackSelector: TrackSelector =
                 DefaultTrackSelector(AdaptiveTrackSelection.Factory(bandwidthMeter))
             exoPlayer = ExoPlayerFactory.newSimpleInstance(itemView.context, trackSelector)
+
+
+
         }
 
         fun bindView(postModel: FundingDemoVideos) {
@@ -112,8 +118,10 @@ class VideoAdapter(
                 }
             }
 
-            orientationIcon.setOnClickListener {
-
+             orientationIcon.setOnClickListener {
+                val intent = Intent(activity, VideoPlayerActivity::class.java)
+                intent.putExtra("videoUrl", postModel.video)
+                activity.startActivity(intent)
             }
         }
 

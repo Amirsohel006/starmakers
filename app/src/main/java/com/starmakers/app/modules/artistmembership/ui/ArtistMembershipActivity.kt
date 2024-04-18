@@ -447,7 +447,7 @@ class ArtistMembershipActivity :
     }
     fileProfilePic4?.let { file ->
       val requestFile: RequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), file)
-      val imagePart: MultipartBody.Part = MultipartBody.Part.createFormData("artist_pictures", file.name, requestFile)
+        val imagePart: MultipartBody.Part = MultipartBody.Part.createFormData("artist_pictures", file.name, requestFile)
       imageParts.add(imagePart)
     }
 
@@ -528,6 +528,7 @@ class ArtistMembershipActivity :
                 val jsonObject = JSONObject(errorBody)
                 val errorMessage = jsonObject.getString("error")
                 Toast.makeText(this@ArtistMembershipActivity, errorMessage, Toast.LENGTH_SHORT).show()
+
               } catch (e: JSONException) {
                 Toast.makeText(this@ArtistMembershipActivity, "User is Already Member!!", Toast.LENGTH_SHORT).show()
               }

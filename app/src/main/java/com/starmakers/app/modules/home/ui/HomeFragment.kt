@@ -66,9 +66,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
   private lateinit var autoScrollHandler: Handler
   private lateinit var autoScrollRunnable: Runnable
 
-
-
-
   private val CAMERA_PERMISSION_REQUEST_CODE = 101
 
   private val PERMISSION_REQUEST_CODE=102
