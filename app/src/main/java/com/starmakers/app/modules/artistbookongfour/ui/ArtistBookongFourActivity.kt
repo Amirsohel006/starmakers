@@ -139,15 +139,18 @@ class ArtistBookongFourActivity :
 
 
 
-              val isBooked = profileData.data.isBooked
+              val isBooked = profileData.data.bookingstatus
 
               val bookButton = binding.btnBooked
 
-              if (isBooked==true) {
-                bookButton.text = "Booked"
+              if (isBooked == "pending") {
+                bookButton.text = "Pending";
+              } else if (isBooked == "accepted") {
+                bookButton.text = "Accepted";
               } else {
-                bookButton.text = "Available to book"
+                bookButton.text = "Available to book";
               }
+
 
               artistId=profileData.data.id!!
 

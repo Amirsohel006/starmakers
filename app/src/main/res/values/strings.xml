@@ -58,7 +58,7 @@
     <string name="msg_house_location">House\nLocation</string>
     <string name="msg_below_the_budge">Below the budget amount</string>
     <string name="lbl_city">City</string>
-    <string name="msg_please_enter_th">Please enter the 5 digit OTP Sent to</string>
+    <string name="msg_please_enter_th">Please enter the 6 digit OTP Sent to</string>
     <string name="lbl_complete">Complete</string>
     <string name="lbl_age">Age</string>
     <string name="lbl_sudeep">Sudeep</string>
