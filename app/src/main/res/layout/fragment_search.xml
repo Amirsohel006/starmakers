@@ -46,11 +46,24 @@
                     style="@style/btnRoundedOutline" />
             </FrameLayout>
 
-            <ImageView
-                android:id="@+id/searchguide"
-                android:src="@drawable/search_guider"
+            <!-- Container for recent searches -->
+
+            <TextView
+                android:id="@+id/recentSearch"
+                android:text="Recent Search"
+                style="@style/txtNunitomedium20"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_290pxh"/>
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:id="@+id/linearRecentSearches"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical"
+                android:layout_margin="10dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerforSearch"

@@ -106,7 +106,7 @@ class SignUoActivity : BaseActivity<ActivitySignUoBinding>(R.layout.activity_sig
           binding.progressBar.visibility=View.GONE
           val loginResponse = response.body()
           if (loginResponse != null) {
-            Toast.makeText(this@SignUoActivity, "Otp Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@SignUoActivity, "Otp Resend Successfully", Toast.LENGTH_LONG).show()
           } else {
             Toast.makeText(this@SignUoActivity, "Login failed", Toast.LENGTH_SHORT).show()
             binding.progressBar.visibility=View.GONE
@@ -169,16 +169,21 @@ class SignUoActivity : BaseActivity<ActivitySignUoBinding>(R.layout.activity_sig
             Toast.makeText(this@SignUoActivity, "OTP Verified Successfully", Toast.LENGTH_SHORT).show()
             navigateToNextPage()
           } else {
-            Toast.makeText(this@SignUoActivity, "Login failed", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@SignUoActivity, "SignUP failed", Toast.LENGTH_SHORT).show()
             binding.progressBar.visibility=View.GONE
           }
+        }else if (response.code() == 400) {
+          // Handle invalid OTP case
+          Toast.makeText(this@SignUoActivity, "Invalid OTP", Toast.LENGTH_SHORT).show()
+          binding.progressBar.visibility = View.GONE
         } else {
-          Toast.makeText(this@SignUoActivity, "Login failed", Toast.LENGTH_SHORT).show()
-          binding.progressBar.visibility=View.GONE
+          Toast.makeText(this@SignUoActivity, "SignUP failed", Toast.LENGTH_SHORT).show()
+          binding.progressBar.visibility = View.GONE
         }
+
       }
       override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-        Toast.makeText(this@SignUoActivity, "Login failed: ${t.message}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@SignUoActivity, "SignUP failed: ${t.message}", Toast.LENGTH_SHORT).show()
         binding.progressBar.visibility=View.GONE
       }
     })

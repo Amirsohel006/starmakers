@@ -75,7 +75,7 @@ class SignUoFourActivity : BaseActivity<ActivitySignUoFourBinding>(R.layout.acti
     call.enqueue(object : Callback<LoginResponse> {
       override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
         if (response.isSuccessful) {
-          binding.progressBar.visibility=View.GONE
+          binding.progressBar.visibility = View.GONE
           val loginResponse = response.body()
           if (loginResponse != null) {
             //Toast.makeText(this@SignUoFourActivity, "Otp Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
@@ -83,11 +83,19 @@ class SignUoFourActivity : BaseActivity<ActivitySignUoFourBinding>(R.layout.acti
             finish()
           } else {
             Toast.makeText(this@SignUoFourActivity, "Login failed", Toast.LENGTH_SHORT).show()
-            binding.progressBar.visibility=View.GONE
+            binding.progressBar.visibility = View.GONE
           }
+        } else if (response.code() == 401) {
+          // Handle invalid OTP case
+          Toast.makeText(
+            this@SignUoFourActivity,
+            "User is Already Registered, Please LogIN!",
+            Toast.LENGTH_SHORT
+          ).show()
+          binding.progressBar.visibility = View.GONE
         } else {
           Toast.makeText(this@SignUoFourActivity, "Login failed", Toast.LENGTH_SHORT).show()
-          binding.progressBar.visibility=View.GONE
+          binding.progressBar.visibility = View.GONE
         }
       }
       override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
