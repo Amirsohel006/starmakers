@@ -122,6 +122,13 @@ class SignUoOneActivity : BaseActivity<ActivitySignUoOneBinding>(R.layout.activi
       val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
       startActivityForResult(gallery, pickImage)
     }
+
+    binding.txtTermAndCondition.setOnClickListener {
+      val url = "https://starmakerzz.in/terms-conditions/"
+      val intent = Intent(Intent.ACTION_VIEW)
+      intent.data = Uri.parse(url)
+      startActivity(intent)
+    }
   }
 
 

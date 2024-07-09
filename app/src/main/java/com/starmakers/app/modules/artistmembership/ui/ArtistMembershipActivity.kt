@@ -265,6 +265,15 @@ class ArtistMembershipActivity :
     binding.imageArrowleft.setOnClickListener {
       finish()
     }
+
+
+      binding.txtTermAndCondition.setOnClickListener {
+        val url = "https://starmakerzz.in/terms-conditions/"
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(url)
+        startActivity(intent)
+      }
+
   }
 
   private fun selectFile() {

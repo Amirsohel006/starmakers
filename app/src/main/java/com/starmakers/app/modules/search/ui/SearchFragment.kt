@@ -1,12 +1,14 @@
 package com.starmakers.app.modules.search.ui
 
 import android.app.appsearch.SearchResult
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,13 +37,17 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
   private val viewModel: SearchVM by viewModels<SearchVM>()
 
   private lateinit var sessionManager:SessionManager
+  private val recentSearches = mutableListOf<String>()
   override fun onInitialized(): Unit {
     viewModel.navArguments = arguments
     sessionManager=SessionManager(requireActivity())
 
 
+    loadRecentSearches() // Load recent searches from SharedPreferences
 
     setupRecyclerView()
+
+    setupRecentSearches()
     // Set up a text change listener on the EditText
     binding.btnSearchHere.addTextChangedListener(object : TextWatcher {
       override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -55,7 +61,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
       override fun afterTextChanged(s: Editable?) {
         // Perform search when text changes
         performSearch(s.toString().trim())
-        binding.searchguide.visibility= View.GONE
+        //binding.searchguide.visibility= View.GONE
+        binding.recentSearch.visibility=View.GONE
       }
     })
 
@@ -103,6 +110,16 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
   private fun performSearch(query: String) {
     if (query.isNotEmpty()) {
+      if (recentSearches.contains(query)) {
+        recentSearches.remove(query) // Remove the query if it already exists to avoid duplicates
+      }
+      recentSearches.add(0, query) // Add the search query to the top of recent searches
+      if (recentSearches.size > 10) {
+        recentSearches.subList(10, recentSearches.size).clear() // Keep only the latest 10 searches
+      }
+
+      saveRecentSearches() // Save recent searches to SharedPreferences
+      updateRecentSearches() // Update the UI with the recent searches
 
       val apiService= ApiManager.apiInterface
       apiService.search(query).enqueue(object : Callback<SearchResponses> {
@@ -127,6 +144,52 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         }
       })
     }
+  }
+
+
+  private fun setupRecentSearches() {
+    // Initialize the recent searches view
+    updateRecentSearches()
+  }
+
+
+  private fun updateRecentSearches() {
+    val recentSearchesContainer = binding.linearRecentSearches
+    recentSearchesContainer.removeAllViews()
+
+    val searchesToShow = if (recentSearches.isEmpty()) {
+      listOf("Shah Rukh Khan", "Ramoji Film City") // Default suggestions
+    } else {
+      recentSearches
+    }
+
+    for (search in searchesToShow) {
+      val textView = TextView(requireContext()).apply {
+        text = search
+        textSize = 16f
+        setPadding(16, 16, 16, 16)
+      }
+      textView.setOnClickListener {
+        binding.btnSearchHere.setText(search)
+        performSearch(search)
+      }
+      recentSearchesContainer.addView(textView)
+    }
+  }
+
+  private fun saveRecentSearches() {
+    val sharedPreferences = requireActivity().getSharedPreferences("recent_searches", Context.MODE_PRIVATE)
+    with(sharedPreferences.edit()) {
+      putStringSet("recent_searches", recentSearches.toSet())
+      apply()
+    }
+  }
+
+  private fun loadRecentSearches() {
+    val sharedPreferences = requireActivity().getSharedPreferences("recent_searches", Context.MODE_PRIVATE)
+    val savedSearches = sharedPreferences.getStringSet("recent_searches", emptySet())
+    recentSearches.clear()
+    recentSearches.addAll(savedSearches ?: emptySet())
   }
 
 
