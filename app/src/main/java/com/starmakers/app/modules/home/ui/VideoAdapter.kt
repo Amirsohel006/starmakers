@@ -40,8 +40,6 @@ class VideoAdapter(
     private var exoPlayer: SimpleExoPlayer? = null
 
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RowListrectanglenineteenVH {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.row_video_funding_demo, parent, false)
@@ -73,6 +71,11 @@ class VideoAdapter(
             val trackSelector: TrackSelector =
                 DefaultTrackSelector(AdaptiveTrackSelection.Factory(bandwidthMeter))
             exoPlayer = ExoPlayerFactory.newSimpleInstance(itemView.context, trackSelector)
+
+            exoplayerView.setControllerVisibilityListener {
+                val playButton = exoplayerView.findViewById<ImageView>(R.id.exo_play)
+                playButton?.visibility = if (it == View.VISIBLE) View.VISIBLE else View.GONE
+            }
 
 
 
@@ -119,9 +122,9 @@ class VideoAdapter(
             }
 
              orientationIcon.setOnClickListener {
-                val intent = Intent(activity, VideoPlayerActivity::class.java)
+                val intent = Intent(itemView.context, VideoPlayerActivity::class.java)
                 intent.putExtra("videoUrl", postModel.video)
-                activity.startActivity(intent)
+                itemView.context.startActivity(intent)
             }
         }
 

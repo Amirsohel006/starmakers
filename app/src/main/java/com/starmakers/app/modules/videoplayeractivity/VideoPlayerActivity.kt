@@ -38,6 +38,8 @@ class VideoPlayerActivity : AppCompatActivity() {
 
         playerView = findViewById(R.id.playerView)
 
+
+
         window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
     }
 
@@ -68,6 +70,12 @@ class VideoPlayerActivity : AppCompatActivity() {
             val mediaSource = ExtractorMediaSource(videoUri, dataSourceFactory, extractorsFactory, null, null)
             exoPlayer?.prepare(mediaSource)
             exoPlayer?.playWhenReady = true
+
+
+            playerView.useController=true
+            playerView.setControllerVisibilityListener { visibility ->
+                playerView.showController()
+            }
         }
     }
     private fun releasePlayer() {

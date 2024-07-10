@@ -8,7 +8,9 @@ import android.provider.OpenableColumns
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
@@ -19,6 +21,7 @@ import com.starmakers.app.modules.artistmembership.`data`.model.SpinnerComponent
 import com.starmakers.app.modules.artistmembership.`data`.model.SpinnerComponentSevenModel
 import com.starmakers.app.modules.artistmembership.`data`.viewmodel.ArtistMembershipVM
 import com.starmakers.app.modules.regstrationdetails.ui.RegstrationDetailsActivity
+import com.starmakers.app.responses.CategoryItem
 import com.starmakers.app.responses.ProfileResponse
 import com.starmakers.app.service.ApiManager
 import com.starmakers.app.service.SessionManager
@@ -112,42 +115,45 @@ class ArtistMembershipActivity :
     SpinnerComponentSevenAdapter(this,R.layout.spinner_item,viewModel.spinnerComponentSevenList.value?:
     mutableListOf())
     binding.spinnerComponentSeven.adapter = spinnerComponentSevenAdapter
-    viewModel.spinnerComponentOneList.value = mutableListOf(
-      SpinnerComponentOneModel("Select Category"),
-    SpinnerComponentOneModel("Actor"),
-    SpinnerComponentOneModel("Actress"),
-    SpinnerComponentOneModel("Director"),
-    SpinnerComponentOneModel("Assistant Director"),
-      SpinnerComponentOneModel("Associate Director"),
-      SpinnerComponentOneModel("Cameraman"),
-      SpinnerComponentOneModel("Story Writer"),
-      SpinnerComponentOneModel("Dialogue Writer"),
-      SpinnerComponentOneModel("Singer"),
-      SpinnerComponentOneModel("Supporting Singer"),
-      SpinnerComponentOneModel("Fight Master"),
-      SpinnerComponentOneModel("Dance Master"),
-      SpinnerComponentOneModel("Dancer"),
-      SpinnerComponentOneModel("Fighter"),
-      SpinnerComponentOneModel("Still Photographer"),
-      SpinnerComponentOneModel("Makeup Man"),
-      SpinnerComponentOneModel("Hair Stylist"),
-      SpinnerComponentOneModel("Costume Designer"),
-      SpinnerComponentOneModel("Dubbing Artist"),
-      SpinnerComponentOneModel("Artist Personal Assistant"),
-      SpinnerComponentOneModel("Artist Personal Body Guard"),
-      SpinnerComponentOneModel("Artist Personal Manager"),
-      SpinnerComponentOneModel("Production Manager"),
-      SpinnerComponentOneModel("Spot Boy"),
-      SpinnerComponentOneModel("Set Artist/Worker")
-    )
+//    viewModel.spinnerComponentOneList.value = mutableListOf(
+//      SpinnerComponentOneModel("Select Category"),
+//    SpinnerComponentOneModel("Actor"),
+//    SpinnerComponentOneModel("Actress"),
+//    SpinnerComponentOneModel("Director"),
+//    SpinnerComponentOneModel("Assistant Director"),
+//      SpinnerComponentOneModel("Associate Director"),
+//      SpinnerComponentOneModel("Cameraman"),
+//      SpinnerComponentOneModel("Story Writer"),
+//      SpinnerComponentOneModel("Dialogue Writer"),
+//      SpinnerComponentOneModel("Singer"),
+//      SpinnerComponentOneModel("Supporting Singer"),
+//      SpinnerComponentOneModel("Fight Master"),
+//      SpinnerComponentOneModel("Dance Master"),
+//      SpinnerComponentOneModel("Dancer"),
+//      SpinnerComponentOneModel("Fighter"),
+//      SpinnerComponentOneModel("Still Photographer"),
+//      SpinnerComponentOneModel("Makeup Man"),
+//      SpinnerComponentOneModel("Hair Stylist"),
+//      SpinnerComponentOneModel("Costume Designer"),
+//      SpinnerComponentOneModel("Dubbing Artist"),
+//      SpinnerComponentOneModel("Artist Personal Assistant"),
+//      SpinnerComponentOneModel("Artist Personal Body Guard"),
+//      SpinnerComponentOneModel("Artist Personal Manager"),
+//      SpinnerComponentOneModel("Production Manager"),
+//      SpinnerComponentOneModel("Spot Boy"),
+//      SpinnerComponentOneModel("Set Artist/Worker")
+//    )
 
 
-    val spinnerComponentOneAdapter =
-    SpinnerComponentOneAdapter(this,R.layout.spinner_item,viewModel.spinnerComponentOneList.value?:
-    mutableListOf())
-    binding.spinnerComponentOne.adapter = spinnerComponentOneAdapter
+
+
+//    val spinnerComponentOneAdapter =
+//    SpinnerComponentOneAdapter(this,R.layout.spinner_item,viewModel.spinnerComponentOneList.value?:
+//    mutableListOf())
+//    binding.spinnerComponentOne.adapter = spinnerComponentOneAdapter
     binding.artistMembershipVM = viewModel
 
+    getCategory()
 
     binding.spinnerComponentSeven.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
       override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -162,18 +168,18 @@ class ArtistMembershipActivity :
       }
     }
 
-    binding.spinnerComponentOne.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-      override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        val selectedModel = viewModel.spinnerComponentOneList.value?.get(position)
-        selectedModel?.let {
-          selectCategory = selectedModel.itemName
-        }
-      }
-
-      override fun onNothingSelected(parent: AdapterView<*>?) {
-        // Handle nothing selected if needed
-      }
-    }
+//    binding.spinnerComponentOne.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//      override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+//        val selectedModel = viewModel.spinnerComponentOneList.value?.get(position)
+//        selectedModel?.let {
+//          selectCategory = selectedModel.itemName
+//        }
+//      }
+//
+//      override fun onNothingSelected(parent: AdapterView<*>?) {
+//        // Handle nothing selected if needed
+//      }
+//    }
 
 
 
@@ -471,6 +477,8 @@ class ArtistMembershipActivity :
         }
       }
 
+   // Toast.makeText(this,selectCategory.toString(),Toast.LENGTH_LONG).show()
+
     val map: MutableMap<String, RequestBody> = mutableMapOf()
     val artistName = createPartFromString(artistName)
     val phoneNumber = createPartFromString(mobileNumber)
@@ -494,6 +502,7 @@ class ArtistMembershipActivity :
     map.put("total_experience",experience)
     map.put("select_category",selectCategory)
 
+    Log.d("Category_Sended",selectCategory.toString())
 
 
 
@@ -535,7 +544,7 @@ class ArtistMembershipActivity :
             if (!errorBody.isNullOrEmpty()) {
               try {
                 val jsonObject = JSONObject(errorBody)
-                val errorMessage = jsonObject.getString("error")
+                val errorMessage = jsonObject.getString("message")
                 Toast.makeText(this@ArtistMembershipActivity, errorMessage, Toast.LENGTH_SHORT).show()
 
               } catch (e: JSONException) {
@@ -557,6 +566,64 @@ class ArtistMembershipActivity :
     })
   }
 
+
+
+
+  fun getCategory(){
+    val serviceGenerator= ApiManager.apiInterface
+    val accessToken=sessionManager.fetchAuthToken()
+    val authorization="Token $accessToken"
+    val call=serviceGenerator.getCategory(authorization)
+    call.enqueue(object : retrofit2.Callback<MutableList<CategoryItem>> {
+      override fun onResponse(
+        call: Call<MutableList<CategoryItem>>,
+        response: Response<MutableList<CategoryItem>>
+      ) {
+        if(response.isSuccessful){
+          val categoryItems = response.body()
+
+          val spinnerItems = categoryItems?.map { it.category_name }?.toMutableList()
+          spinnerItems!!.add(0, "Select Category")
+          val spinner = findViewById<Spinner>(R.id.spinnerComponentOne)
+
+          val adapter = ArrayAdapter<String>(
+            this@ArtistMembershipActivity, // Replace with your actual activity reference
+            android.R.layout.simple_spinner_item,
+            spinnerItems
+          )
+
+
+          adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+          spinner.adapter = adapter
+
+          spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+              parent: AdapterView<*>?,
+              view: View?,
+              position: Int,
+              id: Long
+            ) {
+              // Handle item selection here if needed
+              selectCategory= spinnerItems[position]
+              // Do something with the selected value
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+              // Handle case when nothing is selected
+            }
+          }
+
+
+          //viewModel.spinnerComponentOneList.value(categoryItems)
+        }
+
+
+      }
+
+      override fun onFailure(call: Call<MutableList<CategoryItem>>, t: Throwable) {
+      }
+    })
+  }
 
 
   fun createPartFromString(stringData: String): RequestBody {
