@@ -3,6 +3,8 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
@@ -16,17 +18,21 @@ import com.starmakers.app.modules.financialoverview.ui.FinancialOverviewFragment
 import com.starmakers.app.modules.home.ui.HomeFragment
 import com.starmakers.app.modules.homecontainer.`data`.viewmodel.HomeContainerVM
 import com.starmakers.app.modules.search.ui.SearchFragment
+import com.starmakers.app.service.ConnectivityReceiver
 import kotlin.String
 import kotlin.Unit
 
 class HomeContainerActivity :
-    BaseActivity<ActivityHomeContainerBinding>(R.layout.activity_home_container) {
+    BaseActivity<ActivityHomeContainerBinding>(R.layout.activity_home_container), ConnectivityReceiver.ConnectivityListener {
   private val viewModel: HomeContainerVM by viewModels<HomeContainerVM>()
 
+  private lateinit var connectivityReceiver: ConnectivityReceiver
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     binding.homeContainerVM = viewModel
+    connectivityReceiver = ConnectivityReceiver(this)
    replaceFragment(HomeFragment())
+
     window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
   }
 
@@ -54,6 +60,21 @@ class HomeContainerActivity :
     }
   }
 
+
+  override fun onResume() {
+    super.onResume()
+    registerReceiver(connectivityReceiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
+  }
+
+  override fun onPause() {
+    super.onPause()
+    unregisterReceiver(connectivityReceiver)
+  }
+  override fun onNetworkConnectionChanged(isConnected: Boolean) {
+    if (!isConnected) {
+      showNoInternetDialog()
+    }
+  }
 
 
 
@@ -137,6 +158,14 @@ class HomeContainerActivity :
       }
     }
     // }
+  }
+
+
+  private fun showNoInternetDialog() {
+    AlertDialog.Builder(this)
+      .setMessage("Internet connection is not available. Please check your connection.")
+      .setPositiveButton("OK", null)
+      .show()
   }
 
   companion object {

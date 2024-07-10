@@ -42,6 +42,7 @@ class ArtistBookongFiveActivity :
 
 
     getCategory()
+
     viewModel.spinnerComponentEightList.value = mutableListOf(
     SpinnerComponentEightModel("Choose Acting Field"),
     SpinnerComponentEightModel("Movies"),
@@ -178,7 +179,7 @@ class ArtistBookongFiveActivity :
           val categoryItems = response.body()
 
           val spinnerItems = categoryItems?.map { it.category_name }?.toMutableList()
-          spinnerItems!!.add(0, "Applying for this role")
+          spinnerItems!!.add(0, "Book for this role")
           val spinner = findViewById<Spinner>(R.id.spinnerComponentOne)
 
           val adapter = ArrayAdapter<String>(

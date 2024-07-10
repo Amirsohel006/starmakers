@@ -159,7 +159,7 @@ class ProfileUpdate : AppCompatActivity() {
                         profile_picture = customerResponse.data.profile
                     }
 
-                    profile_picture=customerResponse.data.profile
+                   // profile_picture=customerResponse.data.profile
                 }
             }
 
