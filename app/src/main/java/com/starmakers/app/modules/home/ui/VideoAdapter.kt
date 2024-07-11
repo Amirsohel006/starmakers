@@ -37,7 +37,7 @@ class VideoAdapter(
     private var list: List<FundingDemoVideos>
 ) : RecyclerView.Adapter<VideoAdapter.RowListrectanglenineteenVH>() {
 
-    private var exoPlayer: SimpleExoPlayer? = null
+    private lateinit var exoPlayer: SimpleExoPlayer
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RowListrectanglenineteenVH {
@@ -59,11 +59,29 @@ class VideoAdapter(
         notifyDataSetChanged()
     }
 
-    inner class RowListrectanglenineteenVH(view: View, private val activity: Activity) : RecyclerView.ViewHolder(view) {
+    inner class   RowListrectanglenineteenVH(view: View, private val activity: Activity) : RecyclerView.ViewHolder(view) {
         private val exoplayerView: SimpleExoPlayerView = itemView.findViewById(R.id.playerView)
         private val orientationIcon: ImageView = itemView.findViewById(R.id.orientationIcon)
-        private val playerContainer: FrameLayout = itemView.findViewById(R.id.playerContainer)
+       // private val playerContainer: FrameLayout = itemView.findViewById(R.id.playerContainer)
 
+
+//        init {
+//            // Initialize ExoPlayer in the constructor
+//            val bandwidthMeter: BandwidthMeter = DefaultBandwidthMeter()
+//            val trackSelector: TrackSelector =
+//                DefaultTrackSelector(AdaptiveTrackSelection.Factory(bandwidthMeter))
+//            exoPlayer = ExoPlayerFactory.newSimpleInstance(activity, trackSelector)
+//
+//
+//            exoplayerView.setControllerVisibilityListener {
+////                val playButton = exoplayerView.findViewById<ImageView>(R.id.exo_play)
+////                playButton?.visibility = if (it == View.VISIBLE) View.VISIBLE else View.GONE
+//                exoplayerView.useController=true
+//            }
+//
+//
+//
+//        }
 
         init {
             // Initialize ExoPlayer in the constructor
@@ -71,14 +89,6 @@ class VideoAdapter(
             val trackSelector: TrackSelector =
                 DefaultTrackSelector(AdaptiveTrackSelection.Factory(bandwidthMeter))
             exoPlayer = ExoPlayerFactory.newSimpleInstance(itemView.context, trackSelector)
-
-            exoplayerView.setControllerVisibilityListener {
-                val playButton = exoplayerView.findViewById<ImageView>(R.id.exo_play)
-                playButton?.visibility = if (it == View.VISIBLE) View.VISIBLE else View.GONE
-            }
-
-
-
         }
 
         fun bindView(postModel: FundingDemoVideos) {
@@ -116,13 +126,13 @@ class VideoAdapter(
                         )
 
                     exoplayerView.player = exoPlayer
-                    exoPlayer?.prepare(mediaSourse)
-                    exoPlayer?.playWhenReady = false
+                    exoPlayer.prepare(mediaSourse)
+                    exoPlayer.playWhenReady = false
                 }
             }
 
              orientationIcon.setOnClickListener {
-                val intent = Intent(itemView.context, VideoPlayerActivity::class.java)
+                val intent = Intent(activity, VideoPlayerActivity::class.java)
                 intent.putExtra("videoUrl", postModel.video)
                 itemView.context.startActivity(intent)
             }
@@ -132,7 +142,7 @@ class VideoAdapter(
 
         init {
             exoplayerView.setOnClickListener {
-                exoPlayer?.playWhenReady = true
+                exoPlayer.playWhenReady = true
             }
         }
 

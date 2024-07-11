@@ -23,6 +23,9 @@
         android:theme="@style/Theme.MyApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".modules.finalauditiondescription.FinalAuditionDescription"
+            android:exported="false" />
+        <activity
             android:name=".modules.videoplayeractivity.VideoPlayerActivity"
             android:exported="false" />
         <activity

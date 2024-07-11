@@ -14,6 +14,7 @@ import com.starmakers.app.modules.frame316.ui.Frame316Activity
 import com.starmakers.app.modules.studiobookong.`data`.model.StudioBookongRowModel
 import com.starmakers.app.modules.studiobookong.`data`.viewmodel.StudioBookongVM
 import com.starmakers.app.modules.studiobookong1.ui.StudioBookong1Activity
+import com.starmakers.app.responses.EditingStudio
 import com.starmakers.app.responses.EditingStudioData
 import com.starmakers.app.responses.StudioRequest
 import com.starmakers.app.service.ApiManager
@@ -30,6 +31,9 @@ class StudioBookongFragment :
   private val viewModel: StudioBookongVM by viewModels<StudioBookongVM>()
 
   private lateinit var sessionManager: SessionManager
+
+  private lateinit var studioBookongAdapter: StudioBookongAdapter
+  private var fullStudioList: List<EditingStudio> = listOf()
   override fun onInitialized(): Unit {
     viewModel.navArguments = arguments
     sessionManager = SessionManager(requireActivity())
@@ -94,11 +98,13 @@ class StudioBookongFragment :
 
           if((customerResponse!=null)   && (customerResponse.message=="Success")) {
             val editingData=response.body()
-            binding.recyclerStudioBookong.apply {
-              layoutManager=
-                LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL,false)
-              val audtioAdapter= StudioBookongAdapter(editingData!!.data)
-              binding.recyclerStudioBookong.adapter=audtioAdapter
+            if (editingData != null) {
+              fullStudioList = editingData.data
+              studioBookongAdapter = StudioBookongAdapter(fullStudioList)
+              binding.recyclerStudioBookong.apply {
+                layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
+                adapter = studioBookongAdapter
+              }
             }
 
           }
@@ -118,19 +124,24 @@ class StudioBookongFragment :
 
   private fun setUpSearchViewGroup547Listener(): Unit {
     binding.searchViewGroup547.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-      override fun onQueryTextSubmit(p0 : String) : Boolean {
-        // Performs search when user hit
-        // the search button on the keyboard
+      override fun onQueryTextSubmit(query : String) : Boolean {
+        filterStudioList(query)
         return false
       }
-      override fun onQueryTextChange(p0 : String) : Boolean {
-        // Start filtering the list as user
-        // start entering the characters
+      override fun onQueryTextChange(newText : String) : Boolean {
+        filterStudioList(newText)
         return false
       }
       })
     }
 
+
+  private fun filterStudioList(query: String) {
+    val filteredList = fullStudioList.filter {
+      it.studio_name.contains(query, ignoreCase = true)
+    }
+    studioBookongAdapter.updateData(filteredList)
+  }
     companion object {
       const val TAG: String = "STUDIO_BOOKONG_FRAGMENT"
 

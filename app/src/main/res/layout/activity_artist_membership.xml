@@ -130,7 +130,7 @@
                         <EditText
                             android:background="@drawable/rectangle_border_gray_500_radius_10"
                             android:ellipsize="end"
-                            android:hint="@string/lbl_height"
+                            android:hint="Heigth in cm"
                             android:id="@+id/etGroup151"
                             android:inputType="number"
                             android:layout_height="wrap_content"
@@ -145,11 +145,12 @@
                             android:singleLine="true"
                             android:text="@={artistMembershipVM.artistMembershipModel.etGroup151Value}"
                             android:textColorHint="@color/gray_802"
-                            style="@style/etRoundedOutline_1" tools:ignore="Autofill"/>
+                            style="@style/etRoundedOutline_1"
+                            tools:ignore="Autofill"/>
                         <EditText
                             android:background="@drawable/rectangle_border_gray_500_radius_10"
                             android:ellipsize="end"
-                            android:hint="@string/lbl_weight"
+                            android:hint="Weight in kg"
                             android:id="@+id/etGroup152"
                             android:inputType="number"
                             android:layout_height="wrap_content"

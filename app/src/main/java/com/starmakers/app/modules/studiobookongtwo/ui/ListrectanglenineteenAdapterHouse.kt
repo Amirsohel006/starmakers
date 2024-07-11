@@ -13,6 +13,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.squareup.picasso.Picasso
 import com.starmakers.app.R
+import com.starmakers.app.modules.auditionstwo.ui.AuditionsTwoActivity
 import com.starmakers.app.modules.frame316.ui.Frame316Activity
 import com.starmakers.app.modules.studiobookongtwo.`data`.model.Listrectanglenineteen1RowModel
 import com.starmakers.app.responses.HouseLocationStudio
@@ -71,6 +72,8 @@ class ListrectanglenineteenAdapterHouse(
     val requestButton: AppCompatButton =itemView.findViewById(R.id.btnRequest)
     var requestid=-1
 
+    val aboutImage:ImageView=itemView.findViewById(R.id.imageInfo)
+
     // Define the corner radius in pixels (converted from dp)
     val cornerRadiusInPixels = 15 // Change to your dimension resource
 
@@ -103,6 +106,13 @@ class ListrectanglenineteenAdapterHouse(
         val context = itemView.context
         val intent = Intent(context, Frame316Activity::class.java)
         intent.putExtra("requestId", requestid) // Pass the id to the new activity
+        context.startActivity(intent)
+      }
+
+      aboutImage.setOnClickListener {
+        val context = itemView.context
+        val intent = Intent(context, AuditionsTwoActivity::class.java)
+        intent.putExtra("studioId", postModel.id) // Pass the id to the new activity
         context.startActivity(intent)
       }
     }
