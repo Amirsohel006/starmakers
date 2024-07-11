@@ -26,6 +26,10 @@ import com.starmakers.app.responses.RequestAudition
 import com.starmakers.app.service.ApiManager
 import com.starmakers.app.service.CircleTransformation
 import com.starmakers.app.service.SessionManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -36,6 +40,8 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
+import java.net.HttpURLConnection
+import java.net.URL
 
 class ProfileUpdate : AppCompatActivity() {
     private lateinit var sessionManager: SessionManager
@@ -54,6 +60,8 @@ class ProfileUpdate : AppCompatActivity() {
     private lateinit var nimage: ImageView
     private lateinit var updatedimagefile: File
 
+
+    private var profilePictureUrl: String = ""
 
     var multipartImage: MultipartBody.Part? = null
     @SuppressLint("CutPasteId")
@@ -129,37 +137,23 @@ class ProfileUpdate : AppCompatActivity() {
                 nimage=findViewById(R.id.imageEllipseSeven)
 
 
-                if(customerResponse!=null){
-                    newName.setText(customerResponse.data.artist_name)
-                   newMobileNumber.text=customerResponse.data.mobile_number
-                    newEmail.text=customerResponse.data.email
-                    newHeight.setText(customerResponse.data.height)
-                    newWeight.setText(customerResponse.data.weight)
-                    newLocation.setText(customerResponse.data.city)
-                    if(customerResponse != null) {
-                        newName.setText(customerResponse.data.artist_name)
-                        newMobileNumber.text = customerResponse.data.mobile_number
-                        newEmail.text = customerResponse.data.email
-                        newHeight.setText(customerResponse.data.height)
-                        newWeight.setText(customerResponse.data.weight)
-                        newLocation.setText(customerResponse.data.city)
+                customerResponse?.data?.let {
+                    newName.setText(it.artist_name)
+                    newMobileNumber.text = it.mobile_number
+                    newEmail.text = it.email
+                    newHeight.setText(it.height)
+                    newWeight.setText(it.weight)
+                    newLocation.setText(it.city)
 
+                    profilePictureUrl = it.artist_pictures.get(0).artist_picture ?: it.profile ?: ""
 
-                        if (!customerResponse.data.artist_pictures.isNullOrEmpty()){
-
-                            val imageProf=customerResponse.data.artist_pictures[0].artist_picture?:""
-                            Picasso.get().load(imageProf).placeholder(R.drawable.rounded_profile_image).transform(CircleTransformation()).into(profileImage)
-                        }else{
-                            val imageProf=customerResponse.data.profile?:""
-                            Picasso.get().load(imageProf).placeholder(R.drawable.rounded_profile_image).transform(CircleTransformation()).into(profileImage)
-                        }
-
-
-                        // Set the profile picture variable
-                        profile_picture = customerResponse.data.profile
+                    if (profilePictureUrl.isNotEmpty()) {
+                        Picasso.get()
+                            .load(profilePictureUrl)
+                            .placeholder(R.drawable.rounded_profile_image)
+                            .transform(CircleTransformation())
+                            .into(profileImage)
                     }
-
-                   // profile_picture=customerResponse.data.profile
                 }
             }
 
@@ -178,7 +172,7 @@ class ProfileUpdate : AppCompatActivity() {
         val weight=createPartFromString(weight)
         val location=createPartFromString(location)
 
-        updatedimagefile=getFile(this,imageUri)
+        //updatedimagefile=getFile(this,imageUri)
 
         map.put("name",name)
         map.put("height",height)
@@ -186,25 +180,41 @@ class ProfileUpdate : AppCompatActivity() {
         map.put("city",location)
 
 
-        val requestFile: RequestBody = RequestBody.create(
-            "image/jpg".toMediaType(),
-            updatedimagefile)
-        multipartImage =
-            MultipartBody.Part.createFormData("profile_picture", updatedimagefile.getName(), requestFile)
 
-        val serviceGenerator = ApiManager.apiInterface
-        val accessToken = sessionManager.fetchAuthToken()
-        val authorization = "Token $accessToken"
-        val call = serviceGenerator.profileUpdate(authorization,map,multipartImage!!)
-        call.enqueue(object : retrofit2.Callback<ProfileResponse> {
+        CoroutineScope(Dispatchers.Main).launch {
 
-            override fun onResponse(
-                call: Call<ProfileResponse>,
-                response: Response<ProfileResponse>,
-            ) {
-                progressBar.visibility=View.GONE
-                if (response.isSuccessful) {
-                    val profileResponse = response.body()
+            // Use the existing profile picture file if no new image is selected
+            updatedimagefile = if (::imageUri.isInitialized) {
+                getFile(this@ProfileUpdate, imageUri)
+            } else {
+                downloadFileFromUrl(profilePictureUrl)
+            }
+
+
+            val requestFile: RequestBody = RequestBody.create(
+                "image/jpg".toMediaType(),
+                updatedimagefile
+            )
+            multipartImage =
+                MultipartBody.Part.createFormData(
+                    "profile_picture",
+                    updatedimagefile.getName(),
+                    requestFile
+                )
+
+            val serviceGenerator = ApiManager.apiInterface
+            val accessToken = sessionManager.fetchAuthToken()
+            val authorization = "Token $accessToken"
+            val call = serviceGenerator.profileUpdate(authorization, map, multipartImage!!)
+            call.enqueue(object : retrofit2.Callback<ProfileResponse> {
+
+                override fun onResponse(
+                    call: Call<ProfileResponse>,
+                    response: Response<ProfileResponse>,
+                ) {
+                    progressBar.visibility = View.GONE
+                    if (response.isSuccessful) {
+                        val profileResponse = response.body()
 //                   if(profileResponse!=null){
 //                       val name=findViewById<EditText>(R.id.etGroupTwentyEight11)
 //                       val email=findViewById<EditText>(R.id.etGroupTwentyEight111)
@@ -213,30 +223,32 @@ class ProfileUpdate : AppCompatActivity() {
 //                       email.setText(profileResponse.email)
 //                   }
 
-                    Toast.makeText(
-                        this@ProfileUpdate,
-                        "Profile updated successfully",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                        Toast.makeText(
+                            this@ProfileUpdate,
+                            "Profile updated successfully",
+                            Toast.LENGTH_SHORT
+                        ).show()
 
-                    profileUpdateSuccess()
-                }else {
-                    // Handle API error
-                    Toast.makeText(
-                        this@ProfileUpdate,
-                        "Failed to update profile",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                        profileUpdateSuccess()
+                    } else {
+                        // Handle API error
+                        Toast.makeText(
+                            this@ProfileUpdate,
+                            "Failed to update profile",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
-            }
 
-            override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
-                // Handle network failures or other errors
-                Toast.makeText(this@ProfileUpdate, "Error fetching data", Toast.LENGTH_SHORT).show()
-                progressBar.visibility=View.GONE
-            }
-        })
+                override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
+                    // Handle network failures or other errors
+                    Toast.makeText(this@ProfileUpdate, "Error fetching data", Toast.LENGTH_SHORT)
+                        .show()
+                    progressBar.visibility = View.GONE
+                }
+            })
 
+        }
 
     }
 
@@ -255,22 +267,13 @@ class ProfileUpdate : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == pickImage) {
             imageUri = data?.data!!
-            nimage.setImageURI(imageUri)
-            val selectedFileURI: Uri =imageUri
-            updatedimagefile = getFile(this, selectedFileURI)
-            //file = File(selectedFileURI.path.toString())
-            Log.d("", "File : " + updatedimagefile.name)
-            //uploadedFileName = file.toString()
-            println("upload file name ${updatedimagefile.absoluteFile}")
-
-            Log.d("my location","$updatedimagefile")
-
-        }else{
-            updatedimagefile=getFile(this,profile_picture.toUri())
-//            updatedimagefile=getFile(this,imageUri)
-//            Picasso.get().load(updatedimagefile).into(nimage)
+            imageUri.let {
+                nimage.setImageURI(it)
+                updatedimagefile = getFile(this, it)
+            }
         }
     }
+
     @Throws(IOException::class)
     fun getFile(context: Context, uri: Uri): File {
         val destinationFilename =
@@ -288,6 +291,7 @@ class ProfileUpdate : AppCompatActivity() {
         }
         return destinationFilename
     }
+
     fun createFileFromStream(ins: InputStream, destination: File?) {
         try {
             FileOutputStream(destination).use { os ->
@@ -324,4 +328,24 @@ class ProfileUpdate : AppCompatActivity() {
 //        returnCursor.close()
 //        return name
     }
+
+
+    private suspend fun downloadFileFromUrl(url: String): File = withContext(Dispatchers.IO) {
+        val connection = URL(url).openConnection() as HttpURLConnection
+        connection.connect()
+
+        val inputStream = connection.inputStream
+        val outputFile = File(filesDir, "temp_image.jpg")
+        FileOutputStream(outputFile).use { output ->
+            val buffer = ByteArray(4096)
+            var bytesRead: Int
+            while (inputStream.read(buffer).also { bytesRead = it } != -1) {
+                output.write(buffer, 0, bytesRead)
+            }
+        }
+        inputStream.close()
+        connection.disconnect()
+        outputFile
+    }
+
 }

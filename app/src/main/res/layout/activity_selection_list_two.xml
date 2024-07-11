@@ -66,9 +66,7 @@
                             android:layout_height="@dimen/_166pxh"
                             android:layout_width="match_parent"
                             android:scaleType="fitXY"
-                            cornerRadius="@{@dimen/_10pxh}"
-                            imageRes="@{@drawable/img_rectangle106_178x117}"
-                            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle106_178x117"/>
+                            tools:ignore="ContentDescription" />
                         <TextView android:ellipsize="end"
                             android:id="@+id/txtDancersSelecte"
                             android:layout_height="wrap_content"
@@ -107,7 +105,7 @@
                                 android:id="@+id/moviename"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="KGF"
+                                android:text=""
                                 style="@style/txtPoppinsmedium14_2"/>
                         </LinearLayout>
                         <LinearLayout
@@ -158,7 +156,7 @@
                                 android:layout_marginTop="@dimen/_4pxv"
                                 android:layout_width="match_parent"
                                 android:singleLine="true"
-                                android:text="@string/lbl_date"
+                                android:text=""
                                 style="@style/txtPoppinsmedium12"
                                 tools:text="@string/lbl_date"/>
                         </LinearLayout>
@@ -186,7 +184,7 @@
                                 android:layout_marginTop="@dimen/_3pxv"
                                 android:layout_width="match_parent"
                                 android:singleLine="true"
-                                android:text="@string/lbl_time"
+                                android:text=""
                                 style="@style/txtPoppinsmedium12"
                                 tools:text="@string/lbl_time"/>
 
@@ -224,7 +222,7 @@
                                 android:layout_marginTop="@dimen/_4pxv"
                                 android:layout_width="match_parent"
                                 android:singleLine="true"
-                                android:text="@{selectionListTwoVM.selectionListTwoModel.txtVenue}"
+                                android:text=""
                                 style="@style/txtPoppinsmedium12"
                                 tools:text="@string/lbl_venue"/>
 
@@ -251,7 +249,7 @@
                                 android:layout_marginTop="@dimen/_33pxv"
                                 android:layout_width="match_parent"
                                 android:singleLine="true"
-                                android:text="@{selectionListTwoVM.selectionListTwoModel.txtRole}"
+                                android:text=""
                                 style="@style/txtPoppinsmedium12"
                                 tools:text="@string/lbl_role"/>
                         </LinearLayout>

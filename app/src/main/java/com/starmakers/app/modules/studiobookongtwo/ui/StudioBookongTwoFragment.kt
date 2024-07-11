@@ -15,7 +15,9 @@ import com.starmakers.app.modules.studiobookongone.ui.ListrectanglenineteenAdapt
 import com.starmakers.app.modules.studiobookongtwo.`data`.model.Listrectanglenineteen1RowModel
 import com.starmakers.app.modules.studiobookongtwo.`data`.viewmodel.StudioBookongTwoVM
 import com.starmakers.app.responses.HouseLocationDataResponse
+import com.starmakers.app.responses.HouseLocationStudio
 import com.starmakers.app.responses.MusicStudioDataResponse
+import com.starmakers.app.responses.Studio
 import com.starmakers.app.service.ApiManager
 import com.starmakers.app.service.SessionManager
 import retrofit2.Call
@@ -30,6 +32,9 @@ class StudioBookongTwoFragment :
   private val viewModel: StudioBookongTwoVM by viewModels<StudioBookongTwoVM>()
 
   private lateinit var sessionManager: SessionManager
+
+  private lateinit var studioBookongAdapter: ListrectanglenineteenAdapterHouse
+  private var fullStudioList: List<HouseLocationStudio> = listOf()
 
   override fun onInitialized(): Unit {
     viewModel.navArguments = arguments
@@ -95,11 +100,20 @@ class StudioBookongTwoFragment :
 
           if((customerResponse!=null)   && (customerResponse.message=="Success")) {
             val editingData=response.body()
-            binding.recyclerListrectanglenineteen.apply {
-              layoutManager=
-                LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL,false)
-              val audtioAdapter= ListrectanglenineteenAdapterHouse(editingData!!.data)
-              binding.recyclerListrectanglenineteen.adapter=audtioAdapter
+//            binding.recyclerListrectanglenineteen.apply {
+//              layoutManager=
+//                LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL,false)
+//              val audtioAdapter= ListrectanglenineteenAdapterHouse(editingData!!.data)
+//              binding.recyclerListrectanglenineteen.adapter=audtioAdapter
+//            }
+
+            if (editingData != null) {
+              fullStudioList = editingData.data
+              studioBookongAdapter = ListrectanglenineteenAdapterHouse(editingData!!.data)
+              binding.recyclerListrectanglenineteen.apply {
+                layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
+                adapter = studioBookongAdapter
+              }
             }
 
           }
@@ -118,19 +132,24 @@ class StudioBookongTwoFragment :
   }
   private fun setUpSearchViewGroup547Listener(): Unit {
     binding.searchViewGroup547.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-      override fun onQueryTextSubmit(p0 : String) : Boolean {
-        // Performs search when user hit
-        // the search button on the keyboard
+      override fun onQueryTextSubmit(query : String) : Boolean {
+        filterStudioList(query)
         return false
       }
-      override fun onQueryTextChange(p0 : String) : Boolean {
-        // Start filtering the list as user
-        // start entering the characters
+      override fun onQueryTextChange(newText : String) : Boolean {
+        filterStudioList(newText)
         return false
       }
       })
     }
 
+
+  private fun filterStudioList(query: String) {
+    val filteredList = fullStudioList.filter {
+      it.studio_name.contains(query, ignoreCase = true)
+    }
+    studioBookongAdapter.updateData(filteredList)
+  }
     companion object {
       const val TAG: String = "STUDIO_BOOKONG_TWO_FRAGMENT"
 

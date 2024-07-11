@@ -45,6 +45,7 @@ class StudioRequestAdapter (  var list: List<StudioRequests> ): RecyclerView.Ada
         var studioId=-1
 
 
+        val aboutImage:ImageView=itemView.findViewById(R.id.imageInfo)
         // Define the corner radius in pixels (converted from dp)
         val cornerRadiusInPixels = 15 // Change to your dimension resource
 
@@ -91,6 +92,14 @@ class StudioRequestAdapter (  var list: List<StudioRequests> ): RecyclerView.Ada
                 intent.putExtra("studioId", studioId) // Pass the id to the new activity
                 context.startActivity(intent)
             }
+
+            aboutImage.setOnClickListener {
+                val context = itemView.context
+                val intent = Intent(context, AuditionsTwoActivity::class.java)
+                intent.putExtra("studioId", studioId) // Pass the id to the new activity
+                context.startActivity(intent)
+            }
+
         }
     }
 }

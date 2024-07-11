@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,7 @@ import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.modules.auditions.`data`.model.AuditionsRowModel
 import com.starmakers.app.modules.auditionsfour.ui.AuditionsFourActivity
+import com.starmakers.app.modules.campaign.ui.CampaignActivity
 import com.starmakers.app.responses.AuditionsPosition
 import com.starmakers.app.responses.Data
 import com.starmakers.app.service.ApiManager
@@ -74,6 +76,7 @@ class AuditionsAdapter(
     val moviename:TextView=itemView.findViewById(R.id.movie)
 
 
+    val layout:LinearLayout=itemView.findViewById(R.id.linearRowrectangle106)
 
     // Define the corner radius in pixels (converted from dp)
     private val cornerRadiusInPixels = 15 // Change to your dimension resource
@@ -112,8 +115,34 @@ class AuditionsAdapter(
         context.startActivity(intent)
       }
 
-      imageView.setOnClickListener {
 
+      layout.setOnClickListener {
+        val context = itemView.context
+        val intent = Intent(context, CampaignActivity::class.java)
+        intent.putExtra("poster", file)
+        intent.putExtra("movie_name",postModel.movie_name)
+        intent.putExtra("venue",postModel.venue)
+        intent.putExtra("audtion_date",postModel.audition_date)
+        intent.putExtra("start_time",postModel.timings_from)
+        intent.putExtra("end_time",postModel.timings_to)
+        intent.putExtra("storyline",postModel.story_line)
+        intent.putExtra("artistDataId", auditionId)
+
+        context.startActivity(intent)
+      }
+      imageView.setOnClickListener {
+        val context = itemView.context
+        val intent = Intent(context, CampaignActivity::class.java)
+        intent.putExtra("poster", file)
+        intent.putExtra("movie_name",postModel.movie_name)
+        intent.putExtra("venue",postModel.venue)
+        intent.putExtra("audtion_date",postModel.audition_date)
+        intent.putExtra("start_time",postModel.timings_from)
+        intent.putExtra("end_time",postModel.timings_to)
+        intent.putExtra("storyline",postModel.story_line)
+        intent.putExtra("artistDataId", auditionId)
+
+        context.startActivity(intent)
       }
 
 

@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso
 import com.starmakers.app.R
 import com.starmakers.app.databinding.RowStudioBookongBinding
 import com.starmakers.app.modules.auditionsfour.ui.AuditionsFourActivity
+import com.starmakers.app.modules.auditionstwo.ui.AuditionsTwoActivity
 import com.starmakers.app.modules.frame316.ui.Frame316Activity
 import com.starmakers.app.modules.studiobookong.`data`.model.StudioBookongRowModel
 import com.starmakers.app.responses.Data
@@ -36,17 +37,11 @@ class StudioBookongAdapter(
 
   override fun onBindViewHolder(holder: RowStudioBookongVH, position: Int) {
     return  holder.bindView(list[position])
-   // val studioBookongRowModel = StudioBookongRowModel()
-    // TODO uncomment following line after integration with data source
-    // val studioBookongRowModel = list[position]
-  //  holder.binding.studioBookongRowModel = studioBookongRowModel
   }
 
   override fun getItemCount(): Int {
     return list.size
   }
-  // TODO uncomment following line after integration with data source
-  // return list.size
 
   public fun updateData(newData: List<EditingStudio>) {
     list = newData
@@ -85,6 +80,8 @@ class StudioBookongAdapter(
     val requestOptions = RequestOptions()
       .transform(RoundedCorners(cornerRadiusInPixels))
 
+
+    val aboutImage:ImageView=itemView.findViewById(R.id.imageInfo)
     fun bindView(postModel: EditingStudio) {
       studioName.text=postModel.studio_name
       location.text=postModel.location
@@ -119,24 +116,15 @@ class StudioBookongAdapter(
         context.startActivity(intent)
       }
 
+
+      aboutImage.setOnClickListener {
+        val context = itemView.context
+        val intent = Intent(context, AuditionsTwoActivity::class.java)
+        intent.putExtra("studioId", postModel.id) // Pass the id to the new activity
+        context.startActivity(intent)
+      }
+
     }
 
-
-
-
-    init {
-//      binding.imageRectangleNineteen.setOnClickListener {
-//        // TODO replace with value from datasource
-//        clickListener?.onItemClick(it, adapterPosition, StudioBookongRowModel())
-//      }
-//      binding.txtRamanandStudio.setOnClickListener {
-//        // TODO replace with value from datasource
-//        clickListener?.onItemClick(it, adapterPosition, StudioBookongRowModel())
-//      }
-//      binding.btnRequest.setOnClickListener {
-//        // TODO replace with value from datasource
-//        clickListener?.onItemClick(it, adapterPosition, StudioBookongRowModel())
-//      }
-    }
   }
 }

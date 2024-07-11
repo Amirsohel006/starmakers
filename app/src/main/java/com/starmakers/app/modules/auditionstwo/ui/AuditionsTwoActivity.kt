@@ -69,21 +69,16 @@ class AuditionsTwoActivity :
   }
 
 
-  private fun getMyStudioRequests(studioId:Int){
+  private fun getMyStudioRequests(studioId: Int) {
+    val serviceGenerator = ApiManager.apiInterface
+    val accessToken = sessionManager.fetchAuthToken()
+    val authorization = "Token $accessToken"
+    val call = serviceGenerator.getMyStudioRequest(authorization, studioId)
 
-    val serviceGenerator= ApiManager.apiInterface
-    val accessToken=sessionManager.fetchAuthToken()
-    val authorization="Token $accessToken"
-    val call=serviceGenerator.getMyStudioRequest(authorization,studioId)
-
-    call.enqueue(object : retrofit2.Callback<MyStudioRequest>{
+    call.enqueue(object : retrofit2.Callback<MyStudioRequest> {
       @SuppressLint("SetTextI18n")
-      override fun onResponse(
-        call: Call<MyStudioRequest>,
-        response: Response<MyStudioRequest>
-      ) {
-        val customerResponse=response.body()
-
+      override fun onResponse(call: Call<MyStudioRequest>, response: Response<MyStudioRequest>) {
+        val customerResponse = response.body()
 
         // Define the corner radius in pixels (converted from dp)
         val cornerRadiusInPixels = 15 // Change to your dimension resource
@@ -91,52 +86,46 @@ class AuditionsTwoActivity :
         // Create a RequestOptions object with the RoundedCorners transformation
         val requestOptions = RequestOptions()
           .transform(RoundedCorners(cornerRadiusInPixels))
-        if((customerResponse!=null)&&(customerResponse.status=="success")){
-          val studioModel=response.body()
+
+        if (customerResponse != null && customerResponse.status == "success") {
+          val studioModel = response.body()
           if (studioModel != null) {
-            binding.txtName1.text=studioModel.data.studio_name
-            binding.txtYear1.text=studioModel.data.date_of_start
-            binding.txtDescription.text=studioModel.data.write_about_studio
+            binding.txtName1.text = studioModel.data.studio_name
+            binding.txtYear1.text = studioModel.data.date_of_start
+            binding.txtDescription.text = studioModel.data.write_about_studio
 
-
-            val isBooked = studioModel.data.studio_booking[0].booking_studio
+            binding.txtRamamandStudio.text = studioModel.data.studio_name
 
             val bookButton = binding.btnRequestStudio
+            val studioBooking = studioModel.data.studio_booking
 
-            if (isBooked=="pending") {
-              bookButton.text = "pending"
+            if (studioBooking.isNotEmpty()) {
+              val isBooked = studioBooking[0].booking_studio
+              bookButton.text = if (isBooked == "pending") "Pending" else "Booked"
             } else {
-              bookButton.text = "Booked"
+              bookButton.text = "Available to Book"
             }
-
 
             if (studioModel.data.studio_picture.isNotEmpty()) {
               val file = studioModel.data.studio_picture[0].studio_picture
-              val imgUrl= file.let { ApiManager.getImageUrl(it) }
-
-             // Picasso.get().load(imgUrl).into(binding.imageRectangleNineteen)
+              val imgUrl = file.let { ApiManager.getImageUrl(it) }
 
               Glide.with(this@AuditionsTwoActivity)
                 .load(imgUrl) // Replace with your image URL or resource ID
                 .apply(requestOptions)
                 .into(binding.imageRectangleNineteen)
-
-              // Now you can safely access file
             } else {
               // Handle the case when postModel.studio_picture is empty
               // You might want to set a default value or display a message to the user
-            }// Assuming postModel.profile is a File object
-
-
+            }
 
             binding.recyclerAuditionsTwo.apply {
-              layoutManager=
-                LinearLayoutManager(this@AuditionsTwoActivity, LinearLayoutManager.HORIZONTAL,false)
-                val adapter=AuditionsTwoAdapter(studioModel.data.studio_movie)
-              binding.recyclerAuditionsTwo.adapter=adapter
+              layoutManager =
+                LinearLayoutManager(this@AuditionsTwoActivity, LinearLayoutManager.HORIZONTAL, false)
+              val adapter = AuditionsTwoAdapter(studioModel.data.studio_movie)
+              binding.recyclerAuditionsTwo.adapter = adapter
             }
           }
-
         }
       }
 
@@ -146,6 +135,10 @@ class AuditionsTwoActivity :
       }
     })
   }
+
+
+
+
   fun onClickRecyclerAuditionsTwo(
     view: View,
     position: Int,

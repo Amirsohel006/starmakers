@@ -129,7 +129,9 @@ class LoginOTPActivity :
       otpViewOtpviewBroadcastReceiver?.otpBroadcastReceiverListener =
       object : OtpViewOtpviewBroadcastReceiver.OtpBroadcastListener {
         override fun onSuccess(intent: Intent?) {
-          getActivityResult.launch(intent)
+          if (intent != null) {
+            getActivityResult.launch(intent)
+          }
         }
         override fun onFailure() {
 

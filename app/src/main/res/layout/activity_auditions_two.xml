@@ -36,8 +36,9 @@
                     android:layout_marginTop="@dimen/_23pxv"
                     android:layout_weight="0.91"
                     android:layout_width="0dp" android:singleLine="true"
-                    android:text="@{auditionsTwoVM.auditionsTwoModel.txtRamamandStudio}"
-                    style="@style/txtPoppinssemibold24" tools:text="@string/lbl_ramamand_studio"/>
+                    android:text=""
+                    style="@style/txtPoppinssemibold24"
+                    tools:text=""/>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
 

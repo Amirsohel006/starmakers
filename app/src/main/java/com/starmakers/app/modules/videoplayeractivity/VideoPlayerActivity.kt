@@ -17,6 +17,8 @@ import com.google.android.exoplayer2.ui.SimpleExoPlayerView
 import com.google.android.exoplayer2.upstream.BandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
+import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.starmakers.app.R
 
 class VideoPlayerActivity : AppCompatActivity() {
@@ -38,6 +40,9 @@ class VideoPlayerActivity : AppCompatActivity() {
 
         playerView = findViewById(R.id.playerView)
 
+        playerView.showController()
+
+        playerView.useController=true
 
 
         window.statusBarColor= ContextCompat.getColor(this,R.color.statusbar2)
@@ -59,23 +64,25 @@ class VideoPlayerActivity : AppCompatActivity() {
             val trackSelector = DefaultTrackSelector(AdaptiveTrackSelection.Factory(bandwidthMeter))
             val loadControl = DefaultLoadControl()
             exoPlayer = ExoPlayerFactory.newSimpleInstance(this, trackSelector, loadControl)
-            playerView.player = exoPlayer
+            //playerView.player = exoPlayer
 
-            val dataSourceFactory = DefaultDataSourceFactory(
-                this,
-                "ExoPlayer"
+            val dataSourceFactory = DefaultHttpDataSourceFactory(
+                "ExoPlayer",null,
+                DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
+                DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS, true
             )
             val extractorsFactory = DefaultExtractorsFactory()
             val videoUri = Uri.parse(videoUrl)
             val mediaSource = ExtractorMediaSource(videoUri, dataSourceFactory, extractorsFactory, null, null)
+
+
+            playerView.player = exoPlayer
+
             exoPlayer?.prepare(mediaSource)
             exoPlayer?.playWhenReady = true
 
 
-            playerView.useController=true
-            playerView.setControllerVisibilityListener { visibility ->
-                playerView.showController()
-            }
+
         }
     }
     private fun releasePlayer() {
