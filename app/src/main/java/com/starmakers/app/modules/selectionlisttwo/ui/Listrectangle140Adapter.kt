@@ -83,10 +83,25 @@ class Listrectangle140Adapter(
     fun bindView(postModel: SelectionListArtist){
       nameChandru.text=postModel.name
       age.text=postModel.age
-      val file = postModel.profile
+      //val file = postModel.profile
       location.text=postModel.location?:""
 
-      val imgUrl= file?.let { ApiManager.getImageUrl(it) }
+
+      val imageUrl = postModel.artistPictures.getOrNull(0)?.artistPicture
+
+      if (!imageUrl.isNullOrEmpty()) {
+        val file = ApiManager.getImageUrl(imageUrl)
+        // Use the file as needed
+        Glide.with(itemView)
+          .load(file) // Replace with your image URL or resource ID
+          .apply(requestOptions)
+          .into(image)
+      } else {
+        // Handle the case when imageUrl is null or empty
+        // For example, set a placeholder image or hide the ImageView
+        // imageView.setImageResource(R.drawable.placeholder)
+        // image.visibility = View.GONE
+      }
 
 //      Picasso.get()
 //        .load(imgUrl)
@@ -94,15 +109,10 @@ class Listrectangle140Adapter(
 
 
 
-      Glide.with(itemView)
-        .load(imgUrl) // Replace with your image URL or resource ID
-        .apply(requestOptions)
-        .into(image)
 
 
-      if (imgUrl != null) {
-        Log.d("importfile",imgUrl)
-      }
+
+
     }
 
   }

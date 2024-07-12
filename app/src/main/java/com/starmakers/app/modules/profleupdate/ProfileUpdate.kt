@@ -138,14 +138,14 @@ class ProfileUpdate : AppCompatActivity() {
 
 
                 customerResponse?.data?.let {
-                    newName.setText(it.artist_name)
-                    newMobileNumber.text = it.mobile_number
+                    newName.setText(it.name?:it.artistName)
+                    newMobileNumber.text = it.mobileNumber
                     newEmail.text = it.email
                     newHeight.setText(it.height)
                     newWeight.setText(it.weight)
                     newLocation.setText(it.city)
 
-                    profilePictureUrl = it.artist_pictures.get(0).artist_picture ?: it.profile ?: ""
+                    profilePictureUrl =  it.profile ?: it.artistPictures.get(0).artistPicture ?:""
 
                     if (profilePictureUrl.isNotEmpty()) {
                         Picasso.get()
@@ -177,7 +177,7 @@ class ProfileUpdate : AppCompatActivity() {
         map.put("name",name)
         map.put("height",height)
         map.put("weight",weight)
-        map.put("city",location)
+        map.put("location",location)
 
 
 

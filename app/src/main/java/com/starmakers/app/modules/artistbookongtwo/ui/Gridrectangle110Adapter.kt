@@ -33,7 +33,7 @@ class Gridrectangle110Adapter(
     holder.artistNameTextView.text = profileData.artistName
 
     // Check if artistPictures list is not empty and the first element is not null
-    if (!profileData.artistPictures.isNullOrEmpty() && profileData.artistPictures[0].artistPicture != null) {
+    if (!profileData.artistPictures.isNullOrEmpty()) {
       val image = profileData.artistPictures[0].artistPicture
       val file = ApiManager.getImageUrl(image)
 

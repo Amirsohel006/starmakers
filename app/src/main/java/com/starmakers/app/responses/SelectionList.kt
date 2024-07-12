@@ -30,7 +30,14 @@ data class SelectionListArtist (
     @SerializedName("name"    ) var name    : String? = null,
     @SerializedName("age"     ) var age     : String? = null,
     @SerializedName("profile" ) var profile : String? = null,
-    @SerializedName("location") val location: String? =null
-
+    @SerializedName("location") val location: String? =null,
+    @SerializedName("artist_pictures" ) var artistPictures : ArrayList<SelectedArtistPictures> = arrayListOf()
 )
 
+
+
+data class SelectedArtistPictures (
+
+    @SerializedName("artist_picture" ) var artistPicture : String? = null
+
+)

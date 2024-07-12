@@ -112,7 +112,7 @@ class Listrectangle106Adapter(
         selectionButton.setOnClickListener {
             val context = itemView.context
             val intent = Intent(context, SelectionListTwoActivity::class.java)
-            intent.putExtra("artistDataId", auditionId) // Pass the id to the new activity
+            intent.putExtra("artistDataId", auditionId.toString()) // Pass the id to the new activity
             context.startActivity(intent)
         }
     }

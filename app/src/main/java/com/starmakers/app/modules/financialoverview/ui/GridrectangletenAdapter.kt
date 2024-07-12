@@ -63,12 +63,14 @@ class GridrectangletenAdapter(
     val binding: RowGridrectangletenBinding = RowGridrectangletenBinding.bind(itemView)
 
     val image:ImageView=itemView.findViewById(R.id.imageRectangleTen)
-    val moviename:TextView=itemView.findViewById(R.id.txtMovieKantara)
-    val gener:TextView=itemView.findViewById(R.id.txtGenreMystery)
+//    val moviename:TextView=itemView.findViewById(R.id.txtMovieKantara)
+//    val gener:TextView=itemView.findViewById(R.id.txtGenreMystery)
     var campaignId=-1
+    val movie_name:TextView=itemView.findViewById(R.id.txtMovieKantara1)
+    val genere:TextView=itemView.findViewById(R.id.txtGenreMystery1)
     fun bindView(postModel:Campaign){
-      moviename.text=postModel.campaigns_name
-      gener.text=postModel.genere
+      movie_name.text=postModel.campaigns_name
+      genere.text=postModel.genere
 
       campaignId=postModel.id
       val file =

@@ -10,7 +10,8 @@ data class MyAuditionRequest(
     val movie_name: String,
     val timings_from: String,
     val applied_date: String,
-    val audition_positions: String
+    val audition_positions: String,
+    val audition_ID:String
 )
 
 data class Artist(

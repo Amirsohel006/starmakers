@@ -8,35 +8,43 @@ data class RequestAudition(  val status: String,
 
 )
 data class RequestUserData(
-    val name: String,
-    val email: String,
-    val mobile_number: String,
-    val city: String,
-    val pin_code: String,
-    val profile: String,
-    val age:String,
-    val height:String,
-    val weight:String,
-   var artist_name        : String?                   = null,
-    var id                : Int?                      = null,
-   var movie_pictures     : ArrayList<String>         = arrayListOf(),
-  @SerializedName("artist_pictures")var artist_pictures    : ArrayList<artist_pictures> = arrayListOf(),
- var choose_acting_field : String?                   = null,
- var total_no_of_movies   : Int?                      = null,
- var total_experience   : String?                   = null,
- var is_booked          : Boolean?                  = null,
- var is_member          : Boolean?                  = null,
- var user              : Int?                      = null,
-  var location          : String?                   = null,
+    @SerializedName("id"                  ) var id                : Int?                      = null,
+    @SerializedName("email"               ) var email             : String?                   = null,
+    @SerializedName("city"                ) var city              : String?                   = null,
+    @SerializedName("movie_pictures"      ) var moviePictures     : ArrayList<RequestMoviePictures>  = arrayListOf(),
+    @SerializedName("artist_pictures"     ) var artistPictures    : ArrayList<RequestArtistPictures> = arrayListOf(),
+    @SerializedName("select_category"     ) var selectCategory    : String?                   = null,
+    @SerializedName("booking_status"      ) var bookingStatus     : String?                   = null,
+    @SerializedName("artist_name"         ) var artistName        : String?                   = null,
+    @SerializedName("mobile_number"       ) var mobileNumber      : String?                   = null,
+    @SerializedName("location"            ) var location          : String?                   = null,
+    @SerializedName("age"                 ) var age               : Int?                      = null,
+    @SerializedName("height"              ) var height            : String?                   = null,
+    @SerializedName("weight"              ) var weight            : String?                   = null,
+    @SerializedName("choose_acting_field" ) var chooseActingField : String?                   = null,
+    @SerializedName("total_no_of_movies"  ) var totalNoOfMovies   : Int?                      = null,
+    @SerializedName("total_experience"    ) var totalExperience   : String?                   = null,
+    @SerializedName("is_booked"           ) var isBooked          : Boolean?                  = null,
+    @SerializedName("is_member"           ) var isMember          : Boolean?                  = null,
+    @SerializedName("created_at"          ) var createdAt         : String?                   = null,
+    @SerializedName("updated_at"          ) var updatedAt         : String?                   = null,
+    @SerializedName("user"                ) var user              : Int?                      = null,
+    @SerializedName("profile"             ) var profile           : String?                   = null,
+    @SerializedName("name")var name:String?=null
+)
+
+
+data class RequestMoviePictures (
+
+    @SerializedName("picture" ) var picture : String? = null
+
 )
 
 
 
+data class RequestArtistPictures (
 
-
-data class artist_pictures (
-
-    @SerializedName("artist_picture" ) var artist_picture : String? = null
+    @SerializedName("artist_picture" ) var artistPicture : String? = null
 
 )
 data class AuditionPosition(

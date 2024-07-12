@@ -36,8 +36,10 @@ class SelectionListTwoActivity :
   override fun onInitialized(): Unit {
     sessionManager=SessionManager(this)
 
-    val auditionId = intent.getIntExtra("artistDataId",-1)
-    fetchData(auditionId)
+    val auditionId = intent.getStringExtra("artistDataId")
+    if (auditionId != null) {
+      fetchData(auditionId.toFloat().toInt())
+    }
 
     viewModel.navArguments = intent.extras?.getBundle("bundle")
 //    val listrectangle140Adapter =
@@ -96,7 +98,9 @@ class SelectionListTwoActivity :
               binding.txtDate1.text = data[0].appliedDate
               binding.txtTime1.text = data[0].timingsFrom
               binding.txtVenue1.text = data[0].venue
-              binding.txtRole1.text = data.map { it.auditionPositions }.toString()
+              val uniquePositions = data.map { it.auditionPositions }.distinct()
+              binding.txtRole1.text = uniquePositions.joinToString(separator = ", ", prefix = "[ ", postfix = " ]")
+
 
               Glide.with(this@SelectionListTwoActivity)
                 .load(data[0].moviePoster)

@@ -13,9 +13,8 @@
             android:layout_marginStart="@dimen/_8pxh"
             android:layout_marginTop="@dimen/_9pxv"
             android:layout_width="@dimen/_81pxh"
-            android:scaleType="fitXY" cornerRadius="@{@dimen/_5pxh}"
-            imageRes="@{@drawable/img_rectangle140}"
-            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle140"/>
+            android:scaleType="fitXY"
+            tools:ignore="ContentDescription" />
         <LinearLayout android:id="@+id/linearRowchandru"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_14pxv"
