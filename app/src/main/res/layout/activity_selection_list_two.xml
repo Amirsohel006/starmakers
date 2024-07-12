@@ -109,6 +109,7 @@
                                 style="@style/txtPoppinsmedium14_2"/>
                         </LinearLayout>
                         <LinearLayout
+                            android:visibility="gone"
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
@@ -248,7 +249,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_33pxv"
                                 android:layout_width="match_parent"
-                                android:singleLine="true"
+                                android:gravity="start"
                                 android:text=""
                                 style="@style/txtPoppinsmedium12"
                                 tools:text="@string/lbl_role"/>
@@ -266,7 +267,9 @@
                     android:nestedScrollingEnabled="false"
                     android:orientation="vertical"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    itemSpace="@{@dimen/_14pxh}" tools:itemCount="5" tools:listitem="@layout/row_listrectangle141"/>
+                    itemSpace="@{@dimen/_14pxh}"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/row_listrectangle141"/>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

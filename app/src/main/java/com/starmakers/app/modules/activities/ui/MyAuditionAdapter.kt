@@ -81,7 +81,7 @@ data class MyAuditionAdapter(  var list: List<MyAuditionRequest> ): RecyclerView
 
                     val context = itemView.context
                     val intent = Intent(context, SelectionListTwoActivity::class.java)
-                    intent.putExtra("artistDataId", postModel.id) // Pass the id to the new activity
+                    intent.putExtra("artistDataId", postModel.audition_ID) // Pass the id to the new activity
                     context.startActivity(intent)
             }
         }

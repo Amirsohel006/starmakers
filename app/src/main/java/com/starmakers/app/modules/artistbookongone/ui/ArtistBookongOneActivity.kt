@@ -95,24 +95,26 @@ class ArtistBookongOneActivity :
         if(customerResponse!=null){
 
             val profilePicture: ImageView = binding.profilepicturerounded
-            val image = customerResponse.data.profile
+           // val image = customerResponse.data.profile
 
 
-            binding.etMobileNumber.text=customerResponse.data.mobile_number
+            binding.etMobileNumber.text=customerResponse.data.mobileNumber
             binding.etEmail.text=customerResponse.data.email
             binding.etHeight1.text=customerResponse.data.height
             binding.etWeight1.text=customerResponse.data.weight
 
-          if (!customerResponse.data.artist_pictures.isNullOrEmpty()) {
+          if (!customerResponse.data.artistPictures.isNullOrEmpty()) {
             // Load the first artist picture if available
-            binding.etName.text=customerResponse.data.artist_name
+            binding.etName.text=customerResponse.data.artistName
             binding.btnTakeMembershipOne.visibility = View.GONE
 
             binding.etLocation.text=customerResponse.data.location
             val profilePicture: ImageView = binding.profilepicturerounded
-            val artistPictures = customerResponse.data.artist_pictures
+
+
+            val artistPictures = customerResponse.data.artistPictures
             if (artistPictures.isNotEmpty()) {
-              val image = artistPictures[0].artist_picture
+              val image = artistPictures[0].artistPicture
               Log.d("Retreived Image",image!!)
               Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.rounded_profile_image).into(profilePicture)
             } else {
@@ -120,11 +122,15 @@ class ArtistBookongOneActivity :
             }
           } else {
             binding.etName.text=customerResponse.data.name
-            // Check if profile picture is not empty
-            val profilePicture: ImageView = binding.profilepicturerounded
-            val image = customerResponse.data.profile
+
             binding.etLocation.text=customerResponse.data.city
             binding.btnTakeMembershipOne.visibility= View.VISIBLE
+
+
+            val image=customerResponse.data.profile
+            val file=ApiManager.getImageUrl(image!!)
+
+            Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.rounded_profile_image).into(profilePicture)
 
             binding.btnTakeMembershipOne.setOnClickListener {
               //val destIntent = ArtistMembershipActivity.getIntent(this, null)
@@ -132,31 +138,7 @@ class ArtistBookongOneActivity :
               startActivity(destIntent)
             }
 
-            if (!image.isNullOrEmpty()) {
-              //val file = ApiManager.getImageUrl(image)
-              Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.rounded_profile_image).into(profilePicture)
-            } else {
-              // Load a default picture if both artistPictures and profile are empty
-              Picasso.get().load(image).transform(CircleTransformation()).placeholder(R.drawable.rounded_profile_image).into(profilePicture)
-            }
           }
-
-
-
-
-
-//            if (!image.isNullOrEmpty()) {
-//              val file = ApiManager.getImageUrl(image)
-//              Picasso.get().load(file).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
-//            } else {
-//              // Load a default picture if both artistPictures and profile are empty
-//              Picasso.get().load(R.drawable.default_profile_pic).transform(CircleTransformation()).placeholder(R.drawable.img_ellipse32).into(profilePicture)
-//            }
-//         // }
-//
-//
-//
-//          Picasso.get().load(customerResponse.data.profile).transform(CircleTransformation()).into(binding.profilepicturerounded)
         }
       }
 
