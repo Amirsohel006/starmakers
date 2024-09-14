@@ -1,5 +1,6 @@
 package com.starmakers.app.modules.requestone.ui
 import android.content.Intent
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -41,6 +42,7 @@ class ArtistRequestAdapter(  var list: List<ArtistRequests> ): RecyclerView.Adap
         val actor:TextView=itemView.findViewById(R.id.txtActor)
         val location:TextView=itemView.findViewById(R.id.txtBangalore)
         val image:ImageView=itemView.findViewById(R.id.imageRectangleNineteen)
+        val aboutImage:ImageView=itemView.findViewById(R.id.imageInfo)
         var artistId=-1
 
 
@@ -50,6 +52,8 @@ class ArtistRequestAdapter(  var list: List<ArtistRequests> ): RecyclerView.Adap
         // Create a RequestOptions object with the RoundedCorners transformation
         val requestOptions = RequestOptions()
             .transform(RoundedCorners(cornerRadiusInPixels))
+
+        val btnRequested:AppCompatButton=itemView.findViewById(R.id.btnRequested)
         fun bindView(postModel: ArtistRequests) {
             name.text=postModel.artist_name
             actor.text=postModel.category_name
@@ -73,6 +77,29 @@ class ArtistRequestAdapter(  var list: List<ArtistRequests> ): RecyclerView.Adap
                     .apply(requestOptions)
                     .into(image)
             }
+
+
+            val bookingStatus = postModel.booking_status
+
+            when (bookingStatus) {
+                "pending" -> {
+                    btnRequested.text = "Requested"
+                    btnRequested.setTextColor(Color.WHITE)
+                    btnRequested.setBackgroundResource(R.drawable.pending_button_background) // Rounded pending button
+                }
+                "accepted" -> {
+                    btnRequested.text = "Booked"
+                    btnRequested.setTextColor(Color.WHITE)
+                    btnRequested.setBackgroundResource(R.drawable.booked_button_background) // Rounded booked button
+                }
+                else -> {
+                    btnRequested.text = "Not Booked"
+                    btnRequested.setTextColor(Color.WHITE)
+                    btnRequested.setBackgroundResource(R.drawable.not_booked_button_background) // Rounded not booked button
+                }
+            }
+
+
             name.setOnClickListener {
                 val context = itemView.context
                 val intent = Intent(context, ArtistRequestInfo::class.java)
@@ -81,6 +108,13 @@ class ArtistRequestAdapter(  var list: List<ArtistRequests> ): RecyclerView.Adap
             }
 
             image.setOnClickListener{
+                val context = itemView.context
+                val intent = Intent(context, ArtistRequestInfo::class.java)
+                intent.putExtra("profileDataId", artistId) // Pass the id to the new activity
+                context.startActivity(intent)
+            }
+
+            aboutImage.setOnClickListener {
                 val context = itemView.context
                 val intent = Intent(context, ArtistRequestInfo::class.java)
                 intent.putExtra("profileDataId", artistId) // Pass the id to the new activity

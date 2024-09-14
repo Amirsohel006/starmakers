@@ -131,7 +131,8 @@
                 android:singleLine="true"
                 android:text="@string/lbl_requested"
                 android:textAllCaps="false"
-                style="@style/btnSolidRounded_10" tools:text="@string/lbl_requested"/>
+                style="@style/btnSolidRounded_10"
+                tools:text="@string/lbl_requested"/>
         </LinearLayout>
     </LinearLayout>
 

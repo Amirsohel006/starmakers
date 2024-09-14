@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiManager {
-    private val BASE_URL = "http://64.227.174.38:8000"
+    private val BASE_URL = "http://43.204.234.60:8000/"
 
     // API response interceptor
     val loggingInterceptor = HttpLoggingInterceptor()

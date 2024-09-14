@@ -40,6 +40,14 @@ class ArtistBookongFiveActivity :
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     sessionManager=SessionManager(this)
 
+    val city=sessionManager.fetchCityName()
+
+    val pincode =
+      sessionManager.fetchPinCode()
+
+    binding.spinnerGroup122.text= "Your Location-$city $pincode"
+
+
 
     getCategory()
 

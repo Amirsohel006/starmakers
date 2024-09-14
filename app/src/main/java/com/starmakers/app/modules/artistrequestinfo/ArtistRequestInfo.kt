@@ -1,6 +1,7 @@
 package com.starmakers.app.modules.artistrequestinfo
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -92,10 +93,22 @@ class ArtistRequestInfo : AppCompatActivity() {
 
                     val isBooked=customerResponse.booking_status
 
-                    if(isBooked=="pending"){
-                        btnRequestse.text="Pending"
-                    }else{
-                        btnRequestse.text="Booked"
+                    when (isBooked) {
+                        "pending" -> {
+                            btnRequestse.text = "Requested"
+                            btnRequestse.setTextColor(Color.WHITE)
+                            btnRequestse.setBackgroundResource(R.drawable.pending_button_background) // Rounded pending button
+                        }
+                        "accepted" -> {
+                            btnRequestse.text = "Booked"
+                            btnRequestse.setTextColor(Color.WHITE)
+                            btnRequestse.setBackgroundResource(R.drawable.booked_button_background) // Rounded booked button
+                        }
+                        else -> {
+                            btnRequestse.text = "Not Booked"
+                            btnRequestse.setTextColor(Color.WHITE)
+                            btnRequestse.setBackgroundResource(R.drawable.not_booked_button_background) // Rounded not booked button
+                        }
                     }
 
                     val file = customerResponse.artist_pictures[0].artist_picture // Assuming postModel.profile is a File object
