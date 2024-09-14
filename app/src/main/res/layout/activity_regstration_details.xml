@@ -108,9 +108,9 @@
                     android:layout_marginTop="@dimen/_16pxv"
                     android:layout_width="wrap_content"
                     android:singleLine="true"
-                    android:text="500"
+                    android:text="299"
                     style="@style/txtPoppinsmedium16_4"
-                    tools:text="500"/>
+                    tools:text="299"/>
             </LinearLayout>
         </LinearLayout>
 

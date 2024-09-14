@@ -1,10 +1,13 @@
 package com.starmakers.app.modules.request.ui
 import android.content.Intent
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -53,6 +56,8 @@ class StudioRequestAdapter (  var list: List<StudioRequests> ): RecyclerView.Ada
         val requestOptions = RequestOptions()
             .transform(RoundedCorners(cornerRadiusInPixels))
 
+
+        val btnRequested:AppCompatButton=itemView.findViewById(R.id.btnRequested)
         fun bindView(postModel: StudioRequests) {
             studioName.text=postModel.studio_name
             studioCost.text=postModel.budget
@@ -77,6 +82,29 @@ class StudioRequestAdapter (  var list: List<StudioRequests> ): RecyclerView.Ada
                 // You might want to set a default value or display a message to the user
             }
 // Assuming postModel.profile is a File object
+
+
+            val bookingStatus = postModel.booking_studio
+
+            when (bookingStatus) {
+                "pending" -> {
+                    btnRequested.text = "Requested"
+                    btnRequested.setTextColor(Color.WHITE)
+                    btnRequested.setBackgroundResource(R.drawable.pending_button_background) // Rounded pending button
+                }
+                "accept" -> {
+                    btnRequested.text = "Booked"
+                    btnRequested.setTextColor(Color.WHITE)
+                    btnRequested.setBackgroundResource(R.drawable.booked_button_background) // Rounded booked button
+                }
+                else -> {
+                    btnRequested.text = "Not Booked"
+                    btnRequested.setTextColor(Color.WHITE)
+                    btnRequested.setBackgroundResource(R.drawable.not_booked_button_background) // Rounded not booked button
+                }
+            }
+
+
 
 
 

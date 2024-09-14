@@ -3,6 +3,7 @@ package com.starmakers.app.modules.auditionstwo.ui
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -99,11 +100,36 @@ class AuditionsTwoActivity :
             val bookButton = binding.btnRequestStudio
             val studioBooking = studioModel.data.studio_booking
 
+//            if (studioBooking.isNotEmpty()) {
+//              val isBooked = studioBooking[0].booking_studio
+//              bookButton.text = if (isBooked == "pending") "Pending" else "Booked"
+//            } else {
+//              bookButton.text = "Available to Book"
+//            }
+
+
             if (studioBooking.isNotEmpty()) {
               val isBooked = studioBooking[0].booking_studio
-              bookButton.text = if (isBooked == "pending") "Pending" else "Booked"
-            } else {
-              bookButton.text = "Available to Book"
+
+              when (isBooked) {
+                "pending" -> {
+                  bookButton.text = "Requested"
+                  bookButton.setTextColor(Color.WHITE)
+                  bookButton.setBackgroundResource(R.drawable.pending_button_background) // Rounded pending button
+                }
+
+                "accept" -> {
+                  bookButton.text = "Booked"
+                  bookButton.setTextColor(Color.WHITE)
+                  bookButton.setBackgroundResource(R.drawable.booked_button_background) // Rounded booked button
+                }
+
+                else -> {
+                  bookButton.text = "Not Booked"
+                  bookButton.setTextColor(Color.WHITE)
+                  bookButton.setBackgroundResource(R.drawable.not_booked_button_background) // Rounded not booked button
+                }
+              }
             }
 
             if (studioModel.data.studio_picture.isNotEmpty()) {
