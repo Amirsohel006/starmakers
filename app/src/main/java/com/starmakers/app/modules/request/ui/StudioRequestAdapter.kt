@@ -112,12 +112,14 @@ class StudioRequestAdapter (  var list: List<StudioRequests> ): RecyclerView.Ada
                 val context = itemView.context
                 val intent = Intent(context, AuditionsTwoActivity::class.java)
                 intent.putExtra("studioId", studioId) // Pass the id to the new activity
+                intent.putExtra("bookingStudio",postModel.booking_studio)
                 context.startActivity(intent)
             }
             image.setOnClickListener{
                 val context = itemView.context
                 val intent = Intent(context, AuditionsTwoActivity::class.java)
                 intent.putExtra("studioId", studioId) // Pass the id to the new activity
+                intent.putExtra("bookingStudio",postModel.booking_studio)
                 context.startActivity(intent)
             }
 
@@ -125,6 +127,7 @@ class StudioRequestAdapter (  var list: List<StudioRequests> ): RecyclerView.Ada
                 val context = itemView.context
                 val intent = Intent(context, AuditionsTwoActivity::class.java)
                 intent.putExtra("studioId", studioId) // Pass the id to the new activity
+                intent.putExtra("bookingStudio",postModel.booking_studio)
                 context.startActivity(intent)
             }
 

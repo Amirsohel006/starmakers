@@ -108,8 +108,9 @@ class AuditionsTwoActivity :
 //            }
 
 
+
             if (studioBooking.isNotEmpty()) {
-              val isBooked = studioBooking[0].booking_studio
+              val isBooked = intent.getStringExtra("bookingStudio")
 
               when (isBooked) {
                 "pending" -> {
@@ -124,10 +125,15 @@ class AuditionsTwoActivity :
                   bookButton.setBackgroundResource(R.drawable.booked_button_background) // Rounded booked button
                 }
 
-                else -> {
+                "deny" -> {
                   bookButton.text = "Not Booked"
                   bookButton.setTextColor(Color.WHITE)
                   bookButton.setBackgroundResource(R.drawable.not_booked_button_background) // Rounded not booked button
+                }
+                else -> {
+                  bookButton.text = "Request Studio"
+                  bookButton.setTextColor(Color.WHITE)
+                  bookButton.setBackgroundResource(R.drawable.booked_button_background)
                 }
               }
             }
