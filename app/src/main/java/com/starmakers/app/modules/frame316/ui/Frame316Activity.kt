@@ -58,8 +58,7 @@ class Frame316Activity : BaseActivity<ActivityFrame316Binding>(R.layout.activity
 
 
     binding.imageClose.setOnClickListener {
-      val i =Intent(this,StudioBookong1Activity::class.java)
-      startActivity(i)
+      this.finish()
     }
 
     imageView.setOnClickListener {
