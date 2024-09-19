@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -11,6 +12,7 @@ import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
 import com.starmakers.app.databinding.ActivitySignUoThreeBinding
@@ -20,6 +22,7 @@ import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.starmakers.app.responses.LoginResponse
 import com.starmakers.app.service.ApiInterface
 import com.starmakers.app.service.ApiManager
+import com.starmakers.app.service.OtpBroadcastReceiver
 import com.starmakers.app.service.SessionManager
 import com.starmakers.app.service.TokenManager
 import retrofit2.Call
@@ -46,6 +49,8 @@ class LoginOTPActivity :
     getOtpFromMessage(message!!)
     })
 
+
+  private var otpBroadcastReceiver: OtpBroadcastReceiver? = null
 
   private var mobile:String=""
     private val viewModel: SignUoThreeVM by viewModels<SignUoThreeVM>()
@@ -92,9 +97,10 @@ class LoginOTPActivity :
 
     override fun onStop(): Unit {
       super.onStop()
-      unregisterReceiver(otpViewOtpviewBroadcastReceiver)
+      unregisterReceiver(otpBroadcastReceiver)
     }
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onStart(): Unit {
       super.onStart()
       registerBroadcastReceiver()
@@ -124,22 +130,22 @@ class LoginOTPActivity :
       client.startSmsUserConsent(null)
     }
 
-    private fun registerBroadcastReceiver(): Unit {
-      otpViewOtpviewBroadcastReceiver = OtpViewOtpviewBroadcastReceiver()
-      otpViewOtpviewBroadcastReceiver?.otpBroadcastReceiverListener =
-      object : OtpViewOtpviewBroadcastReceiver.OtpBroadcastListener {
-        override fun onSuccess(intent: Intent?) {
-          if (intent != null) {
-            getActivityResult.launch(intent)
-          }
-        }
-        override fun onFailure() {
-
-        }
+  @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+  private fun registerBroadcastReceiver() {
+    otpBroadcastReceiver = OtpBroadcastReceiver()
+    otpBroadcastReceiver?.otpBroadcastReceiverListener = object : OtpBroadcastReceiver.OtpBroadcastListener {
+      override fun onSuccess(message: String) {
+        getOtpFromMessage(message)
       }
-      val intentFilter = IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION)
-      registerReceiver(otpViewOtpviewBroadcastReceiver, intentFilter)
+
+      override fun onFailure() {
+        // Handle failure
+      }
     }
+
+    val intentFilter = IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION)
+    registerReceiver(otpBroadcastReceiver, intentFilter, RECEIVER_NOT_EXPORTED)
+  }
 
     private fun getOtpFromMessage(message: String): Unit {
       val otpPattern: Pattern = Pattern.compile("(|^)\\d{6}")
