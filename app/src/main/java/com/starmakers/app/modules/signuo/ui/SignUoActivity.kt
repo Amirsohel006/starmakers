@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -11,6 +12,7 @@ import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.starmakers.app.R
 import com.starmakers.app.appcomponents.base.BaseActivity
@@ -149,6 +151,7 @@ class SignUoActivity : BaseActivity<ActivitySignUoBinding>(R.layout.activity_sig
       unregisterReceiver(otpViewOtpviewBroadcastReceiver)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onStart(): Unit {
       super.onStart()
       registerBroadcastReceiver()
@@ -200,6 +203,7 @@ binding.txtResendOTP.setOnClickListener {
       client.startSmsUserConsent(null)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun registerBroadcastReceiver(): Unit {
       otpViewOtpviewBroadcastReceiver = OtpViewOtpviewBroadcastReceiver()
       otpViewOtpviewBroadcastReceiver?.otpBroadcastReceiverListener =
@@ -214,7 +218,7 @@ binding.txtResendOTP.setOnClickListener {
         }
       }
       val intentFilter = IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION)
-      registerReceiver(otpViewOtpviewBroadcastReceiver, intentFilter)
+      registerReceiver(otpViewOtpviewBroadcastReceiver, intentFilter, RECEIVER_NOT_EXPORTED)
     }
 
     private fun getOtpFromMessage(message: String): Unit {

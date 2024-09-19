@@ -1,7 +1,9 @@
 package com.starmakers.app.modules.signuotwo.ui
 
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
@@ -39,6 +41,7 @@ class LoginActivity : BaseActivity<ActivitySignUoTwoBinding>(R.layout.activity_s
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     apiService= ApiManager.apiInterface
     sessionManager= SessionManager(this)
+
 
 
     binding.btnLogin.setOnClickListener{

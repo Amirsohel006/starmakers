@@ -160,9 +160,15 @@
         <activity
             android:name=".modules.selectionlistone.ui.SelectionListOneActivity"
             android:screenOrientation="portrait" />
-        <activity
+        <receiver
             android:name=".modules.signuothree.ui.LoginOTPActivity"
             android:screenOrientation="portrait"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        </receiver>
+
+        <activity android:name=".modules.signuothree.ui.LoginOTPActivity"
+            android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".modules.homecontainer.ui.HomeContainerActivity"
